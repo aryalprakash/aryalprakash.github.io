@@ -3,10 +3,21 @@
  */
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Header from './Header'
 import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
+
+let styles= {
+    tab:{
+        borderBottom: '2px solid #f7f7f7'
+    },
+    tabcontent:{
+        width: '100%',
+        marginTop: '10'
+    }
+}
 
 export default class Store extends Component {
     constructor() {
@@ -64,11 +75,83 @@ export default class Store extends Component {
 
                 </div>
                 <div className="card center-content">
-                    <div className="content-title">
-                        <div></div>
-                        <div className="search-box"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
+                    <div className="store-title relative">
+                        <Tabs
+                        onSelect={this.handleSelect}
+                        selectedIndex={0}
+                        style={styles.tabcontent}
+                    >
+                        <TabList style={styles.tab}>
+                            <Tab >Regular Offer</Tab>
+                            <Tab>Walmart Deals</Tab>
+                        </TabList>
+                        <TabPanel>
+                            <div className="items">
+                            </div>
+                            <div className="items-container">
+                                <div className="item-cat">
+                                    <Link className="link" to="/items">
+                                    <div className="item-thumb">
+                                        <img src="../../img/store/Chicken.jpg" />
+                                    </div>
+                                    <div className="item-name">Chicken</div>
+                                    </Link>
+                                </div>
+                                <div className="item-cat">
+                                    <Link className="link" to="/items">
+                                        <div className="item-thumb">
+                                            <img src="../../img/store/Fish.jpg" />
+                                        </div>
+                                        <div className="item-name">Fish</div>
+                                    </Link>
+                                </div>
+                                <div className="item-cat">
+                                    <Link className="link" to="/items">
+                                        <div className="item-thumb">
+                                            <img src="../../img/store/Fish.jpg" />
+                                        </div>
+                                        <div className="item-name">Fish</div>
+                                    </Link>
+                                </div>
+                                <div className="item-cat">
+                                    <Link className="link" to="/items">
+                                        <div className="item-thumb">
+                                            <img src="../../img/store/Fish.jpg" />
+                                        </div>
+                                        <div className="item-name">Fish</div>
+                                    </Link>
+                                </div>
+                                <div className="item-cat">
+                                    <Link className="link" to="/items">
+                                        <div className="item-thumb">
+                                            <img src="../../img/store/Fish.jpg" />
+                                        </div>
+                                        <div className="item-name">Fish</div>
+                                    </Link>
+                                </div>
+                                <div className="item-cat">
+                                    <Link className="link" to="/items">
+                                        <div className="item-thumb">
+                                            <img src="../../img/store/Fish.jpg" />
+                                        </div>
+                                        <div className="item-name">Fish</div>
+                                    </Link>
+                                </div><div className="item-cat">
+                                <Link className="link" to="/items">
+                                    <div className="item-thumb">
+                                        <img src="../../img/store/Fish.jpg" />
+                                    </div>
+                                    <div className="item-name">Fish</div>
+                                </Link>
+                            </div>
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <h2>Hello from Bar</h2>
+                        </TabPanel>
+                    </Tabs>
+                        <div className="search-box absolute-search"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
                     </div>
-                    <div className="line"></div>
                 </div>
                 <Deals />
             </div>

@@ -8,6 +8,7 @@ import Infinia4 from './components/Infinia4';
 import Infinia5 from './components/Infinia5';
 import Search from './components/Search';
 import Store from './components/Store';
+import Items from './components/Items';
 
 require('../css/main.css');
 
@@ -19,5 +20,6 @@ ReactDOM.render(<Router history={hashHistory}>
     <Route path="/infinia5" component={Infinia5} />
     <Route path="/search" component={Search} />
     <Route path="/store" component={Store} />
+    <Route path="/items" component={Items} />
     <Route path="/search/:category" component={Search} />
 </Router>, document.getElementById('root'));
