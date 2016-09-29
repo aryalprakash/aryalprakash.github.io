@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import  { Link } from 'react-router';
 import Dialog from 'rc-dialog';
-import Register from './Register.js'
-import Login from './Login.js'
+import {Register} from './Register.js'
+import {Login} from './Login.js'
 import 'rc-dialog/assets/index.css';
 
 let style={
@@ -24,6 +24,7 @@ export default class Header extends Component{
         }
 
         this.onClick = this.onClick.bind(this)
+        this.Reg = this.Reg.bind(this)
         this.onClose = this.onClose.bind(this)
 
     }
@@ -34,10 +35,17 @@ export default class Header extends Component{
         });
     }
 
-    onClose(e) {
-        console.log(e);
+    Reg(e){
         this.setState({
-            visible: false
+            visible: true,
+            login: false
+        });
+    }
+
+    onClose(e) {
+        this.setState({
+            visible: false,
+            login: true
         });
     }
 
@@ -103,7 +111,8 @@ export default class Header extends Component{
                     <input className="search-input" placeholder="What are you looking for?" type="text" />
                 </div>
                 <div className="imenu-list menu-button">Add your Store</div>
-                <div className="imenu-list" onClick={this.onClick}>Account</div>
+                <div className="imenu-list" onClick={this.onClick}>Login</div>
+                <div className="imenu-list" onClick={this.Reg}>Register</div>
                 <div className="imenu-list">
                     <img src="../img/infinia/cart1.png" width="30px" />
                 {this.props.cart>0?<span className="head-cart-count">{this.props.cart}</span>:null}
