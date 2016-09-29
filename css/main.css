@@ -1187,9 +1187,11 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 
 .iplaces-list{
+
     opacity: 0.2;
     -webkit-animation: fadein 2s; /* Safari and Chrome */
     -moz-animation: fadein 2s; /* Firefox */
