@@ -9,6 +9,9 @@ import Infinia5 from './components/Infinia5';
 import Search from './components/Search';
 import Store from './components/Store';
 import Items from './components/Items';
+import Checkout from './components/Checkout';
+import LoginPage from './components/Login';
+import RegisterPage from './components/Register';
 
 require('../css/main.css');
 
@@ -21,5 +24,8 @@ ReactDOM.render(<Router history={hashHistory}>
     <Route path="/search" component={Search} />
     <Route path="/store" component={Store} />
     <Route path="/items" component={Items} />
+    <Route path="/checkout" component={Checkout} />
+    <Route path="/login" component={LoginPage} />
+    <Route path="/register" component={RegisterPage} />
     <Route path="/search/:category" component={Search} />
 </Router>, document.getElementById('root'));

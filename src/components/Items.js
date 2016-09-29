@@ -28,25 +28,28 @@ export default class Items extends Component {
             class: '',
             loc: 'active-color',
             cat: 'passive-color',
-            count: 0
+            count: 0,
+            cart: 0
         }
     }
 
     add(){
         this.setState({
-            count: this.state.count+1
+            count: this.state.count+1,
+            cart: this.state.cart+1
         })
     }
 
     remove(){
         this.setState({
-            count: this.state.count-1
+            count: this.state.count-1,
+            cart: this.state.cart-1
         })
     }
 
     render() {
         return (<div className="container">
-            <Header />
+            <Header cart={this.state.cart} />
             <div className="bread-crumb">
                 <div className="select-location">Dubai > Supermarket > Walmart >
                 </div>
@@ -259,6 +262,7 @@ export default class Items extends Component {
                         </Tabs>
                         <div className="search-box absolute-search"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
                     </div>
+                {this.state.cart>0?<div className="fixed-bottom">Proceed to Checkout</div>:null}
                 </div>
                 <Deals />
             </div>
