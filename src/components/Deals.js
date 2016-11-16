@@ -16,7 +16,7 @@ export default class Deals extends Component {
 
     render() {
         return(<div className="sidebar-right">
-            <div className="card sidebar-title">Infinia Deals</div>
+            <div className="card sidebar-title"><span className="fa fa-bolt"/> Infinia Deals</div>
             <div className="card deals">
                 <div className="deal">
                     <div className="deal-thumb">

@@ -8,6 +8,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
+import ProductList from '../containers/product-list';
 
 let styles= {
     tab:{
@@ -48,7 +49,8 @@ export default class Items extends Component {
     }
 
     render() {
-        return (<div className="container">
+        return (
+          <div className="mycontainer">
             <Header cart={this.state.cart} />
             <div className="bread-crumb">
                 <div className="select-location">Dubai > Supermarket > Walmart >
@@ -77,7 +79,7 @@ export default class Items extends Component {
                             selectedIndex={0}
                             style={styles.tabcontent}
                         >
-                            <TabList style={styles.tab}>
+                            <TabList className="main-tab" style={styles.tab}>
                                 <Tab >Regular Offer</Tab>
                                 <Tab>Walmart Deals</Tab>
                             </TabList>
@@ -85,7 +87,6 @@ export default class Items extends Component {
                                 <div className="items">
                                     <div className="item-category">Chicken Parts</div>
                                     <div className="all-items-list">
-
 
                                         <div className="item-hover-card">
                                             <div className="item-hover-card-thumb">
@@ -97,8 +98,8 @@ export default class Items extends Component {
                                             </div>
                                             <div className="item-details">
                                                 <div className="item-name">Chicken Wings</div>
-                                                <div className="item-description"></div>
                                                 <div className="item-price">Rs. 300</div>
+                                                <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
                                                 <div className="item-add-cart">
                                                     <div className="box click" onClick={_=>this.remove()}>-</div>
                                                     <div className="count">{this.state.count}</div>
@@ -117,8 +118,8 @@ export default class Items extends Component {
                                             </div>
                                             <div className="item-details">
                                                 <div className="item-name">Chicken Breast</div>
-                                                <div className="item-description"></div>
                                                 <div className="item-price">Rs. 150</div>
+                                                <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
                                                 <div className="item-add-cart">
                                                     <div className="box click" onClick={_=>this.remove()}>-</div>
                                                     <div className="count">{this.state.count}</div>
@@ -137,9 +138,10 @@ export default class Items extends Component {
                                             </div>
                                             <div className="item-details">
                                                 <div className="item-name">Chicken Legs</div>
-                                                <div className="item-description"></div>
                                                 <div className="item-price">Rs. 100</div>
+                                                <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
                                                 <div className="item-add-cart">
+
                                                     <div className="box click" onClick={_=>this.remove()}>-</div>
                                                     <div className="count">{this.state.count}</div>
                                                     <div className="box click" onClick={_=>this.add()}>+</div>
@@ -157,8 +159,8 @@ export default class Items extends Component {
                                             </div>
                                             <div className="item-details">
                                                 <div className="item-name">Chicken Heads</div>
-                                                <div className="item-description"></div>
                                                 <div className="item-price">Rs. 200</div>
+                                                <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
                                                 <div className="item-add-cart">
                                                     <div className="box click" onClick={_=>this.remove()}>-</div>
                                                     <div className="count">{this.state.count}</div>
@@ -253,6 +255,10 @@ export default class Items extends Component {
                                             </div>
                                         </div>
 
+                                    </div>
+
+                                    <div className="all-items-list">
+                                        <ProductList/>
                                     </div>
                                 </div>
                             </TabPanel>

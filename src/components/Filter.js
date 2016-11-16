@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
+import sortStore from '../actions/index';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class Search extends Component {
+class Search extends Component {
     constructor() {
         super();
         this.state = {
@@ -16,7 +19,7 @@ export default class Search extends Component {
 
     render() {
     return(<div className="sidebar-left">
-        <div className="card sidebar-title">Filter
+        <div className="card sidebar-title"><span className="fa fa-filter"/> Filter
         </div>
         <div className="card">Status
             <div className="boxes">
@@ -27,8 +30,8 @@ export default class Search extends Component {
         </div>
         <div className="card">Sort
             <div className="boxes">
-                <div className="select-box"><div className="options-button not-selected">A-Z</div></div>
-                <div className="select-box"><div className="options-button selected">Z-A</div></div>
+                <div className="select-box"><div onClick={() => this.props.sortStore('atoz')}className="options-button selected">A-Z</div></div>
+                <div className="select-box"><div onClick={() => this.props.sortStore('ztoa')} className="options-button selected">Z-A</div></div>
             </div>
         </div>
         <div className="card">Minimum Order
@@ -57,3 +60,9 @@ export default class Search extends Component {
     </div>)
     }
 }
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({sortStore: sortStore},dispatch);
+}
+
+export default connect(null,mapDispatchToProps)(Search);

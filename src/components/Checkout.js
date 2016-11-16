@@ -21,7 +21,7 @@ export default class Checkout extends Component {
 
     }
     render() {
-        return (<div className="container">
+        return (<div className="mycontainer">
             <Header />
             <div className="bread-crumb">
                 <div className="select-location">Location:

@@ -65,7 +65,7 @@ export default class RegisterPage extends Component {
     }
 
     render() {
-        return (<div className="container center">
+        return (<div className="mycontainer center">
             <Register />
         </div>)
     }

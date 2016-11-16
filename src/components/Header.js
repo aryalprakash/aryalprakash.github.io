@@ -9,7 +9,12 @@ import 'rc-dialog/assets/index.css';
 let style={
     zIndex: '111111'
 }
-
+const spanStyle1 = {
+    color: 'blue',
+};
+const spanStyle2 = {
+    color: 'green',
+};
 export default class Header extends Component{
 
     constructor() {
@@ -103,8 +108,8 @@ export default class Header extends Component{
         }
         return(<div className={`fheader blue head-border `+this.state.class}>
             <Link to="/" className="link"><div className="ilogo">
-                <img src="./img/infinia/logo1.png" />
-                <div className="ilogo-text"><span className="blue">Infinia</span><span className="orange"> Stores</span></div>
+                <img src="./img/infinia/logo.png" />
+                <div className="ilogo-text"><span style={spanStyle1}>Infinia</span><span style={spanStyle2}>Stores</span></div>
             </div></Link>
             <div className="imenu">
                 <div className="imenu-list search-box">
