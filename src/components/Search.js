@@ -2,13 +2,17 @@
  * Created by prakash on 8/29/2016.
  */
 import React, { Component } from 'react';
+import { Router, Route, Link, browserHistory } from 'react-router'
+import { connect } from 'react-redux';
 import Header from './Header'
 import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
 import StoreList from '../containers/store-list'
 
-export default class Search extends Component {
+import {getStoresList} from '../actions/infinia.js'
+
+class Search extends Component {
     constructor() {
         super();
         this.state = {
@@ -24,9 +28,15 @@ export default class Search extends Component {
             minOrder:"100 AED",
             catList:"Grossery, Clothing, Electronics"
         }
-
     }
+
+    componentDidMount(){
+        this.props.dispatch(getStoresList(this.props.routeParams.category))
+    }
+
     render() {
+        let {stores} = this.props
+        console.log(stores)
         return (<div className="mycontainer">
                     <Header />
                     <div className="bread-crumb">
@@ -58,11 +68,22 @@ export default class Search extends Component {
                             <div className="all-stores">
                                 <div className="store-sec">
                                   <div className="row">
+                                  {stores?stores.map(store=><div key={store.storeName} className="col-md-4 col-sm-6">
+                                      <Link to={store.linkto}>
+                                          <div className="thumbnail">
+                                              <div className="ribbon"><span className="fa fa-circle opn"> </span></div>
+                                              <img src={store.imgPath} />
+                                              <div className="caption">
+                                                  <h4>{store.storeName}</h4>
+                                                  <p>Location: {store.location}</p>
+                                                  <p>Min-Order: {store.minOrder}</p>
+                                                  <p>Category: {store.category}</p>
 
-                                    <StoreList/>
-
-                                    {/*<StoreList storeProp = {this.state.store} imgPathProp={this.state.imgPath} storeNameProp={this.state.storeName} storeLocationProp={this.state.storeLocation } minOrderProp={this.state.minOrder} catListProp={this.state.catList}/>*/}
-                                </div>
+                                              </div>
+                                          </div>
+                                      </Link>
+                                  </div>):null}
+                                  </div>
 
                             </div>
 
@@ -75,25 +96,11 @@ export default class Search extends Component {
           )
     }
 }
-// class StoreList extends React.Component{
-//     render(){
-//         return(
-//             <div className="col-md-4 col-sm-6">
-//                 <Link to={this.props.storeProp}>
-//                     <div className="thumbnail">
-//                         <div className="ribbon"><span className="fa fa-circle opn"> </span></div>
-//                         <img src={this.props.imgPathProp} />
-//                         <div className="caption">
-//                             <h4>{this.props.storeNameProp}</h4>
-//                             <p>Location: {this.props.storeLocationProp}</p>
-//                             <p>Min-Order: 100 AED</p>
-//                             <p>Category: {this.props.catListProp}</p>
-//
-//                         </div>
-//                     </div>
-//                 </Link>
-//
-//             </div>
-//         );
-//     }
-// }
+
+Search.contextTypes = {
+    router: React.PropTypes.object
+}
+
+const mapStateToProps = ({ stores }) => ({stores})
+
+export default connect(mapStateToProps)( Search )

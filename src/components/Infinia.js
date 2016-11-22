@@ -24,18 +24,7 @@ export default class Infinia extends Component{
     }
 
     componentDidMount(){
-        window.addEventListener('scroll', function(e){
-            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                shrinkOn = 300,
-                header = document.querySelector("iheader");
-            if (distanceY > shrinkOn) {
-                classie.add(iheader,"smaller");
-            } else {
-                if (classie.has(iheader,"smaller")) {
-                    classie.remove(iheader,"smaller");
-                }
-            }
-        });
+
     }
 
     show(){

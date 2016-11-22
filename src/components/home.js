@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Router, Route, Link, browserHistory } from 'react-router'
-
+import {getMainCategories} from '../actions/infinia.js'
 import Deals from './homeDeals';
+
 
 
 let styles={
@@ -42,9 +44,22 @@ let styles={
     }
 };
 
-export default class Home extends Component {
-    render() {
+class Home extends Component {
+    constructor(){
+        super();
+        this.state={
+            list: false,
+            place: 'Dubai'
+        }
+    }
 
+    componentDidMount(){
+        this.props.dispatch(getMainCategories())
+    }
+
+    render() {
+        let {categories} = this.props
+        console.log(categories)
 
         return (
             <div>
@@ -53,8 +68,6 @@ export default class Home extends Component {
 
                         <div  className="container">
                             <h2 style={styles.h1}>Shop the best deals from Genuine & Branded Retail Stores</h2>
-                            {/*<h2 style={styles.h2}></h2>*/}
-
                         </div>
                         <div className="container">
                             <div id="searchbar" className="row">
@@ -88,42 +101,17 @@ export default class Home extends Component {
                             <div className="col-md-9">
                                 <h2> Select Shopping Category</h2><br/>
                                 <div className="row">
-                                    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                {categories?categories.map(category=>
+                                    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={category.id}>
                                         <div className="hovereffect">
-                                            <img className="img-responsive" src="../../img/01.jpg" />
+                                            <img className="img-responsive" src={category.image}/>
                                             <div className="overlay">
-                                                <h2>Supermarket</h2>
-                                                <Link to="search" className="info">Shop now</Link>
+                                                <h2>{category.name}</h2>
+                                                <Link to={`search/${category.slug}`} className="info">Shop now</Link>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                        <div className="hovereffect">
-                                            <img className="img-responsive" src="../../img/03.jpg" />
-                                            <div className="overlay">
-                                                <h2>Fashion</h2>
-                                                <Link to="search" className="info">Shop now</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                        <div className="hovereffect">
-                                            <img className="img-responsive" src="../../img/04.jpg" />
-                                            <div className="overlay">
-                                                <h2>Electronics</h2>
-                                                <Link to="search" className="info">Shop now</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                        <div className="hovereffect">
-                                            <img className="img-responsive" src="../../img/02.jpg" />
-                                            <div className="overlay">
-                                                <h2>Kids' zone</h2>
-                                                <Link to="search" className="info">Shop now</Link>
-                                            </div>
-                                        </div>
-                                    </div>
+                                ):null}
                                 </div>
 
                             </div>
@@ -143,3 +131,11 @@ export default class Home extends Component {
         );
     }
 }
+
+Home.contextTypes = {
+    router: React.PropTypes.object
+}
+
+const mapStateToProps = ({ categories }) => ({categories})
+
+export default connect(mapStateToProps)( Home )

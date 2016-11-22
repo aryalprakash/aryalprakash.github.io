@@ -14,7 +14,6 @@ class Search extends Component {
             loc: 'active-color',
             cat: 'passive-color'
         }
-
     }
 
     render() {

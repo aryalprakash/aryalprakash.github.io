@@ -13,5 +13,4 @@ export default function SortStore(state = initialState, action) {
     }
 
     return state
-
 }
