@@ -1,0 +1,8 @@
+{
+  "data":[
+    {"name": "Supermarket", "id": "supermarket", "slug": "supermarket", "image": "../../img/01.jpg"},
+    {"name": "Fashion", "id": "fashion", "slug": "fashion" , "image": "../../img/03.jpg"},
+    {"name": "Electronics", "id": "electronics", "slug": "electronics","image": "../../img/04.jpg"},
+    {"name": "Kid's Zone", "id": "kidszone", "slug": "kidszone", "image": "../../img/02.jpg"}
+  ]
+}

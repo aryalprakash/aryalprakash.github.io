@@ -1,0 +1,8 @@
+{
+  "categories":[
+    {"name": "Supermarket", "id": "supermarket", "slug": "supermarket"},
+    {"name": "Fashion", "id": "fashion", "slug": "fashion"},
+    {"name": "Electronics", "id": "electronics", "slug": "electronics"},
+    {"name": "Kid's Zone", "id": "kidszone", "slug": "kidszone"}
+  ]
+}
