@@ -1,16 +1,16 @@
 /**
  * Created by prakash on 8/29/2016.
  */
-import React, { Component } from 'react';
-import  { Link } from 'react-router';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-var Slider = require('react-slick');
+import React, { Component } from 'react'
+import  { Link } from 'react-router'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+// var Slider = require('react-slick');
 import Header from './Header'
 import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
-import SubCategoryList from './subCategoryList'
 import Gmap from './maps'
+import SlidingTabPanel from './SlidingTabPanel'
 
 let styles= {
     tab:{
@@ -18,10 +18,10 @@ let styles= {
     },
     tabcontent:{
         width: '100%',
-        marginTop: '10'
+        marginTop: '10px'
     }
 }
-var initialCenter = { lng: 55.5136, lat: 25.3223 }
+var initialCenter = { lng: 55.5136, lat: 25.3223 };
 
 export default class Store extends Component {
     constructor() {
@@ -121,137 +121,66 @@ export default class Store extends Component {
                                 <Tab>Walmart Deals</Tab>
                             </TabList>
                             {/*For regular offer*/}
-                            <TabPanel>
-                                <Tabs>
-                                    <TabList style={styles.tab}>
-                                        {/*<Slider {...settings}>*/}
-                                            <Tab>
-                                                <div className="cat-icon ">
-                                                    <img className="img-rounded" src="../../img/category/grocery.png"/>
-                                                    Grocery
-                                                </div>
+                            {/*<TabPanel>*/}
+                            <SlidingTabPanel maxChildren={5}>
+                                <Tab>
+                                    <div className="cat-icon ">
+                                        <img className="img-rounded" src="../../img/category/grocery.png"/>
+                                        Grocery
+                                    </div>
+                                </Tab>
+                                <Tab>
+                                    <div className="cat-icon ">
+                                        <img className="img-rounded" src="../../img/category/butchery.png"/>
+                                        Butchery
+                                    </div>
 
-                                            </Tab>
-                                            <Tab>
-                                                <div className="cat-icon ">
-                                                    <img className="img-rounded" src="../../img/category/butchery.png"/>
-                                                    Butchery
-                                                </div>
+                                </Tab>
+                                <Tab>
+                                    <div className="cat-icon ">
+                                        <img className="img-rounded" src="../../img/category/kitchen.png"/>
+                                        Kitchen Appliances
+                                    </div>
 
-                                            </Tab>
-                                            <Tab>
-                                                <div className="cat-icon ">
-                                                    <img className="img-rounded" src="../../img/category/kitchen.png"/>
-                                                    Kitchen Appliances
-                                                </div>
+                                </Tab>
+                                <Tab>
+                                    <div className="cat-icon ">
+                                        <img className="img-rounded" src="../../img/category/personal.png"/>
+                                        Personal Care
+                                    </div>
 
-                                            </Tab>
-                                            <Tab>
-                                                <div className="cat-icon ">
-                                                    <img className="img-rounded" src="../../img/category/personal.png"/>
-                                                    Personal Care
-                                                </div>
+                                </Tab>
+                                <Tab>
+                                    <div className="cat-icon ">
+                                        <img className="img-rounded" src="../../img/category/fashion.png"/>
+                                        Fashion
+                                    </div>
 
-                                            </Tab>
-                                            <Tab>
-                                                <div className="cat-icon ">
-                                                    <img className="img-rounded" src="../../img/category/fashion.png"/>
-                                                    Fashion
-                                                </div>
+                                </Tab>
+                                <Tab>
+                                    <div className="cat-icon ">
+                                        <img className="img-rounded" src="../../img/category/electronic.png"/>
+                                        Electronics
+                                    </div>
 
-                                            </Tab>
-                                            <Tab>
-                                                <div className="cat-icon ">
-                                                    <img className="img-rounded" src="../../img/category/electronic.png"/>
-                                                    Electronics
-                                                </div>
+                                </Tab>
+                                <Tab>
+                                    <div className="cat-icon ">
+                                        <img className="img-rounded" src="../../img/category/electronic.png"/>
+                                        Electronics1
+                                    </div>
 
-                                            </Tab>
-                                        {/*</Slider>*/}
-                                    </TabList>
-                                    {/*For grocery category*/}
-                                    <TabPanel>
-                                        <SubCategoryList />
+                                </Tab>
+                                <Tab>
+                                    <div className="cat-icon ">
+                                        <img className="img-rounded" src="../../img/category/electronic.png"/>
+                                        Electronics2
+                                    </div>
 
-                                    </TabPanel>
-                                    {/*For Buthcery category*/}
-                                    <TabPanel>
-                                        you are in Butchery
-                                    </TabPanel>
-                                    <TabPanel>
-                                        you are in Kitchen
-                                    </TabPanel>
-                                    <TabPanel>
-                                        you are in Personal
-                                    </TabPanel>
-                                    <TabPanel>
-                                        you are in Fashion
-                                    </TabPanel>
-                                    <TabPanel>
-                                        you are in Electronics
-                                    </TabPanel>
-                                </Tabs>
-                                <div className="items">
-                                </div>
-                                {/*<div className="items-container">*/}
-                                    {/*<div className="item-cat">*/}
-                                        {/*<Link className="link" to="/items">*/}
-                                        {/*<div className="item-thumb">*/}
-                                            {/*<img src="../../img/store/Chicken.jpg" />*/}
-                                        {/*</div>*/}
-                                        {/*<div className="item-name">Chicken</div>*/}
-                                        {/*</Link>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="item-cat">*/}
-                                        {/*<Link className="link" to="/items">*/}
-                                            {/*<div className="item-thumb">*/}
-                                                {/*<img src="../../img/store/Fish.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-name">Fish</div>*/}
-                                        {/*</Link>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="item-cat">*/}
-                                        {/*<Link className="link" to="/items">*/}
-                                            {/*<div className="item-thumb">*/}
-                                                {/*<img src="../../img/store/Fish.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-name">Fish</div>*/}
-                                        {/*</Link>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="item-cat">*/}
-                                        {/*<Link className="link" to="/items">*/}
-                                            {/*<div className="item-thumb">*/}
-                                                {/*<img src="../../img/store/Fish.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-name">Fish</div>*/}
-                                        {/*</Link>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="item-cat">*/}
-                                        {/*<Link className="link" to="/items">*/}
-                                            {/*<div className="item-thumb">*/}
-                                                {/*<img src="../../img/store/Fish.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-name">Fish</div>*/}
-                                        {/*</Link>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="item-cat">*/}
-                                        {/*<Link className="link" to="/items">*/}
-                                            {/*<div className="item-thumb">*/}
-                                                {/*<img src="../../img/store/Fish.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-name">Fish</div>*/}
-                                        {/*</Link>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="item-cat">*/}
-                                        {/*<Link className="link" to="/items">*/}
-                                            {/*<div className="item-thumb">*/}
-                                                {/*<img src="../../img/store/Fish.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-name">Fish</div>*/}
-                                        {/*</Link>*/}
-                                    {/*</div>*/}
-                                {/*</div>*/}
-                            </TabPanel>
+                                </Tab>
+
+                            </SlidingTabPanel>
+                            {/*</TabPanel>*/}
                             {/*For Store deals*/}
                             <TabPanel>
                                 <h3>Hello you are in the deals section</h3>

@@ -1,5 +1,3 @@
-@import url("bootstrap.css");
-@import url("font-awesome.min.css");
 p, h3, h4, h5, h6 {
     font-family: "Open Sans";
 }
@@ -293,6 +291,7 @@ p, h3, h4, h5, h6 {
 .sub-category button{
     margin-top: 30px;
 }
+/*For Map*/
 .GMap {
     margin-top: 5px;
     height: 100%;
@@ -303,6 +302,4 @@ p, h3, h4, h5, h6 {
     width: 200px;
     height: 200px;
 }
-.UpdatedText {
-    color: red;
-}
+

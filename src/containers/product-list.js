@@ -6,9 +6,25 @@ class ProductList extends Component{
     renderList(){
         return this.props.products.map((product) => {
            return(
-              <div key={product.name} className="item-hover-card">
-                  <h3>{product.name}</h3>
-                  <p>{product.price}</p>
+              <div key={product.id} className="item-hover-card">
+                  <div className="item-hover-card-thumb">
+                      <div className="cart-counter">
+                          <img src="../../img/infinia/cart1.png" />
+                          {/*{this.state.count}*/}
+                      </div>
+                      <img src="../../img/store/d.jpg" />
+                  </div>
+                  <div className="item-details">
+                      <div className="item-name">{product.name}</div>
+                      <div className="item-price">{product.price} {product.currency}</div>
+                      <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
+                      <div className="item-add-cart">
+
+                          {/*<div className="box click" onClick={_=>this.remove()}>-</div>*/}
+                          {/*<div className="count">{this.state.count}</div>*/}
+                          {/*<div className="box click" onClick={_=>this.add()}>+</div>*/}
+                      </div>
+                  </div>
 
               </div>
            );
@@ -17,7 +33,7 @@ class ProductList extends Component{
 
     render(){
         return(
-            <div>
+            <div className="all-items-list">
                 {this.renderList()}
             </div>
         );
