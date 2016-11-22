@@ -919,6 +919,20 @@ a.control_next {
     height: inherit;
 }
 
+.bold{
+    font-weight: 400;
+}
+
+.links{
+    text-decoration: none;
+    color: dodgerblue;
+}
+
+.date{
+    padding: 5px;
+    font-size: 16px;
+}
+
 .item-add{
     width: 200px;
 }

@@ -8,7 +8,7 @@ import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
 
-export default class Checkout extends Component {
+export default class History extends Component {
     constructor() {
         super();
         this.state = {
@@ -21,7 +21,7 @@ export default class Checkout extends Component {
 
     }
     render() {
-        return (<div className="mycontainer">
+        return (<div className="container">
             <Header />
             <div className="bread-crumb">
                 <div className="select-location">Location:
@@ -51,69 +51,67 @@ export default class Checkout extends Component {
                         <div className="store-profile-address">Pepsicola, Kathmandu</div>
                     </div>
                     <div className="card">
-                        <Link to="/history" className="links">Order History</Link>
+                    <Link to="/history" className="links">Order History</Link>
                     </div>
                     <div className="card">
-                        <Link to="" className="links">Messages/Offers</Link>
+                    <Link to="" className="links">Messages/Offers</Link>
                     </div>
                     <div className="card">
-                        <Link to="/bookmarks" className="links">Bookmarks</Link>
+                    <Link to="/bookmarks" className="links">Bookmarks</Link>
                     </div>
-
 
                 </div>
                 <div className="card center-content">
                     <div className="content-title">
-                        <div>Your Basket</div>
-
-                        <div className="sub-total">Subtotal: <span className="item-total">Rs. 25000/-</span></div>
-                        <div className="payment-proceed">
-                            <div className="proceed-button">Proceed to Payment</div>
-                        </div>
-                         </div>
+                        <div className="bold">Order History</div>
+                    </div>
                     <div className="line"></div>
                     <div className="all-basket-items">
-                            <div className="store-basket">
-                                <div className="store-basket-icon">
-                                    <img className="thumb" src="../../img/store/walmart.jpg" />
-                                    <div className="name">Walmart</div>
-                                </div>
-                                <div className="basket-items">
-                                    <div className="basket-item">
-                                        <div className=""><div className="thumb"><img src="../../img/store/chicken.jpg" /></div>
+                        <div className="store-basket">
+                            <div className="date">23rd March, 2016</div>
+                            <div className="line"></div>
+                            <div className="store-basket-icon">
+                                <img className="thumb" src="../../img/store/walmart.jpg" />
+                                <div className="name">Walmart</div>
+                            </div>
+                            <div className="basket-items">
+                                <div className="basket-item">
+                                    <div className=""><div className="thumb"><img src="../../img/store/chicken.jpg" /></div>
                                         <div className="item-details">
                                             <div className="item">Chicken with Fried Wings </div>
                                             <div className="item-price">Rs. 300/kg</div>
                                         </div></div>
-                                        <div className="flex"><div className="item-total">Rs. 600</div>
-                                        <div className="item-remove">Remove</div></div>
-                                    </div>
-                                    <div className="line"></div>
+                                    <div className="flex"><div className="item-total">Rs. 600</div>
+                                        </div>
+                                </div>
+                                <div className="line"></div>
 
-                                    <div className="basket-item">
-                                        <div className=""><div className="thumb"><img src="../../img/store/Fish.jpg" /></div>
-                                            <div className="item-details">
-                                                <div className="item">Fish with French Fries </div>
-                                                <div className="item-price">Rs. 600/plate</div>
-                                            </div></div>
-                                        <div className="flex"><div className="item-total">Rs. 1800</div>
-                                            <div className="item-remove">Remove</div></div>
-                                    </div>
-                                    <div className="line"></div>
-                                    <div className="basket-item">
-                                        <div className=""><div className="thumb"><img src="../../img/store/d.jpg" /></div>
-                                            <div className="item-details">
-                                                <div className="item">Drumsticks </div>
-                                                <div className="item-price">Rs. 100/plate</div>
-                                            </div></div>
-                                        <div className="flex"><div className="item-total">Rs. 200</div>
-                                            <div className="item-remove">Remove</div></div>
-                                    </div>
-
+                                <div className="basket-item">
+                                    <div className=""><div className="thumb"><img src="../../img/store/Fish.jpg" /></div>
+                                        <div className="item-details">
+                                            <div className="item">Fish with French Fries </div>
+                                            <div className="item-price">Rs. 600/plate</div>
+                                        </div></div>
+                                    <div className="flex"><div className="item-total">Rs. 1800</div>
+                                        </div>
+                                </div>
+                                <div className="line"></div>
+                                <div className="basket-item">
+                                    <div className=""><div className="thumb"><img src="../../img/store/d.jpg" /></div>
+                                        <div className="item-details">
+                                            <div className="item">Drumsticks </div>
+                                            <div className="item-price">Rs. 100/plate</div>
+                                        </div></div>
+                                    <div className="flex"><div className="item-total">Rs. 200</div>
+                                        </div>
                                 </div>
 
                             </div>
+
+                        </div>
                         <div className="store-basket">
+                            <div className="date">2nd March, 2016</div>
+                            <div className="line"></div>
                             <div className="store-basket-icon">
                                 <img className="thumb" src="../../img/stores/2.jpg" />
                                 <div className="name">Pwalmart</div>
@@ -126,7 +124,7 @@ export default class Checkout extends Component {
                                             <div className="item-price">Rs. 300/kg</div>
                                         </div></div>
                                     <div className="flex"><div className="item-total">Rs. 600</div>
-                                        <div className="item-remove">Remove</div></div>
+                                        </div>
                                 </div>
                                 <div className="line"></div>
 
@@ -137,7 +135,7 @@ export default class Checkout extends Component {
                                             <div className="item-price">Rs. 600/plate</div>
                                         </div></div>
                                     <div className="flex"><div className="item-total">Rs. 1800</div>
-                                        <div className="item-remove">Remove</div></div>
+                                        </div>
                                 </div>
                                 <div className="line"></div>
                                 <div className="basket-item">
@@ -147,7 +145,7 @@ export default class Checkout extends Component {
                                             <div className="item-price">Rs. 100/plate</div>
                                         </div></div>
                                     <div className="flex"><div className="item-total">Rs. 200</div>
-                                        <div className="item-remove">Remove</div></div>
+                                        </div>
                                 </div>
 
                             </div>

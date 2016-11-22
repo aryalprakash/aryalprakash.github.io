@@ -274,7 +274,7 @@ export default class Items extends Component {
                         </Tabs>
                         <div className="search-box absolute-search"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
                     </div>
-                {this.state.cart>0?<div className="fixed-bottom">Proceed to Checkout</div>:null}
+                {this.state.cart>0?<Link to="/checkout" className="link"><div className="fixed-bottom">Proceed to Checkout</div></Link>:null}
                 </div>
                 <Deals />
             </div>

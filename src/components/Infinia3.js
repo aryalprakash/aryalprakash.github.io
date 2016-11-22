@@ -115,16 +115,16 @@ export default class Infinia3 extends Component{
                         <div className="iselect">
                             <div className="icat" style={style.icat}>
                                 <div className="icategory cat-small sup">
-                                    <div className="cat-title">Supermarket</div>
+                                    <Link to="/search" className="link"><div className="link cat-title">Supermarket</div></Link>
                                 </div>
                                 <div className="icategory cat-small fas">
-                                    <div className="cat-title">Fashion</div>
+                                    <Link to="/search" className="link"><div className="link cat-title">Fashion</div></Link>
                                 </div>
                                 <div className="icategory cat-small ele">
-                                    <div className="cat-title">Electronics</div>
+                                    <Link to="/search" className="link"><div className="link cat-title">Electronics</div></Link>
                                 </div>
                                 <div className="icategory cat-small kid">
-                                    <div className="cat-title">Kids' Zone</div>
+                                    <Link to="/search" className="link"> <div className="link cat-title">Kids' Zone</div></Link>
                                 </div>
                             </div>
                         </div>
