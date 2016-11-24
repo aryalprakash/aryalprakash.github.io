@@ -7,7 +7,8 @@ import { dispatch } from 'redux'
 import {
     API_URL,
     GET_MAIN_CATEGORIES,
-    GET_STORES_LIST
+    GET_STORES_LIST,
+    GET_PRODUCTS_LIST,
     } from '../constants/constants.js'
 
 
@@ -39,3 +40,15 @@ export function gotStoresList(res){
     return {type: GET_STORES_LIST, data: res}
 }
 
+export function getProductsList() {
+    return function (dispatch) {
+        fetch(API_URL+"/products.json").then(response => response.json()).then(res => {
+            console.log(res);
+            dispatch(gotProductsList(res.data));
+        })
+    }
+}
+
+export function gotProductsList(res) {
+    return {type: GET_PRODUCTS_LIST, data: res}
+}

@@ -3,7 +3,8 @@ import thunk from 'redux-thunk'
 
 import {
     GET_MAIN_CATEGORIES,
-    GET_STORES_LIST
+    GET_STORES_LIST,
+    GET_PRODUCTS_LIST
     } from '../constants/constants.js';
 
 const initialState = { categories: [], stores: []}
@@ -11,16 +12,21 @@ const initialState = { categories: [], stores: []}
 const InfiniaStores = (state = initialState, action) => {
 
     switch (action.type) {
-        case 'GET_MAIN_CATEGORIES':
+        case GET_MAIN_CATEGORIES:
             return {
         ...state,
             categories: action.data
             }
 
-        case 'GET_STORES_LIST':
+        case GET_STORES_LIST:
             return {
                 ...state,
                 stores: action.data
+            }
+        case GET_PRODUCTS_LIST:
+            return {
+                ...state,
+                products: action.data
             }
         default:
             return state

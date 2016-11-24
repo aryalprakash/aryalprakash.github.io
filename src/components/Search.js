@@ -21,12 +21,12 @@ class Search extends Component {
             class: '',
             loc: 'active-color',
             cat: 'passive-color',
-            store: "store",
-            imgPath:"../../img/store.png",
-            storeName: "Baqer Mohebi",
-            storeLocation: "Dubai",
-            minOrder:"100 AED",
-            catList:"Grossery, Clothing, Electronics"
+            // store: "store",
+            // imgPath:"../../img/store.png",
+            // storeName: "Baqer Mohebi",
+            // storeLocation: "Dubai",
+            // minOrder:"100 AED",
+            // catList:"Grossery, Clothing, Electronics"
         }
     }
 
@@ -68,21 +68,24 @@ class Search extends Component {
                             <div className="all-stores">
                                 <div className="store-sec">
                                   <div className="row">
-                                  {stores?stores.map(store=><div key={store.storeName} className="col-md-4 col-sm-6">
-                                      <Link to={store.linkto}>
-                                          <div className="thumbnail">
-                                              <div className="ribbon"><span className="fa fa-circle opn"> </span></div>
-                                              <img src={store.imgPath} />
-                                              <div className="caption">
-                                                  <h4>{store.storeName}</h4>
-                                                  <p>Location: {store.location}</p>
-                                                  <p>Min-Order: {store.minOrder}</p>
-                                                  <p>Category: {store.category}</p>
+                                  {stores?stores.map(store=>
+                                      <div key={store.storeName} className="col-md-4 col-sm-6">
+                                          <Link to={store.linkto}>
+                                              <div className="thumbnail">
+                                                  <div className="ribbon"><span className="fa fa-circle opn"> </span></div>
+                                                  <img src={store.imgPath} />
+                                                  <div className="caption">
+                                                      <h4>{store.storeName}</h4>
+                                                      <p>Location: {store.location}</p>
+                                                      <p>Min-Order: {store.minOrder}</p>
+                                                      <p>Category: {store.category}</p>
 
+                                                  </div>
                                               </div>
-                                          </div>
-                                      </Link>
-                                  </div>):null}
+                                          </Link>
+                                    </div>
+                                  ):null}
+
                                   </div>
 
                             </div>
@@ -97,9 +100,9 @@ class Search extends Component {
     }
 }
 
-Search.contextTypes = {
-    router: React.PropTypes.object
-}
+// Search.contextTypes = {
+//     router: React.PropTypes.object
+// }
 
 const mapStateToProps = ({ stores }) => ({stores})
 

@@ -132,9 +132,9 @@ class Home extends Component {
     }
 }
 
-Home.contextTypes = {
-    router: React.PropTypes.object
-}
+// Home.contextTypes = {
+//     router: React.PropTypes.object
+// }
 
 const mapStateToProps = ({ categories }) => ({categories})
 
