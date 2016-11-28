@@ -11,36 +11,11 @@ import Footer from './Footer';
 import {getProductDetails} from '../actions/infinia.js'
 
 
-// var prop = {
-//         width: 380,
-//         height: 350,
-//         zoomWidth: 600,
-//         scale:1.3,
-//         zoomStyle:(
-//             'z-index: 1;' +
-//             'border: 1px solid #c0c0c0;' +
-//             'width: 700px;'
-//         )
-// }
-// var newprop = Object.assign({}, prop, { img: "../../img/02.jpg" })
-
 class Details extends Component{
 
     constructor(props){
         super(props);
         this.state = {
-            setting : {
-                    width: 380,
-                    height: 350,
-                    zoomWidth: 600,
-                    scale:1.3,
-                    zoomStyle:(
-                        'z-index: 1;' +
-                        'border: 1px solid #c0c0c0;' +
-                        'width: 700px;'
-                    ),
-                    img: " "//yesma first image rakhnu parne cha or surumai set garnu parcha
-                },
             id: 'not-img-selected'
         }
     }
@@ -48,30 +23,26 @@ class Details extends Component{
     componentDidMount(){
         this.props.dispatch(getProductDetails());
     }
-    // componentWillMount(){
-    //     if(this.props.productDetails[0] != undefined){
-    //         this.settingImage();
-    //     }
-    // }
-    // settingImage(){
-    //     console.log('set the image here');
-    //     let setting = this.state.setting;
-    //     setting.img = this.props.productDetails[0].img[0];
-    //     this.setState(setting);
-    // }
 
     changeImage(path,i){
-        console.log(this.props.productDetails);
-        let setting = this.state.setting;
-        setting.img = path.path;
-        // this.setState({id: 'img-selected'});
-
-        this.setState(setting);
+        this.setState({image: path.path});
     }
 
     render(){
         let {productDetails} = this.props;
-        console.log('data', productDetails);
+        let setting;
+            productDetails.length>0? setting = {
+                width: 380,
+                height: 350,
+                zoomWidth: 600,
+                scale: 1.3,
+                zoomStyle: (
+                'z-index: 1;' +
+                'border: 1px solid #c0c0c0;' +
+                'width: 700px;'
+                ),
+                img: this.state.image ? this.state.image : productDetails[0].img[0]
+            }:null;
 
 
         return(
@@ -84,7 +55,7 @@ class Details extends Component{
                   </div>
               </div>
               <div className="main-content ">
-                  {productDetails?productDetails.map(detail=>
+                  {productDetails.length>0?productDetails.map(detail=>
                       <div key={detail.id} className="container row">
                           <div className="col-md-5">
                               <div className="item-images">
@@ -95,7 +66,7 @@ class Details extends Component{
                                               )}
                                       </div>
                                       <div className="col-md-9">
-                                          <ReactImageZoom {...this.state.setting}/>
+                                          <ReactImageZoom {...setting}/>
                                       </div>
                                   </div>
                               </div>
