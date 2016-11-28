@@ -10,8 +10,8 @@ class ProductList extends Component{
     }
 
     render(){
-        let {products} = this.props
-        console.log(products)
+        let {products} = this.props;
+        console.log(products);
 
         return(
             <div className="all-items-list">

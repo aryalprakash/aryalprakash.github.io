@@ -58,6 +58,8 @@
     "redux-thunk": "^2.1.0",
     "slick-carousel": "~1.6.0",
     "style-loader": "~0.13.1",
-    "url-loader": "~0.5.7"
+    "url-loader": "~0.5.7",
+    "react-zoomify": "~1.0.9",
+    "react-image-zoom": "~0.2.0"
   }
 }

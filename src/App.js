@@ -11,6 +11,7 @@ import Items from './components/Items';
 import Checkout from './components/Checkout';
 import LoginPage from './components/Login';
 import RegisterPage from './components/Register';
+import Details from './components/details';
 
 export default class App extends Component {
   render() {
@@ -27,6 +28,7 @@ export default class App extends Component {
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/search/:category" component={Search} />
+      <Route path="/details" component={Details} />
     </Router>
   }
 }

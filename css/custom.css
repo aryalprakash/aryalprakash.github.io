@@ -1,9 +1,13 @@
 p, h3, h4, h5, h6 {
     font-family: "Open Sans";
 }
-@media (min-width: 1250px){
+@media (min-width: 1300px){
     .container{
-        width: 1220px;
+        width: 1280px;
+    }
+    .row{
+        margin-right: -30px;
+        margin-left: -30px;
     }
 }
 #main{
@@ -303,3 +307,25 @@ p, h3, h4, h5, h6 {
     height: 200px;
 }
 
+.item-images{
+    margin-top: 20px;
+    /*border: 1px solid #c0c0c0;*/
+    /*display: flex;*/
+    width:450px;
+    height: 400px;
+}
+.item-images .img-thumbnail{
+    margin-bottom: 10px;
+    width: 100px;
+    height: 70px;
+}
+.detail-sec{
+    padding: 0 20px;
+    background: #fff;
+    margin-top: 20px;
+}
+#img-selected{
+    -webkit-box-shadow: 0 0 10px #aaaaaa;
+    -moz-box-shadow: 0 0 10px #aaaaaa;
+    box-shadow: 0 0 10px #aaa;
+}

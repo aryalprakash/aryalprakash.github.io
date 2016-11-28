@@ -80,11 +80,8 @@ export  default class SlidingTabPanel extends TabPanel{
                 <a onClick={ this.goprev.bind(this)} className="control_prev"><span className="fa fa-angle-double-left"/></a>
                 <Tabs style={styles.tab} >
                     <TabList style={{left: this.state.left +"px"}} children={this.state.children}>
-                        {/*<Slider {...settings}>*/}
 
-                        {/*</Slider>*/}
                     </TabList>
-
 
                     {/*For grocery category*/}
                     <TabPanel>

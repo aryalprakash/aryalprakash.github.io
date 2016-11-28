@@ -9,6 +9,7 @@ import {
     GET_MAIN_CATEGORIES,
     GET_STORES_LIST,
     GET_PRODUCTS_LIST,
+    GET_PRODUCT_DETAILS,
     } from '../constants/constants.js'
 
 
@@ -51,4 +52,17 @@ export function getProductsList() {
 
 export function gotProductsList(res) {
     return {type: GET_PRODUCTS_LIST, data: res}
+}
+
+export function getProductDetails(res) {
+    return function (dispatch) {
+        fetch(API_URL+"/productDetails.json").then(response => response.json()).then(res =>{
+            // console.log(res);
+           dispatch(gotProductDetails(res.detail));
+        });
+    }
+}
+
+export function gotProductDetails(res) {
+    return {type: GET_PRODUCT_DETAILS, data: res}
 }
