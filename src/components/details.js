@@ -47,18 +47,22 @@ class Details extends Component{
 
     componentDidMount(){
         this.props.dispatch(getProductDetails());
+        setTimeout(
+            () => this.settingImage(),
+            100
+        );
     }
     // componentWillMount(){
     //     if(this.props.productDetails[0] != undefined){
     //         this.settingImage();
     //     }
     // }
-    // settingImage(){
-    //     console.log('set the image here');
-    //     let setting = this.state.setting;
-    //     setting.img = this.props.productDetails[0].img[0];
-    //     this.setState(setting);
-    // }
+    settingImage(){
+        console.log('set the image here');
+        let setting = this.state.setting;
+        setting.img = this.props.productDetails[0].img[0];
+        this.setState(setting);
+    }
 
     changeImage(path,i){
         console.log(this.props.productDetails);
