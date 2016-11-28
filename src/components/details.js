@@ -73,7 +73,7 @@ class Details extends Component{
                           </div>
                           <div className="col-md-7 detail-sec">
 
-                              There is the GC guy in our office who is the swaggy dude. !!!
+                              There is the GC guy in our office who is the swaggy dude. !!! df
                               There is the GC guy in our office who is the swaggy dude. !!!
                           </div>
 
