@@ -5,10 +5,10 @@ p, h3, h4, h5, h6 {
     .container{
         width: 1280px;
     }
-    .row{
-        margin-right: -30px;
-        margin-left: -30px;
-    }
+    /*.row{*/
+        /*margin-right: -30px;*/
+        /*margin-left: -30px;*/
+    /*}*/
 }
 #main{
     text-align: center;
@@ -317,15 +317,30 @@ p, h3, h4, h5, h6 {
 .item-images .img-thumbnail{
     margin-bottom: 10px;
     width: 100px;
-    height: 70px;
+    height: auto;
 }
 .detail-sec{
-    padding: 0 20px;
+    padding: 10px 20px;
     background: #fff;
     margin-top: 20px;
 }
 #img-selected{
-    -webkit-box-shadow: 0 0 10px #aaaaaa;
-    -moz-box-shadow: 0 0 10px #aaaaaa;
-    box-shadow: 0 0 10px #aaa;
+    -webkit-box-shadow: 0 0 10px #999;
+    -moz-box-shadow: 0 0 10px #999;
+    box-shadow: 0 0 10px #999;
+}
+.style-select select{
+    padding-right: 25px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    border-radius: 4px;
+    margin-left: 10px;
+    background: url('../img/caret.png') no-repeat 80% #FEFEFE;
+    color: #5e5e5e;
+}
+option{
+    border-radius: 3px;
+}
+.detail-sec .line{
+    margin: 15px;
 }

@@ -4,7 +4,6 @@
 import React, { Component } from 'react'
 import  { Link } from 'react-router'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-// var Slider = require('react-slick');
 import Header from './Header'
 import Footer from './Footer'
 import Filter from './Filter'
@@ -121,66 +120,66 @@ export default class Store extends Component {
                                 <Tab>Walmart Deals</Tab>
                             </TabList>
                             {/*For regular offer*/}
-                            {/*<TabPanel>*/}
-                            <SlidingTabPanel maxChildren={5}>
-                                <Tab>
-                                    <div className="cat-icon ">
-                                        <img className="img-rounded" src="../../img/category/grocery.png"/>
-                                        Grocery
-                                    </div>
-                                </Tab>
-                                <Tab>
-                                    <div className="cat-icon ">
-                                        <img className="img-rounded" src="../../img/category/butchery.png"/>
-                                        Butchery
-                                    </div>
+                            <TabPanel>
+                                <SlidingTabPanel maxChildren={5}>
+                                    <Tab>
+                                        <div className="cat-icon ">
+                                            <img className="img-rounded" src="../../img/category/grocery.png"/>
+                                            Grocery
+                                        </div>
+                                    </Tab>
+                                    <Tab>
+                                        <div className="cat-icon ">
+                                            <img className="img-rounded" src="../../img/category/butchery.png"/>
+                                            Butchery
+                                        </div>
 
-                                </Tab>
-                                <Tab>
-                                    <div className="cat-icon ">
-                                        <img className="img-rounded" src="../../img/category/kitchen.png"/>
-                                        Kitchen Appliances
-                                    </div>
+                                    </Tab>
+                                    <Tab>
+                                        <div className="cat-icon ">
+                                            <img className="img-rounded" src="../../img/category/kitchen.png"/>
+                                            Kitchen Appliances
+                                        </div>
 
-                                </Tab>
-                                <Tab>
-                                    <div className="cat-icon ">
-                                        <img className="img-rounded" src="../../img/category/personal.png"/>
-                                        Personal Care
-                                    </div>
+                                    </Tab>
+                                    <Tab>
+                                        <div className="cat-icon ">
+                                            <img className="img-rounded" src="../../img/category/personal.png"/>
+                                            Personal Care
+                                        </div>
 
-                                </Tab>
-                                <Tab>
-                                    <div className="cat-icon ">
-                                        <img className="img-rounded" src="../../img/category/fashion.png"/>
-                                        Fashion
-                                    </div>
+                                    </Tab>
+                                    <Tab>
+                                        <div className="cat-icon ">
+                                            <img className="img-rounded" src="../../img/category/fashion.png"/>
+                                            Fashion
+                                        </div>
 
-                                </Tab>
-                                <Tab>
-                                    <div className="cat-icon ">
-                                        <img className="img-rounded" src="../../img/category/electronic.png"/>
-                                        Electronics
-                                    </div>
+                                    </Tab>
+                                    <Tab>
+                                        <div className="cat-icon ">
+                                            <img className="img-rounded" src="../../img/category/electronic.png"/>
+                                            Electronics
+                                        </div>
 
-                                </Tab>
-                                <Tab>
-                                    <div className="cat-icon ">
-                                        <img className="img-rounded" src="../../img/category/electronic.png"/>
-                                        Electronics1
-                                    </div>
+                                    </Tab>
+                                    <Tab>
+                                        <div className="cat-icon ">
+                                            <img className="img-rounded" src="../../img/category/electronic.png"/>
+                                            Electronics1
+                                        </div>
 
-                                </Tab>
-                                <Tab>
-                                    <div className="cat-icon ">
-                                        <img className="img-rounded" src="../../img/category/electronic.png"/>
-                                        Electronics2
-                                    </div>
+                                    </Tab>
+                                    <Tab>
+                                        <div className="cat-icon ">
+                                            <img className="img-rounded" src="../../img/category/electronic.png"/>
+                                            Electronics2
+                                        </div>
 
-                                </Tab>
+                                    </Tab>
 
-                            </SlidingTabPanel>
-                            {/*</TabPanel>*/}
+                                </SlidingTabPanel>
+                            </TabPanel>
                             {/*For Store deals*/}
                             <TabPanel>
                                 <h3>Hello you are in the deals section</h3>

@@ -1,5 +1,16 @@
 {
   "detail":[
-    {"id":1, "title":"Jeans", "price":1200, "currency":"NPR", "img":["../../img/01.jpg", "../../img/02.jpg", "../../img/03.jpg"] }
+    { "id":1,
+      "category": "Supermarket",
+      "sub-category": "Fashion",
+      "title":"Bomber Jacket",
+      "description": "Freshen up your winter wardrobe with this Jacket for Men from campus sutra. This Jacket is made of Quilted Nylon, the fabric of Jacket spells pure comfort and warmth. Fetch a casual and cool look for yourself by teaming it with a pair of jeans and sneakers.",
+      "price":1200,
+      "currency":"NPR",
+      "img":["../../img/detail-img/jacket/01.jpg", "../../img/detail-img/jacket/02.jpg", "../../img/detail-img/jacket/03.jpg", "../../img/detail-img/jacket/04.jpg"],
+      "color": ["Black", "Green", "Red", "Yellow", "Pink"],
+      "size": ["XXL", "XL", "L", "M"],
+      "number": [1,2,3,4,5]
+    }
   ]
 }

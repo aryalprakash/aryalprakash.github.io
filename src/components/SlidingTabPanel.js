@@ -22,7 +22,7 @@ export  default class SlidingTabPanel extends TabPanel{
 
     constructor(props){
         super(props);
-        // console.log(props.children.length);
+
         this.state = {
             children: props.children,
             totalChild: props.children.length,
@@ -31,32 +31,6 @@ export  default class SlidingTabPanel extends TabPanel{
             endIndex: props.maxChildren + 1
         };
     }
-    // sliceIndex(){
-    //
-    //     // var newChildren = React.Children.toArray(this.props.children);
-    //     // var start = this.state.startIndex;
-    //     // var end = this.state.endIndex;
-    //     // if (start < 0 )
-    //     //     return;
-    //
-    //     // var startChild = newChildren[start];
-    //     // var endChild = newChildren[end];
-    //     //
-    //     // newChildren = React.cloneElement(newChildren,
-    //     //     [], {style:{
-    //     //         left: "-126px"
-    //     //     }});
-    //
-    //
-    //     this.setState({
-    //         children: newChildren
-    //         // children: this.props.children.slice(start, end)
-    //     });
-    // }
-    // componentDidMount(){
-    //      // this.sliceIndex();
-    // }
-
 
     gonext(){
         if(this.state.endIndex < this.state.totalChild){
