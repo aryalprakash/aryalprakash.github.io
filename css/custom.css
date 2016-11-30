@@ -307,8 +307,13 @@ p, h3, h4, h5, h6 {
     height: 200px;
 }
 
+/*CSS for details page*/
+.main-content .row div{
+    padding:0 5px;
+}
 .item-images{
     margin-top: 20px;
+    margin-right: 0;
     /*border: 1px solid #c0c0c0;*/
     /*display: flex;*/
     width:450px;
@@ -320,7 +325,7 @@ p, h3, h4, h5, h6 {
     height: auto;
 }
 .detail-sec{
-    padding: 10px 20px;
+    padding: 10px 20px !important;
     background: #fff;
     margin-top: 20px;
 }
@@ -328,6 +333,13 @@ p, h3, h4, h5, h6 {
     -webkit-box-shadow: 0 0 10px #999;
     -moz-box-shadow: 0 0 10px #999;
     box-shadow: 0 0 10px #999;
+}
+.new-price{
+    color: #c9302c;
+}
+.old-price{
+    font-size: 0.8em;
+    text-decoration: line-through;
 }
 .style-select select{
     padding-right: 25px;
@@ -343,4 +355,8 @@ option{
 }
 .detail-sec .line{
     margin: 15px;
+}
+.buying-sec div{
+    margin: 5px 10px;
+    display: inline;
 }

@@ -31,8 +31,8 @@ class Details extends Component{
         let {productDetails} = this.props;
         let setting;
             productDetails.length>0? setting = {
-                width: 380,
-                height: 420,
+                width: 400,
+                height: 450,
                 zoomWidth: 600,
                 scale: 1.3,
                 zoomStyle: (
@@ -72,7 +72,9 @@ class Details extends Component{
                           </div>
                           <div className="col-md-7 detail-sec">
                               <h3>{detail.title}</h3>
-                              <h4>Price: {detail.currency} {detail.price}</h4>
+                              <h4>Price: <span className="new-price">{detail.currency} {detail.price}</span>
+                                  <span className="old-price"> NPR 4000</span>
+                              </h4>
 
                               <div className="line"></div>
                               <div className="row">
@@ -108,14 +110,20 @@ class Details extends Component{
                                   {detail.description}
                               </div>
                               <div className="line"></div>
-                              <div className=" ">
-                                  <a className="btn btn-primary" role="button"><span className="fa fa-shopping-cart"/> ADD TO CART</a>
+                              <div className="buying-sec">
+                                  <div><a className="btn btn-primary" role="button"><span className="fa fa-shopping-cart"/> ADD TO CART</a></div>
+                                  <div><a href="#"><span className="fa fa-heart-o"/></a> Add to Whishlist</div>
                               </div>
                               <div className="line"></div>
-                              <p>There is the GC guy in our office who is the swaggy dude. !!!</p>
-                              <p>There is the GC guy in our office who is the swaggy dude. !!!</p>
-                              <p>There is the GC guy in our office who is the swaggy dude. !!!</p>
-                              <p>There is the GC guy in our office who is the swaggy dude. !!!</p>
+                              <div className="specs">
+                                  <h4>Specifications:</h4>
+                                  <p>SKU: {detail.specs.SKU}</p>
+                                  <p>Brand: {detail.specs.Brand}</p>
+                                  <p>Fabric Type: {detail.specs.Fabric}</p>
+                                  <p>Country Of Origin: {detail.specs.COO}</p>
+                                  <p>Dress Code: {detail.specs.DressCode}</p>
+
+                              </div>
 
                           </div>
 
