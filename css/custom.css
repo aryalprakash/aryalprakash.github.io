@@ -3,7 +3,7 @@ p, h3, h4, h5, h6 {
 }
 @media (min-width: 1300px){
     .container{
-        width: 1280px;
+        width: 1250px;
     }
     /*.row{*/
         /*margin-right: -30px;*/
@@ -308,8 +308,8 @@ p, h3, h4, h5, h6 {
 }
 
 /*CSS for details page*/
-.main-content .row div{
-    padding:0 5px;
+.detail-sec .line{
+    margin: 15px 0;
 }
 .item-images{
     margin-top: 20px;
@@ -318,6 +318,9 @@ p, h3, h4, h5, h6 {
     /*display: flex;*/
     width:450px;
     height: 400px;
+}
+.item-images .row div{
+    padding:0 5px;
 }
 .item-images .img-thumbnail{
     margin-bottom: 10px;
@@ -353,10 +356,62 @@ p, h3, h4, h5, h6 {
 option{
     border-radius: 3px;
 }
-.detail-sec .line{
-    margin: 15px;
-}
+
 .buying-sec div{
-    margin: 5px 10px;
+    padding-left: 0 !important;
+    margin: 10px 0;
+    margin-right: 10px;
     display: inline;
+}
+.detail-heading, .detail-heading>div{
+    padding: 0 !important;
+}
+.fa-star, .fa-star-o{
+    padding-right: 3px;
+    color: #ff9800;
+}
+.fa-user{
+    font-size: 1.5em;
+}
+.review-list{
+    margin: 20px 0;
+}
+.reviewer{
+    position: absolute;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    color: white;
+    font-size: 1.6em;
+    padding:5px;
+    background-color: rgb(224, 106, 110);
+    border-radius: 50%;
+}
+.username{
+    font-size: 0.8em;
+}
+
+.rating, .ratingNo, .review{
+    font-size: 0.9em;
+    color: #31b0d5;
+}
+.review:hover, .review:focus{
+    text-decoration: none;
+    color: #2a6496;
+
+}
+.policy, .review-sec, .QandA{
+    margin-top: 20px;
+    padding: 10px 20px !important;
+    background: white;
+}
+.QandA{
+    margin-bottom: 20px;
+}
+.QA-sec{
+    margin-top: 20px;
+}
+
+.fa-question-circle{
+    font-size: 1.5em;
 }

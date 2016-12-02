@@ -5,7 +5,7 @@
 import React, { Component } from 'react'
 import { Tab, Tabs, TabList, TabPanel} from 'react-tabs'
 import SubCategoryList from './subCategoryList'
-
+import { Link } from 'react-router'
 
 let styles= {
     tab:{
@@ -73,7 +73,25 @@ export  default class SlidingTabPanel extends TabPanel{
                         you are in Personal
                     </TabPanel>
                     <TabPanel>
-                        you are in Fashion
+                        {/*you are in Fashion*/}
+                        <div className="row sub-category">
+                            <div className="sub-category-list col-md-6">
+                                <div className="row">
+                                    <div className="thumbnail col-md-5">
+                                        <img className="img-responsive" src="../../img/men-fashion.jpg"/>
+                                    </div>
+                                    <div className="col-md-7">
+                                        <h3>Men's Wear</h3>
+                                        <p>Top Wear: Shirts, Jackets, Sweaters...</p>
+                                        <p>Bottom Wear: Jeans, Shorts, Trouser...</p>
+                                        <p>Accessories: Belts, Sun Glasses, Shoes...</p>
+                                        <Link to="details"><button className="btn btn-sm btn-warning">View items, Enjoy Shopping</button></Link>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </TabPanel>
                     <TabPanel>
                         you are in Electronics
