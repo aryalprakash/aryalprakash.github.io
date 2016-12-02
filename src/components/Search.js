@@ -9,6 +9,7 @@ import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
 import StoreList from '../containers/store-list'
+import { sortBy, orderBy } from 'lodash';
 
 import {getStoresList} from '../actions/infinia.js'
 
@@ -88,7 +89,7 @@ class Search extends Component {
 
                                   </div>
 
-                            </div>
+                                </div>
 
                             </div>
                         </div>
@@ -100,10 +101,25 @@ class Search extends Component {
     }
 }
 
-// Search.contextTypes = {
-//     router: React.PropTypes.object
-// }
+function mapStateToProps(state) {
+    console.log(state.sorted);
 
-const mapStateToProps = ({ stores }) => ({stores})
+    if(state.sorted.sortby == 'atoz'){
+        let newStore = state.stores;
+        newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]);
+        return{
+            stores: newStore
+        };
+
+    }
+    if(state.sorted.sortby == 'ztoa'){
+        let newStore = state.stores;
+        newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]).reverse();
+        return{
+            stores: newStore
+        };
+    }
+
+}
 
 export default connect(mapStateToProps)( Search )

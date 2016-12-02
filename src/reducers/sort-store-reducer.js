@@ -12,5 +12,5 @@ export default function SortStore(state = initialState, action) {
             return {...state, sortby: 'atoz'};
     }
 
-    return state
+    return state;
 }

@@ -270,6 +270,44 @@ class Details extends Component{
                                       </div>
                                   </div>
                               </div>
+                              <div className="QA-sec">
+                                  <div className="row question">
+                                      <div className="col-md-1"><span className="fa fa-question-circle"/></div>
+                                      <div className="col-md-11">
+                                          <p>what should i do for fast delivery.?</p>
+                                      </div>
+                                  </div>
+                                  <div className="row reply">
+                                      <div className="col-md-1"><span className="fa fa-reply"/></div>
+                                      <div className="col-md-11">
+                                          <p>
+                                              "For choosing Next Day Delivery Option, kindly follow the steps given below:
+                                              1. Enter your Pin Code on the product page to check if Next Day Delivery is available for your area.
+                                              2. If yes, selected the ""Next Day Delivery"" option during payment checkout on the final payment page."
+                                          </p>
+                                          <span className="username">by Anjan Rai, on November 11, 2016</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div className="QA-sec">
+                                  <div className="row question">
+                                      <div className="col-md-1"><span className="fa fa-question-circle"/></div>
+                                      <div className="col-md-11">
+                                          <p>what should i do for fast delivery.?</p>
+                                      </div>
+                                  </div>
+                                  <div className="row reply">
+                                      <div className="col-md-1"><span className="fa fa-reply"/></div>
+                                      <div className="col-md-11">
+                                          <p>
+                                              "For choosing Next Day Delivery Option, kindly follow the steps given below:
+                                              1. Enter your Pin Code on the product page to check if Next Day Delivery is available for your area.
+                                              2. If yes, selected the ""Next Day Delivery"" option during payment checkout on the final payment page."
+                                          </p>
+                                          <span className="username">by Anjan Rai, on November 11, 2016</span>
+                                      </div>
+                                  </div>
+                              </div>
 
                           </div>
 
