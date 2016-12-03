@@ -17,7 +17,7 @@ require('../css/main.css');
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)}>
+    <Provider store={createStoreWithMiddleware(InfiniaStores)}>
         <App/>
     </Provider>
    , document.getElementById('root'));

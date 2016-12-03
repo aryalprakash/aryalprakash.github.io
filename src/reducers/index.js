@@ -1,12 +1,8 @@
 import { combineReducers } from 'redux';
-import ProductReducer from './product_reducer';
-import StoreReducer from './store-reducer';
-import SortStore from './sort-store-reducer'
+import InfiniaStores from './infinia';
 
 const rootReducer = combineReducers({
-    products: ProductReducer,
-    stores: StoreReducer,
-    sorted: SortStore
+    InfiniaStores: InfiniaStores
 });
 
 export default rootReducer;

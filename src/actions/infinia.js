@@ -11,8 +11,9 @@ import {
     GET_PRODUCTS_LIST,
     GET_PRODUCT_DETAILS,
     } from '../constants/constants.js'
+import { sortBy, orderBy } from 'lodash';
 
-
+let storeList = [];
 export function getMainCategories (){
     return function(dispatch){
         const url = API_URL
@@ -32,6 +33,7 @@ export function getStoresList(category){
     return function(dispatch){
         fetch(API_URL+"/stores.json?category="+category).then(response => response.json()).then(res => {
             console.log(res);
+            storeList = res.data;
             dispatch(gotStoresList(res.data));
         })
     }
@@ -39,6 +41,29 @@ export function getStoresList(category){
 
 export function gotStoresList(res){
     return {type: GET_STORES_LIST, data: res}
+}
+
+export function sortStore(choice) {
+    console.log('i am in action');
+    if(choice == 'atoz'){
+        let newStore = storeList;
+        newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]);
+
+        return {
+            type: 'SORT_BY_ATOZ',
+            data: newStore
+        };
+    }
+    else{
+        let newStore = storeList;
+        newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]).reverse();
+
+        return {
+            type: 'SORT_BY_ZTOA',
+            data: newStore
+        };
+    }
+
 }
 
 export function getProductsList() {

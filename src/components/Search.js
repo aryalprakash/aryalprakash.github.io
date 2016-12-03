@@ -22,12 +22,6 @@ class Search extends Component {
             class: '',
             loc: 'active-color',
             cat: 'passive-color',
-            // store: "store",
-            // imgPath:"../../img/store.png",
-            // storeName: "Baqer Mohebi",
-            // storeLocation: "Dubai",
-            // minOrder:"100 AED",
-            // catList:"Grossery, Clothing, Electronics"
         }
     }
 
@@ -36,8 +30,8 @@ class Search extends Component {
     }
 
     render() {
-        let {stores} = this.props
-        console.log(stores)
+        let {stores} = this.props;
+        console.log(stores);
         return (<div className="mycontainer">
                     <Header />
                     <div className="bread-crumb">
@@ -101,25 +95,7 @@ class Search extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    console.log(state.sorted);
+const mapStateToProps = ({stores}) => ({stores});
 
-    if(state.sorted.sortby == 'atoz'){
-        let newStore = state.stores;
-        newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]);
-        return{
-            stores: newStore
-        };
-
-    }
-    if(state.sorted.sortby == 'ztoa'){
-        let newStore = state.stores;
-        newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]).reverse();
-        return{
-            stores: newStore
-        };
-    }
-
-}
 
 export default connect(mapStateToProps)( Search )

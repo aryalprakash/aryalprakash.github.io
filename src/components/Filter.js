@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
-import sortStore from '../actions/index';
+import { sortStore } from '../actions/infinia';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -29,8 +29,8 @@ class Search extends Component {
         </div>
         <div className="card">Sort
             <div className="boxes">
-                <div className="select-box"><div onClick={() => this.props.sortStore('atoz')}className="options-button selected">A-Z</div></div>
-                <div className="select-box"><div onClick={() => this.props.sortStore('ztoa')} className="options-button selected">Z-A</div></div>
+                <div className="select-box"><div onClick={()=> this.props.sortStore('atoz')}className="options-button selected">A-Z</div></div>
+                <div className="select-box"><div onClick={()=> this.props.sortStore('ztoa')} className="options-button selected">Z-A</div></div>
             </div>
         </div>
         <div className="card">Minimum Order
