@@ -65,6 +65,25 @@ export function sortStore(choice) {
     }
 
 }
+export function sortByMinOrder(choice) {
+    if(choice == 0){
+        return{
+            type: 'SORT_BY_MINORDER',
+            data: storeList
+        }
+    }
+    else{
+        let newStore = storeList.filter(function (o) {
+            return o.minOrder == choice;
+        });
+
+        return{
+            type: 'SORT_BY_MINORDER',
+            data: newStore
+        }
+    }
+
+}
 
 export function getProductsList() {
     return function (dispatch) {

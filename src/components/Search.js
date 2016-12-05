@@ -35,7 +35,7 @@ class Search extends Component {
         return (<div className="mycontainer">
                     <Header />
                     <div className="bread-crumb">
-                        <div className="select-location">Location:
+                        <div className="select-location">My Location:
                             <select>
                                 <option>Dubai</option>
                                 <option>Qatar</option>
@@ -61,18 +61,18 @@ class Search extends Component {
                             </div>
 
                             <div className="all-stores">
-                                <div className="store-sec">
+                                <div className="container store-sec">
                                   <div className="row">
                                   {stores?stores.map(store=>
                                       <div key={store.storeName} className="col-md-4 col-sm-6">
                                           <Link to={store.linkto}>
                                               <div className="thumbnail">
-                                                  <div className="ribbon"><span className="fa fa-circle opn"> </span></div>
+                                                  <div className="ribbon"><span className={store.status == "online"? "fa fa-circle opn": "fa fa-circle clo"}> </span></div>
                                                   <img src={store.imgPath} />
                                                   <div className="caption">
                                                       <h4>{store.storeName}</h4>
                                                       <p>Location: {store.location}</p>
-                                                      <p>Min-Order: {store.minOrder}</p>
+                                                      <p>Min-Order: {store.minOrder}{store.currency}</p>
                                                       <p>Category: {store.category}</p>
 
                                                   </div>

@@ -473,6 +473,7 @@ h2{
 
 .bread-crumb{
     /*font-family: "Open Sans";*/
+    font-size: 14px;
     height: 40px;
     background: #0074D9;
     width: 100%;
@@ -624,16 +625,22 @@ h2{
 }
 
 select {
-    padding: 5px 35px 5px 5px;
-    font-size: 14px;
+    padding: 5px 30px 5px 5px;
+    font-size: 13px;
     border: none;
     color: white;
-    height: 34px;
+    height: 30px;
     -webkit-appearance: none;
     -moz-appearance: none;
     /*appearance: none;*/
-    background:  rgb(0, 116, 217);
+    /*background:  rgb(0, 116, 217);*/
+    background: url('http://www.wiscv.com/assets/images/shell/caret--downward.png') no-repeat 90% rgb(0, 116, 217);
+    background-size: 18px 18px;
     outline: none;
+}
+.select-cat option, .select-location option{
+    color: #101010;
+    background: #fff;
 }
 
 .card{
@@ -702,8 +709,8 @@ select {
 .all-stores{
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    /*justify-content: space-around;*/
+    /*flex-wrap: wrap;*/
 }
 
 .store{

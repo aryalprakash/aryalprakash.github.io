@@ -44,6 +44,11 @@ const InfiniaStores = (state = initialState, action) => {
                 ...state,
                 stores: action.data
             };
+        case 'SORT_BY_MINORDER':
+            return {
+                ...state,
+                stores: action.data
+            };
         default:
             return state
     }

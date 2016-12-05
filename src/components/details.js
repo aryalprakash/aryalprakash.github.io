@@ -33,7 +33,7 @@ class Details extends Component{
         let position = target[0].offsetTop-source[0].offsetTop-15;
 
         var scrollStep = 500 / (scrollDuration / 15);
-        var limit = 200;
+        var limit = 200; /* for stopping the infinite loop when the offset is small*/
         var scrollInterval = setInterval(function(){
 
                 if ( window.scrollY <= position ) {
