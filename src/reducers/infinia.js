@@ -44,7 +44,12 @@ const InfiniaStores = (state = initialState, action) => {
                 ...state,
                 stores: action.data
             };
-        case 'SORT_BY_MINORDER':
+        case 'FILTER_BY_MINORDER':
+            return {
+                ...state,
+                stores: action.data
+            };
+        case 'FILTER_BY_LOCATION':
             return {
                 ...state,
                 stores: action.data

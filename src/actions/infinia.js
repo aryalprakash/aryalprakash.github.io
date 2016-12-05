@@ -65,10 +65,10 @@ export function sortStore(choice) {
     }
 
 }
-export function sortByMinOrder(choice) {
+export function filterByMinOrder(choice) {
     if(choice == 0){
         return{
-            type: 'SORT_BY_MINORDER',
+            type: 'FILTER_BY_MINORDER',
             data: storeList
         }
     }
@@ -78,11 +78,20 @@ export function sortByMinOrder(choice) {
         });
 
         return{
-            type: 'SORT_BY_MINORDER',
+            type: 'FILTER_BY_MINORDER',
             data: newStore
         }
     }
 
+}
+export function filterByLocation(choice) {
+    let newStore = storeList.filter(function (o) {
+        return o.location == choice;
+    });
+    return{
+        type: 'FILTER_BY_LOCATION',
+        data: newStore
+    }
 }
 
 export function getProductsList() {
@@ -110,3 +119,4 @@ export function getProductDetails(res) {
 export function gotProductDetails(res) {
     return {type: GET_PRODUCT_DETAILS, data: res}
 }
+

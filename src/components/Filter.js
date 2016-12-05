@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
-import { sortStore , sortByMinOrder} from '../actions/infinia';
+import { sortStore , filterByMinOrder} from '../actions/infinia';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -35,10 +35,10 @@ class Search extends Component {
         </div>
         <div className="card">Minimum Order
             <div className="boxes">
-                <div className="select-box"><div onClick={()=> this.props.sortStoreByMin(0)} className="options-button selected">All</div></div>
-                <div className="select-box"><div onClick={()=> this.props.sortStoreByMin(100)} className="options-button selected">100</div></div>
-                <div className="select-box"><div onClick={()=> this.props.sortStoreByMin(200)} className="options-button selected">200</div></div>
-                <div className="select-box"><div className="options-button selected">300</div></div>
+                <div className="select-box"><div onClick={()=> this.props.filterStoreByMin(0)} className="options-button selected">All</div></div>
+                <div className="select-box"><div onClick={()=> this.props.filterStoreByMin(100)} className="options-button selected">100</div></div>
+                <div className="select-box"><div onClick={()=> this.props.filterStoreByMin(200)} className="options-button selected">200</div></div>
+                <div className="select-box"><div onClick={()=> this.props.filterStoreByMin(300)} className="options-button selected">300</div></div>
             </div>
         </div>
         {this.props.props.routeParams.category == 'fashion'?<div className="card">Color
@@ -61,7 +61,7 @@ class Search extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({sortStore: sortStore, sortStoreByMin: sortByMinOrder },dispatch);
+    return bindActionCreators({sortStore: sortStore, filterStoreByMin: filterByMinOrder },dispatch);
 }
 
 export default connect(null,mapDispatchToProps)(Search);

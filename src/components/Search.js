@@ -11,7 +11,7 @@ import Deals from './Deals'
 import StoreList from '../containers/store-list'
 import { sortBy, orderBy } from 'lodash';
 
-import {getStoresList} from '../actions/infinia.js'
+import {getStoresList, filterByLocation} from '../actions/infinia.js'
 
 class Search extends Component {
     constructor() {
@@ -28,6 +28,11 @@ class Search extends Component {
     componentDidMount(){
         this.props.dispatch(getStoresList(this.props.routeParams.category))
     }
+    func(){
+        let val = document.getElementsByClassName('selectOption');
+        console.log(val[0].value);
+        this.props.dispatch(filterByLocation(val[0].value))
+    }
 
     render() {
         let {stores} = this.props;
@@ -36,10 +41,10 @@ class Search extends Component {
                     <Header />
                     <div className="bread-crumb">
                         <div className="select-location">My Location:
-                            <select>
-                                <option>Dubai</option>
-                                <option>Qatar</option>
-                                <option>Nepal</option>
+                            <select className="selectOption" onChange={()=> this.func()}>
+                                <option value="Dubai">Dubai</option>
+                                <option value="Qatar">Qatar</option>
+                                <option value="Nepal">Nepal</option>
                             </select>
                         </div>
                         <div className="select-cat">Category:
@@ -63,7 +68,7 @@ class Search extends Component {
                             <div className="all-stores">
                                 <div className="container store-sec">
                                   <div className="row">
-                                  {stores?stores.map(store=>
+                                  {stores.length>0?stores.map(store=>
                                       <div key={store.storeName} className="col-md-4 col-sm-6">
                                           <Link to={store.linkto}>
                                               <div className="thumbnail">
@@ -79,7 +84,7 @@ class Search extends Component {
                                               </div>
                                           </Link>
                                     </div>
-                                  ):null}
+                                  ):<h2>Sorry!!! <br/>There is no Store to show.</h2>}
 
                                   </div>
 
