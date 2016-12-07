@@ -396,6 +396,7 @@ option{
     color: #31b0d5;
 }
 .review:hover, .review:focus{
+    cursor: pointer;
     text-decoration: none;
     color: #2a6496;
 
