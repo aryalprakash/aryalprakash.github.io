@@ -56,8 +56,8 @@ class Details extends Component{
     }
     selectColor(){
         let val = document.getElementsByClassName('selectColor');
-        console.log(val[0].value);
-        this.setState({color: val[0].value});
+
+        this.setState({color: val[0].value, image: this.props.productDetails[0].img[val[0].value][0], selectedIndex: 0});
     }
 
     render(){
@@ -128,8 +128,8 @@ class Details extends Component{
 
                                       <span className="rating"> ({detail.rating}) </span>
                                       <span className="ratingNo">21 rating </span>
-                                      <a className="review" href="#details" onClick={()=> this.scroll(1000,'review','review-sec')}><span > &nbsp; 2 reviews &nbsp;</span></a>
-                                      <a className="review" href="#details" onClick={()=> this.scroll(1000,'review','QandA')}><span > View QA</span></a>
+                                      <a className="review" onClick={()=> this.scroll(1000,'review','review-sec')}><span > &nbsp; 2 reviews &nbsp;</span></a>
+                                      <a className="review" onClick={()=> this.scroll(1000,'review','QandA')}><span > View QA</span></a>
 
                                   </div>
                               </div>
