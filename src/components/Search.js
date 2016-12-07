@@ -28,8 +28,8 @@ class Search extends Component {
     componentDidMount(){
         this.props.dispatch(getStoresList(this.props.routeParams.category))
     }
-    func(){
-        let val = document.getElementsByClassName('selectOption');
+    selectLocation(){
+        let val = document.getElementsByClassName('selectLocation');
         console.log(val[0].value);
         this.props.dispatch(filterByLocation(val[0].value))
     }
@@ -41,7 +41,7 @@ class Search extends Component {
                     <Header />
                     <div className="bread-crumb">
                         <div className="select-location">My Location:
-                            <select className="selectOption" onChange={()=> this.func()}>
+                            <select className="selectLocation" onChange={()=> this.selectLocation()}>
                                 <option value="Dubai">Dubai</option>
                                 <option value="Qatar">Qatar</option>
                                 <option value="Nepal">Nepal</option>

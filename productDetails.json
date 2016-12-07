@@ -9,8 +9,11 @@
       "price":3200,
       "currency":"NPR",
       "rating":3.7,
-      "img":["../../img/detail-img/jacket/01.jpg", "../../img/detail-img/jacket/02.jpg", "../../img/detail-img/jacket/03.jpg", "../../img/detail-img/jacket/04.jpg"],
-      "color": ["Black", "Green", "Red", "Yellow", "Pink"],
+      "img":{
+        "Black":["../../img/detail-img/jacket/01.jpg", "../../img/detail-img/jacket/02.jpg", "../../img/detail-img/jacket/03.jpg", "../../img/detail-img/jacket/04.jpg"],
+        "NavyBlue":["../../img/detail-img/jacket/01-navy.jpg", "../../img/detail-img/jacket/02-navy.jpg", "../../img/detail-img/jacket/03-navy.jpg"],
+        "Green":[]
+      },
       "size": ["XXL", "XL", "L", "M", "S"],
       "number": [1,2,3,4,5],
       "specs":{"SKU":"002U", "Brand":"Bastra", "Fabric":"Nylon and Cotton", "COO":"Nepal", "Type": "Casual"}

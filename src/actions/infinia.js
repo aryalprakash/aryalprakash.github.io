@@ -44,7 +44,7 @@ export function gotStoresList(res){
 }
 
 export function sortStore(choice) {
-    console.log('i am in action');
+
     if(choice == 'atoz'){
         let newStore = storeList;
         newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]);
@@ -86,7 +86,7 @@ export function filterByMinOrder(choice) {
 }
 export function filterByLocation(choice) {
     let newStore = storeList.filter(function (o) {
-        return o.location == choice;
+        return o.location.toLowerCase() == choice.toLowerCase();
     });
     return{
         type: 'FILTER_BY_LOCATION',

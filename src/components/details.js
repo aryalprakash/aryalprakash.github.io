@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import Header from './Header';
 import Footer from './Footer';
 import {getProductDetails} from '../actions/infinia.js'
+import {getNewImage} from '../actions/filter'
 
 class Details extends Component{
 
@@ -37,8 +38,7 @@ class Details extends Component{
         var scrollInterval = setInterval(function(){
 
                 if ( window.scrollY <= position ) {
-                    // console.log("pageYOffset",window.pageYOffset);
-                    // console.log("scrollY",window.scrollY);
+
                     window.scrollBy( 0, scrollStep );
                     limit -= 1;
                     if (limit == 0){
@@ -51,9 +51,29 @@ class Details extends Component{
             },1);
 
     }
+    selectSize(){
+
+    }
+    selectColor(){
+        let val = document.getElementsByClassName('selectColor');
+        console.log(val[0].value);
+        this.setState({color: val[0].value});
+    }
 
     render(){
         let {productDetails} = this.props;
+
+        let color = [];
+        if(productDetails.length > 0){
+            for (var key in productDetails[0].img){
+                if (productDetails[0].img.hasOwnProperty(key)) {
+                    color.push(key);
+                }
+            }
+        }
+
+        let selectedColor = this.state.color? this.state.color: color[0];
+
         let setting;
             productDetails.length>0? setting = {
                 width: 400,
@@ -64,7 +84,7 @@ class Details extends Component{
                 'z-index: 1;' +
                 'width: 700px;'
                 ),
-                img: this.state.image ? this.state.image : productDetails[0].img[0]
+                img: this.state.image ? this.state.image : productDetails[0].img[selectedColor][0]
             }:null;
 
 
@@ -85,7 +105,7 @@ class Details extends Component{
                               <div className="item-images">
                                   <div className="row">
                                       <div className="col-md-2">
-                                          {detail.img.map((path, index)=>
+                                          {detail.img[selectedColor].map((path, index)=>
                                               <img key={index} id={index == this.state.selectedIndex? "img-selected" : "not-img-selected"}
                                                    onMouseEnter={() => this.changeImage(path,index)} src={path} className="img-thumbnail"/>
                                           )}
@@ -121,16 +141,16 @@ class Details extends Component{
                               <div className="row">
                                   <div className="col-md-4">
                                       <div className="style-select">Size:
-                                          <select>
-                                              {detail.size.map((size,index)=><option key={index}>{size}</option>)}
+                                          <select className="selectSize" onChange={()=> this.selectSize()}>
+                                              {detail.size.map((size,index)=><option value={size} key={index}>{size}</option>)}
                                           </select>
 
                                       </div>
                                   </div>
                                   <div className="col-md-4">
                                       <div className="style-select">Color:
-                                          <select>
-                                              {detail.color.map((color,index)=><option key={index}>{color}</option>)}
+                                          <select className="selectColor" onChange={()=> this.selectColor()}>
+                                              {color.map((color,index)=><option value={color} key={index}>{color}</option>)}
                                           </select>
 
                                       </div>
@@ -138,7 +158,7 @@ class Details extends Component{
                                   <div className="col-md-4">
                                       <div className="style-select">Quantity:
                                           <select>
-                                              {detail.number.map((number,index)=><option key={index}>{number}</option>)}
+                                              {detail.number.map((number,index)=><option value={number} key={index}>{number}</option>)}
                                           </select>
 
                                       </div>
