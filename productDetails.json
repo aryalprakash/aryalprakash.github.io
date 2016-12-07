@@ -11,8 +11,7 @@
       "rating":3.7,
       "img":{
         "Black":["../../img/detail-img/jacket/01.jpg", "../../img/detail-img/jacket/02.jpg", "../../img/detail-img/jacket/03.jpg", "../../img/detail-img/jacket/04.jpg"],
-        "NavyBlue":["../../img/detail-img/jacket/01-navy.jpg", "../../img/detail-img/jacket/02-navy.jpg", "../../img/detail-img/jacket/03-navy.jpg"],
-        "Green":[]
+        "NavyBlue":["../../img/detail-img/jacket/01-navy.jpg", "../../img/detail-img/jacket/02-navy.jpg", "../../img/detail-img/jacket/03-navy.jpg"]
       },
       "size": ["XXL", "XL", "L", "M", "S"],
       "number": [1,2,3,4,5],
