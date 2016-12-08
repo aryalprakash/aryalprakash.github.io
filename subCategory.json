@@ -1,0 +1,123 @@
+{
+  "Supermarket":{
+    "grocery":[
+      {
+        "id":1,
+        "title": "Dairy, Frozen, Eggs",
+        "imgPath": "../../img/sub-category/dairy.jpg",
+        "product":{
+          "Dairy":["Milk", "Yogurt", "Cheese"],
+          "Frozen":["Peas", "Beans", "Samosas"],
+          "Eggs":["Chicken Eggs", "Quail Eggs"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":2,
+        "title": "Beverage",
+        "imgPath": "../../img/sub-category/beverage.jpg",
+        "product":{
+          "Juices":["Apple", "Mango", "Oranges"],
+          "Carbonated":["Coca Cola", "Pepsi"],
+          "Tea/Coffee":["Lemon Tea", "Peach Tea"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":3,
+        "title": "Staples",
+        "imgPath": "../../img/sub-category/staples.png",
+        "product":{
+          "Rice":["Basmati", "Sona", "Thai"],
+          "Pulses":["Chana Dal", "Toor Dal"],
+          "Spices":["Flour", "Oil", "Ghee"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":4,
+        "title": "Snacks",
+        "imgPath": "../../img/sub-category/snacks.jpeg",
+        "product":{
+          "Chocolates":["Dairy Milk", "Kitkat"],
+          "Biscuits":["Marie Gold", "Good Day"],
+          "Chips/Noodles/Dry Fruits":["Kurkure", "Maggie", "Ghee"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":5,
+        "title": "Home Care",
+        "imgPath": "../../img/sub-category/homecare.png",
+        "product":{
+          "Detergents":["Milk", "Yogurt", "Cheese"],
+          "Floor Cleaning":["Peas", "Beans", "Samosas"],
+          "Utensils Cleaning":["Chicken Eggs", "Quail Eggs"]
+        },
+        "linkTo": "items"
+      }
+    ],
+
+    "butchery":[
+      {
+        "id":1,
+        "title": "Dairy, Frozen, Eggs",
+        "imgPath": "../../img/sub-category/dairy.jpg",
+        "product":{
+          "Dairy":["Milk", "Yogurt", "Cheese"],
+          "Frozen":["Peas", "Beans", "Samosas"],
+          "Eggs":["Chicken Eggs", "Quail Eggs"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":2,
+        "title": "Beverage",
+        "imgPath": "../../img/sub-category/beverage.jpg",
+        "product":{
+          "Juices":["Apple", "Mango", "Oranges"],
+          "Carbonated":["Coca Cola", "Pepsi"],
+          "Tea/Coffee":["Lemon Tea", "Peach Tea"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":3,
+        "title": "Staples",
+        "imgPath": "../../img/sub-category/staples.png",
+        "product":{
+          "Rice":["Basmati", "Sona", "Thai"],
+          "Pulses":["Chana Dal", "Toor Dal"],
+          "Spices":["Flour", "Oil", "Ghee"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":4,
+        "title": "Snacks",
+        "imgPath": "../../img/sub-category/snacks.jpeg",
+        "product":{
+          "Chocolates":["Dairy Milk", "Kitkat"],
+          "Biscuits":["Marie Gold", "Good Day"],
+          "Chips/Noodles/Dry Fruits":["Kurkure", "Maggie", "Ghee"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":5,
+        "title": "Home Care",
+        "imgPath": "../../img/sub-category/homecare.png",
+        "product":{
+          "Detergents":["Milk", "Yogurt", "Cheese"],
+          "Floor Cleaning":["Peas", "Beans", "Samosas"],
+          "Utensils Cleaning":["Chicken Eggs", "Quail Eggs"]
+        },
+        "linkTo": "items"
+      }
+
+    ]
+  },
+  "Fashion":{
+
+  }
+}

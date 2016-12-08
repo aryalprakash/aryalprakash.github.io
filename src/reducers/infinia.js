@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import {
     GET_MAIN_CATEGORIES,
     GET_STORES_LIST,
+    GET_SUB_CATEGORIES,
     GET_PRODUCTS_LIST,
     GET_PRODUCT_DETAILS
     } from '../constants/constants.js';
@@ -23,6 +24,11 @@ const InfiniaStores = (state = initialState, action) => {
             return {
                 ...state,
                 stores: action.data
+            };
+        case GET_SUB_CATEGORIES:
+            return {
+                ...state,
+                subcategories: action.data
             };
         case GET_PRODUCTS_LIST:
             return {

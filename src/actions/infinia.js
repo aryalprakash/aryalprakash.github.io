@@ -8,6 +8,7 @@ import {
     API_URL,
     GET_MAIN_CATEGORIES,
     GET_STORES_LIST,
+    GET_SUB_CATEGORIES,
     GET_PRODUCTS_LIST,
     GET_PRODUCT_DETAILS,
     } from '../constants/constants.js'
@@ -92,6 +93,18 @@ export function filterByLocation(choice) {
         type: 'FILTER_BY_LOCATION',
         data: newStore
     }
+}
+
+export function getSubCategories() {
+    return function (dispatch) {
+        fetch(API_URL+"/subCategory.json").then(response => response.json()).then(res => {
+            dispatch(gotSubCategories(res.Supermarket));
+        })
+    }
+
+}
+export function gotSubCategories(res) {
+    return {type: GET_SUB_CATEGORIES, data: res}
 }
 
 export function getProductsList() {
