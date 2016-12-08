@@ -95,10 +95,22 @@ export function filterByLocation(choice) {
     }
 }
 
-export function getSubCategories() {
+export function getSubCategories(choice) {
     return function (dispatch) {
         fetch(API_URL+"/subCategory.json").then(response => response.json()).then(res => {
-            dispatch(gotSubCategories(res.Supermarket));
+            switch (choice){
+                case "grocery":
+                    dispatch(gotSubCategories(res.Supermarket.grocery));
+                    break;
+                case "butchery":
+                    dispatch(gotSubCategories(res.Supermarket.butchery));
+                    break;
+                case "fashion":
+                    dispatch(gotSubCategories(res.Supermarket.fashion));
+                    break;
+
+            }
+
         })
     }
 

@@ -59,12 +59,12 @@ export  default class SlidingTabPanel extends TabPanel{
 
                     {/*For grocery category*/}
                     <TabPanel>
-                        <SubCategoryList />
+                        <SubCategoryList cat={"grocery"}/>
 
                     </TabPanel>
                     {/*For Buthcery category*/}
                     <TabPanel>
-                        you are in Butchery
+                        <SubCategoryList cat={"butchery"}/>
                     </TabPanel>
                     <TabPanel>
                         you are in Kitchen
@@ -74,23 +74,7 @@ export  default class SlidingTabPanel extends TabPanel{
                     </TabPanel>
                     <TabPanel>
                         {/*you are in Fashion*/}
-                        <div className="row sub-category">
-                            <div className="sub-category-list col-md-6">
-                                <div className="row">
-                                    <div className="thumbnail col-md-5">
-                                        <img className="img-responsive" src="../../img/men-fashion.jpg"/>
-                                    </div>
-                                    <div className="col-md-7">
-                                        <h3>Men's Wear</h3>
-                                        <p>Top Wear: Shirts, Jackets, Sweaters...</p>
-                                        <p>Bottom Wear: Jeans, Shorts, Trouser...</p>
-                                        <p>Accessories: Belts, Sun Glasses, Shoes...</p>
-                                        <Link to="details"><button className="btn btn-sm btn-warning">View items, Enjoy Shopping</button></Link>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <SubCategoryList cat={"fashion"}/>
 
                     </TabPanel>
                     <TabPanel>

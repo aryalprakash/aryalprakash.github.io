@@ -61,8 +61,8 @@
     "butchery":[
       {
         "id":1,
-        "title": "Dairy, Frozen, Eggs",
-        "imgPath": "../../img/sub-category/dairy.jpg",
+        "title": "Chicken",
+        "imgPath": "../../img/sub-category/Chicken.jpg",
         "product":{
           "Dairy":["Milk", "Yogurt", "Cheese"],
           "Frozen":["Peas", "Beans", "Samosas"],
@@ -72,8 +72,8 @@
       },
       {
         "id":2,
-        "title": "Beverage",
-        "imgPath": "../../img/sub-category/beverage.jpg",
+        "title": "Mutton/Lamb",
+        "imgPath": "../../img/sub-category/Lamb.jpg",
         "product":{
           "Juices":["Apple", "Mango", "Oranges"],
           "Carbonated":["Coca Cola", "Pepsi"],
@@ -83,8 +83,8 @@
       },
       {
         "id":3,
-        "title": "Staples",
-        "imgPath": "../../img/sub-category/staples.png",
+        "title": "Fish",
+        "imgPath": "../../img/sub-category/Fish.jpg",
         "product":{
           "Rice":["Basmati", "Sona", "Thai"],
           "Pulses":["Chana Dal", "Toor Dal"],
@@ -94,8 +94,8 @@
       },
       {
         "id":4,
-        "title": "Snacks",
-        "imgPath": "../../img/sub-category/snacks.jpeg",
+        "title": "Beef",
+        "imgPath": "../../img/sub-category/Beef.png",
         "product":{
           "Chocolates":["Dairy Milk", "Kitkat"],
           "Biscuits":["Marie Gold", "Good Day"],
@@ -105,8 +105,19 @@
       },
       {
         "id":5,
-        "title": "Home Care",
-        "imgPath": "../../img/sub-category/homecare.png",
+        "title": "Buff",
+        "imgPath": "../../img/sub-category/Buff.jpg",
+        "product":{
+          "Chocolates":["Dairy Milk", "Kitkat"],
+          "Biscuits":["Marie Gold", "Good Day"],
+          "Chips/Noodles/Dry Fruits":["Kurkure", "Maggie", "Ghee"]
+        },
+        "linkTo": "items"
+      },
+      {
+        "id":6,
+        "title": "Veal",
+        "imgPath": "../../img/sub-category/Veal.jpg",
         "product":{
           "Detergents":["Milk", "Yogurt", "Cheese"],
           "Floor Cleaning":["Peas", "Beans", "Samosas"],
@@ -115,7 +126,23 @@
         "linkTo": "items"
       }
 
+    ],
+
+    "fashion":[
+      {
+        "id":1,
+        "title": "Men's Wear",
+        "imgPath": "../../img/men-fashion.jpg",
+        "product":{
+          "Top Wear":["Shirts", "Jackets", "Sweaters"],
+          "Bottom Wear":["Jeans", "Shorts", "Trouser"],
+          "Accessories":["Belts", "Sun Glasses", "Shoes"]
+        },
+        "linkTo": "details"
+      }
+
     ]
+
   },
   "Fashion":{
 
