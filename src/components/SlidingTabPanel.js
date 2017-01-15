@@ -20,9 +20,7 @@ let styles= {
 
 export  default class SlidingTabPanel extends TabPanel{
 
-    constructor(props){
-        super(props);
-
+    initialize(props){
         this.state = {
             children: props.children,
             totalChild: props.children.length,
@@ -30,6 +28,15 @@ export  default class SlidingTabPanel extends TabPanel{
             left: 0,
             endIndex: props.maxChildren + 1
         };
+    }
+
+    constructor(props){
+        super(props);
+        this.initialize(props);
+    }
+
+    componentWillReceiveProps(props){
+        this.initialize(props);
     }
 
     gonext(){
@@ -52,40 +59,18 @@ export  default class SlidingTabPanel extends TabPanel{
             <div className="myslider" >
                 <a onClick={ this.gonext.bind(this) } className="control_next"><span className="fa fa-angle-double-right"/></a>
                 <a onClick={ this.goprev.bind(this)} className="control_prev"><span className="fa fa-angle-double-left"/></a>
-                <Tabs style={styles.tab} >
+                <Tabs onSelect={this.handleSelect}
+                      selectedIndex={0} style={styles.tab} >
                     <TabList style={{left: this.state.left +"px"}} children={this.state.children}>
 
                     </TabList>
+                    {this.props.catList.map((cat, index)=>
+                        <TabPanel key={index}>
+                            <SubCategoryList cat={cat.category} storeID={this.props.storeID}/>
 
-                    {/*For grocery category*/}
-                    <TabPanel>
-                        <SubCategoryList cat={"grocery"}/>
+                        </TabPanel>
+                    )}
 
-                    </TabPanel>
-                    {/*For Buthcery category*/}
-                    <TabPanel>
-                        <SubCategoryList cat={"butchery"}/>
-                    </TabPanel>
-                    <TabPanel>
-                        you are in Kitchen
-                    </TabPanel>
-                    <TabPanel>
-                        you are in Personal
-                    </TabPanel>
-                    <TabPanel>
-                        {/*you are in Fashion*/}
-                        <SubCategoryList cat={"fashion"}/>
-
-                    </TabPanel>
-                    <TabPanel>
-                        you are in Electronics
-                    </TabPanel>
-                    <TabPanel>
-                        you are in Electronics1
-                    </TabPanel>
-                    <TabPanel>
-                        you are in Electronics2
-                    </TabPanel>
                 </Tabs>
 
             </div>

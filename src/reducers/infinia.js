@@ -6,13 +6,14 @@ import {
     GET_STORES_LIST,
     GET_SUB_CATEGORIES,
     GET_PRODUCTS_LIST,
-    GET_PRODUCT_DETAILS
+    GET_PRODUCT_DETAILS,
+    GET_STORE_DETAILS,
     } from '../constants/constants.js';
 
 const initialState = { categories: [], stores: [], products: [], productDetails: []};
 
 const InfiniaStores = (state = initialState, action) => {
-    console.log('i am in infinia.js');
+    console.log('i am in reducer`s infinia.js');
     switch (action.type) {
         case GET_MAIN_CATEGORIES:
             return {
@@ -21,9 +22,17 @@ const InfiniaStores = (state = initialState, action) => {
             };
 
         case GET_STORES_LIST:
+            console.log(action.data);
             return {
                 ...state,
                 stores: action.data
+            };
+
+        case GET_STORE_DETAILS:
+            console.log(action.data);
+            return {
+                ...state,
+                storeDetails: action.data
             };
         case GET_SUB_CATEGORIES:
             return {

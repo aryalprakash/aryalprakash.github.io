@@ -1,10 +1,10 @@
 {
   "data":[
-    {"storeName":"Wallmart", "location":"Dubai", "minOrder":400, "currency": "AED", "status": "online", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
-    {"storeName":"Blash", "location":"Dubai", "minOrder":100, "currency": "AED", "status": "online", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
-    {"storeName":"Kaymu", "location":"Nepal", "minOrder":200, "currency": "AED", "status": "offline", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
-    {"storeName":"Fudge", "location":"Dubai", "minOrder":100, "currency": "AED", "status": "online", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
-    {"storeName":"Best Deals", "location":"Nepal", "minOrder":100, "currency": "AED", "status": "online", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
-    {"storeName":"Skyler", "location":"Dubai", "minOrder":200, "currency": "AED", "status": "offline", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"}
+    {"display_name":"Wallmart", "country":"Dubai", "minOrder":400, "currency": "AED", "status": "online", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
+    {"display_name":"Blash", "country":"Dubai", "minOrder":100, "currency": "AED", "status": "online", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
+    {"display_name":"Kaymu", "country":"Nepal", "minOrder":200, "currency": "AED", "status": "offline", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
+    {"display_name":"Fudge", "country":"Dubai", "minOrder":100, "currency": "AED", "status": "online", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
+    {"display_name":"Best Deals", "country":"Nepal", "minOrder":100, "currency": "AED", "status": "online", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"},
+    {"display_name":"Skyler", "country":"Dubai", "minOrder":200, "currency": "AED", "status": "offline", "category":"Grocery, Clothing, Electronics", "imgPath": "../../img/store.png", "linkto": "store"}
   ]
 }

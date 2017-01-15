@@ -4,12 +4,15 @@
 import React, { Component } from 'react'
 import  { Link } from 'react-router'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import { connect } from 'react-redux';
 import Header from './Header'
 import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
 import Gmap from './maps'
 import SlidingTabPanel from './SlidingTabPanel'
+
+import {getStoreDetails} from '../actions/infinia.js'
 
 let styles= {
     tab:{
@@ -19,12 +22,12 @@ let styles= {
         width: '100%',
         marginTop: '10px'
     }
-}
-var initialCenter = { lng: 55.5136, lat: 25.3223 };
+};
 
-export default class Store extends Component {
-    constructor() {
-        super();
+class Store extends Component {
+    constructor(props) {
+        super(props);
+        console.log('Key in store page',props.location.query.id);
         this.state = {
             list: false,
             place: 'Dubai',
@@ -32,21 +35,28 @@ export default class Store extends Component {
             loc: 'active-color',
             cat: 'passive-color',
 
+
         }
+
+
+    }
+
+    handleSelect(index, last) {
+        console.log('Selected tab: ' + index + ', Last tab: ' + last);
+    }
+
+    componentDidMount(){
+        this.props.dispatch(getStoreDetails(this.props.location.query.id));
+        
 
     }
 
     render() {
-        const { search } = this.state
 
-        var settings = {
-            dots: false,
-            infinite: true,
-            arrows: true,
-            slidesToShow: 1,
-            slidesToScroll: 1
+        const { search } = this.state;
 
-        };
+        let {storeDetails} = this.props;
+        console.log('storeDetails page',storeDetails);
 
         return (
           <div className="mycontainer">
@@ -69,45 +79,50 @@ export default class Store extends Component {
 
                 </div>
             </div>
+           {storeDetails ?
             <div className="main-content">
-                <div className="sidebar-left">
-                    <div className="card profile">
-                        <div className="store-image">
-                            <img src="../../img/store.png" />
+
+                    <div className="sidebar-left">
+
+                        <div className="card profile">
+                            <div className="store-image">
+                                <img src="../../img/store.png" />
+                            </div>
+                            <div className="store-profile-name">{storeDetails[0].display_name}</div>
+                            <div className="store-profile-address">{storeDetails[0].street}, {storeDetails[0].state}</div>
                         </div>
-                        <div className="store-profile-name">Walmart Stores</div>
-                        <div className="store-profile-address">Hile Road, Kathmandu</div>
-                    </div>
 
-                    <div className="card">
-                    Delivery Time
-                        {/*<div className="line"></div>*/}
-                        <div className="store-profile-content">8:00 AM - 6:00 PM</div>
-                    </div>
-                    <div className="card">
-                        Delivery Areas
-                        {/*<div className="line"></div>*/}
-                        <div className="store-profile-content">Ratnapark, Chabahil, Bhaktapur, Lalitpur</div>
-                    </div>
-                    <div className="card">
-                        Minimum Order
-                        {/*<div className="line"></div>*/}
-                        <div className="store-profile-content">100 AED</div>
-                    </div>
-                    <div className="card">
-                        Rating
-                        {/*<div className="line"></div>*/}
-                        <div className="store-profile-content"><span className="fa fa-smile-o" /></div>
-                    </div>
-                    <div className="card">
-                        Location
-                        <div className="store-profile-content">
-                            <Gmap initialCenter={initialCenter} placeProp={this.state.place}/>
-
+                        <div className="card">
+                            Delivery Time
+                            {/*<div className="line"></div>*/}
+                            <div className="store-profile-content">8:00 AM - 6:00 PM</div>
                         </div>
+                        <div className="card">
+                            Delivery Areas
+                            {/*<div className="line"></div>*/}
+                            <div className="store-profile-content">Ratnapark, Chabahil, Bhaktapur, Lalitpur</div>
+                        </div>
+                        <div className="card">
+                            Minimum Order
+                            {/*<div className="line"></div>*/}
+                            <div className="store-profile-content">{storeDetails[0].minimum_buy} AED</div>
+                        </div>
+                        <div className="card">
+                            Rating
+                            {/*<div className="line"></div>*/}
+                            <div className="store-profile-content"><span className="fa fa-smile-o" /></div>
+                        </div>
+                        <div className="card">
+                            Location
+                            <div className="store-profile-content">
+                                <Gmap initialCenter={{ lng: storeDetails[0].longitude, lat: storeDetails[0].latitude }} placeProp={this.state.place}/>
+
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
+
                 <div className="card center-content">
                     <div className="store-title relative">
                         <Tabs
@@ -121,64 +136,20 @@ export default class Store extends Component {
                             </TabList>
                             {/*For regular offer*/}
                             <TabPanel>
-                                <SlidingTabPanel maxChildren={5}>
-                                    <Tab>
-                                        <div className="cat-icon ">
-                                            <img className="img-rounded" src="../../img/category/grocery.png"/>
-                                            Grocery
-                                        </div>
-                                    </Tab>
-                                    <Tab>
-                                        <div className="cat-icon ">
-                                            <img className="img-rounded" src="../../img/category/butchery.png"/>
-                                            Butchery
-                                        </div>
 
-                                    </Tab>
-                                    <Tab>
-                                        <div className="cat-icon ">
-                                            <img className="img-rounded" src="../../img/category/kitchen.png"/>
-                                            Kitchen Appliances
-                                        </div>
-
-                                    </Tab>
-                                    <Tab>
-                                        <div className="cat-icon ">
-                                            <img className="img-rounded" src="../../img/category/personal.png"/>
-                                            Personal Care
-                                        </div>
-
-                                    </Tab>
-                                    <Tab>
-                                        <div className="cat-icon ">
-                                            <img className="img-rounded" src="../../img/category/fashion.png"/>
-                                            Fashion
-                                        </div>
-
-                                    </Tab>
-                                    <Tab>
-                                        <div className="cat-icon ">
-                                            <img className="img-rounded" src="../../img/category/electronic.png"/>
-                                            Electronics
-                                        </div>
-
-                                    </Tab>
-                                    <Tab>
-                                        <div className="cat-icon ">
-                                            <img className="img-rounded" src="../../img/category/electronic.png"/>
-                                            Electronics1
-                                        </div>
-
-                                    </Tab>
-                                    <Tab>
-                                        <div className="cat-icon ">
-                                            <img className="img-rounded" src="../../img/category/electronic.png"/>
-                                            Electronics2
-                                        </div>
-
-                                    </Tab>
+                                <SlidingTabPanel maxChildren={5} storeID={storeDetails[0].id} catList={storeDetails[0].categorysecond}>
+                                    {storeDetails[0].categorysecond.map((cat)=>
+                                        <Tab key={cat.id}>
+                                            <div className="cat-icon ">
+                                                <img className="img-rounded" src={cat.image}/>
+                                                {cat.category}
+                                            </div>
+                                        </Tab>
+                                    )}
 
                                 </SlidingTabPanel>
+
+
                             </TabPanel>
                             {/*For Store deals*/}
                             <TabPanel>
@@ -190,7 +161,15 @@ export default class Store extends Component {
                 </div>
                 <Deals />
             </div>
+
+               : <p>Sorry<br/>No data</p>
+           }
             <Footer />
         </div>)
     }
 }
+
+const mapStateToProps = ({storeDetails}) => ({storeDetails});
+
+
+export default connect(mapStateToProps)( Store )

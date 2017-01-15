@@ -8,7 +8,6 @@ import Header from './Header'
 import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
-import StoreList from '../containers/store-list'
 import { sortBy, orderBy } from 'lodash';
 
 import {getStoresList, filterByLocation} from '../actions/infinia.js'
@@ -36,7 +35,7 @@ class Search extends Component {
 
     render() {
         let {stores} = this.props;
-        console.log(stores);
+        console.log('in store page',stores);
         return (<div className="mycontainer">
                     <Header />
                     <div className="bread-crumb">
@@ -69,16 +68,16 @@ class Search extends Component {
                                 <div className="container store-sec">
                                   <div className="row">
                                   {stores.length>0?stores.map(store=>
-                                      <div key={store.storeName} className="col-md-4 col-sm-6">
-                                          <Link to={store.linkto}>
+                                      <div key={store.id} className="col-md-4 col-sm-6">
+                                          <Link to={{ pathname: '/store', query: { id: store.id } }} >
                                               <div className="thumbnail">
                                                   <div className="ribbon"><span className={store.status == "online"? "fa fa-circle opn": "fa fa-circle clo"}> </span></div>
-                                                  <img src={store.imgPath} />
+                                                  <img src="../../img/store.png" />
                                                   <div className="caption">
-                                                      <h4>{store.storeName}</h4>
-                                                      <p>Location: {store.location}</p>
-                                                      <p>Min-Order: {store.minOrder}{store.currency}</p>
-                                                      <p>Category: {store.category}</p>
+                                                      <h4>{store.display_name}</h4>
+                                                      <p>Location: {store.country}, {store.state}</p>
+                                                      <p>Min-Order: {store.minimum_buy}{store.currency}</p>
+                                                      <p>Category: {store.categorysecond.map((item)=>(<span key={item.id}>{item.category}, </span>))}</p>
 
                                                   </div>
                                               </div>

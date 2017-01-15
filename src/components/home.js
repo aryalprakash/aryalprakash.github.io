@@ -59,7 +59,7 @@ class Home extends Component {
 
     render() {
         let {categories} = this.props
-        console.log(categories)
+        console.log('in home',categories);
 
         return (
             <div>
@@ -106,8 +106,8 @@ class Home extends Component {
                                         <div className="hovereffect">
                                             <img className="img-responsive" src={category.image}/>
                                             <div className="overlay">
-                                                <h2>{category.name}</h2>
-                                                <Link to={`search/${category.slug}`} className="info">Shop now</Link>
+                                                <h2>{category.category}</h2>
+                                                <Link to={`search/${category.category}`} className="info">Shop now</Link>
                                             </div>
                                         </div>
                                     </div>

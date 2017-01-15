@@ -264,7 +264,7 @@ export default class Items extends Component {
 
                                     <div className="line margin10"></div>
                                     <div className="item-category">Half Chicken</div>
-                                    <ProductList/>
+                                    <ProductList catName={this.props.location.query.catName} storeID={this.props.location.query.storeID}/>
 
                                 </div>
                             </TabPanel>

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 import thunk from 'redux-thunk'
 import { dispatch } from 'redux'
 //require('es6-promise').polyfill();
@@ -6,11 +6,13 @@ import { dispatch } from 'redux'
 
 import {
     API_URL,
+    API_URL1,
     GET_MAIN_CATEGORIES,
     GET_STORES_LIST,
     GET_SUB_CATEGORIES,
     GET_PRODUCTS_LIST,
     GET_PRODUCT_DETAILS,
+    GET_STORE_DETAILS,
     } from '../constants/constants.js'
 import { sortBy, orderBy } from 'lodash';
 
@@ -18,9 +20,9 @@ let storeList = [];
 export function getMainCategories (){
     return function(dispatch){
         const url = API_URL
-        fetch(API_URL+"/categories.json").then(response => response.json()).then(res => {
-            console.log(res);
-            dispatch(gotMainCategories(res.data));
+        fetch(API_URL1+"/category_1",{method: 'get'}).then(response => response.json()).then(res => {
+            console.log('getMain Categories',res.results);
+            dispatch(gotMainCategories(res.results));
         })
     }
 }
@@ -32,12 +34,32 @@ export function gotMainCategories(res){
 
 export function getStoresList(category){
     return function(dispatch){
-        fetch(API_URL+"/stores.json?category="+category).then(response => response.json()).then(res => {
-            console.log(res);
-            storeList = res.data;
-            dispatch(gotStoresList(res.data));
+        // fetch(API_URL+"/stores.json?category="+category).then(response => response.json()).then(res => {
+        //     console.log(res);
+        //     storeList = res.data;
+        //     dispatch(gotStoresList(res.data));
+        // })
+        console.log(category);
+        fetch(API_URL1+'/stores?categoryfirst__category__iendswith='+category,{method: 'get'}).then(response => response.json()).then(res=> {
+            console.log('from gcs server',res.results);
+            storeList = res.results;
+            dispatch(gotStoresList(res.results));
         })
     }
+}
+
+export function getStoreDetails(id) {
+    return function (dispatch) {
+        fetch(API_URL1+'/stores?id='+id,{method: 'get'}).then(response => response.json()).then(res=> {
+            console.log('from gcs server',res.results);
+            dispatch(gotStoreDetails(res.results));
+        })
+
+    }
+
+}
+export function gotStoreDetails(res) {
+    return {type: GET_STORE_DETAILS, data: res}
 }
 
 export function gotStoresList(res){
@@ -48,7 +70,7 @@ export function sortStore(choice) {
 
     if(choice == 'atoz'){
         let newStore = storeList;
-        newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]);
+        newStore = _.sortBy(newStore, [function(o) { return o.display_name.toLowerCase(); }]);
 
         return {
             type: 'SORT_BY_ATOZ',
@@ -57,7 +79,7 @@ export function sortStore(choice) {
     }
     else{
         let newStore = storeList;
-        newStore = _.sortBy(newStore, [function(o) { return o.storeName.toLowerCase(); }]).reverse();
+        newStore = _.sortBy(newStore, [function(o) { return o.display_name.toLowerCase(); }]).reverse();
 
         return {
             type: 'SORT_BY_ZTOA',
@@ -87,7 +109,7 @@ export function filterByMinOrder(choice) {
 }
 export function filterByLocation(choice) {
     let newStore = storeList.filter(function (o) {
-        return o.location.toLowerCase() == choice.toLowerCase();
+        return o.country.toLowerCase() == choice.toLowerCase();
     });
     return{
         type: 'FILTER_BY_LOCATION',
@@ -95,23 +117,13 @@ export function filterByLocation(choice) {
     }
 }
 
-export function getSubCategories(choice) {
+export function getSubCategories(id, choice) {
     return function (dispatch) {
-        fetch(API_URL+"/subCategory.json").then(response => response.json()).then(res => {
-            switch (choice){
-                case "grocery":
-                    dispatch(gotSubCategories(res.Supermarket.grocery));
-                    break;
-                case "butchery":
-                    dispatch(gotSubCategories(res.Supermarket.butchery));
-                    break;
-                case "fashion":
-                    dispatch(gotSubCategories(res.Supermarket.fashion));
-                    break;
+        fetch(API_URL1+"/get_store_categorythird?store="+id+"&categorysecond="+choice,{method: 'get'}).then(response => response.json()).then(res => {
+            console.log("third category",res.categorythird);
+            dispatch(gotSubCategories(res.categorythird));
+        });
 
-            }
-
-        })
     }
 
 }
@@ -119,11 +131,15 @@ export function gotSubCategories(res) {
     return {type: GET_SUB_CATEGORIES, data: res}
 }
 
-export function getProductsList() {
+export function getProductsList(id, catName) {
     return function (dispatch) {
-        fetch(API_URL+"/products.json").then(response => response.json()).then(res => {
-            console.log(res);
-            dispatch(gotProductsList(res.data));
+        // fetch(API_URL+"/products.json").then(response => response.json()).then(res => {
+        //     console.log(res);
+        //     dispatch(gotProductsList(res.data));
+        // })
+        fetch(API_URL1+'/stocks?type3__category__iendswith='+catName+'&store='+id,{method: 'get'}).then(response => response.json()).then(res=> {
+            console.log('from gcs server',res);
+            dispatch(gotProductsList(res.results));
         })
     }
 }
