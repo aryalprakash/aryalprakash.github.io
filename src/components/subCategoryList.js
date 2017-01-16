@@ -5,34 +5,40 @@ import {getSubCategories} from '../actions/infinia.js'
 
 class SubCategoryList extends Component{
 
-    constructor(props){
-        super(props);
+    initialize(props){
         this.state = {
-            id: "",
             storeID: props.storeID,
             category: props.cat,
 
         };
     }
 
+    constructor(props){
+        super(props);
+        this.initialize(props);
+    }
+
     componentDidMount(){
-        this.props.dispatch(getSubCategories(this.props.storeID, this.props.cat))
-
-    }
-    componentWillReceiveProps(props){
-
-        this.setState({id: "sub"});
-
+        this.props.dispatch(getSubCategories(this.props.storeID, this.props.cat));
     }
 
+    componentWillReceiveProps(nextProps){
+
+        if (this.props.storeID !== nextProps.storeID) {
+            nextProps.dispatch(getSubCategories(nextProps.storeID, nextProps.cat));
+            this.initialize(nextProps);
+
+        }
+
+    }
 
     render (){
         let {subcategories} = this.props;
 
         return(
-            <div className="row sub-category" id={this.state.id} >
-                {subcategories?subcategories.map(subcategory =>
-                    <div key={subcategory.id} className="sub-category-list col-md-6">
+            <div className="row sub-category">
+                {this.props.storeID ? subcategories?subcategories.map(subcategory =>
+                    <div key={subcategory.cat_name} className=" col-md-6 sub-category-list">
                         <div className="row">
                             <div className="thumbnail col-md-5">
                                 <img className="img-responsive" src={subcategory.image_url}/>
@@ -53,7 +59,7 @@ class SubCategoryList extends Component{
 
                     </div>
 
-                ): <h2>There is no categories to show.</h2>}
+                ): <h2>There is no categories to show.</h2>: <h2>No stores</h2>}
 
             </div>
         );

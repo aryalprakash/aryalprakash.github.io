@@ -120,7 +120,7 @@ export function filterByLocation(choice) {
 export function getSubCategories(id, choice) {
     return function (dispatch) {
         fetch(API_URL1+"/get_store_categorythird?store="+id+"&categorysecond="+choice,{method: 'get'}).then(response => response.json()).then(res => {
-            console.log("third category",res.categorythird);
+            console.log("third category of store "+id ,res.categorythird);
             dispatch(gotSubCategories(res.categorythird));
         });
 

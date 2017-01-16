@@ -47,7 +47,7 @@ class Store extends Component {
 
     componentDidMount(){
         this.props.dispatch(getStoreDetails(this.props.location.query.id));
-        
+
 
     }
 

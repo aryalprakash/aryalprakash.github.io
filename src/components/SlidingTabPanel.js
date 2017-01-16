@@ -28,6 +28,7 @@ export  default class SlidingTabPanel extends TabPanel{
             left: 0,
             endIndex: props.maxChildren + 1
         };
+
     }
 
     constructor(props){
@@ -35,9 +36,13 @@ export  default class SlidingTabPanel extends TabPanel{
         this.initialize(props);
     }
 
-    componentWillReceiveProps(props){
-        this.initialize(props);
+    componentWillReceiveProps(nextProps){
+        console.log("nextProps1 : ",nextProps);
+
+        this.initialize(nextProps);
+
     }
+
 
     gonext(){
         if(this.state.endIndex < this.state.totalChild){
