@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
 
 import reducers from './reducers';
@@ -10,14 +11,16 @@ import App from './App';
 
 require('../css/main.css');
 
-// const store = createStore(
-//     InfiniaStores,
-//     applyMiddleware(thunk)
-// );
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const store = createStore(
+    InfiniaStores,
+    composeWithDevTools(
+        applyMiddleware(thunk),
+    )
+);
+// const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(InfiniaStores)}>
+    <Provider store={store}>
         <App/>
     </Provider>
    , document.getElementById('root'));

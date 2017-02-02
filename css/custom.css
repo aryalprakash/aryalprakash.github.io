@@ -20,6 +20,18 @@ p, h3, h4, h5, h6 {
     background-size: cover;
     background-attachment: fixed;
 }
+.login-container .control-label{
+    font-size: 12px;
+}
+.login-container .form-group input{
+    height: 30px;
+}
+.login-container .col-md-3{
+    padding-left: 0;
+}
+.form-elements{
+    margin-top: 10px;
+}
 .form-group{
     padding: 5px;
 }
@@ -416,3 +428,66 @@ option{
 .fa-question-circle{
     font-size: 1.5em;
 }
+/*For dropdown on hover for cart start*/
+.myDropdown{
+    position: relative;
+    display: inline-block;
+    margin: 7px;
+}
+
+.dropdown-content {
+    padding: 5px 2px;
+    display: none;
+
+    position: absolute;
+    background-color: #fafafa;
+    color: #737373;
+    min-width: 440px;
+
+    box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0px;
+
+
+}
+.dropdown-content .row{
+    margin: auto;
+}
+.dropdown-content:before {
+    position: absolute;
+    top: -7px;
+    right: 15px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-left: 7px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: '';
+}
+
+.dropdown-content:after {
+    float: right;
+    position: absolute;
+    top: -6px;
+    right: 16px;
+    display: inline-block;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    border-left: 6px solid transparent;
+    content: '';
+
+}
+
+.myDropdown:hover .dropdown-content {
+    display: block;
+
+}
+.cart{
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+/*For dropdown on hover for cart end*/

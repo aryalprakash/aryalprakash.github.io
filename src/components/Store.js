@@ -132,7 +132,7 @@ class Store extends Component {
                         >
                             <TabList className="main-tab" style={styles.tab}>
                                 <Tab>Regular Offer</Tab>
-                                <Tab>Walmart Deals</Tab>
+                                <Tab>{storeDetails[0].display_name} Deals</Tab>
                             </TabList>
                             {/*For regular offer*/}
                             <TabPanel>

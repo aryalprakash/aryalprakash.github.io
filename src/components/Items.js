@@ -4,11 +4,15 @@
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { connect } from 'react-redux';
+
 import Header from './Header'
 import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
 import ProductList from '../containers/product-list';
+import {getStoreDetails} from '../actions/infinia.js'
+
 
 let styles= {
     tab:{
@@ -20,7 +24,7 @@ let styles= {
     }
 }
 
-export default class Items extends Component {
+class Items extends Component {
     constructor() {
         super();
         this.state = {
@@ -34,10 +38,10 @@ export default class Items extends Component {
         }
     }
 
-    add(){
+    add(value){
+        console.log("returned value",value);
         this.setState({
-            count: this.state.count+1,
-            cart: this.state.cart+1
+            cart: value
         })
     }
 
@@ -49,6 +53,11 @@ export default class Items extends Component {
     }
 
     render() {
+
+        let {storeDetails} = this.props;
+        {storeDetails == undefined && this.props.getStoreDetails(this.props.location.query.storeID)}
+        console.log('storeDetails in item page',storeDetails);
+
         return (
           <div className="mycontainer">
             <Header cart={this.state.cart} />
@@ -58,227 +67,55 @@ export default class Items extends Component {
                 <div className="select-cat">Chicken
                 </div>
             </div>
+            {storeDetails &&
             <div className="main-content">
-                <div className="sidebar-left">
-                    <div className="card profile">
-                        <div className="store-image">
-                            <img src="../../img/store/walmart.jpg" />
-                        </div>
-                        <div className="store-profile-name">Walmart Stores</div>
-                        <div className="store-profile-address">Hile Road, Kathmandu</div>
-                    </div>
-                    <div className="card">
-                        Filters Here
-                    </div>
-
+              <div className="sidebar-left">
+                <div className="card profile">
+                  <div className="store-image">
+                    <img src="../../img/store/walmart.jpg" />
+                  </div>
+                  <div className="store-profile-name">{storeDetails[0].display_name}</div>
+                  <div className="store-profile-address">{storeDetails[0].street}, {storeDetails[0].state}</div>
                 </div>
-                <div className="card center-content">
-                    <div className="store-title relative">
-                        <Tabs
-                            onSelect={this.handleSelect}
-                            selectedIndex={0}
-                            style={styles.tabcontent}
-                        >
-                            <TabList className="main-tab" style={styles.tab}>
-                                <Tab >Regular Offer</Tab>
-                                <Tab>Walmart Deals</Tab>
-                            </TabList>
-                            <TabPanel>
-                                <div className="items">
-                                    <div className="item-category">Chicken Parts</div>
-                                    <div className="all-items-list">
-
-                                        <div className="item-hover-card">
-                                            <div className="item-hover-card-thumb">
-                                                <div className="cart-counter">
-                                                    <img src="../../img/infinia/cart1.png" />
-                                                    {this.state.count}
-                                                </div>
-                                                <img src="../../img/store/Chicken.jpg" />
-                                            </div>
-                                            <div className="item-details">
-                                                <div className="item-name">Chicken Wings</div>
-                                                <div className="item-price">Rs. 300</div>
-
-                                                <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
-                                                <div className="item-add-cart">
-                                                    <div className="box click" onClick={_=>this.remove()}>-</div>
-                                                    <div className="count">{this.state.count}</div>
-                                                    <div className="box click" onClick={_=>this.add()}>+</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="item-hover-card">
-                                            <div className="item-hover-card-thumb">
-                                                <div className="cart-counter">
-                                                    <img src="../../img/infinia/cart1.png" />
-                                                    {this.state.count}
-                                                </div>
-                                                <img src="../../img/store/b.jpg" />
-                                            </div>
-                                            <div className="item-details">
-                                                <div className="item-name">Chicken Breast</div>
-                                                <div className="item-price">Rs. 150</div>
-                                                <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
-                                                <div className="item-add-cart">
-                                                    <div className="box click" onClick={_=>this.remove()}>-</div>
-                                                    <div className="count">{this.state.count}</div>
-                                                    <div className="box click" onClick={_=>this.add()}>+</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="item-hover-card">
-                                            <div className="item-hover-card-thumb">
-                                                <div className="cart-counter">
-                                                    <img src="../../img/infinia/cart1.png" />
-                                                    {this.state.count}
-                                                </div>
-                                                <img src="../../img/store/d.jpg" />
-                                            </div>
-                                            <div className="item-details">
-                                                <div className="item-name">Chicken Legs</div>
-                                                <div className="item-price">Rs. 100</div>
-                                                <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
-                                                <div className="item-add-cart">
-
-                                                    <div className="box click" onClick={_=>this.remove()}>-</div>
-                                                    <div className="count">{this.state.count}</div>
-                                                    <div className="box click" onClick={_=>this.add()}>+</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="item-hover-card">
-                                            <div className="item-hover-card-thumb">
-                                                <div className="cart-counter">
-                                                    <img src="../../img/infinia/cart1.png" />
-                                                    {this.state.count}
-                                                </div>
-                                                <img src="../../img/store/Chicken.jpg" />
-                                            </div>
-                                            <div className="item-details">
-                                                <div className="item-name">Chicken Heads</div>
-                                                <div className="item-price">Rs. 200</div>
-                                                <div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>
-                                                <div className="item-add-cart">
-                                                    <div className="box click" onClick={_=>this.remove()}>-</div>
-                                                    <div className="count">{this.state.count}</div>
-                                                    <div className="box click" onClick={_=>this.add()}>+</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    {/*<div className="line margin10"></div>*/}
-                                    {/*<div className="item-category">Full Chicken</div>*/}
-                                    {/*<div className="all-items-list">*/}
-
-
-                                        {/*<div className="item-hover-card">*/}
-                                            {/*<div className="item-hover-card-thumb">*/}
-                                                {/*<div className="cart-counter">*/}
-                                                    {/*<img src="../../img/infinia/cart1.png" />*/}
-                                                    {/*{this.state.count}*/}
-                                                {/*</div>*/}
-                                                {/*<img src="../../img/store/Chicken.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-details">*/}
-                                                {/*<div className="item-name">Chicken Wings</div>*/}
-                                                {/*<div className="item-price">Rs. 300</div>*/}
-                                                {/*<div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>*/}
-
-                                                {/*<div className="item-add-cart">*/}
-                                                    {/*<div className="box click" onClick={_=>this.remove()}>-</div>*/}
-                                                    {/*<div className="count">{this.state.count}</div>*/}
-                                                    {/*<div className="box click" onClick={_=>this.add()}>+</div>*/}
-                                                {/*</div>*/}
-                                            {/*</div>*/}
-                                        {/*</div>*/}
-
-                                        {/*<div className="item-hover-card">*/}
-                                            {/*<div className="item-hover-card-thumb">*/}
-                                                {/*<div className="cart-counter">*/}
-                                                    {/*<img src="../../img/infinia/cart1.png" />*/}
-                                                    {/*{this.state.count}*/}
-                                                {/*</div>*/}
-                                                {/*<img src="../../img/store/Chicken.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-details">*/}
-                                                {/*<div className="item-name">Chicken Breast</div>*/}
-                                                {/*<div className="item-price">Rs. 300</div>*/}
-                                                {/*<div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>*/}
-
-                                                {/*<div className="item-add-cart">*/}
-                                                    {/*<div className="box click" onClick={_=>this.remove()}>-</div>*/}
-                                                    {/*<div className="count">{this.state.count}</div>*/}
-                                                    {/*<div className="box click" onClick={_=>this.add()}>+</div>*/}
-                                                {/*</div>*/}
-                                            {/*</div>*/}
-                                        {/*</div>*/}
-
-                                        {/*<div className="item-hover-card">*/}
-                                            {/*<div className="item-hover-card-thumb">*/}
-                                                {/*<div className="cart-counter">*/}
-                                                    {/*<img src="../../img/infinia/cart1.png" />*/}
-                                                    {/*{this.state.count}*/}
-                                                {/*</div>*/}
-                                                {/*<img src="../../img/store/Chicken.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-details">*/}
-                                                {/*<div className="item-name">Chicken Legs</div>*/}
-                                                {/*<div className="item-price">Rs. 300</div>*/}
-                                                {/*<div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>*/}
-
-                                                {/*<div className="item-add-cart">*/}
-                                                    {/*<div className="box click" onClick={_=>this.remove()}>-</div>*/}
-                                                    {/*<div className="count">{this.state.count}</div>*/}
-                                                    {/*<div className="box click" onClick={_=>this.add()}>+</div>*/}
-                                                {/*</div>*/}
-                                            {/*</div>*/}
-                                        {/*</div>*/}
-
-                                        {/*<div className="item-hover-card">*/}
-                                            {/*<div className="item-hover-card-thumb">*/}
-                                                {/*<div className="cart-counter">*/}
-                                                    {/*<img src="../../img/infinia/cart1.png" />*/}
-                                                    {/*{this.state.count}*/}
-                                                {/*</div>*/}
-                                                {/*<img src="../../img/store/Chicken.jpg" />*/}
-                                            {/*</div>*/}
-                                            {/*<div className="item-details">*/}
-                                                {/*<div className="item-name">Chicken Heads</div>*/}
-                                                {/*<div className="item-price">Rs. 300</div>*/}
-                                                {/*<div className="item-description">SKU: 00AD<br/>Brand: Mukharjee<br/>COO: Dubai<br/>Stock: 200</div>*/}
-
-                                                {/*<div className="item-add-cart">*/}
-                                                    {/*<div className="box click" onClick={_=>this.remove()}>-</div>*/}
-                                                    {/*<div className="count">{this.state.count}</div>*/}
-                                                    {/*<div className="box click" onClick={_=>this.add()}>+</div>*/}
-                                                {/*</div>*/}
-                                            {/*</div>*/}
-                                        {/*</div>*/}
-
-                                    {/*</div>*/}
-
-                                    <div className="line margin10"></div>
-                                    <div className="item-category">Half Chicken</div>
-                                    <ProductList catName={this.props.location.query.catName} storeID={this.props.location.query.storeID}/>
-
-                                </div>
-                            </TabPanel>
-                            <TabPanel>
-                                <h2>Hello from Bar</h2>
-                            </TabPanel>
-                        </Tabs>
-                        <div className="search-box absolute-search"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
-                    </div>
-                {this.state.cart>0?<Link to="/checkout" className="link"><div className="fixed-bottom">Proceed to Checkout</div></Link>:null}
+                <div className="card">
+                  Filters Here
                 </div>
-                <Deals />
+
+              </div>
+              <div className="card center-content">
+                <div className="store-title relative">
+                  <Tabs
+                    onSelect={this.handleSelect}
+                    selectedIndex={0}
+                    style={styles.tabcontent}
+                  >
+                    <TabList className="main-tab" style={styles.tab}>
+                      <Tab >Regular Offer</Tab>
+                      <Tab>{storeDetails[0].display_name} Deals</Tab>
+                    </TabList>
+                    <TabPanel>
+                      <div className="items">
+                        <ProductList callback={this.add.bind(this)} catName={this.props.location.query.catName} storeID={this.props.location.query.storeID}/>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <h2>Hello from Bar</h2>
+                    </TabPanel>
+                  </Tabs>
+                  <div className="search-box absolute-search"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
+                </div>
+                {/*{this.state.cart>0?<Link to="/checkout" className="link"><div className="fixed-bottom">Proceed to Checkout</div></Link>:null}*/}
+              </div>
+              <Deals />
             </div>
+
+            }
             <Footer />
         </div>)
     }
 }
+
+const mapStateToProps = ({storeDetails}) => ({storeDetails});
+
+
+export default connect(mapStateToProps,{ getStoreDetails })( Items )

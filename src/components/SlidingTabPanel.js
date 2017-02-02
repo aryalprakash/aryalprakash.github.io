@@ -37,8 +37,6 @@ export  default class SlidingTabPanel extends TabPanel{
     }
 
     componentWillReceiveProps(nextProps){
-        console.log("nextProps1 : ",nextProps);
-
         this.initialize(nextProps);
 
     }

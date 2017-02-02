@@ -13,6 +13,7 @@ import {
     GET_PRODUCTS_LIST,
     GET_PRODUCT_DETAILS,
     GET_STORE_DETAILS,
+    GET_CART_ITEMS,
     } from '../constants/constants.js'
 import { sortBy, orderBy } from 'lodash';
 
@@ -51,7 +52,7 @@ export function getStoresList(category){
 export function getStoreDetails(id) {
     return function (dispatch) {
         fetch(API_URL1+'/stores?id='+id,{method: 'get'}).then(response => response.json()).then(res=> {
-            console.log('from gcs server',res.results);
+            console.log('from gcs server storeDetails:',res.results);
             dispatch(gotStoreDetails(res.results));
         })
 
@@ -137,8 +138,8 @@ export function getProductsList(id, catName) {
         //     console.log(res);
         //     dispatch(gotProductsList(res.data));
         // })
-        fetch(API_URL1+'/stocks?type3__category__iendswith='+catName+'&store='+id,{method: 'get'}).then(response => response.json()).then(res=> {
-            console.log('from gcs server',res);
+        fetch(API_URL1+'/stocks?type3='+catName+'&store='+id,{method: 'get'}).then(response => response.json()).then(res=> {
+            console.log('from gcs server product list:',res);
             dispatch(gotProductsList(res.results));
         })
     }
@@ -161,3 +162,93 @@ export function gotProductDetails(res) {
     return {type: GET_PRODUCT_DETAILS, data: res}
 }
 
+export function addToCart(id, count){
+
+    return function (dispatch) {
+        return fetch(API_URL1+'/add_items_to_cart', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                items:[
+                    {
+                        id: id,
+                        count: count,
+
+                    }
+                ],
+            })
+        }).then(response => response.json()).then(res =>{
+            console.log("response after adding to cart:",res);
+            if(res.code == 200){
+                dispatch(getCartItems());
+                return res;
+            }
+        });
+    }
+
+}
+
+export function removeFromCart(id) {
+  return function (dispatch) {
+    return fetch(API_URL1+'/delete_cart_items', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+            id: id
+      })
+    }).then(response => response.json()).then(res =>{
+      if(res.code == 200){
+        dispatch(getCartItems());
+        return res;
+      }
+    });
+  }
+}
+
+export function setCartItem(id, count) {
+  return function (dispatch) {
+    return fetch(API_URL1+'/set_items_in_cart', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        items:[
+          {
+            id: id,
+            count: count,
+
+          }
+        ],
+      })
+    }).then(response => response.json()).then(res =>{
+      if(res.code == 200){
+        dispatch(getCartItems());
+        return res;
+      }
+    });
+  }
+}
+
+export function getCartItems() {
+    return function (dispatch) {
+        fetch(API_URL1+"/get_cart_items",{method: 'get', credentials: 'include'}).then(response => response.json()).then(res =>{
+            // console.log("get cart items",res);
+            dispatch(gotCartItems(res));
+        });
+    }
+
+}
+export function gotCartItems(res) {
+    return{type: GET_CART_ITEMS, data: res}
+}

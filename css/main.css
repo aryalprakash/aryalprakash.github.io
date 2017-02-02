@@ -1246,9 +1246,11 @@ a.control_next {
 
 .form-options{
     font-size: 13px;
+    margin-top: 10px;
 }
 
 .forget{
+    margin-top: 7px;
     float: right;
 }
 

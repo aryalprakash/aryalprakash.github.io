@@ -12,6 +12,7 @@ import Checkout from './components/Checkout';
 import LoginPage from './components/Login';
 import RegisterPage from './components/Register';
 import Details from './components/details';
+import CartPage from './components/CartPage';
 
 export default class App extends Component {
   render() {
@@ -29,6 +30,7 @@ export default class App extends Component {
       <Route path="/register" component={RegisterPage} />
       <Route path="/search/:category" component={Search} />
       <Route path="/details" component={Details} />
+      <Route path="/cart" component={CartPage} />
     </Router>
   }
 }
