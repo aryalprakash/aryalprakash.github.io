@@ -1198,7 +1198,7 @@ a.control_next {
 .login-container{
     align-items: center;
     display: flex;
-    width: 350px;
+    width: 460px;
     margin: auto;
 }
 
@@ -1278,7 +1278,7 @@ a.control_next {
     justify-content: center;
     cursor: pointer;
     height: 40px;
-    width: 130px;
+    width: 45%;
     border-radius: 2px;
 }
 
@@ -1295,7 +1295,7 @@ a.control_next {
     justify-content: center;
     cursor: pointer;
     height: 40px;
-    width: 130px;
+    width: 45%;
     border-radius: 2px;
 }
 

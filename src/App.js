@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Router, Route, hashHistory} from 'react-router'
+import {Router, Route, browserHistory} from 'react-router'
 import Infinia from './components/Infinia';
 import Infinia2 from './components/Infinia2';
 import Infinia3 from './components/Infinia3';
@@ -10,13 +10,13 @@ import Store from './components/Store';
 import Items from './components/Items';
 import Checkout from './components/Checkout';
 import LoginPage from './components/Login';
-import RegisterPage from './components/Register';
+import RegisterPage from './components/SignupPage';
 import Details from './components/details';
 import CartPage from './components/CartPage';
 
 export default class App extends Component {
   render() {
-    return <Router history={hashHistory}>
+    return <Router history={browserHistory}>
       <Route path="/" component={Infinia} />
       <Route path="/infinia2" component={Infinia2} />
       <Route path="/infinia3" component={Infinia3} />

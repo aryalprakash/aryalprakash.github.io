@@ -9,7 +9,7 @@ import Register from './Register.js'
 import Login from './Login.js'
 import 'rc-dialog/assets/index.css';
 
-import { getCartItems, removeFromCart, setCartItem } from '../actions/infinia';
+import { getCartItems, removeFromCart, setCartItem, userSignUp } from '../actions/infinia';
 
 let style={
     zIndex: '111111'
@@ -360,7 +360,7 @@ class Header extends Component{
         this.state = {
             class: '',
             visible: false,
-            width: 400,
+            width: 500,
             destroyOnClose: false,
             center: true,
             login: true
@@ -483,7 +483,7 @@ class Header extends Component{
                   </div>
                   :
                   <div>
-                    <Register />
+                    <Register userSignUp={this.props.userSignUp}/>
                   </div>
                 }
                 </Dialog>
@@ -574,6 +574,11 @@ class Header extends Component{
 
 }
 
+Header.propTypes = {
+  userSignUp: React.PropTypes.func.isRequired
+}
+
+
 const mapStateToProps = ({cart}) => ({cart});
 
-export default connect(mapStateToProps, { getCartItems, removeFromCart, setCartItem })(Header);
+export default connect(mapStateToProps, { getCartItems, removeFromCart, setCartItem, userSignUp })(Header);

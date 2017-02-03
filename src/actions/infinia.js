@@ -5,6 +5,7 @@ import { dispatch } from 'redux'
 //require('isomorphic-fetch');
 
 import {
+    SIGN_UP_URL,
     API_URL,
     API_URL1,
     GET_MAIN_CATEGORIES,
@@ -251,4 +252,22 @@ export function getCartItems() {
 }
 export function gotCartItems(res) {
     return{type: GET_CART_ITEMS, data: res}
+}
+
+export function userSignUp(userData) {
+  console.log("user data",userData);
+  const postData = `username=${userData.username}&first_name=${userData.firstName}&last_name=${userData.lastName}&email=${userData.email}&password=${userData.password}`
+  return function (dispatch) {
+    return fetch(SIGN_UP_URL+'/complete/email/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      credentials: 'include',
+      body: postData
+    }).then(res =>{
+        console.log(res)
+    });
+  }
+
 }

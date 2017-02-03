@@ -23,11 +23,17 @@ p, h3, h4, h5, h6 {
 .login-container .control-label{
     font-size: 12px;
 }
-.login-container .form-group input{
+.login-container .form-group input, .login-container select{
     height: 30px;
 }
 .login-container .col-md-3{
     padding-left: 0;
+    padding-right: 0;
+}
+.login-container .help-block{
+    font-size: 0.8em;
+    margin-left: 30%;
+    margin-bottom: 0;
 }
 .form-elements{
     margin-top: 10px;
