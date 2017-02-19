@@ -495,5 +495,8 @@ option{
 }
 
 
-
 /*For dropdown on hover for cart end*/
+.my-facebook-button-class{
+    background-color: #3856a0;
+    border: none;
+}

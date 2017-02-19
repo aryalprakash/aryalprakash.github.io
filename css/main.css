@@ -1272,14 +1272,20 @@ a.control_next {
 
 .facebook{
     background-color: #3856a0;
+    padding-left: 30%;
+    padding-right: 30%;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     height: 40px;
-    width: 45%;
+    width: 100%;
     border-radius: 2px;
+}
+.facebook i{
+    font-size: 1.3em;
+    margin-right: 5px;
 }
 
 .facebook img{

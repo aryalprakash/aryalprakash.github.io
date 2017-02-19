@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Router, Route, browserHistory} from 'react-router'
+import {Router, Route, browserHistory} from 'react-router';
+import { connect } from 'react-redux';
 import Infinia from './components/Infinia';
 import Infinia2 from './components/Infinia2';
 import Infinia3 from './components/Infinia3';
@@ -9,12 +10,20 @@ import Search from './components/Search';
 import Store from './components/Store';
 import Items from './components/Items';
 import Checkout from './components/Checkout';
-import LoginPage from './components/Login';
+import LoginPage from './components/SigninPage';
 import RegisterPage from './components/SignupPage';
 import Details from './components/details';
 import CartPage from './components/CartPage';
+import RedirectPage from './components/RedirectPage';
+import VerifiedPage from './components/VerifiedPage';
+import { getAppCredentials } from './actions/authActions';
 
-export default class App extends Component {
+class App extends Component {
+
+  componentDidMount(){
+    this.props.getAppCredentials();
+  }
+
   render() {
     return <Router history={browserHistory}>
       <Route path="/" component={Infinia} />
@@ -31,6 +40,10 @@ export default class App extends Component {
       <Route path="/search/:category" component={Search} />
       <Route path="/details" component={Details} />
       <Route path="/cart" component={CartPage} />
+      <Route path="/redirect" component={RedirectPage}/>
+      <Route path="/verified" component={VerifiedPage}/>
     </Router>
   }
 }
+
+export default connect(null, { getAppCredentials })(App);

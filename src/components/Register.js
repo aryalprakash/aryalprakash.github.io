@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
+import { connect } from 'react-redux';
+import FacebookLogin from 'react-facebook-login';
 
-import validateInput from '../validations/signupValidation'
 
-export default class Register extends Component{
+import validateInput from '../validations/signupValidation';
+import { loginWithFacebook } from '../actions/authActions';
+
+class Register extends Component{
 
   constructor(props){
     super(props);
@@ -28,6 +32,26 @@ export default class Register extends Component{
 
     return isValid;
   }
+
+  responseFacebook = (response) => {
+    if(response.status == "not_authorized") {
+      console.log("Please login to the app");
+    }
+    if(response.status == "connected") {
+
+    }
+    console.log(response);
+    this.props.loginWithFacebook(response.accessToken).then(
+      (success) => {
+        console.log('success', success)
+        this.context.router.push('/');
+      },
+      (err) => {
+        console.log('err', err)
+      }
+    );
+
+  };
 
   handleSubmit = (e) =>{
     e.preventDefault();
@@ -63,7 +87,7 @@ export default class Register extends Component{
                   <div className={errors.username ? "form-group has-error": "form-group"}>
                     <label className="col-md-3 control-label">Username</label>
                     <div className="col-md-9">
-                      <input className="form-control" name="username" type="text" value={this.state.username} placeholder="Enter Name" onChange={this.handleChange}/>
+                      <input className="form-control" name="username" type="text" value={this.state.username} placeholder="Enter Username" onChange={this.handleChange}/>
                     </div>
                     {errors.username && <span className="help-block">{errors.username}</span>}
                   </div>
@@ -118,20 +142,31 @@ export default class Register extends Component{
                       <button disabled={this.state.isLoading} type="submit" className="submit-button">Sign Up</button>
                     </div>
                   </div>
-                  <div className="social-login">
-                    <div className="social-label">or Sign Up using</div>
-                    <div className="social-options">
-                      <div className="facebook">
-                        <img src="../../img/facebook.png" />Facebook</div>
-                      <div className="google">
-                        <img src="../../img/google.png" />Google</div>
-                    </div>
-                  </div>
-                  <div className="login-switch">
-                    Already have an account yet? <Link className="link" to="/login">Login.</Link>
-                  </div>
+
                 </div>
               </form>
+              <div className="social-login">
+                <div className="social-label">or Sign Up using</div>
+                <div className="social-options">
+                  <div className="">
+                    <FacebookLogin
+                      appId="204262970008693"
+                      autoLoad={true}
+                      fields="name,email,picture"
+                      textButton=" Facebook"
+                      callback={this.responseFacebook}
+                      cssClass="my-facebook-button-class facebook "
+                      icon="fa-facebook"
+                    />
+                  </div>
+                  <div className="google">
+                    <img src="../../img/google.png" />Google
+                  </div>
+                </div>
+              </div>
+              <div className="login-switch">
+                Already have an account yet? <Link className="link" to="/login">Login.</Link>
+              </div>
 
           </div>
       </div>
@@ -141,4 +176,10 @@ export default class Register extends Component{
 
 Register.propTypes = {
   userSignUp: React.PropTypes.func.isRequired
+};
+
+Register.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
+
+export default connect(null, { loginWithFacebook })(Register);

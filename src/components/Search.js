@@ -2,7 +2,7 @@
  * Created by prakash on 8/29/2016.
  */
 import React, { Component } from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router'
+import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import Header from './Header'
 import Footer from './Footer'

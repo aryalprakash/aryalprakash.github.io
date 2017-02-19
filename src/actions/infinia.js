@@ -21,7 +21,6 @@ import { sortBy, orderBy } from 'lodash';
 let storeList = [];
 export function getMainCategories (){
     return function(dispatch){
-        const url = API_URL
         fetch(API_URL1+"/category_1",{method: 'get'}).then(response => response.json()).then(res => {
             console.log('getMain Categories',res.results);
             dispatch(gotMainCategories(res.results));

@@ -9,9 +9,10 @@ import {
     GET_PRODUCT_DETAILS,
     GET_STORE_DETAILS,
     GET_CART_ITEMS,
+    GET_APP_CREDENTIALS,
     } from '../constants/constants.js';
 
-const initialState = { categories: [], stores: [], products: [], productDetails: [], current_store: []};
+const initialState = { categories: [], stores: [], products: [], productDetails: [], current_store: [], cart: {}};
 
 const InfiniaStores = (state = initialState, action) => {
     console.log('i am in reducer`s infinia.js');
@@ -75,6 +76,11 @@ const InfiniaStores = (state = initialState, action) => {
               ...state,
                 cart: action.data
             };
+        case GET_APP_CREDENTIALS:
+            return{
+              ...state,
+                appCredentials: action.data
+            }
         default:
             return state
     }

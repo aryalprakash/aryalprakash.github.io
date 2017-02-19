@@ -1,12 +1,11 @@
 /**
- * Created by bikash on 2/3/17.
+ * Created by bikash on 2/5/17.
  */
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
-import Register from './Register.js';
-import {userSignUp} from '../actions/infinia';
+import Login from './Login';
 
 const logoStyle = {
   height: 60
@@ -22,7 +21,7 @@ const spanStyle1 = {
 const spanStyle2 = {
   color: 'green',
 };
-class SignupPage extends Component{
+class SigninPage extends Component{
 
   constructor(props){
     super(props);
@@ -32,6 +31,7 @@ class SignupPage extends Component{
   }
 
   render(){
+
     return(
       <div>
         <div className=" center" style={div}>
@@ -44,7 +44,7 @@ class SignupPage extends Component{
         </div>
         <div className="center" style={{background: "#f8f8f8"}}>
           <div>
-            <Register userSignUp={this.props.userSignUp}/>
+            <Login />
           </div>
         </div>
       </div>
@@ -53,8 +53,4 @@ class SignupPage extends Component{
   }
 }
 
-SignupPage.propTypes = {
-  userSignUp: React.PropTypes.func.isRequired
-}
-
-export default connect(null, {userSignUp})(SignupPage);
+export default SigninPage;
