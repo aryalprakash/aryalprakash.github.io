@@ -13,7 +13,7 @@ var credentials;
 export function getAppCredentials() {
   return function (dispatch) {
     fetch(API_URL1+"/api_credentials",{method: 'get'}).then(response => response.json()).then(res => {
-      console.log("appCredentials",res);
+      // console.log("appCredentials",res);
       credentials = res;
       dispatch(gotAppCredentials(res));
     })
@@ -39,10 +39,12 @@ function handleResponse(response) {
 }
 
 export function loginWithFacebook(accessToken) {
-  const data = `grant_type=convert_token&client_id=${credentials.client_id}&client_secret=${credentials.client_secret}&backend=facebook&token=${accessToken}`;
-  console.log('data', data);
+  localStorage.setItem('accessToken', accessToken);
+  // const data = `grant_type=convert_token&client_id=${credentials.client_id}&client_secret=${credentials.client_secret}&backend=facebook&token=${accessToken}`;
+  const data = `code=${accessToken}`;
+
   return function (dispatch) {
-    return fetch(SIGN_UP_URL+'/auth/convert-token/', {
+    return fetch(SIGN_UP_URL+'/api/login/social/session/facebook/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',

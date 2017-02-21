@@ -48,6 +48,7 @@
     "react": "~15.3.2",
     "react-dom": "~15.3.2",
     "react-facebook-login": "^3.4.3",
+    "react-google-autocomplete": "^1.0.12",
     "react-google-map": "~1.0.1",
     "react-google-maps": "~6.0.1",
     "react-image-zoom": "~0.2.0",

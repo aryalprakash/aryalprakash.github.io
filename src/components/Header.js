@@ -199,17 +199,17 @@ class Header extends Component{
                 <div className="myDropdown">
                   <div className="imenu-list" style={{margin: 8}}>
                       <img src="../img/infinia/cart1.png" width="30px" />
-                      {!_.isEmpty(cart) && cart.cart_info.length > 0 ? <span className="head-cart-count">{cart.cart_count}</span>:null}
+                      {!_.isEmpty(cart) && !_.isEmpty(cart.cart_info) && cart.cart_info.length > 0 ? <span className="head-cart-count">{cart.cart_count}</span>:null}
                   </div>
 
                   <div className="dropdown-content">
                     <p style={cartHeaderStyle}>Your Cart</p>
-                    {!_.isEmpty(cart) &&
+                    {!_.isEmpty(cart) && !_.isEmpty(cart.cart_info) &&
                       cart.cart_info.length > 0 ?
                       <div className="cart">
                         {cart.cart_info && cart.cart_info.map((data, index)=>
                           <div key={index} className="cart-content">
-                            {data.stocked_items.map((item, index)=>
+                            {data.itemline_data.map((item, index)=>
                               <div key={index} className="row">
                                 <div className="col-md-6" style={{padding: 5}}>
 

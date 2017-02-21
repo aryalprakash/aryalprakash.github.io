@@ -97,7 +97,7 @@ class CartPage extends Component{
             <h2 style={cartHeaderStyle}>Your Cart</h2>
 
 
-            {cart &&
+            {!_.isEmpty(cart) &&
             cart.cart_info.length > 0 ?
               <div className="col-md-12" style={{fontSize: '1.15em'}}>
                 <div className="row" style={title}>
@@ -108,7 +108,7 @@ class CartPage extends Component{
                 </div>
                 {cart.cart_info && cart.cart_info.map((data, index)=>
                   <div key={index} className="cart-content">
-                    {data.stocked_items.map((item, index)=>
+                    {data.itemline_data.map((item, index)=>
                       <div key={index} className="row">
                         <div className="col-md-4" style={{padding: 5}}>
                           <div className="col-sm-4" style={{paddingRight: 5}}>

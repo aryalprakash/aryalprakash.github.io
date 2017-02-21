@@ -16,6 +16,7 @@ import Details from './components/details';
 import CartPage from './components/CartPage';
 import RedirectPage from './components/RedirectPage';
 import VerifiedPage from './components/VerifiedPage';
+import Profile from './components/profile/Profile';
 import { getAppCredentials } from './actions/authActions';
 
 class App extends Component {
@@ -42,6 +43,9 @@ class App extends Component {
       <Route path="/cart" component={CartPage} />
       <Route path="/redirect" component={RedirectPage}/>
       <Route path="/verified" component={VerifiedPage}/>
+      <Route path="/profile" component={Profile}/>
+
+
     </Router>
   }
 }
