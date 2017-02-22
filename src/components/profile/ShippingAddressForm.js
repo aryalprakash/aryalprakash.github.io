@@ -131,7 +131,7 @@ class ShippingAddressForm extends Component{
         this.context.router.push('/profile');
       },
       (error) => {
-        alert('error');
+        // alert('error');
       }
     );
   };

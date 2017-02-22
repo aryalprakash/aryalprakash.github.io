@@ -502,6 +502,18 @@ option{
 }
 
 /*Style For user Profile*/
+.profile{
+    margin-top: 20px;
+    padding: 15px;
+    /*border: 1px solid #aaaaaa;*/
+    /*border-radius: 2px;*/
+}
+.update-profile form{
+    margin-top: 15px;
+}
+.update-profile .control-label{
+    text-align: left;
+}
 .user-profile span{
     color: #676464;
     padding-right: 5px;
@@ -510,16 +522,24 @@ option{
     color: #676464;
     text-decoration: none;
 }
-.user-profile .card:hover{
-    cursor: pointer;
-    color: #2a6496;
+.active, .active span{
+    background-color: #eaeaea !important;
+    color: #222;
 }
-.user-profile .card:hover span{
-    color: #2a6496;
+.sidebar-title a{
+    color: #474444;
+    text-decoration: none;
 }
-.user-profile a:focus {
-    color: #2a6496;
-}
+/*.user-profile .card:hover{*/
+    /*cursor: pointer;*/
+    /*color: #2a6496;*/
+/*}*/
+/*.user-profile .card:hover span{*/
+    /*color: #2a6496;*/
+/*}*/
+/*.user-profile a:focus {*/
+    /*color: #2a6496;*/
+/*}*/
 .shipping-address{
     margin-top: 15px;
     padding: 10px 10px;

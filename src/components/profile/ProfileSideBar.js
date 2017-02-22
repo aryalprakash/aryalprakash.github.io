@@ -9,31 +9,45 @@ class ProfileSideBar extends Component{
     return(
       <div className="sidebar-left">
         <div className="card sidebar-title">
-          <span className="fa fa-user"/> My Account
+          <Link to="/profile"><span className="fa fa-user"/> My Account</Link>
         </div>
         <div className="user-profile">
-          <Link to="/profile">
-            <div className="card">
+          <Link to="/profile/purchase">
+            <div className={this.props.active == "purchase"? "card active": "card"}>
               <span className="fa fa-shopping-bag"/> My Purchase
             </div>
           </Link>
 
-          <div className="card">
-            <span className="fa fa-star"/> Manage Ratings
-          </div>
+          <Link to="/profile/rating">
+            <div className={this.props.active == "rating"? "card active": "card"}>
+              <span className="fa fa-star"/> Manage Ratings
+            </div>
+          </Link>
 
-          <div className="card">
-            <span className="fa fa-heart"/> My Wishlist
-          </div>
-          <div className="card">
-            <span className="fa fa-address-book"/> Shipping Address
-          </div>
-          <div className="card">
-            <span className="fa fa-envelope"/> My Message
-          </div>
-          <div className="card">
-            <span className="fa fa-cog"/> Settings
-          </div>
+          <Link to="/profile/wishlist">
+            <div className={this.props.active == "wishlist"? "card active": "card"}>
+              <span className="fa fa-heart"/> My Wishlist
+            </div>
+          </Link>
+
+          <Link to="/profile/shipping">
+            <div className={this.props.active == "shipping"? "card active": "card"}>
+              <span className="fa fa-address-book"/> Shipping Address
+            </div>
+          </Link>
+
+          <Link to="/profile/message">
+            <div className={this.props.active == "message"? "card active": "card"}>
+              <span className="fa fa-envelope"/> My Message
+            </div>
+          </Link>
+
+          <Link to="/profile/setting">
+            <div className={this.props.active == "setting"? "card active": "card"}>
+              <span className="fa fa-cog"/> Settings
+            </div>
+          </Link>
+
           <div className="card">
             <span className="fa fa-power-off"/> Logout
           </div>

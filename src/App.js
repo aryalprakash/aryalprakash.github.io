@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Router, Route, browserHistory} from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import { connect } from 'react-redux';
 import Infinia from './components/Infinia';
 import Infinia2 from './components/Infinia2';
@@ -17,6 +17,13 @@ import CartPage from './components/CartPage';
 import RedirectPage from './components/RedirectPage';
 import VerifiedPage from './components/VerifiedPage';
 import Profile from './components/profile/Profile';
+import UserProfile from './components/profile/UserProfile';
+import UserPurchase from './components/profile/UserPurchase';
+import UserRating from './components/profile/UserRating';
+import ShippingAddress from './components/profile/ShippingAddress';
+import UserWishlist from './components/profile/UserWishlist';
+import UserMessage from './components/profile/UserMessage';
+import UserSetting from './components/profile/UserSetting';
 import { getAppCredentials } from './actions/authActions';
 
 class App extends Component {
@@ -43,8 +50,16 @@ class App extends Component {
       <Route path="/cart" component={CartPage} />
       <Route path="/redirect" component={RedirectPage}/>
       <Route path="/verified" component={VerifiedPage}/>
-      <Route path="/profile" component={Profile}/>
+      <Route path="/:profile" component={Profile}>
+        <IndexRoute component={UserProfile}/>
+        <Route path="/:profile/purchase" component={UserPurchase}/>
+        <Route path="/:profile/rating" component={UserRating}/>
+        <Route path="/:profile/wishlist" component={UserWishlist}/>
+        <Route path="/:profile/shipping" component={ShippingAddress}/>
+        <Route path="/:profile/message" component={UserMessage}/>
+        <Route path="/:profile/setting" component={UserSetting}/>
 
+      </Route>
 
     </Router>
   }

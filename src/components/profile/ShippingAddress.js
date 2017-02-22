@@ -5,14 +5,16 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Dialog from 'rc-dialog';
 
+import ProfileSideBar from './ProfileSideBar';
 import ShippingAddressForm from './ShippingAddressForm';
 import { addShippingAddress, getShippingAddress, deleteShippingAddress } from '../../actions/shippingActions';
 
-const data =[
+const shippingAddress =[
   {
     name: "Bikash Shrestha",
     country: "Nepal",
     city: "Kathmandu",
+    type: "work",
     area: "Sankhamul",
     street: "Subekshya Marg",
     buildingName: "Ravibhawan",
@@ -24,6 +26,7 @@ const data =[
     name: "Bikash Shrestha",
     country: "Nepal",
     city: "Kathmandu",
+    type: "villa",
     area: "Sankhamul",
     street: "Subekshya Marg",
     buildingName: "Ravibhawan",
@@ -53,7 +56,7 @@ class ShippingAddress extends Component{
         console.log("shipping addresses got successfully");
       },
       (err) => {
-        alert('error');
+        // alert('error');
       }
     )
   }
@@ -90,7 +93,7 @@ class ShippingAddress extends Component{
 
   render(){
     let dialog;
-    let {shippingAddress} = this.props;
+    // let {shippingAddress} = this.props;
     // console.log('shipping Addresses', shippingAddress);
 
     if (this.state.visible || !this.state.destroyOnClose) {
@@ -109,51 +112,56 @@ class ShippingAddress extends Component{
     }
 
     return(
-      <div>
-        <div className="row">
-          { shippingAddress &&
-            shippingAddress.map((item, index)=>
-              <div key={index} className="col-md-5">
-                <div className="thumbnail shipping-address">
-                  <h4>Shipping Address</h4>
-                  <div className="crud">
-                    <span className="fa fa-edit" style={{color: "#0074D9"}}/>
-                    <span className="fa fa-remove" onClick={()=> this.deleteShippingAddress(item.id)} style={{color: "#c9302c"}} />
+          <div className="main-content">
+            <ProfileSideBar active="shipping"/>
+            <div className="card center-content">
+              <div className="row">
+                { shippingAddress &&
+                shippingAddress.map((item, index)=>
+                  <div key={index} className="col-md-5">
+                    <div className="thumbnail shipping-address">
+                      <h4>Shipping Address</h4>
+                      <div className="crud">
+                        <span className="fa fa-edit" style={{color: "#0074D9"}}/>
+                        <span className="fa fa-remove" onClick={()=> this.deleteShippingAddress(item.id)} style={{color: "#c9302c"}} />
+                      </div>
+                      <div className="line"></div>
+
+                      <p>Name: {item.name} </p>
+                      <p>Phone No: {item.mobile_number} </p>
+                      <p>Country: {item.country} </p>
+                      <p>Address Type: {(item.type).toUpperCase()}</p>
+                      <p>City: {item.city} </p>
+                      <p>Area: {item.area} </p>
+                      {item.company && <p>Company: {item.company}</p>}
+                      <p>Street Name/No: {item.street} </p>
+                      <p>Building Name/No: {item.building} </p>
+                      <p>Nearest Landmark: {item.nearest_landmark} </p>
+                      {item.floor && <p>Floor No: {item.floor} </p>}
+                      {item.apartment && <p>Apartment No: {item.apartment} </p>}
+                      {item.room && <p>Room No: {item.room} </p>}
+                    </div>
                   </div>
-                  <div className="line"></div>
+                )
+                }
+                {shippingAddress && shippingAddress.length == 4 ?
+                  <div className="col-md-10">
+                    <h4 className="alert alert-danger"><i>You can only Add 4 Shipping Addresses</i></h4>
+                  </div>:
+                  <div className="col-md-3" style={{marginTop: 15}}>
+                    <div className="thumbnail add-address" onClick={this.onClick}>
+                      <span className="fa fa-plus-square-o"></span>
+                      <p>Add Address</p>
+                    </div>
+                  </div>
+                }
 
-                  <p>Name: {item.name} </p>
-                  <p>Phone No: {item.mobile_number} </p>
-                  <p>Country: {item.country} </p>
-                  <p>Address Type: {(item.type).toUpperCase()}</p>
-                  <p>City: {item.city} </p>
-                  <p>Area: {item.area} </p>
-                  {item.company && <p>Company: {item.company}</p>}
-                  <p>Street Name/No: {item.street} </p>
-                  <p>Building Name/No: {item.building} </p>
-                  <p>Nearest Landmark: {item.nearest_landmark} </p>
-                  {item.floor && <p>Floor No: {item.floor} </p>}
-                  {item.apartment && <p>Apartment No: {item.apartment} </p>}
-                  {item.room && <p>Room No: {item.room} </p>}
-                </div>
               </div>
-            )
-          }
-          {shippingAddress && shippingAddress.length == 4 ?
-            <div className="col-md-10">
-              <h4 className="alert alert-danger"><i>You can only Add 4 Shipping Addresses</i></h4>
-            </div>:
-            <div className="col-md-3" style={{marginTop: 15}}>
-              <div className="thumbnail add-address" onClick={this.onClick}>
-                <span className="fa fa-plus-square-o"></span>
-                <p>Add Address</p>
-              </div>
+
             </div>
-          }
+            {dialog}
 
-        </div>
-        {dialog}
-      </div>
+          </div>
     );
   }
 }
