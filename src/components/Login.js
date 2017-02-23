@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import  { Link } from 'react-router';
 import FacebookLogin from 'react-facebook-login';
 
+import { loginWithEmail } from '../actions/authActions';
 
-export default class Login extends Component{
+class Login extends Component{
     constructor() {
       super();
       this.state = {
@@ -24,6 +26,15 @@ export default class Login extends Component{
 
     handleSubmit = (e) =>{
       e.preventDefault();
+
+      this.props.loginWithEmail(this.state).then(
+        (success) => {
+          console.log('success', success);
+        },
+        (err) => {
+          console.log('error', err);
+        }
+      );
 
     };
 
@@ -92,3 +103,9 @@ export default class Login extends Component{
         </div>)
     }
 }
+
+Login.propTypes = {
+  loginWithEmail: React.PropTypes.func.isRequired
+}
+
+export default connect(null, { loginWithEmail })(Login);

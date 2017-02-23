@@ -90,13 +90,6 @@ class Details extends Component{
 
         return(
           <div className="mycontainer">
-              <Header/>
-              <div className="bread-crumb">
-                  <div className="select-location">Dubai > Supermarket > Walmart >
-                  </div>
-                  <div className="select-cat">Chicken > Item-Details
-                  </div>
-              </div>
               <div className="main-content ">
                   {productDetails.length>0?productDetails.map(detail=>
                   <div key={detail.id} className="container">
@@ -338,7 +331,6 @@ class Details extends Component{
 
               </div>
 
-              <Footer/>
           </div>
         );
     }

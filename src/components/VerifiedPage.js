@@ -20,7 +20,6 @@ class VerifiedPage extends Component{
   render(){
     return(
       <div className="mycontainer">
-        < Header/>
 
         <div className="main">
           <div className="container">

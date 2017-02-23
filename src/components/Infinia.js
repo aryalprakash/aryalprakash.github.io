@@ -3,8 +3,9 @@
  */
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
-import Header from './Header'
-import Home from './home'
+import Header from './Header';
+import Breadcrumb from './Breadcrumb';
+import Footer from './Footer';
 let style={
     header: {
         background: 'grey'
@@ -50,14 +51,13 @@ export default class Infinia extends Component{
         return(
           <div className="icontainer">
             <Header/>
+            {
+              this.props.children.props.location.pathname !== "/" && <Breadcrumb/>
+            }
             <div>
-              <Home />
+              {this.props.children}
             </div>
-            <div className="ifooter">
-                <div className="imenu-list">About</div>
-                <div className="imenu-list">Terms & Conditions</div>
-                <div className="imenu-list">Policy</div>
-            </div>
+            <Footer/>
         </div>
       );
     }

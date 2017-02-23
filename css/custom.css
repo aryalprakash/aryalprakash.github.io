@@ -1,3 +1,6 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
 p, h3, h4, h5, h6 {
     font-family: "Open Sans";
 }
@@ -523,23 +526,13 @@ option{
     text-decoration: none;
 }
 .active, .active span{
-    background-color: #eaeaea !important;
+    background-color: #eee !important;
     color: #222;
 }
 .sidebar-title a{
-    color: #474444;
+    color: #2a6496;
     text-decoration: none;
 }
-/*.user-profile .card:hover{*/
-    /*cursor: pointer;*/
-    /*color: #2a6496;*/
-/*}*/
-/*.user-profile .card:hover span{*/
-    /*color: #2a6496;*/
-/*}*/
-/*.user-profile a:focus {*/
-    /*color: #2a6496;*/
-/*}*/
 .shipping-address{
     margin-top: 15px;
     padding: 10px 10px;
@@ -574,4 +567,18 @@ option{
 }
 .pac-container{
     z-index: 1111111;
+}
+.item-purchased{
+    padding: 10px;
+    /*border: 1px solid #ddd;*/
+    -webkit-box-shadow: 0 0 2px #aaa;
+    -moz-box-shadow: 0 0 2px #aaa;
+    box-shadow: 0 0 2px #aaa;
+}
+.item-purchased .line{
+    margin-bottom: 10px;
+}
+.item-purchased h5{
+    margin-top: 0;
+    margin-bottom: 5px;
 }

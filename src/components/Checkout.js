@@ -22,25 +22,6 @@ export default class Checkout extends Component {
     }
     render() {
         return (<div className="mycontainer">
-            <Header />
-            <div className="bread-crumb">
-                <div className="select-location">Location:
-                    <select>
-                        <option>Dubai</option>
-                        <option>Qatar</option>
-                        <option>Nepal</option>
-                    </select>
-                </div>
-                <div className="select-cat">Category:
-                    <select>
-                        <option>Supermarket</option>
-                        <option>Fashion</option>
-                        <option>Electronics</option>
-                        <option>Kids' Wear</option>
-                    </select>
-
-                </div>
-            </div>
             <div className="main-content">
                 <div className="sidebar-left">
                     <div className="card profile">
@@ -157,7 +138,6 @@ export default class Checkout extends Component {
                 </div>
                 <Deals />
             </div>
-            <Footer />
         </div>)
     }
 }

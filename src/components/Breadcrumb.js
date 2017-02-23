@@ -23,9 +23,18 @@ class Breadcrumb extends Component{
           </select>
 
         </div>
+        <div className="breadcrumbPath">
+          
+        </div>
       </div>
+      
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    path: state.path
+  }
+}
 export default Breadcrumb;

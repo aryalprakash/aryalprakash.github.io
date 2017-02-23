@@ -87,10 +87,7 @@ class CartPage extends Component{
 
     return(
       <div className="mycontainer">
-        <Header cart={this.state.cart} />
-        <div className="bread-crumb">
 
-        </div>
         <div className="main-content">
 
           <div className="card center-content">

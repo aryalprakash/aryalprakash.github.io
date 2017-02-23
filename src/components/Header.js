@@ -185,7 +185,7 @@ class Header extends Component{
 
           <div className={`fheader blue head-border `+this.state.class}>
             <Link to="/" className="link"><div className="ilogo">
-                <img src="./img/infinia/logo.png" />
+                <img src={require("../../img/infinia/logo.png")} />
                 <div className="ilogo-text"><span style={spanStyle1}>Infinia</span><span style={spanStyle2}>Stores</span></div>
             </div></Link>
             {location.pathname != "/register" &&
@@ -198,7 +198,7 @@ class Header extends Component{
                 <div className="imenu-list" onClick={this.Reg}>Register</div>
                 <div className="myDropdown">
                   <div className="imenu-list" style={{margin: 8}}>
-                      <img src="../img/infinia/cart1.png" width="30px" />
+                      <img src={require("../../img/infinia/cart1.png")}  width="30px"/>
                       {!_.isEmpty(cart) && !_.isEmpty(cart.cart_info) && cart.cart_info.length > 0 ? <span className="head-cart-count">{cart.cart_count}</span>:null}
                   </div>
 

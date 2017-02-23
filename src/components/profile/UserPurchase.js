@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import ProfileSideBar from './ProfileSideBar';
+import CompletedPurchase from './CompletedPurchase';
 
 
 let styles= {
@@ -36,7 +37,7 @@ class UserPurchase extends Component{
               </TabList>
               <TabPanel>
                 <div className="col-md-12 completed-purchase">
-
+                  <CompletedPurchase/>
                 </div>
               </TabPanel>
 

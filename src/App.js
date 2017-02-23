@@ -6,6 +6,7 @@ import Infinia2 from './components/Infinia2';
 import Infinia3 from './components/Infinia3';
 import Infinia4 from './components/Infinia4';
 import Infinia5 from './components/Infinia5';
+import Home from './components/home';
 import Search from './components/Search';
 import Store from './components/Store';
 import Items from './components/Items';
@@ -33,35 +34,37 @@ class App extends Component {
   }
 
   render() {
-    return <Router history={browserHistory}>
-      <Route path="/" component={Infinia} />
-      <Route path="/infinia2" component={Infinia2} />
-      <Route path="/infinia3" component={Infinia3} />
-      <Route path="/infinia4" component={Infinia4} />
-      <Route path="/infinia5" component={Infinia5} />
-      <Route path="/search" component={Search} />
-      <Route path="/store" component={Store} />
-      <Route path="/items" component={Items} />
-      <Route path="/checkout" component={Checkout} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/register" component={RegisterPage} />
-      <Route path="/search/:category" component={Search} />
-      <Route path="/details" component={Details} />
-      <Route path="/cart" component={CartPage} />
-      <Route path="/redirect" component={RedirectPage}/>
-      <Route path="/verified" component={VerifiedPage}/>
-      <Route path="/:profile" component={Profile}>
-        <IndexRoute component={UserProfile}/>
-        <Route path="/:profile/purchase" component={UserPurchase}/>
-        <Route path="/:profile/rating" component={UserRating}/>
-        <Route path="/:profile/wishlist" component={UserWishlist}/>
-        <Route path="/:profile/shipping" component={ShippingAddress}/>
-        <Route path="/:profile/message" component={UserMessage}/>
-        <Route path="/:profile/setting" component={UserSetting}/>
+    return (
+      <Router history={browserHistory}>
+        <Route path="/" component={Infinia} >
+          <IndexRoute component={Home}/>
+          <Route path="/infinia2" component={Infinia2} />
+          <Route path="/infinia3" component={Infinia3} />
+          <Route path="/infinia4" component={Infinia4} />
+          <Route path="/infinia5" component={Infinia5} />
+          <Route path="/store" component={Store} />
+          <Route path="/items" component={Items} />
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/search/:category" component={Search} />
+          <Route path="/details" component={Details} />
+          <Route path="/cart" component={CartPage} />
+          <Route path="/redirect" component={RedirectPage}/>
+          <Route path="/verified" component={VerifiedPage}/>
+          <Route path="/user/:user/profile" component={Profile}>
+            <IndexRoute component={UserProfile}/>
+            <Route path="/user/:user/profile/purchase" component={UserPurchase}/>
+            <Route path="/user/:user/profile/rating" component={UserRating}/>
+            <Route path="/user/:user/profile/wishlist" component={UserWishlist}/>
+            <Route path="/user/:user/profile/shipping" component={ShippingAddress}/>
+            <Route path="/user/:user/profile/message" component={UserMessage}/>
+            <Route path="/user/:user/profile/setting" component={UserSetting}/>
+          </Route>
+        </Route>
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
 
-      </Route>
-
-    </Router>
+      </Router>
+    )
   }
 }
 

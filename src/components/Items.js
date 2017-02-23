@@ -60,13 +60,6 @@ class Items extends Component {
 
         return (
           <div className="mycontainer">
-            <Header cart={this.state.cart} />
-            <div className="bread-crumb">
-                <div className="select-location">Dubai > Supermarket > Walmart >
-                </div>
-                <div className="select-cat">Chicken
-                </div>
-            </div>
             {storeDetails &&
             <div className="main-content">
               <div className="sidebar-left">
@@ -110,7 +103,7 @@ class Items extends Component {
             </div>
 
             }
-            <Footer />
+
         </div>)
     }
 }

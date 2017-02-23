@@ -60,25 +60,6 @@ class Store extends Component {
 
         return (
           <div className="mycontainer">
-            <Header />
-            <div className="bread-crumb">
-                <div className="select-location">Location:
-                    <select>
-                        <option>Dubai</option>
-                        <option>Qatar</option>
-                        <option>Nepal</option>
-                    </select>
-                </div>
-                <div className="select-cat">Category:
-                    <select>
-                        <option>Supermarket</option>
-                        <option>Fashion</option>
-                        <option>Electronics</option>
-                        <option>Kids Wear</option>
-                    </select>
-
-                </div>
-            </div>
            {storeDetails ?
             <div className="main-content">
 
@@ -164,7 +145,6 @@ class Store extends Component {
 
                : <p>Sorry<br/>No data</p>
            }
-            <Footer />
         </div>)
     }
 }

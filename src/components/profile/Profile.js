@@ -13,10 +13,7 @@ class Profile extends Component{
   render(){
     return(
       <div className="mycontainer">
-        <Header />
-        <Breadcrumb/>
         {this.props.children}
-        <Footer/>
       </div>
     );
   }

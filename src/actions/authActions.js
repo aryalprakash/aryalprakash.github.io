@@ -38,6 +38,21 @@ function handleResponse(response) {
   }
 }
 
+export function loginWithEmail(data) {
+
+  const newdata = `email=${data.email}&password=${data.password}`;
+  return function (dispatch) {
+    return fetch(SIGN_UP_URL+'/complete/email/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      credentials: 'include',
+      body: newdata
+    }).then(handleResponse);
+  }
+}
+
 export function loginWithFacebook(accessToken) {
   localStorage.setItem('accessToken', accessToken);
   // const data = `grant_type=convert_token&client_id=${credentials.client_id}&client_secret=${credentials.client_secret}&backend=facebook&token=${accessToken}`;

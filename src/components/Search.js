@@ -37,25 +37,6 @@ class Search extends Component {
         let {stores} = this.props;
         console.log('in store page',stores);
         return (<div className="mycontainer">
-                    <Header />
-                    <div className="bread-crumb">
-                        <div className="select-location">My Location:
-                            <select className="selectLocation" onChange={()=> this.selectLocation()}>
-                                <option value="Dubai">Dubai</option>
-                                <option value="Qatar">Qatar</option>
-                                <option value="Nepal">Nepal</option>
-                            </select>
-                        </div>
-                        <div className="select-cat">Category:
-                            <select>
-                                <option>Supermarket</option>
-                                <option>Fashion</option>
-                                <option>Electronics</option>
-                                <option>Kids Wear</option>
-                            </select>
-
-                        </div>
-                    </div>
                     <div className="main-content">
                         <Filter props={this.props} />
                         <div className="card center-content">
@@ -93,7 +74,6 @@ class Search extends Component {
                         </div>
                         <Deals />
                     </div>
-                    <Footer />
             </div>
           )
     }

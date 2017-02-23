@@ -10,6 +10,7 @@ import InfiniaStores from './reducers/infinia.js'
 import App from './App';
 
 require('../css/main.css');
+// require('../css/bootstrap.css');
 
 const store = createStore(
     InfiniaStores,
