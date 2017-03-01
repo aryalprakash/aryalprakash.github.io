@@ -2,6 +2,8 @@ import React from 'react';
 
 import RatePurchase from './RatePurchase';
 import LeaveFeedBack from './LeaveFeedBack';
+import ReturnItem from './ReturnItem';
+import TrackPendingPurchase from './TrackPendingPurchase';
 
 const data = [
   {
@@ -21,6 +23,7 @@ const data = [
       orderDate: "10-22-2016",
       item: [
         {
+          id: 1,
           display_name: "Beef",
           imgPath: "../..../img/sub-category/Beef.png",
           price: 100,
@@ -29,6 +32,7 @@ const data = [
           unit: "kg",
         },
         {
+          id: 2,
           display_name: "Chicken",
           imgPath: "../../../img/sub-category/Chicken.jpg",
           price: 10,
@@ -37,6 +41,7 @@ const data = [
           unit: "kg",
         },
         {
+          id: 3,
           display_name: "Veal",
           imgPath: "../../../img/sub-category/Veal.jpg",
           price: 110,
@@ -45,6 +50,7 @@ const data = [
           unit: "kg",
         },
         {
+          id: 4,
           display_name: "Fish",
           imgPath: "../../../img/sub-category/Fish.jpg",
           price: 150,
@@ -61,13 +67,15 @@ const data = [
   }
 ];
 
-
+const checkboxStyle = {
+  marginTop: 10,
+};
 
 class PurchaseDetails extends React.Component {
 
   state = {
-    display: "none",
-    text: "Show more Details"
+    display: "block",
+    text: "Show less Details"
   };
 
   showMore(){
@@ -82,7 +90,7 @@ class PurchaseDetails extends React.Component {
     console.log("path",this.props.status);
 
     return (
-       <div className="col-md-10" style={{paddingLeft: 5}}>
+       <div className="col-md-12" style={{paddingLeft: 5}}>
         {
           data.map((item,index) =>
           <div key={index} className="purchase-details" style={{padding: 10}}>
@@ -95,8 +103,8 @@ class PurchaseDetails extends React.Component {
               {
                 item.order.item.map((data,index) =>
                 <div key={index} className="col-md-6" style={{padding: 5}}>
-                  <div className="col-md-4" style={{paddingRight: 5}}>
-                    <img className="img-thumbnail" src={require("../../../img/sub-category/Chicken.jpg")} />
+                  <div className="col-md-3" style={{paddingRight: 5}}>
+                    <img className="img-thumbnail" src={require("../../../../img/sub-category/Chicken.jpg")} />
                   </div>
                   <div className="col-md-8">
                     <h4 style={{marginTop: 5, marginBottom: 5, fontSize: "16px"}}><b> {data.display_name}</b></h4>
@@ -108,23 +116,8 @@ class PurchaseDetails extends React.Component {
               }
               <div className="col-md-12">
                 <div className="line"></div>
-                <h4><b>Subtotal:</b> {item.order.subTotal} {item.order.currency}</h4>
+                <h4 style={{marginBottom: 5}}><b>Subtotal:</b> {item.order.subTotal} {item.order.currency}</h4>
               </div>
-
-              {
-                this.props.status === "completed" ?
-                  <div className="col-md-12">
-                    <div className="line"></div>
-                    <RatePurchase/>
-                    <LeaveFeedBack/>
-                  </div>
-                  :
-                  <div className="col-md-12">
-                    <div className="line"></div>
-                      <h4>Track your product</h4>
-                  </div>
-              }
-
 
               <div className="col-md-12">
                 <div className="line"></div>
@@ -153,6 +146,25 @@ class PurchaseDetails extends React.Component {
                 </div>
 
               </div>
+
+
+              {
+                this.props.status === "completed" ?
+                  <div className="col-md-12">
+                    <div className="line"></div>
+
+                    <div className="row">
+                      <RatePurchase/>
+                      <LeaveFeedBack/>
+                      <ReturnItem data={item.order.item} trackingNo={item.tracking_number}/>
+
+                    </div>
+                  </div>
+
+                  :
+                  <TrackPendingPurchase/>
+
+              }
 
             </div>
           </div>

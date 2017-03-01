@@ -1,5 +1,5 @@
 import React from 'react';
-import HorizontalNavBar from './HorizontalNavBar';
+import HorizontalNavBar from '../HorizontalNavBar';
 
 class PendingPurchase extends React.Component {
 

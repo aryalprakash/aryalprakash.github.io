@@ -19,11 +19,11 @@ import RedirectPage from './components/RedirectPage';
 import VerifiedPage from './components/VerifiedPage';
 import Profile from './components/profile/Profile';
 import UserProfile from './components/profile/UserProfile';
-import UserPurchase from './components/profile/UserPurchase';
-import CompletedPurchase from './components/profile/CompletedPurchase';
-import PurchasedItems from './components/profile/PurchasedItems';
-import PendingPurchase from './components/profile/PendingPurchase';
-import PurchaseDetails from './components/profile/PurchaseDetails';
+import UserPurchase from './components/profile/userPurchase/UserPurchase';
+import CompletedPurchase from './components/profile/userPurchase/CompletedPurchase';
+import PurchasedItems from './components/profile/userPurchase/PurchasedItems';
+import PendingPurchase from './components/profile/userPurchase/PendingPurchase';
+import PurchaseDetails from './components/profile/userPurchase/PurchaseDetails';
 import UserRating from './components/profile/UserRating';
 import ShippingAddress from './components/profile/ShippingAddress';
 import UserWishlist from './components/profile/UserWishlist';
@@ -32,7 +32,6 @@ import UserSetting from './components/profile/UserSetting';
 import { getAppCredentials } from './actions/authActions';
 
 import setStatus from './utils/setPurchaseDetailsStatus';
-import  SetPurchaseDetails from './utils/setPurchaseDetailsStatus';
 
 class App extends Component {
 
@@ -62,11 +61,11 @@ class App extends Component {
             <Route component={UserPurchase}>
               <Route path="/user/:user/profile/purchase/completed" component={CompletedPurchase}>
                 <IndexRoute component={setStatus(PurchasedItems)}/>
-                <Route path="/user/:user/profile/purchase/completed/:tracking_number" component={SetPurchaseDetails(PurchaseDetails)}/>
+                <Route path="/user/:user/profile/purchase/completed/:tracking_number" component={setStatus(PurchaseDetails)}/>
               </Route>
               <Route path="/user/:user/profile/purchase/pending" component={PendingPurchase} >
                 <IndexRoute component={setStatus(PurchasedItems)}/>
-                <Route path="/user/:user/profile/purchase/pending/:tracking_number" component={SetPurchaseDetails(PurchaseDetails)}/>
+                <Route path="/user/:user/profile/purchase/pending/:tracking_number" component={setStatus(PurchaseDetails)}/>
               </Route>
             </Route>
             <Route path="/user/:user/profile/rating" component={UserRating}/>

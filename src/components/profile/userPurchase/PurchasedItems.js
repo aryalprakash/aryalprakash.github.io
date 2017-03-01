@@ -30,7 +30,7 @@ class PurchasedItems extends React.Component {
  render() {
    console.log("path",this.props.status);
    return(
-     <div className="item-purchased">
+     <div className="col-md-11 item-purchased">
        <h4 className="order-header">Order ID: 13214141 </h4>
        <div className="line"></div>
        <div className="row invoice-list">
@@ -39,7 +39,7 @@ class PurchasedItems extends React.Component {
              <div key={index} className="col-md-3">
                <Link to={`/user/:user/profile/purchase/${this.state.path}/${item.tracking_number}`}>
                  <div className="thumbnail">
-                   <img src={require("../../../img/store.png")} alt="" />
+                   <img src={require("../../../../img/store.png")} alt="" />
                    <div className="caption">
                      <h5>Store: {item.store_name}</h5>
                      <h5>Tracking No: {item.tracking_number}</h5>

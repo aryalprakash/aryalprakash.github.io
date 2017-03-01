@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import ProfileSideBar from './ProfileSideBar';
+import ProfileSideBar from '../ProfileSideBar';
 import CompletedPurchase from './CompletedPurchase';
 
 

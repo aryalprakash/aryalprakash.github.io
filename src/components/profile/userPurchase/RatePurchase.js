@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
-import StarRating from '../StarRating';
+import StarRating from '../../StarRating';
 
 const styles ={
   rating:{
@@ -20,7 +20,7 @@ class RatePurchase extends Component {
     let {rating} = this.props;
 
     return(
-      <div className="row col-md-6 rate-purchase">
+      <div className="col-md-8 rate-purchase">
         <h4>Rate your shopping experience</h4>
         <label className="col-md-5" style={{paddingLeft: 0}}>
           Overall experience:
