@@ -11,6 +11,7 @@ import {
     GET_CART_ITEMS,
     GET_APP_CREDENTIALS,
     GET_SHIPPING_ADDRESS,
+    GET_RATING,
     } from '../constants/constants.js';
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
     current_store: [],
     cart: {},
     shippingAddress: [],
+    rating: 0,
 };
 
 const InfiniaStores = (state = initialState, action) => {
@@ -95,8 +97,13 @@ const InfiniaStores = (state = initialState, action) => {
               ...state,
                 shippingAddress: action.data
             };
+      case GET_RATING:
+        return{
+          ...state,
+          rating: action.data
+        };
         default:
             return state
     }
-}
+};
 export default InfiniaStores

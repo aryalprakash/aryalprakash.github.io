@@ -10,6 +10,7 @@ import Login from './Login.js'
 import 'rc-dialog/assets/index.css';
 
 import { getCartItems, removeFromCart, setCartItem, userSignUp } from '../actions/infinia';
+import { isLoggedIn } from '../actions/authActions'
 
 let style={
     zIndex: '111111'
@@ -128,6 +129,14 @@ class Header extends Component{
     componentDidMount() {
 
         this.props.getCartItems();
+        this.props.isLoggedIn().then(
+          (success) => {
+            console.log('isloggedIn success',success);
+          },
+          (err) => {
+            console.log('isloggedIn error',err);
+          }
+        );
 
         window.addEventListener('scroll', function (e) {
             let distanceY = window.pageYOffset || document.documentElement.scrollTop,
@@ -268,8 +277,11 @@ class Header extends Component{
 }
 
 Header.propTypes = {
-  userSignUp: React.PropTypes.func.isRequired,
-  cart: React.PropTypes.object
+
+};
+
+Header.contextTypes = {
+  router: React.PropTypes.object.isRequired
 };
 
 Header.defaultProps = {
@@ -284,4 +296,4 @@ function mapStateToProps(state) {
 }
 // const mapStateToProps = ({cart}) => ({cart});
 
-export default connect(mapStateToProps, { getCartItems, removeFromCart, setCartItem, userSignUp })(Header);
+export default connect(mapStateToProps, { getCartItems, removeFromCart, setCartItem, userSignUp, isLoggedIn })(Header);

@@ -128,7 +128,7 @@ class ShippingAddressForm extends Component{
     this.props.addShippingAddress(this.state).then(
       (success) => {
         console.log('Added Successfully');
-        this.context.router.push('/profile');
+        this.context.router.push('/user/:user/profile');
       },
       (error) => {
         // alert('error');
@@ -264,6 +264,6 @@ ShippingAddressForm.propTypes = {
 
 ShippingAddressForm.contextTypes = {
   router: React.PropTypes.object.isRequired
-}
+};
 
 export default ShippingAddressForm;

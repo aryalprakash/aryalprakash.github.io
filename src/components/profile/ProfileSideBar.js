@@ -12,7 +12,7 @@ class ProfileSideBar extends Component{
           <Link to="/user/:user/profile"><span className="fa fa-user"/> My Account</Link>
         </div>
         <div className="user-profile">
-          <Link to="/user/:user/profile/purchase">
+          <Link to="/user/:user/profile/purchase/completed">
             <div className={this.props.active == "purchase"? "card active": "card"}>
               <span className="fa fa-shopping-bag"/> My Purchase
             </div>

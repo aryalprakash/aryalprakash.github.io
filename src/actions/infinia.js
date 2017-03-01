@@ -270,3 +270,7 @@ export function userSignUp(userData) {
   }
 
 }
+
+export function addRating(rating, ratingCategory) {
+  return{type: "GET_RATING", data: rating}
+}

@@ -568,17 +568,118 @@ option{
 .pac-container{
     z-index: 1111111;
 }
+
+.horizontal-navbar{
+    margin-bottom: 15px;
+}
+.horizontal-navbar .nav a{
+    color: #676464;
+}
+.horizontal-navbar .nav .active a{
+    color: #222;
+}
+
 .item-purchased{
-    padding: 10px;
-    /*border: 1px solid #ddd;*/
+    padding: 15px 0;
     -webkit-box-shadow: 0 0 2px #aaa;
     -moz-box-shadow: 0 0 2px #aaa;
     box-shadow: 0 0 2px #aaa;
 }
-.item-purchased .line{
+.item-purchased .line, .purchase-details .line{
+    margin-top: 5px;
     margin-bottom: 10px;
 }
 .item-purchased h5{
     margin-top: 0;
     margin-bottom: 5px;
 }
+.purchase-details span{
+    margin-right: 20px;
+}
+.order-information {
+    margin-bottom: 15px;
+}
+.order-information h4{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.order-information p{
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.order-header {
+  margin-left: 20px;
+  width: 100%;
+  margin-top: 0;
+}
+.invoice-list{
+  margin-top: 15px;
+  margin-left: 5px;
+}
+.invoice-list  img{
+  width: 150px;
+}
+.invoice-list .thumbnail:hover{
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 6px #ccc;
+  -moz-box-shadow: 0 0 6px #ccc;
+  box-shadow: 0 0 6px #ccc;
+}
+.invoice-list a{
+  text-decoration: none;
+}
+.invoice-list .thumbnail .caption{
+  margin-top: 3px;
+  border-top: 1px solid #e2e2e2;
+}
+.invoice-list h5{
+  font-size: 13px;
+  color: #656565;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.show-more {
+    font-size: 13px;
+}
+.show-more span:hover{
+    cursor: pointer;
+    color: #2a6496;
+}
+.rate-purchase label{
+    font-size: 0.9em;
+}
+
+/*Start For StarRating Component*/
+
+.star-rating .checkbox {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+.star-rating .star {
+    display: inline-block;
+    padding: 3px;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 1.5em;
+    color: #ABABAB;
+    transition: color .2s ease-out;
+}
+.star-rating .star:hover {
+    cursor: pointer;
+}
+.star-rating .star.is-selected {
+    color: #FFD700;
+}
+.star-rating .star.is-disabled:hover {
+    cursor: default;
+}
+
+/*End For StarRating Component*/

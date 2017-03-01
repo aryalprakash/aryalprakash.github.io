@@ -10,14 +10,8 @@ import ProfileSideBar from './ProfileSideBar';
 import CompletedPurchase from './CompletedPurchase';
 
 
-let styles= {
-  tab:{
-    borderBottom: '2px solid #f7f7f7'
-  },
-  tabcontent:{
-    width: '100%',
-    marginTop: '10px'
-  }
+let content= {
+  padding: 15,
 };
 
 class UserPurchase extends Component{
@@ -26,28 +20,9 @@ class UserPurchase extends Component{
         <div className="main-content">
           <ProfileSideBar active="purchase"/>
           <div className="card center-content">
-            <Tabs
-              onSelect={this.handleSelect}
-              selectedIndex={0}
-              style={styles.tabcontent}
-            >
-              <TabList className="main-tab" style={styles.tab}>
-                <Tab>Completed Purchase</Tab>
-                <Tab>Pending Purchase</Tab>
-              </TabList>
-              <TabPanel>
-                <div className="col-md-12 completed-purchase">
-                  <CompletedPurchase/>
-                </div>
-              </TabPanel>
-
-              <TabPanel>
-                <div className="col-md-12 pending-purchase">
-                  <p>No Pending Purchase</p>
-                </div>
-              </TabPanel>
-
-            </Tabs>
+            <div className="col-md-12">
+              {this.props.children}
+            </div>
           </div>
         </div>
     );

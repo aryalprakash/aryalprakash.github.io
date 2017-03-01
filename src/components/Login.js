@@ -29,10 +29,11 @@ class Login extends Component{
 
       this.props.loginWithEmail(this.state).then(
         (success) => {
-          console.log('success', success);
+          console.log('login success', success);
+          this.context.router.push('/ ');
         },
         (err) => {
-          console.log('error', err);
+          console.log('login error', err);
         }
       );
 
@@ -106,6 +107,10 @@ class Login extends Component{
 
 Login.propTypes = {
   loginWithEmail: React.PropTypes.func.isRequired
-}
+};
+
+Login.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default connect(null, { loginWithEmail })(Login);

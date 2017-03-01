@@ -20,12 +20,19 @@ import VerifiedPage from './components/VerifiedPage';
 import Profile from './components/profile/Profile';
 import UserProfile from './components/profile/UserProfile';
 import UserPurchase from './components/profile/UserPurchase';
+import CompletedPurchase from './components/profile/CompletedPurchase';
+import PurchasedItems from './components/profile/PurchasedItems';
+import PendingPurchase from './components/profile/PendingPurchase';
+import PurchaseDetails from './components/profile/PurchaseDetails';
 import UserRating from './components/profile/UserRating';
 import ShippingAddress from './components/profile/ShippingAddress';
 import UserWishlist from './components/profile/UserWishlist';
 import UserMessage from './components/profile/UserMessage';
 import UserSetting from './components/profile/UserSetting';
 import { getAppCredentials } from './actions/authActions';
+
+import setStatus from './utils/setPurchaseDetailsStatus';
+import  SetPurchaseDetails from './utils/setPurchaseDetailsStatus';
 
 class App extends Component {
 
@@ -52,7 +59,16 @@ class App extends Component {
           <Route path="/verified" component={VerifiedPage}/>
           <Route path="/user/:user/profile" component={Profile}>
             <IndexRoute component={UserProfile}/>
-            <Route path="/user/:user/profile/purchase" component={UserPurchase}/>
+            <Route component={UserPurchase}>
+              <Route path="/user/:user/profile/purchase/completed" component={CompletedPurchase}>
+                <IndexRoute component={setStatus(PurchasedItems)}/>
+                <Route path="/user/:user/profile/purchase/completed/:tracking_number" component={SetPurchaseDetails(PurchaseDetails)}/>
+              </Route>
+              <Route path="/user/:user/profile/purchase/pending" component={PendingPurchase} >
+                <IndexRoute component={setStatus(PurchasedItems)}/>
+                <Route path="/user/:user/profile/purchase/pending/:tracking_number" component={SetPurchaseDetails(PurchaseDetails)}/>
+              </Route>
+            </Route>
             <Route path="/user/:user/profile/rating" component={UserRating}/>
             <Route path="/user/:user/profile/wishlist" component={UserWishlist}/>
             <Route path="/user/:user/profile/shipping" component={ShippingAddress}/>

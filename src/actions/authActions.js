@@ -38,6 +38,15 @@ function handleResponse(response) {
   }
 }
 
+export function isLoggedIn() {
+  return function (dispatch) {
+    return fetch(SIGN_UP_URL+'/home/', {
+      method: 'GET',
+
+    }).then(handleResponse);
+  }
+}
+
 export function loginWithEmail(data) {
 
   const newdata = `email=${data.email}&password=${data.password}`;
