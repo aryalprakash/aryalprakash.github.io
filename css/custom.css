@@ -508,8 +508,59 @@ option{
 .profile{
     margin-top: 20px;
     padding: 15px;
-    /*border: 1px solid #aaaaaa;*/
-    /*border-radius: 2px;*/
+}
+.following-store .fa-remove {
+    font-size: 15px;
+    color: #d7d7d7;
+}
+.following-store .fa-remove:hover {
+    color: #c9302c;
+    content: 'unfollow';
+}
+.following-store .ribbon{
+    width: 80px;
+}
+.tooltip-bottom {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-bottom .tooltip-text {
+    font-family: "Open Sans", sans-serif;
+    display: none;
+    font-size: 0.7em;
+    width: 54px;
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    top: 20px;
+    right: -5px;
+    z-index: 11111;
+}
+
+.tooltip-bottom:hover .tooltip-text {
+    display: block;
+}
+.following-store a{
+    text-decoration: none;
+    font-size: 85%;
+}
+.following-store img {
+    width: 180px;
+}
+.following-store .thumbnail p{
+    margin: 3px 0;
+    color: #737373;
+}
+.edit-profile span:hover {
+    font-size: 18px;
+    cursor: pointer;
+    color: #0074D9;
 }
 .update-profile form{
     margin-top: 15px;
@@ -621,7 +672,7 @@ option{
 .invoice-list  img{
   width: 150px;
 }
-.invoice-list .thumbnail:hover{
+.following-store .thumbnail:hover, .invoice-list .thumbnail:hover{
   cursor: pointer;
   -webkit-box-shadow: 0 0 6px #ccc;
   -moz-box-shadow: 0 0 6px #ccc;
