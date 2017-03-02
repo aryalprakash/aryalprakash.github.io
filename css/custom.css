@@ -683,3 +683,119 @@ option{
 }
 
 /*End For StarRating Component*/
+
+/*For tracking pending purchase page*/
+
+/*Form Wizard*/
+.stepper {
+    margin-top: 20px;
+    border-bottom: solid 1px #e0e0e0;
+    padding: 0 0 10px 0;
+}
+.stepper > .stepper-step {
+    padding: 0;
+    position: relative;
+}
+.stepper > .stepper-step + .stepper-step {
+
+}
+.stepper > .stepper-step .stepper-stepnum {
+    color: #595959;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.stepper > .stepper-step .stepper-info {
+    color: #999;
+    font-size: 14px;
+}
+.stepper > .stepper-step > .stepper-dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background: #9cfc97;
+    top: 45px;
+    left: 50%;
+    margin-top: -15px;
+    margin-left: -15px;
+    border-radius: 50%;
+}
+.stepper > .stepper-step.current > .stepper-dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background: #83b7f7;
+    top: 45px;
+    left: 50%;
+    margin-top: -15px;
+    margin-left: -15px;
+    border-radius: 50%;
+}
+.stepper > .stepper-step > .stepper-dot:after {
+    content: ' ';
+    width: 14px;
+    height: 14px;
+    background: #5fbf5f;
+    border-radius: 50px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+.stepper > .stepper-step.current > .stepper-dot:after {
+    content: ' ';
+    width: 14px;
+    height: 14px;
+    background: #0074D9;
+    border-radius: 50px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+.stepper > .stepper-step > .progress {
+    position: relative;
+    border-radius: 0;
+    height: 8px;
+    box-shadow: none;
+    margin: 20px 0;
+}
+.stepper > .stepper-step > .progress > .progress-bar {
+    width:0;
+    box-shadow: none;
+    background: #9cfc97;
+}
+.stepper > .stepper-step.complete > .progress > .progress-bar {
+    width:100%;
+}
+.stepper > .stepper-step.complete > .stepper-info,
+.stepper > .stepper-step.current > .stepper-info {
+    color: #595959;
+}
+.stepper > .stepper-step.current > .progress > .progress-bar {
+    width:50%;
+    background: #83b7f7;
+}
+.stepper > .stepper-step:first-child.current > .progress > .progress-bar {
+    width:0;
+}
+.stepper > .stepper-step:last-child.current > .progress > .progress-bar {
+    width: 100%;
+}
+.stepper > .stepper-step.disabled > .stepper-dot {
+    background-color: #eee;
+}
+.stepper > .stepper-step.disabled > .stepper-dot:after {
+    opacity: 0;
+}
+.stepper > .stepper-step:first-child  > .progress {
+    left: 50%;
+    width: 50%;
+}
+.stepper > .stepper-step:last-child  > .progress {
+    width: 50%;
+}
+.stepper > .stepper-step.disabled a.stepper-dot{
+    pointer-events: none;
+}
+/*END Form Wizard*/
+/*For tracking pending purchase page Ends here*/

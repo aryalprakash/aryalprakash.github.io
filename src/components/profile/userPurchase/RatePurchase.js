@@ -26,7 +26,7 @@ class RatePurchase extends Component {
           Overall experience:
         </label>
         <div className="col-md-7" style={styles.rating}>
-          <StarRating rating={1} ratingCategory="overall"/>
+          <StarRating rating={0} ratingCategory="overall"/>
         </div>
         {
           rating > 0 &&
