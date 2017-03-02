@@ -735,6 +735,28 @@ option{
 
 /*End For StarRating Component*/
 
+/*For user wishlist*/
+.user-wishlist .thumbnail img {
+    width: 160px;
+}
+.user-wishlist .caption {
+    overflow: hidden;
+}
+.user-wishlist h4 {
+    color: #474747;
+    margin: 2px 0;
+}
+
+.user-wishlist .caption p {
+    margin-bottom: 0;
+    color: #0074D9;
+}
+.user-wishlist button {
+    margin-top: 7px;
+}
+
+/*End For user wishlist*/
+
 /*For tracking pending purchase page*/
 
 /*Form Wizard*/
