@@ -97,7 +97,10 @@ class UserProfile extends Component{
         <div className="card center-content">
           <div className="col-md-10 profile">
             <div className="col-md-2">
-              <span className="fa fa-user-circle" style={{fontSize: "5.5em"}}/>
+              <div className="update-profile-pic">
+                <img src={require("../../../img/camera-icon.png")}/>
+                <span className="fa fa-user-circle" style={{fontSize: "5.5em"}}/>
+              </div>
             </div>
             <div className="col-md-6">
               <h2 style={{marginTop: 0}}>Bikash Shrestha</h2>

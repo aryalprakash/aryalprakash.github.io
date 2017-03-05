@@ -4,6 +4,12 @@
 p, h3, h4, h5, h6 {
     font-family: "Open Sans";
 }
+a {
+    color: #676767;
+}
+a:hover {
+    text-decoration: none;
+}
 @media (min-width: 1300px){
     .container{
         width: 1250px;
@@ -509,6 +515,28 @@ option{
     margin-top: 20px;
     padding: 15px;
 }
+.update-profile-pic:hover img{
+    display: flex;
+
+}
+.update-profile-pic:hover span{
+    cursor: pointer;
+    opacity: 0.35;
+}
+.update-profile-pic img{
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    height: 30px;
+    width: auto;
+    z-index: 111;
+    opacity: 0.7;
+}
+.edit-profile span:hover {
+    font-size: 18px;
+    cursor: pointer;
+    color: #0074D9;
+}
 .following-store .fa-remove {
     font-size: 15px;
     color: #d7d7d7;
@@ -557,15 +585,10 @@ option{
     margin: 3px 0;
     color: #737373;
 }
-.edit-profile span:hover {
-    font-size: 18px;
-    cursor: pointer;
-    color: #0074D9;
-}
 .update-profile form{
     margin-top: 15px;
 }
-.update-profile .control-label{
+.update-password .control-label, .update-profile .control-label{
     text-align: left;
 }
 .user-profile span{
