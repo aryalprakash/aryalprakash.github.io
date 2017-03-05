@@ -519,8 +519,10 @@ option{
     display: flex;
 
 }
-.update-profile-pic:hover span{
+.update-profile-pic:hover {
     cursor: pointer;
+}
+.update-profile-pic:hover span{
     opacity: 0.35;
 }
 .update-profile-pic img{
@@ -658,6 +660,7 @@ option{
     -webkit-box-shadow: 0 0 2px #aaa;
     -moz-box-shadow: 0 0 2px #aaa;
     box-shadow: 0 0 2px #aaa;
+    margin-bottom: 15px;
 }
 .item-purchased .line, .purchase-details .line{
     margin-top: 5px;
@@ -895,3 +898,15 @@ option{
 }
 /*END Form Wizard*/
 /*For tracking pending purchase page Ends here*/
+
+/*For manage rating page*/
+
+.manage-rating img{
+    width: 120px;
+
+}
+.manage-rating .caption {
+    margin-top: 10px;
+}
+
+/*End For manage rating page*/

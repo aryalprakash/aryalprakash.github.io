@@ -20,7 +20,7 @@ class RatePurchase extends Component {
     let {rating} = this.props;
 
     return(
-      <div className="col-md-8 rate-purchase">
+      <div className="col-md-10 rate-purchase">
         <h4>Rate your shopping experience</h4>
         <label className="col-md-5" style={{paddingLeft: 0}}>
           Overall experience:
