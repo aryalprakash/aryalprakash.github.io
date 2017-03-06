@@ -73,6 +73,10 @@ class UserProfile extends Component{
     });
   }
 
+  selectImage = () => {
+    document.getElementById('upload-img').click();
+  };
+
   render(){
     let dialog;
 
@@ -97,9 +101,11 @@ class UserProfile extends Component{
         <div className="card center-content">
           <div className="col-md-10 profile">
             <div className="col-md-2">
-              <div className="update-profile-pic">
-                <img src={require("../../../img/camera-icon.png")}/>
-                <span className="fa fa-user-circle" style={{fontSize: "5.5em"}}/>
+              <div className="update-profile-pic" onClick={this.selectImage}>
+                <img className="camera-icon" src={require("../../../img/camera-icon.png")}/>
+                <img className="img-thumbnail profile-pic" src={require("../../../img/user-icon.png")}/>
+                {/*<span className="fa fa-user-circle" style={{fontSize: "5.5em"}}/>*/}
+                <input type="file" id="upload-img" style={{display: "none"}}/>
               </div>
             </div>
             <div className="col-md-6">
