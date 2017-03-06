@@ -7,6 +7,7 @@ import _ from 'lodash';
 
 import Register from './Register.js'
 import Login from './Login.js'
+import AddStore from './AddStore';
 import 'rc-dialog/assets/index.css';
 
 import { getCartItems, removeFromCart, setCartItem, userSignUp } from '../actions/infinia';
@@ -55,26 +56,43 @@ class Header extends Component{
             destroyOnClose: false,
             center: true,
             login: true,
+            reg: false,
+            addStore: false,
             path: location.pathname,
         }
 
         this.onClick = this.onClick.bind(this)
         this.Reg = this.Reg.bind(this)
         this.onClose = this.onClose.bind(this)
+        this.addStore = this.addStore.bind(this)
 
     }
 
     onClick(e) {
         this.setState({
-            visible: true
+          visible: true,
+          reg: false,
+          login: true,
+          addStore: false
         });
     }
 
     Reg(e){
         this.setState({
-            visible: true,
-            login: false
+          visible: true,
+          reg: true,
+          login: false,
+          addStore: false
         });
+    }
+
+    addStore(e){
+      this.setState({
+        visible: true,
+        reg: false,
+        login: false,
+        addStore: true
+      });
     }
 
     onClose(e) {
@@ -178,14 +196,23 @@ class Header extends Component{
                     onClose={this.onClose}
                     style={style}
                 >
-                {this.state.login?
+                {
+                  this.state.login &&
                   <div>
                     <Login />
                   </div>
-                  :
+                }
+                {
+                  this.state.reg &&
                   <div>
                     <Register userSignUp={this.props.userSignUp}/>
                   </div>
+                }
+                {
+                  this.state.addStore &&
+                    <div>
+                      <AddStore/>
+                    </div>
                 }
                 </Dialog>
             );
@@ -202,7 +229,7 @@ class Header extends Component{
                 <div className="imenu-list search-box">
                     <input className="search-input" placeholder="What are you looking for?" type="text" />
                 </div>
-                <div className="imenu-list menu-button">Add your Store</div>
+                <div className="imenu-list menu-button" onClick={this.addStore}>Add your Store</div>
                 <div className="imenu-list" onClick={this.onClick}>Login</div>
                 <div className="imenu-list" onClick={this.Reg}>Register</div>
                 <div className="myDropdown">
