@@ -3,6 +3,15 @@
  */
 import React, { Component } from 'react';
 
+const reasons = [
+  "Received Wrong Item in terms of Item, Color, Size or in any other specs",
+  "Defect in Items such as scratch, torn, broken, not operating or functioning or working",
+  "Received less quantity than ordered",
+  "Received missing accessories or parts",
+  "Received Item not as described, different from specified or showcased"
+
+];
+
 class ReturnItem extends Component {
 
   handleSubmit = (e) => {
@@ -34,8 +43,11 @@ class ReturnItem extends Component {
             <label>Select Reason for Return</label>
             <select className="form-control">
               <option>Select Reason</option>
-              <option></option>
-              <option></option>
+              {
+                reasons.map((reason, index) =>
+                  <option key={index}>{reason}</option>
+                )
+              }
               <option>Others</option>
             </select>
           </div>
