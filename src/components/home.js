@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, Link, browserHistory } from 'react-router'
-import {getMainCategories} from '../actions/infinia.js'
+import {getMainCategories} from '../actions/infiniaAction.js'
 import Deals from './homeDeals';
 
 

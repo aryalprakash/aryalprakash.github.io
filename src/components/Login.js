@@ -4,6 +4,7 @@ import  { Link } from 'react-router';
 import FacebookLogin from 'react-facebook-login';
 
 import { loginWithEmail } from '../actions/authActions';
+import TextFieldGroup from './common/TextFieldGroup';
 
 class Login extends Component{
     constructor() {
@@ -51,15 +52,16 @@ class Login extends Component{
               <div className="form-title">Login</div>
               <div className="line"></div>
 
-              <form onSubmit={this.handleSubmit}>
+              <form className="form-horizontal" onSubmit={this.handleSubmit}>
                   <div className="form-elements">
+
+                    <TextFieldGroup field="email" value={this.state.email} label="E-mail" type="email" onChange={this.handleChange}/>
+
                     <div className="form-group">
-                        <label className="control-label">E-mail</label>
-                        <input className="form-control" name="email" value={this.state.email} type="email" placeholder="Your Email" onChange={this.handleChange}/>
-                    </div>
-                    <div className="form-group">
-                        <label className="control-label">Password</label>
+                      <label className="col-md-3 control-label">Password</label>
+                      <div className="col-md-9">
                         <input className="form-control" name="password" value={this.state.password} type="password" placeholder="Your Password" onChange={this.handleChange}/>
+                      </div>
 
                     </div>
                     <div className="form-options">

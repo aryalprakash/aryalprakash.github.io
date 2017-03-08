@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {getProductsList} from '../actions/infinia.js'
-import {addToCart} from '../actions/infinia.js'
+import {getProductsList} from '../actions/productActions';
+import {addToCart} from '../actions/cartActions';
 
 
 class ProductList extends Component{

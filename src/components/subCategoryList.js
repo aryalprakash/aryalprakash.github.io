@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
-import {getSubCategories} from '../actions/infinia.js'
+import {getSubCategories} from '../actions/infiniaAction.js'
 
 class SubCategoryList extends Component{
 

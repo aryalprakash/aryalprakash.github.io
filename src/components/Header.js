@@ -10,7 +10,8 @@ import Login from './Login.js'
 import AddStore from './AddStore';
 import 'rc-dialog/assets/index.css';
 
-import { getCartItems, removeFromCart, setCartItem, userSignUp } from '../actions/infinia';
+import { userSignUp } from '../actions/infiniaAction';
+import { getCartItems, removeFromCart, setCartItem } from '../actions/cartActions';
 import { isLoggedIn } from '../actions/authActions'
 
 let style={

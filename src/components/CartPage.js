@@ -5,10 +5,9 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import  { Link } from 'react-router';
 import { connect } from 'react-redux';
-import Header from './Header'
 import Deals from './Deals'
 
-import { getCartItems, removeFromCart, setCartItem} from '../actions/infinia';
+import { getCartItems, removeFromCart, setCartItem} from '../actions/cartActions';
 
 
 const title ={

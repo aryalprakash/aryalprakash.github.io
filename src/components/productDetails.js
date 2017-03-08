@@ -6,10 +6,7 @@ import React, { Component } from 'react';
 
 import ReactImageZoom from 'react-image-zoom';
 import { connect } from 'react-redux';
-import Header from './Header';
-import Footer from './Footer';
-import {getProductDetails} from '../actions/infinia.js'
-import {getNewImage} from '../actions/filter'
+import {getProductDetails} from '../actions/productActions';
 
 class Details extends Component{
 

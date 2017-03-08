@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addRating } from '../actions/infinia';
+import { addRating } from '../actions/infiniaAction';
 
 class StarRating extends Component {
   state = {

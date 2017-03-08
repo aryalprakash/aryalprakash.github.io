@@ -6,12 +6,9 @@ import  { Link } from 'react-router';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { connect } from 'react-redux';
 
-import Header from './Header'
-import Footer from './Footer'
-import Filter from './Filter'
 import Deals from './Deals'
 import ProductList from '../containers/product-list';
-import {getStoreDetails} from '../actions/infinia.js'
+import {getStoreDetails} from '../actions/storeActions';
 
 
 let styles= {

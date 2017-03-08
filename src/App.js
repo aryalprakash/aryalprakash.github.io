@@ -13,7 +13,7 @@ import Items from './components/Items';
 import Checkout from './components/Checkout';
 import LoginPage from './components/SigninPage';
 import RegisterPage from './components/SignupPage';
-import Details from './components/details';
+import Details from './components/productDetails';
 import CartPage from './components/CartPage';
 import RedirectPage from './components/RedirectPage';
 import VerifiedPage from './components/VerifiedPage';

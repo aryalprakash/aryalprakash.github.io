@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
-import { sortStore , filterByMinOrder} from '../actions/infinia';
+import { sortStore , filterByMinOrder} from '../actions/infiniaAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 

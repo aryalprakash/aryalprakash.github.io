@@ -1,18 +1,15 @@
 /**
  * Created by prakash on 8/29/2016.
  */
-import React, { Component } from 'react'
-import  { Link } from 'react-router'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import React, { Component } from 'react';
+import  { Link } from 'react-router';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { connect } from 'react-redux';
-import Header from './Header'
-import Footer from './Footer'
-import Filter from './Filter'
-import Deals from './Deals'
-import Gmap from './maps'
-import SlidingTabPanel from './SlidingTabPanel'
+import Deals from './Deals';
+import Gmap from './maps';
+import SlidingTabPanel from './SlidingTabPanel';
 
-import {getStoreDetails} from '../actions/infinia.js'
+import {getStoreDetails} from '../actions/storeActions';
 
 let styles= {
     tab:{

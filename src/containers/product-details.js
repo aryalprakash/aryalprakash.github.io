@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import ReactImageZoom from 'react-image-zoom';
 import { connect } from 'react-redux';
 
-import {getProductDetails} from '../actions/infinia.js'
+import {getProductDetails} from '../actions/productActions';
 
 class ProductDetails extends Component{
 

@@ -4,13 +4,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
-import Header from './Header'
-import Footer from './Footer'
 import Filter from './Filter'
 import Deals from './Deals'
 import { sortBy, orderBy } from 'lodash';
 
-import {getStoresList, filterByLocation} from '../actions/infinia.js'
+import {getStoresList, filterByLocation} from '../actions/storeActions';
 
 class Search extends Component {
     constructor() {

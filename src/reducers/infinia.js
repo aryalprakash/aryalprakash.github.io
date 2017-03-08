@@ -26,7 +26,7 @@ const initialState = {
 };
 
 const InfiniaStores = (state = initialState, action) => {
-    console.log('i am in reducer`s infinia.js');
+    console.log('i am in reducer`s infiniaAction.js');
     switch (action.type) {
         case GET_MAIN_CATEGORIES:
             return {
