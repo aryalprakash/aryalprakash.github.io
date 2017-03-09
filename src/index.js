@@ -5,15 +5,15 @@ import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
 require("es6-promise").polyfill();
-import reducers from './reducers';
-import InfiniaStores from './reducers/infinia.js'
+import rootReducers from './reducers/index';
+import InfiniaStores from './reducers/infiniaReducer.js'
 import App from './App';
 
 require('../css/main.css');
 // require('../css/bootstrap.css');
 
 const store = createStore(
-    InfiniaStores,
+  rootReducers,
     composeWithDevTools(
         applyMiddleware(thunk),
     )

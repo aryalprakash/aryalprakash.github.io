@@ -66,6 +66,10 @@ class SubCategoryList extends Component{
     }
 }
 
-const mapStateToProps = ({ subcategories }) => ({subcategories})
+function mapStateToProps(state) {
+    return{
+        subcategories: state.InfiniaStores.subcategories
+    }
+}
 
 export default connect(mapStateToProps)( SubCategoryList )

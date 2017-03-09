@@ -110,7 +110,7 @@ class CartPage extends Component{
                           <div className="col-sm-4" style={{paddingRight: 5}}>
                             <img className="img-thumbnail" src="../../img/infinia/cart1.png" />
                           </div>
-                          <div className="col-sm-8" style={{padding: 10, overflow: "hidden"}}>
+                          <div className="col-sm-8" style={{padding: 10,paddingTop: 5, overflow: "hidden"}}>
                             <h4 style={{marginTop: 0, marginBottom: 5}}>{item.itemline.stocked_item.item.display_name} </h4>
                             <h5 style={{marginTop: 0}}> {item.itemline.stocked_item.price} {item.itemline.stocked_item.currency} per {item.itemline.stocked_item.item.quantity} {item.itemline.stocked_item.item.unit}</h5>
                           </div>
@@ -136,7 +136,7 @@ class CartPage extends Component{
 
                             {item.discount_amount != 0 && <span>Original Price: <span style={{textDecoration: "line-through"}}> {item.actual_price}</span></span> }
                           </span>
-                          <span className="col-sm-2 fa fa-trash-o" style={remove} onClick={()=>this.removeItem(item.itemline.stocked_item.id)}></span>
+                          <span className="col-sm-2 fa fa-trash-o" style={remove} onClick={()=>this.removeItem(item.itemline.stocked_item.id)}/>
                         </div>
                       </div>
                     )}
@@ -163,6 +163,11 @@ class CartPage extends Component{
   }
 }
 
-const mapStateToProps = ({cart}) => ({cart});
+// const mapStateToProps = ({cart}) => ({cart});
+function mapStateToProps(state) {
+  return{
+    cart: state.cart.cart
+  }
+}
 
 export default connect(mapStateToProps, { getCartItems, removeFromCart, setCartItem })(CartPage);

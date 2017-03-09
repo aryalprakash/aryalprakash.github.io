@@ -38,14 +38,12 @@ class Store extends Component {
 
     }
 
-    handleSelect(index, last) {
-        console.log('Selected tab: ' + index + ', Last tab: ' + last);
+    componentDidMount(){
+        this.props.getStoreDetails(this.props.location.query.id);
     }
 
-    componentDidMount(){
-        this.props.dispatch(getStoreDetails(this.props.location.query.id));
-
-
+    handleSelect(index, last) {
+      console.log('Selected tab: ' + index + ', Last tab: ' + last);
     }
 
     render() {
@@ -57,7 +55,7 @@ class Store extends Component {
 
         return (
           <div className="mycontainer">
-           {storeDetails ?
+           {storeDetails.length>0 ?
             <div className="main-content">
 
                     <div className="sidebar-left">
@@ -146,7 +144,11 @@ class Store extends Component {
     }
 }
 
-const mapStateToProps = ({storeDetails}) => ({storeDetails});
+function mapStateToProps(state) {
+  return {
+      storeDetails: state.stores.storeDetails
+  }
+}
 
 
-export default connect(mapStateToProps)( Store )
+export default connect(mapStateToProps,{ getStoreDetails })( Store )

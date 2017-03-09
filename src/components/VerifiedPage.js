@@ -5,9 +5,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 
-import Header from './Header';
-import Footer from './Footer';
-
 const style= {
   marginTop: 110,
   backgroundColor: "#fff",

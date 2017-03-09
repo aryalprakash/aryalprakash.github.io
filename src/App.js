@@ -30,6 +30,7 @@ import UserWishlist from './components/profile/UserWishlist';
 import UserMessage from './components/profile/UserMessage';
 import UserSetting from './components/profile/UserSetting';
 import { getAppCredentials } from './actions/authActions';
+import { getCSRFToken } from './actions/cartActions';
 
 import setStatus from './utils/setPurchaseDetailsStatus';
 
@@ -37,6 +38,7 @@ class App extends Component {
 
   componentDidMount(){
     this.props.getAppCredentials();
+    this.props.getCSRFToken();
   }
 
   render() {
@@ -83,4 +85,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, { getAppCredentials })(App);
+export default connect(null, { getAppCredentials, getCSRFToken })(App);

@@ -45,7 +45,7 @@ class ProductList extends Component{
         let count = document.getElementById(id).value;
         this.props.addToCart(id, parseInt(count)).then(
             (res)=> {
-                this.props.callback(res.cart_count);
+                console.log("items added to cart successfully");
             },
             (err)=>{
                 alert(err);
@@ -106,6 +106,10 @@ class ProductList extends Component{
     }
 }
 
-const mapStateToProps = ({ products }) => ({products});
+function mapStateToProps(state) {
+    return{
+        products: state.products.products
+    }
+}
 
 export default connect(mapStateToProps, { addToCart, getProductsList })(ProductList);

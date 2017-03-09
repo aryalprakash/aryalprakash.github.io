@@ -35,13 +35,6 @@ class Items extends Component {
         }
     }
 
-    add(value){
-        console.log("returned value",value);
-        this.setState({
-            cart: value
-        })
-    }
-
     remove(){
         this.setState({
             count: this.state.count-1,
@@ -52,12 +45,12 @@ class Items extends Component {
     render() {
 
         let {storeDetails} = this.props;
-        {storeDetails == undefined && this.props.getStoreDetails(this.props.location.query.storeID)}
+        {storeDetails == undefined || storeDetails.length == 0 && this.props.getStoreDetails(this.props.location.query.storeID)}
         console.log('storeDetails in item page',storeDetails);
 
         return (
           <div className="mycontainer">
-            {storeDetails &&
+            {storeDetails.length > 0 &&
             <div className="main-content">
               <div className="sidebar-left">
                 <div className="card profile">
@@ -85,7 +78,7 @@ class Items extends Component {
                     </TabList>
                     <TabPanel>
                       <div className="items">
-                        <ProductList callback={this.add.bind(this)} catName={this.props.location.query.catName} storeID={this.props.location.query.storeID}/>
+                        <ProductList catName={this.props.location.query.catName} storeID={this.props.location.query.storeID}/>
                       </div>
                     </TabPanel>
                     <TabPanel>
@@ -105,7 +98,11 @@ class Items extends Component {
     }
 }
 
-const mapStateToProps = ({storeDetails}) => ({storeDetails});
+function mapStateToProps(state) {
+    return {
+        storeDetails: state.stores.storeDetails
+    }
+}
 
 
 export default connect(mapStateToProps,{ getStoreDetails })( Items )

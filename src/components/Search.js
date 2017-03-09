@@ -77,7 +77,12 @@ class Search extends Component {
     }
 }
 
-const mapStateToProps = ({stores}) => ({stores});
+function mapStateToProps(state) {
+    return{
+        stores: state.stores.stores
+    }
+
+}
 
 
 export default connect(mapStateToProps)( Search )

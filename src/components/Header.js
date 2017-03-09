@@ -318,7 +318,7 @@ Header.defaultProps = {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart,
+    cart: state.cart.cart,
 
   }
 }

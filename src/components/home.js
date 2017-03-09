@@ -136,6 +136,10 @@ class Home extends Component {
 //     router: React.PropTypes.object
 // }
 
-const mapStateToProps = ({ categories }) => ({categories})
+function mapStateToProps(state) {
+    return {
+        categories: state.InfiniaStores.categories
+    }
+}
 
 export default connect(mapStateToProps)( Home )

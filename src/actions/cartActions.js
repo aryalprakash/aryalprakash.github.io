@@ -3,11 +3,22 @@
  */
 
 import { dispatch } from 'redux'
+import cookie from 'react-cookie'
 
 import {
   API_URL1,
   GET_CART_ITEMS,
 } from '../constants/constants.js'
+
+let csrf;
+export function getCSRFToken() {
+  return function (dispatch) {
+    fetch(API_URL1+"/get_csrf",{method: 'get', credentials: "include"}).then(response => response.json()).then(res => {
+      // console.log("csrf token",res);
+      csrf = res;
+    })
+  }
+}
 
 export function addToCart(id, count){
 
@@ -23,14 +34,14 @@ export function addToCart(id, count){
         items:[
           {
             id: id,
-            count: count,
+            count: count
 
           }
         ],
       })
     }).then(response => response.json()).then(res =>{
-      console.log("response after adding to cart:",res);
-      if(res.code == 200){
+      if(res.status_code == 200){
+        console.log("response after adding to cart:",res);
         dispatch(getCartItems());
         return res;
       }
@@ -52,7 +63,8 @@ export function removeFromCart(id) {
         id: id
       })
     }).then(response => response.json()).then(res =>{
-      if(res.code == 200){
+      if(res.status_code == 200){
+        console.log("come here when deleted");
         dispatch(getCartItems());
         return res;
       }
@@ -79,7 +91,7 @@ export function setCartItem(id, count) {
         ],
       })
     }).then(response => response.json()).then(res =>{
-      if(res.code == 200){
+      if(res.status_code == 200){
         dispatch(getCartItems());
         return res;
       }

@@ -333,6 +333,10 @@ class Details extends Component{
     }
 }
 
-const mapStateToProps = ({ productDetails }) => ({productDetails})
+function mapStateToProps(state) {
+    return{
+        productDetails: state.products.productDetails
+    }
+}
 
 export default connect(mapStateToProps)(Details);
