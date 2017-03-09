@@ -48,6 +48,8 @@ class UserProfile extends Component{
     this.state ={
       visible: false,
       destroyOnClose: false,
+      file: '',
+      imagePreviewUrl: ''
 
     };
 
@@ -77,8 +79,32 @@ class UserProfile extends Component{
     document.getElementById('upload-img').click();
   };
 
+  handleImageChange(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file)
+  }
+
   render(){
     let dialog;
+
+    let {imagePreviewUrl} = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl) {
+      $imagePreview = (<img className="img-thumbnail profile-pic" src={imagePreviewUrl} />);
+    } else {
+      $imagePreview = (<img className="img-thumbnail profile-pic" src={require("../../../img/profile-icon.png")}/>);
+    }
 
     if (this.state.visible || !this.state.destroyOnClose) {
       dialog = (
@@ -103,9 +129,8 @@ class UserProfile extends Component{
             <div className="col-md-2">
               <div className="update-profile-pic" onClick={this.selectImage}>
                 <img className="camera-icon" src={require("../../../img/camera-icon.png")}/>
-                <img className="img-thumbnail profile-pic" src={require("../../../img/user-icon.png")}/>
-                {/*<span className="fa fa-user-circle" style={{fontSize: "5.5em"}}/>*/}
-                <input type="file" id="upload-img" style={{display: "none"}}/>
+                {$imagePreview}
+                <input type="file" id="upload-img" style={{display: "none"}} onChange={(e)=>this.handleImageChange(e)}/>
               </div>
             </div>
             <div className="col-md-6">

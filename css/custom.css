@@ -523,10 +523,10 @@ option{
     cursor: pointer;
 }
 .profile-pic {
-    opacity: 0.7;
+
 }
 .update-profile-pic:hover .profile-pic{
-    opacity: 0.35;
+    opacity: 0.4;
 }
 .update-profile-pic .camera-icon{
     display: none;
@@ -535,7 +535,7 @@ option{
     height: 30px;
     width: auto;
     z-index: 111;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 .edit-profile span:hover {
     font-size: 18px;
