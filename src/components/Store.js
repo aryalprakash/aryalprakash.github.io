@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import Deals from './Deals';
 import Gmap from './maps';
 import SlidingTabPanel from './SlidingTabPanel';
+import StorePromo from './StorePromo';
 
 import {getStoreDetails} from '../actions/storeActions';
 
@@ -129,7 +130,7 @@ class Store extends Component {
                             </TabPanel>
                             {/*For Store deals*/}
                             <TabPanel>
-                                <h3>Hello you are in the deals section</h3>
+                              <StorePromo/>
                             </TabPanel>
                         </Tabs>
                         <div className="search-box absolute-search"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>

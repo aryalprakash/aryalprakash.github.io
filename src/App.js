@@ -9,6 +9,7 @@ import Infinia5 from './components/testFolder/Infinia5';
 import Home from './components/home';
 import Search from './components/Search';
 import Store from './components/Store';
+import StoreProfile from './components/StoreProfile';
 import Items from './components/Items';
 import Checkout from './components/Checkout';
 import LoginPage from './components/SigninPage';
@@ -51,6 +52,7 @@ class App extends Component {
           <Route path="/infinia4" component={Infinia4} />
           <Route path="/infinia5" component={Infinia5} />
           <Route path="/store" component={Store} />
+          <Route path="/:store/profile" component={StoreProfile} />
           <Route path="/items" component={Items} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/search/:category" component={Search} />

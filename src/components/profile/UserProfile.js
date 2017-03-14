@@ -130,7 +130,7 @@ class UserProfile extends Component{
               <div className="update-profile-pic" onClick={this.selectImage}>
                 <img className="camera-icon" src={require("../../../img/camera-icon.png")}/>
                 {$imagePreview}
-                <input type="file" id="upload-img" style={{display: "none"}} onChange={(e)=>this.handleImageChange(e)}/>
+                <input type="file" accept="image/*" id="upload-img" style={{display: "none"}} onChange={(e)=>this.handleImageChange(e)}/>
               </div>
             </div>
             <div className="col-md-6">
