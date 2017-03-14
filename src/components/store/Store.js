@@ -5,12 +5,12 @@ import React, { Component } from 'react';
 import  { Link } from 'react-router';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { connect } from 'react-redux';
-import Deals from './Deals';
-import Gmap from './maps';
-import SlidingTabPanel from './SlidingTabPanel';
+import Deals from '../Deals';
+import Gmap from '../maps';
+import SlidingTabPanel from '../SlidingTabPanel';
 import StorePromo from './StorePromo';
 
-import {getStoreDetails} from '../actions/storeActions';
+import {getStoreDetails} from '../../actions/storeActions';
 
 let styles= {
     tab:{

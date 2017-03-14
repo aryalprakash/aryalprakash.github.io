@@ -913,3 +913,37 @@ option{
 }
 
 /*End For manage rating page*/
+
+/*For Store Profile*/
+
+.cover-photo img{
+    width: 100%;
+    object-fit: cover;
+    max-height: 350px;
+}
+.store-logo{
+
+}
+.store-logo img{
+    position: absolute;
+    margin-left: 20px;
+    margin-top: -130px;
+    z-index: 111;
+    width: 180px;
+    height: auto;
+}
+.store-logo .name {
+    color: #fff;
+    font-size: 2.5em;
+    text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0px;
+    position: absolute;
+    margin-left: 220px;
+    margin-top: -60px;
+}
+.store-logo .address {
+    font-size: 20px;
+    margin-top: 10px;
+    position: absolute;
+    margin-left: 220px;
+}
+/*End For Store Profile*/
