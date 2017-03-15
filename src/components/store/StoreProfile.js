@@ -2,11 +2,15 @@
  * Created by bikash on 3/14/17.
  */
 import React, { Component } from 'react';
-import {Link} from 'react-router';
 
 import Deals from '../Deals';
 
+
 class StoreProfile extends Component {
+  state = {
+    rating: 4
+  };
+
   render() {
     return(
       <div className="mycontainer">
@@ -15,35 +19,35 @@ class StoreProfile extends Component {
           <div className="card center-content">
             <div className="store-profile">
               <div className="cover-photo">
-                <img src="../../img/infinia/wall1.jpg"/>
+                <img src="../../img/spinneys.jpg"/>
               </div>
               <div className="store-logo">
                 <img className="img-thumbnail" src="../../img/store.png"/>
-                <div className="name">
-                  Wallmart
+                <div className="store-intro">
+                  <div className="name">Wallmart</div>
+
+                  <div className="rating-sec">
+                    <span className={this.state.rating>0.5?"fa fa-star":"fa fa-star-o"}/>
+                    <span className={this.state.rating>1.5?"fa fa-star":"fa fa-star-o"}/>
+                    <span className={this.state.rating>2.5?"fa fa-star":"fa fa-star-o"}/>
+                    <span className={this.state.rating>3.5?"fa fa-star":"fa fa-star-o"}/>
+                    <span className={this.state.rating>=4.5?"fa fa-star":"fa fa-star-o"}/>
+                    <span className="store-rating-number"> (4)</span>
+
+                  </div>
                 </div>
-                {/*<div className="address">*/}
-                  {/*Washington, United States*/}
-                {/*</div>*/}
-              </div>
-            </div>
-            <div className="store-info col-md-offset-3" style={{marginLeft: "20%"}}>
-              <div className="horizontal-navbar">
-                <div className="collapse navbar-collapse" style={{paddingLeft: 0}}>
-                  <ul className="nav navbar-nav">
-                    <li className={this.props.active == "completed"? "active": "active"}>
-                      <Link to="/:store/profile/">Store Info</Link>
-                    </li>
-                    <li className={this.props.active == "pending"? "active": ""}>
-                      <Link to="/:store/profile/deals">Deals and Promo</Link>
-                    </li>
-                    <li className={this.props.active == "pending"? "active": ""}>
-                      <Link to="/:store/profile/reviews">Reviews</Link>
-                    </li>
-                  </ul>
+                <div className="store-side-info">
+                  <button className="btn btn-default" style={{marginRight: "10px"}}> Shop Now</button>
+                  <button className="btn btn-default">Register Your Store</button>
                 </div>
               </div>
+
             </div>
+            <div className="col-md-12">
+              {this.props.children}
+
+            </div>
+
 
           </div>
           <Deals/>

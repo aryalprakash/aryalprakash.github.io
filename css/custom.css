@@ -330,7 +330,7 @@ a:hover {
 }
 .GMap-canvas {
     display: block;
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
 
@@ -915,15 +915,16 @@ option{
 /*End For manage rating page*/
 
 /*For Store Profile*/
-
+.navbar-nav .active {
+    border-bottom: 2px solid #0074D9;
+}
 .cover-photo img{
     width: 100%;
     object-fit: cover;
+    object-position: 50% 15%;
     max-height: 350px;
 }
-.store-logo{
 
-}
 .store-logo img{
     position: absolute;
     margin-left: 20px;
@@ -932,18 +933,47 @@ option{
     width: 180px;
     height: auto;
 }
-.store-logo .name {
+.store-logo .store-intro {
+
+    position: absolute;
+    margin-left: 220px;
+    margin-top: -85px;
+}
+.store-logo .store-intro .name {
     color: #fff;
     font-size: 2.5em;
     text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0px;
-    position: absolute;
-    margin-left: 220px;
-    margin-top: -60px;
 }
-.store-logo .address {
-    font-size: 20px;
-    margin-top: 10px;
+.store-intro > .rating-sec {
+    width: 120px;
+    padding: 2px;
+    padding-left: 5px;
+    background-color: #4cae4c;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0px;
+
+}
+.store-intro > .rating-sec > .fa-star, .fa-star-o {
+    color: #fff;
+}
+.store-rating-number {
+    background-color: #4cae4c;
+    padding: 0 2px;
+    color: white;
+}
+.store-side-info {
     position: absolute;
-    margin-left: 220px;
+    /*margin-left: 56%;*/
+    right: 21%;
+    margin-top: -50px;
+}
+.storeInfo .store-profile-name {
+    font-size: 18px;
+}
+.storeInfo .card{
+    padding-left: 0;
+}
+.store-map .GMap-canvas {
+    height: 350px;
 }
 /*End For Store Profile*/

@@ -10,6 +10,9 @@ import Home from './components/home';
 import Search from './components/Search';
 import Store from './components/store/Store';
 import StoreProfile from './components/store/StoreProfile';
+import StoreInfo from './components/store/StoreInfo';
+import StorePromo from './components/store/StorePromo';
+import StoreReview from './components/store/StoreReview';
 import Items from './components/Items';
 import Checkout from './components/Checkout';
 import LoginPage from './components/SigninPage';
@@ -52,7 +55,11 @@ class App extends Component {
           <Route path="/infinia4" component={Infinia4} />
           <Route path="/infinia5" component={Infinia5} />
           <Route path="/store" component={Store} />
-          <Route path="/:store/profile" component={StoreProfile} />
+          <Route path="/:store/profile" component={StoreProfile} >
+            <IndexRoute component={StoreInfo}/>
+            <Route path="/:store/profile/promo" component={StorePromo}/>
+            <Route path="/:store/profile/reviews" component={StoreReview}/>
+          </Route>
           <Route path="/items" component={Items} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/search/:category" component={Search} />

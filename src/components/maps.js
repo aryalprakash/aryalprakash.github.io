@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default  class GMap extends Component {
-    state = { zoom: 11 };
+    state = { zoom: 14 };
 
     static propTypes() {
         initialCenter: React.PropTypes.objectOf(React.PropTypes.number).isRequired
@@ -26,12 +26,12 @@ export default  class GMap extends Component {
 
         // have to define google maps event listeners here too
         // because we can't add listeners on the map until its created
-        google.maps.event.addListener(this.map, 'zoom_changed', ()=> this.handleZoomChange())
+        new google.maps.event.addListener(this.map, 'zoom_changed', ()=> this.handleZoomChange())
     }
 
     // clean up event listeners when component unmounts
     componentDidUnMount() {
-        google.maps.event.clearListeners(map, 'zoom_changed')
+        new google.maps.event.clearListeners(map, 'zoom_changed')
     }
 
     createMap() {

@@ -4,6 +4,8 @@
 import React, { Component } from 'react';
 import Dialog from 'rc-dialog';
 
+import StoreNavBar from './StoreNavBar';
+
 const style = {
   width: 600,
   height: "auto"
@@ -104,6 +106,7 @@ class StorePromo extends Component {
 
     return(
       <div>
+        <StoreNavBar active="storePromo"/>
         <div className="card center-content">
           <div className="row col-md-12">
             <h4>Store Promotions</h4>
