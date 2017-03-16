@@ -955,7 +955,8 @@ option{
     text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0px;
 }
 .store-intro > .rating-sec {
-    width: 120px;
+    width: auto;
+    max-width: 220px;
     padding: 2px;
     padding-left: 5px;
     background-color: #4cae4c;
@@ -967,6 +968,7 @@ option{
     color: #fff;
 }
 .store-rating-number {
+    font-size: 0.8em;
     background-color: #4cae4c;
     padding: 0 2px;
     color: white;

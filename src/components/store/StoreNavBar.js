@@ -19,10 +19,7 @@ class StoreNavBar extends Component {
                 <Link to="/:store/profile/promo">Deals and Promo</Link>
               </li>
               <li className={this.props.active == "storeReview"? "active": ""}>
-                <Link to="/:store/profile/reviews">Reviews</Link>
-              </li>
-              <li className={this.props.active == "storeMessage"? "active": ""}>
-                <Link to="/:store/profile/message">Message US</Link>
+                <Link to="/:store/profile/reviews">Rating and Reviews</Link>
               </li>
             </ul>
           </div>

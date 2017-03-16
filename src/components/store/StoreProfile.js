@@ -35,7 +35,7 @@ class StoreProfile extends Component {
                     <span className={this.state.rating>2.5?"fa fa-star":"fa fa-star-o"}/>
                     <span className={this.state.rating>3.5?"fa fa-star":"fa fa-star-o"}/>
                     <span className={this.state.rating>=4.5?"fa fa-star":"fa fa-star-o"}/>
-                    <span className="store-rating-number"> (4)</span>
+                    <span className="store-rating-number"> (57 votes)</span>
 
                   </div>
                 </div>

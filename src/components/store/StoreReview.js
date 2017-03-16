@@ -4,6 +4,8 @@
 import React, { Component } from 'react';
 
 import StoreNavBar from './StoreNavBar';
+import StarRating from '../StarRating';
+
 
 
 class StoreReview extends Component {
@@ -16,6 +18,16 @@ class StoreReview extends Component {
       <div>
         <StoreNavBar active="storeReview"/>
         <div className="col-md-10">
+          <div className="row col-md-12" style={{paddingBottom: 20}}>
+            <h4>Rate Your Shopping Experience</h4>
+            <div className="line"></div>
+            <div className="col-md-4" style={{marginTop: 3, paddingLeft: 0}}>Overall shopping Experience:</div>
+            <div className="col-md-8">
+              <StarRating rating="0" ratingCategory="overall"/>
+            </div>
+
+          </div>
+
           <div>
             <h4>Write a review</h4>
             <textarea className="form-control" placeholder="What do you think about this store, share your thoughts"/>
