@@ -989,3 +989,19 @@ option{
     height: 350px;
 }
 /*End For Store Profile*/
+
+/*For mini breadcrum*/
+
+.mini-breadcrumb {
+    font-size: 10px;
+    height: 15px;
+    background: #fafafa;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    position: relative;
+    top: 90px;
+}
+
+/*End For mini breadcrumb*/

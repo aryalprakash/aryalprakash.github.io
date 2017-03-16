@@ -24,10 +24,10 @@ class StoreProfile extends Component {
               </div>
               <div className="store-logo">
 
-                <img className="img-thumbnail" src="../../img/store.png"/>
+                <img className="img-thumbnail" src="../../img/stores/spinneys.png"/>
 
                 <div className="store-intro">
-                  <div className="name">Wallmart</div>
+                  <div className="name">Spinneys</div>
 
                   <div className="rating-sec">
                     <span className={this.state.rating>0.5?"fa fa-star":"fa fa-star-o"}/>
@@ -40,8 +40,8 @@ class StoreProfile extends Component {
                   </div>
                 </div>
                 <div className="store-side-info">
-                  <button className="btn btn-default" style={{marginRight: "10px"}}> Shop Now</button>
-                  <button className="btn btn-default">Register Your Store</button>
+                  <button className="btn btn-success btn-default" style={{marginRight: "10px"}}> Shop Now</button>
+                  <button className="btn btn-primary btn-default">Register Your Store</button>
                 </div>
               </div>
 

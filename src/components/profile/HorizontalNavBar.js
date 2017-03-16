@@ -10,10 +10,10 @@ class HorizontalNavBar extends React.Component {
         <div className="collapse navbar-collapse" style={{paddingLeft: 0}}>
           <ul className="nav navbar-nav">
             <li className={this.props.active == "completed"? "active": ""}>
-              <Link to="/user/:user/profile/purchase/completed">Completed Purchase</Link>
+              <Link to="/user/Bikash/profile/purchase/completed">Completed Purchase</Link>
             </li>
             <li className={this.props.active == "pending"? "active": ""}>
-              <Link to="/user/:user/profile/purchase/pending">Pending Purchase</Link>
+              <Link to="/user/Bikash/profile/purchase/pending">Pending Purchase</Link>
             </li>
           </ul>
         </div>

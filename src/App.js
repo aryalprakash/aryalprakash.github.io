@@ -48,42 +48,42 @@ class App extends Component {
   render() {
     return (
       <Router history={browserHistory}>
-        <Route path="/" component={Infinia} >
+        <Route name="Home" path="/" component={Infinia} >
           <IndexRoute component={Home}/>
           <Route path="/infinia2" component={Infinia2} />
           <Route path="/infinia3" component={Infinia3} />
           <Route path="/infinia4" component={Infinia4} />
           <Route path="/infinia5" component={Infinia5} />
-          <Route path="/store" component={Store} />
-          <Route path="/:store/profile" component={StoreProfile} >
-            <IndexRoute component={StoreInfo}/>
-            <Route path="/:store/profile/promo" component={StorePromo}/>
-            <Route path="/:store/profile/reviews" component={StoreReview}/>
+          <Route name="Store" path="/store" component={Store} />
+          <Route name="store" path="/:store/profile" component={StoreProfile} >
+            <IndexRoute name="StoreInfo" component={StoreInfo}/>
+            <Route name="Promo" path="/:store/profile/promo" component={StorePromo}/>
+            <Route name="Reviews" path="/:store/profile/reviews" component={StoreReview}/>
           </Route>
-          <Route path="/items" component={Items} />
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/search/:category" component={Search} />
-          <Route path="/details" component={Details} />
-          <Route path="/cart" component={CartPage} />
+          <Route name="Items" path="/items" component={Items} />
+          <Route name="Checkout" path="/checkout" component={Checkout} />
+          <Route name="category" path="/search/:category" component={Search} />
+          <Route name="Details" path="/details" component={Details} />
+          <Route name="Cart" path="/cart" component={CartPage} />
           <Route path="/redirect" component={RedirectPage}/>
           <Route path="/verified" component={VerifiedPage}/>
-          <Route path="/user/:user/profile" component={Profile}>
-            <IndexRoute component={UserProfile}/>
-            <Route component={UserPurchase}>
-              <Route path="/user/:user/profile/purchase/completed" component={CompletedPurchase}>
-                <IndexRoute component={setStatus(PurchasedItems)}/>
-                <Route path="/user/:user/profile/purchase/completed/:tracking_number" component={setStatus(PurchaseDetails)}/>
+          <Route name="user" path="/user/:user/profile" component={Profile}>
+            <IndexRoute name="Profile" component={UserProfile}/>
+            <Route name="Purchase" component={UserPurchase}>
+              <Route name="Completed" path="/user/:user/profile/purchase/completed" component={CompletedPurchase}>
+                <IndexRoute name="Purchased Items" component={setStatus(PurchasedItems)}/>
+                <Route name="tracking_number" path="/user/:user/profile/purchase/completed/:tracking_number" component={setStatus(PurchaseDetails)}/>
               </Route>
-              <Route path="/user/:user/profile/purchase/pending" component={PendingPurchase} >
-                <IndexRoute component={setStatus(PurchasedItems)}/>
-                <Route path="/user/:user/profile/purchase/pending/:tracking_number" component={setStatus(PurchaseDetails)}/>
+              <Route name="Pending" path="/user/:user/profile/purchase/pending" component={PendingPurchase} >
+                <IndexRoute name="Pending Items" component={setStatus(PurchasedItems)}/>
+                <Route name="tracking_number" path="/user/:user/profile/purchase/pending/:tracking_number" component={setStatus(PurchaseDetails)}/>
               </Route>
             </Route>
-            <Route path="/user/:user/profile/rating" component={UserRating}/>
-            <Route path="/user/:user/profile/wishlist" component={UserWishlist}/>
-            <Route path="/user/:user/profile/shipping" component={ShippingAddress}/>
-            <Route path="/user/:user/profile/message" component={UserMessage}/>
-            <Route path="/user/:user/profile/setting" component={UserSetting}/>
+            <Route name="Rating" path="/user/:user/profile/rating" component={UserRating}/>
+            <Route name="Wishlist" path="/user/:user/profile/wishlist" component={UserWishlist}/>
+            <Route name="Shipping" path="/user/:user/profile/shipping" component={ShippingAddress}/>
+            <Route name="Message" path="/user/:user/profile/message" component={UserMessage}/>
+            <Route name="Setting" path="/user/:user/profile/setting" component={UserSetting}/>
           </Route>
         </Route>
         <Route path="/login" component={LoginPage} />

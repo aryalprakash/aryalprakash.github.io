@@ -9,40 +9,40 @@ class ProfileSideBar extends Component{
     return(
       <div className="sidebar-left">
         <div className="card sidebar-title">
-          <Link to="/user/:user/profile"><span className="fa fa-user"/> My Account</Link>
+          <Link to="/user/Bikash/profile"><span className="fa fa-user"/> My Account</Link>
         </div>
         <div className="user-profile">
-          <Link to="/user/:user/profile/purchase/completed">
+          <Link to="/user/Bikash/profile/purchase/completed">
             <div className={this.props.active == "purchase"? "card active": "card"}>
               <span className="fa fa-shopping-bag"/> My Purchase
             </div>
           </Link>
 
-          <Link to="/user/:user/profile/rating">
+          <Link to="/user/Bikash/profile/rating">
             <div className={this.props.active == "rating"? "card active": "card"}>
               <span className="fa fa-star"/> Manage Ratings
             </div>
           </Link>
 
-          <Link to="/user/:user/profile/wishlist">
+          <Link to="/user/Bikash/profile/wishlist">
             <div className={this.props.active == "wishlist"? "card active": "card"}>
               <span className="fa fa-heart"/> My Wishlist
             </div>
           </Link>
 
-          <Link to="/user/:user/profile/shipping">
+          <Link to="/user/Bikash/profile/shipping">
             <div className={this.props.active == "shipping"? "card active": "card"}>
               <span className="fa fa-address-book"/> Shipping Address
             </div>
           </Link>
 
-          <Link to="/user/:user/profile/message">
+          <Link to="/user/Bikash/profile/message">
             <div className={this.props.active == "message"? "card active": "card"}>
               <span className="fa fa-envelope"/> My Message
             </div>
           </Link>
 
-          <Link to="/user/:user/profile/setting">
+          <Link to="/user/Bikash/profile/setting">
             <div className={this.props.active == "setting"? "card active": "card"}>
               <span className="fa fa-cog"/> Settings
             </div>

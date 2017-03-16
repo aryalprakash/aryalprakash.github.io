@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import  { Link } from 'react-router';
 import Header from './Header';
 import Breadcrumb from './Breadcrumb';
+import MiniBreadcrumb from './MiniBreadcrumb';
 import Footer from './Footer';
 let style={
     header: {
@@ -52,7 +53,11 @@ export default class Infinia extends Component{
           <div className="icontainer">
             <Header/>
             {
-              this.props.children.props.location.pathname !== "/" && <Breadcrumb/>
+              this.props.children.props.location.pathname !== "/" &&
+                <div>
+                    <Breadcrumb/>
+                    <MiniBreadcrumb routes={this.props.children.props}/>
+                </div>
             }
             <div>
               {this.props.children}
