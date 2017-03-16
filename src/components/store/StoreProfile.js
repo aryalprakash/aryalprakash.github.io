@@ -20,9 +20,12 @@ class StoreProfile extends Component {
             <div className="store-profile">
               <div className="cover-photo">
                 <img src="../../img/spinneys.jpg"/>
+                <div className="cover-overlay"></div>
               </div>
               <div className="store-logo">
+
                 <img className="img-thumbnail" src="../../img/store.png"/>
+
                 <div className="store-intro">
                   <div className="name">Wallmart</div>
 
