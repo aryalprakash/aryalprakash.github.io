@@ -8,7 +8,16 @@ import Deals from '../Deals';
 
 class StoreProfile extends Component {
   state = {
-    rating: 4
+    rating: 4,
+    follow: false
+  };
+
+  followStore = (e) => {
+    this.state.follow ?
+      this.setState({follow: false})
+      :
+      this.setState({follow: true})
+
   };
 
   render() {
@@ -40,8 +49,15 @@ class StoreProfile extends Component {
                   </div>
                 </div>
                 <div className="store-side-info">
-                  <button className="btn btn-success btn-default" style={{marginRight: "10px"}}> Shop Now</button>
-                  <button className="btn btn-primary btn-default">Register Your Store</button>
+                  {
+                    this.state.follow ?
+                      <button className="btn btn-sm btn-default" style={{marginRight: "10px"}} onClick={this.followStore}><span className="fa fa-user-plus"/> Follow</button>
+                      :
+                      <button className="btn btn-sm btn-danger" style={{marginRight: "10px"}} onClick={this.followStore}><span className="fa fa-user-times"/> Unfollow</button>
+
+                  }
+                  <button className="btn btn-sm btn-default" style={{marginRight: "10px"}}> Shop Now</button>
+                  <button className="btn btn-sm btn-default">Register Your Store</button>
                 </div>
               </div>
 

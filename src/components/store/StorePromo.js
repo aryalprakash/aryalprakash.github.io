@@ -37,7 +37,7 @@ const data = [
     thumbnail: '../../img/offers/2.jpg'
   },
   {
-    path: '../img/RFQ.pdf',
+    path: '../../img/RFQ.pdf',
     thumbnail: '../../img/offers/4.jpg'
   },
 
@@ -113,7 +113,7 @@ class StorePromo extends Component {
             <div className="line" style={{marginBottom: 20}}></div>
             {
               data.map((item, index)=>
-                <div key={index} className="col-md-3">
+                <div key={index} className="col-md-3" style={{cursor: 'pointer'}}>
                   <div className="thumbnail" onClick={() => this.onClick(item.path)}>
                     <img src={item.thumbnail}/>
                   </div>
