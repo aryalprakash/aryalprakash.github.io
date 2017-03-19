@@ -995,7 +995,7 @@ option{
 .mini-breadcrumb {
     font-size: 10px;
     height: 15px;
-    background: #fafafa;
+    /*background: #fafafa;*/
     width: 100%;
     display: flex;
     align-items: center;

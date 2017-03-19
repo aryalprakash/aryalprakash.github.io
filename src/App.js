@@ -23,6 +23,7 @@ import RedirectPage from './components/RedirectPage';
 import VerifiedPage from './components/VerifiedPage';
 import Profile from './components/profile/Profile';
 import UserProfile from './components/profile/UserProfile';
+import UserNotification from './components/profile/UserNotifications';
 import UserPurchase from './components/profile/userPurchase/UserPurchase';
 import CompletedPurchase from './components/profile/userPurchase/CompletedPurchase';
 import PurchasedItems from './components/profile/userPurchase/PurchasedItems';
@@ -69,6 +70,7 @@ class App extends Component {
           <Route path="/verified" component={VerifiedPage}/>
           <Route name="user" path="/user/:user/profile" component={Profile}>
             <IndexRoute name="Profile" component={UserProfile}/>
+            <Route name="Notifications" path="/user/:user/profile/notifications" component={UserNotification}/>
             <Route name="Purchase" component={UserPurchase}>
               <Route name="Completed" path="/user/:user/profile/purchase/completed" component={CompletedPurchase}>
                 <IndexRoute name="Purchased Items" component={setStatus(PurchasedItems)}/>
