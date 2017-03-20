@@ -49,14 +49,18 @@ export default class Infinia extends Component{
 
 
     render(){
-        return(
+      let {props} = this.props.children;
+      // console.log("title path",props);
+      document.title = props.params[props.route.name] ? "Infinia Store | "+ props.params[props.route.name] : "Infinia Store | "+ props.route.name;
+
+      return(
           <div className="icontainer">
             <Header/>
             {
-              this.props.children.props.location.pathname !== "/" &&
+              props.location.pathname !== "/" &&
                 <div>
                     <Breadcrumb/>
-                    <MiniBreadcrumb routes={this.props.children.props}/>
+                    <MiniBreadcrumb routes={props}/>
                 </div>
             }
             <div>

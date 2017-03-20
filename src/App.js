@@ -50,7 +50,7 @@ class App extends Component {
     return (
       <Router history={browserHistory}>
         <Route name="Home" path="/" component={Infinia} >
-          <IndexRoute component={Home}/>
+          <IndexRoute name="Home" component={Home}/>
           <Route path="/infinia2" component={Infinia2} />
           <Route path="/infinia3" component={Infinia3} />
           <Route path="/infinia4" component={Infinia4} />
