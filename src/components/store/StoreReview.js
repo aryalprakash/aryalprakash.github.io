@@ -23,7 +23,7 @@ class StoreReview extends Component {
             <div className="line"></div>
             <div className="col-md-4" style={{marginTop: 3, paddingLeft: 0}}>Overall shopping Experience:</div>
             <div className="col-md-8">
-              <StarRating rating="0" ratingCategory="overall"/>
+              <StarRating rating={0} ratingCategory="overall"/>
             </div>
 
           </div>

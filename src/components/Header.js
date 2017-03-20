@@ -282,7 +282,7 @@ class Header extends Component{
                         )}
                         <div className="col-md-12" style={cartFooterStyle}>
                           <h4>Grand Total: {cart.grand_total_without_vat}</h4>
-                          <Link to="/cart"><button className="btn btn-warning">View Cart</button></Link>
+                          <Link to="/user/Bikash/cart"><button className="btn btn-warning">View Cart</button></Link>
                           <button className="btn btn-success col-lg-offset-1">Checkout</button>
                         </div>
 

@@ -65,11 +65,12 @@ class App extends Component {
           <Route name="Checkout" path="/checkout" component={Checkout} />
           <Route name="category" path="/search/:category" component={Search} />
           <Route name="Details" path="/details" component={Details} />
-          <Route name="Cart" path="/cart" component={CartPage} />
           <Route path="/redirect" component={RedirectPage}/>
           <Route path="/verified" component={VerifiedPage}/>
           <Route name="user" path="/user/:user/profile" component={Profile}>
             <IndexRoute name="Profile" component={UserProfile}/>
+            <Route name="Cart" path="/user/:user/cart" component={CartPage} />
+
             <Route name="Notifications" path="/user/:user/profile/notifications" component={UserNotification}/>
             <Route name="Purchase" component={UserPurchase}>
               <Route name="Completed" path="/user/:user/profile/purchase/completed" component={CompletedPurchase}>
