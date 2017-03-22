@@ -2,9 +2,25 @@
  * Created by bikash on 2/19/17.
  */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import { logout } from '../../actions/authActions';
+
 class ProfileSideBar extends Component{
+
+  logout = () => {
+    this.props.logout().then(
+      (suc)=>{
+        console.log("successfully logged out");
+        this.context.router.push('/');
+      },
+      (err)=>{
+        console.log("error");
+      }
+    )
+  };
+
   render(){
     return(
       <div className="sidebar-left">
@@ -54,7 +70,7 @@ class ProfileSideBar extends Component{
             </div>
           </Link>
 
-          <div className="card">
+          <div className="card" onClick={this.logout} style={{cursor: 'pointer'}}>
             <span className="fa fa-power-off"/> Logout
           </div>
 
@@ -65,4 +81,8 @@ class ProfileSideBar extends Component{
   }
 }
 
-export default ProfileSideBar;
+ProfileSideBar.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+export default connect(null, { logout })(ProfileSideBar);
