@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import  { Link } from 'react-router';
 import { connect } from 'react-redux';
-import FacebookLogin from 'react-facebook-login';
 
-
+import SocialLogin from './SocialLogin';
 import validateInput from '../validations/signupValidation';
-import { loginWithFacebook } from '../actions/authActions';
 
 class Register extends Component{
 
@@ -33,33 +31,16 @@ class Register extends Component{
     return isValid;
   }
 
-  responseFacebook = (response) => {
-    if(response.status == "not_authorized") {
-      console.log("Please login to the app");
-    }
-    if(response.status == "connected") {
-
-    }
-    console.log(response);
-    this.props.loginWithFacebook(response.accessToken).then(
-      (success) => {
-        console.log('success', success)
-        this.context.router.push('/');
-      },
-      (err) => {
-        console.log('err', err)
-      }
-    );
-
-  };
-
   handleSubmit = (e) =>{
     e.preventDefault();
+
     if(this.isValid()){
+
       this.setState({ isLoading: true });
       this.props.userSignUp(this.state).then(
         (res) => {
-
+          console.log("success response",res);
+          this.context.router.push('/login');
         },
         (err) => {
           this.setState({isLoading: false});
@@ -84,13 +65,13 @@ class Register extends Component{
               <div className="line"></div>
               <form className="form-horizontal" onSubmit={this.handleSubmit}>
                 <div className="form-elements">
-                  <div className={errors.username ? "form-group has-error": "form-group"}>
-                    <label className="col-md-3 control-label">Username</label>
-                    <div className="col-md-9">
-                      <input className="form-control" name="username" type="text" value={this.state.username} placeholder="Enter Username" onChange={this.handleChange}/>
-                    </div>
-                    {errors.username && <span className="help-block">{errors.username}</span>}
-                  </div>
+                  {/*<div className={errors.username ? "form-group has-error": "form-group"}>*/}
+                    {/*<label className="col-md-3 control-label">Username</label>*/}
+                    {/*<div className="col-md-9">*/}
+                      {/*<input className="form-control" name="username" type="text" value={this.state.username} placeholder="Enter Username" onChange={this.handleChange}/>*/}
+                    {/*</div>*/}
+                    {/*{errors.username && <span className="help-block">{errors.username}</span>}*/}
+                  {/*</div>*/}
                   {/*<div className="form-group">*/}
                     {/*<label className="col-md-3 control-label">Gender</label>*/}
                     {/*<div className="col-md-9">*/}
@@ -102,20 +83,20 @@ class Register extends Component{
                       {/*</select>*/}
                     {/*</div>*/}
                   {/*</div>*/}
-                  <div className={errors.firstName ? "form-group has-error": "form-group"}>
-                    <label className="col-md-3 control-label">First Name</label>
-                    <div className="col-md-9">
-                      <input className="form-control" name="firstName" type="text" value={this.state.firstName} placeholder="Enter First Name" onChange={this.handleChange}/>
-                    </div>
-                    {errors.firstName && <span className="help-block">{errors.firstName}</span>}
-                  </div>
-                  <div className={errors.lastName ? "form-group has-error": "form-group"}>
-                    <label className="col-md-3 control-label">Last Name</label>
-                    <div className="col-md-9">
-                      <input className="form-control" name="lastName" type="text" value={this.state.lastName} placeholder="Enter Last Name" onChange={this.handleChange}/>
-                    </div>
-                    {errors.lastName && <span className="help-block">{errors.lastName}</span>}
-                  </div>
+                  {/*<div className={errors.firstName ? "form-group has-error": "form-group"}>*/}
+                    {/*<label className="col-md-3 control-label">First Name</label>*/}
+                    {/*<div className="col-md-9">*/}
+                      {/*<input className="form-control" name="firstName" type="text" value={this.state.firstName} placeholder="Enter First Name" onChange={this.handleChange}/>*/}
+                    {/*</div>*/}
+                    {/*{errors.firstName && <span className="help-block">{errors.firstName}</span>}*/}
+                  {/*</div>*/}
+                  {/*<div className={errors.lastName ? "form-group has-error": "form-group"}>*/}
+                    {/*<label className="col-md-3 control-label">Last Name</label>*/}
+                    {/*<div className="col-md-9">*/}
+                      {/*<input className="form-control" name="lastName" type="text" value={this.state.lastName} placeholder="Enter Last Name" onChange={this.handleChange}/>*/}
+                    {/*</div>*/}
+                    {/*{errors.lastName && <span className="help-block">{errors.lastName}</span>}*/}
+                  {/*</div>*/}
                   <div className={errors.email ? "form-group has-error": "form-group"}>
                     <label className="col-md-3 control-label">Email</label>
                     <div className="col-md-9">
@@ -145,25 +126,8 @@ class Register extends Component{
 
                 </div>
               </form>
-              <div className="social-login">
-                <div className="social-label">or Sign Up using</div>
-                <div className="social-options">
-                  <div className="">
-                    <FacebookLogin
-                      appId="204262970008693"
-                      autoLoad={true}
-                      fields="name,email,picture"
-                      textButton=" Facebook"
-                      callback={this.responseFacebook}
-                      cssClass="my-facebook-button-class facebook "
-                      icon="fa-facebook"
-                    />
-                  </div>
-                  <div className="google">
-                    <img src="../../img/google.png" />Google
-                  </div>
-                </div>
-              </div>
+              <SocialLogin />
+
               <div className="login-switch">
                 Already have an account yet? <Link className="link" to="/login">Login.</Link>
               </div>
@@ -182,4 +146,4 @@ Register.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
 
-export default connect(null, { loginWithFacebook })(Register);
+export default Register;
