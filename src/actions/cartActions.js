@@ -10,15 +10,7 @@ import {
   GET_CART_ITEMS,
 } from '../constants/constants.js'
 
-let csrf;
-export function getCSRFToken() {
-  return function (dispatch) {
-    fetch(API_URL1+"/get_csrf",{method: 'get', credentials: "include"}).then(response => response.json()).then(res => {
-      // console.log("csrf token",res);
-      csrf = res;
-    })
-  }
-}
+
 
 export function addToCart(id, count){
 
