@@ -465,6 +465,12 @@ option{
 
 
 }
+.imenu-profile .dropdown-content {
+    min-width: 225px;
+}
+.imenu-profile .dropdown-content .sidebar-left {
+    margin-right: 0;
+}
 .dropdown-content .row{
     margin: auto;
 }
@@ -1005,3 +1011,14 @@ option{
 }
 
 /*End For mini breadcrumb*/
+
+/*For addStore Page*/
+
+.upload input{
+    display:none;
+}
+.upload{
+    margin-bottom: 10px;
+}
+
+/*End For addStore Page*/
