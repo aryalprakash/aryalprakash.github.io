@@ -15,17 +15,12 @@ const logo ={
 class SocialLogin extends Component {
 
   responseFacebook = (response) => {
-    if(response.status == "not_authorized") {
-      console.log("Please login to the app");
-    }
-    if(response.status == "connected") {
-
-    }
     console.log(response);
+
     this.props.loginWithFacebook(response.accessToken).then(
       (success) => {
         console.log('success', success);
-        this.context.router.push('/');
+        this.context.router.push('/user/'+response.name+'/profile');
       },
       (err) => {
         console.log('err', err)
@@ -42,7 +37,7 @@ class SocialLogin extends Component {
           <div className="">
             <FacebookLogin
               appId="204262970008693"
-              autoLoad={true}
+              autoLoad={false}
               fields="name,email,picture"
               textButton=" Facebook"
               callback={this.responseFacebook}
@@ -58,5 +53,9 @@ class SocialLogin extends Component {
     )
   }
 }
+
+SocialLogin.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default connect(null, { loginWithFacebook })(SocialLogin);
