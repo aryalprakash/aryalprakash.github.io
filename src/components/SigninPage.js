@@ -31,7 +31,7 @@ class SigninPage extends Component{
   }
 
   render(){
-
+    document.title = "Infinia Store | Signin";
     return(
       <div>
         <div className=" center" style={div}>
