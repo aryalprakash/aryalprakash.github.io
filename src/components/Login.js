@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import  { Link } from 'react-router';
-import FacebookLogin from 'react-facebook-login';
+import  { Link, browserHistory } from 'react-router';
 
+import SocialLogin from './SocialLogin';
 import { loginWithEmail } from '../actions/authActions';
 import TextFieldGroup from './common/TextFieldGroup';
 
@@ -16,14 +16,6 @@ class Login extends Component{
       }
 
     }
-    responseFacebook = (response) => {
-      if(response.status == "not_authorized"){
-        console.log("Please login to the app");
-      }
-      if(response.status == "connected"){
-        console.log(response);
-      }
-    };
 
     handleSubmit = (e) =>{
       e.preventDefault();
@@ -31,7 +23,8 @@ class Login extends Component{
       this.props.loginWithEmail(this.state).then(
         (success) => {
           console.log('login success', success);
-          this.context.router.push('/ ');
+          this.context.router.push('/');
+          location.reload();
         },
         (err) => {
           console.log('login error', err);
@@ -58,8 +51,8 @@ class Login extends Component{
                     <TextFieldGroup field="email" value={this.state.email} label="E-mail" type="email" onChange={this.handleChange}/>
 
                     <div className="form-group">
-                      <label className="col-md-3 control-label">Password</label>
-                      <div className="col-md-9">
+                      <label className="col-md-3 col-sm-2 control-label">Password</label>
+                      <div className="col-md-9 col-sm-12">
                         <input className="form-control" name="password" value={this.state.password} type="password" placeholder="Your Password" onChange={this.handleChange}/>
                       </div>
 
@@ -80,25 +73,8 @@ class Login extends Component{
 
                   </div>
               </form>
-              <div className="social-login">
-                <div className="social-label">or Login using</div>
-                <div className="social-options">
-                  <div className="">
-                    <FacebookLogin
-                      appId="204262970008693"
-                      autoLoad={true}
-                      fields="name,email,picture"
-                      textButton=" Facebook"
-                      callback={this.responseFacebook}
-                      cssClass="my-facebook-button-class facebook "
-                      icon="fa-facebook"
-                    />
-                  </div>
-                  <div className="google">
-                    <img src="../../img/google.png"/>Google
-                  </div>
-                </div>
-              </div>
+              <SocialLogin/>
+
               <div className="login-switch">
                 <Link className="link" to="/register">Haven't created an account yet? Register.</Link>
               </div>
