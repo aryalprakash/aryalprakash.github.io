@@ -15,7 +15,8 @@ class AddStore extends Component {
       email:'',
       phoneNo: ''
     },
-    errors: {}
+    errors: {},
+    placeholder: 'Attach Trade License'
   };
 
   isValid(){
@@ -40,6 +41,14 @@ class AddStore extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+  };
+
+  getFileName = () =>{
+    let name = document.getElementById('file')
+    let showName = name.value;
+    showName = showName.replace(/.*[\/\\]/, '');
+    showName == ""? this.setState({placeholder: " Attach Trade License"}): this.setState({placeholder: showName});
+
   };
 
   render() {
@@ -81,6 +90,27 @@ class AddStore extends Component {
               type="text"
               onChange={this.handleChange}
             />
+
+            <div className="form-group">
+
+              <label className="col-md-3 control-label"> Attach License</label>
+
+              <div className="col-md-9">
+                <div className=" input-group upload">
+                  <label className="btn btn-default" htmlFor="file" onChange={this.getFileName}>
+                    <input type="file" id="file" />
+                    <span className="fa fa-upload"/><span> {this.state.placeholder}</span>
+                  </label>
+
+                </div>
+                <div className="checkbox">
+                  <label>
+                    <input type="checkbox" style={{marginTop: -3}} value=""/>
+                    I agree to the Terms and Conditions
+                  </label>
+                </div>
+              </div>
+            </div>
 
             <div className="form-group">
               <div className="col-md-12">
