@@ -14,6 +14,7 @@ class ProfileSideBar extends Component{
       (suc)=>{
         console.log("successfully logged out");
         this.context.router.push('/');
+        location.reload();
       },
       (err)=>{
         console.log("error");

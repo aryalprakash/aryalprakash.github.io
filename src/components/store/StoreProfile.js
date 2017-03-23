@@ -2,8 +2,11 @@
  * Created by bikash on 3/14/17.
  */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 import Deals from '../Deals';
+import {getStoreDetails} from '../../actions/storeActions';
 
 
 class StoreProfile extends Component {
@@ -21,6 +24,11 @@ class StoreProfile extends Component {
   };
 
   render() {
+
+    let {storeDetails} = this.props;
+    {storeDetails == undefined || storeDetails.length == 0 && this.props.getStoreDetails(this.props.location.query.id)}
+    console.log('storeDetails in storeProfile page',storeDetails);
+
     return(
       <div className="mycontainer">
         <div className="main-content">
@@ -78,4 +86,10 @@ class StoreProfile extends Component {
   }
 }
 
-export default StoreProfile;
+function mapStateToProps(state) {
+  return {
+    storeDetails: state.stores.storeDetails
+  }
+}
+
+export default connect(mapStateToProps,{ getStoreDetails })(StoreProfile);
