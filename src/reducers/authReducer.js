@@ -6,7 +6,8 @@ import {
 } from '../constants/constants.js';
 
 const initialState = {
- appCredentials: []
+  appCredentials: [],
+  loggedIn: {}
 };
 
 export default (state = initialState, action) => {
@@ -17,6 +18,12 @@ export default (state = initialState, action) => {
       return{
         ...state,
         appCredentials: action.data
+      };
+
+    case "LOGGED_IN":
+      return{
+        ...state,
+        loggedIn: action.data
       };
 
     default:
