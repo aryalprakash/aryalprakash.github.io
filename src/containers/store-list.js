@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import  { Link } from 'react-router';
 import { sortBy, orderBy } from 'lodash';
 
+//******* This file is not in use *********//
+
 class StoreList extends Component{
     renderStoreList(){
         return this.props.stores.map((store) => {
