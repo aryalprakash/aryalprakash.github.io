@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
 import Register from './Register.js';
-import {userSignUp} from '../actions/infiniaAction';
+import {userSignUp} from '../actions/authActions';
 
 const logoStyle = {
   height: 60
@@ -32,6 +32,8 @@ class SignupPage extends Component{
   }
 
   render(){
+    document.title = "Infinia Store | Signup";
+
     return(
       <div>
         <div className=" center" style={div}>
