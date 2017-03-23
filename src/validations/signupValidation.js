@@ -9,15 +9,15 @@ export default function validateInput(data) {
 
   let errors = {};
 
-  if(Validator.isEmpty(data.username)){
-    errors.username = "This field is required";
-  }
-  if(Validator.isEmpty(data.firstName)){
-    errors.firstName = "This field is required";
-  }
-  if(Validator.isEmpty(data.lastName)){
-    errors.lastName = "This field is required";
-  }
+  // if(Validator.isEmpty(data.username)){
+  //   errors.username = "This field is required";
+  // }
+  // if(Validator.isEmpty(data.firstName)){
+  //   errors.firstName = "This field is required";
+  // }
+  // if(Validator.isEmpty(data.lastName)){
+  //   errors.lastName = "This field is required";
+  // }
   if(Validator.isEmpty(data.email)){
     errors.email = "This field is required";
   }
