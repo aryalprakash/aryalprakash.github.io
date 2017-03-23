@@ -34,16 +34,17 @@ import ShippingAddress from './components/profile/ShippingAddress';
 import UserWishlist from './components/profile/UserWishlist';
 import UserMessage from './components/profile/UserMessage';
 import UserSetting from './components/profile/UserSetting';
-import { getAppCredentials } from './actions/authActions';
-import { getCSRFToken } from './actions/cartActions';
+import { getAppCredentials, getCSRFToken, isLoggedIn } from './actions/authActions';
 
 import setStatus from './utils/setPurchaseDetailsStatus';
+import requireAuth from './utils/requireAuth';
 
 class App extends Component {
 
   componentDidMount(){
     this.props.getAppCredentials();
     this.props.getCSRFToken();
+    this.props.isLoggedIn();
   }
 
   render() {
@@ -55,7 +56,7 @@ class App extends Component {
           <Route path="/infinia3" component={Infinia3} />
           <Route path="/infinia4" component={Infinia4} />
           <Route path="/infinia5" component={Infinia5} />
-          <Route name="Store" path="/store" component={Store} />
+          <Route name="store" path="/store/:store" component={Store} />
           <Route name="store" path="/:store/profile" component={StoreProfile} >
             <IndexRoute name="StoreInfo" component={StoreInfo}/>
             <Route name="Promo" path="/:store/profile/promo" component={StorePromo}/>
@@ -67,7 +68,7 @@ class App extends Component {
           <Route name="Details" path="/details" component={Details} />
           <Route path="/redirect" component={RedirectPage}/>
           <Route path="/verified" component={VerifiedPage}/>
-          <Route name="user" path="/user/:user/profile" component={Profile}>
+          <Route name="user" path="/user/:user/profile" component={requireAuth(Profile)}>
             <IndexRoute name="Profile" component={UserProfile}/>
             <Route name="Cart" path="/user/:user/cart" component={CartPage} />
 
@@ -89,12 +90,12 @@ class App extends Component {
             <Route name="Setting" path="/user/:user/profile/setting" component={UserSetting}/>
           </Route>
         </Route>
-        <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
+        <Route path="/login" component={requireAuth(LoginPage)} />
+        <Route path="/register" component={requireAuth(RegisterPage)} />
 
       </Router>
     )
   }
 }
 
-export default connect(null, { getAppCredentials, getCSRFToken })(App);
+export default connect(null, { getAppCredentials, getCSRFToken, isLoggedIn })(App);
