@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  { Route, Link } from 'react-router';
+import  { Route, Link, browserHistory } from 'react-router';
 import Dialog from 'rc-dialog';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -8,11 +8,11 @@ import _ from 'lodash';
 import Register from './Register.js'
 import Login from './Login.js'
 import AddStore from './AddStore';
+import ProfileSideBar from './profile/ProfileSideBar';
 import 'rc-dialog/assets/index.css';
 
-import { userSignUp } from '../actions/infiniaAction';
+import { userSignUp } from '../actions/authActions';
 import { getCartItems, removeFromCart, setCartItem } from '../actions/cartActions';
-import { isLoggedIn } from '../actions/authActions'
 
 let style={
     zIndex: '111111'
@@ -148,14 +148,6 @@ class Header extends Component{
     componentDidMount() {
 
         this.props.getCartItems();
-        this.props.isLoggedIn().then(
-          (success) => {
-            console.log('isloggedIn success',success);
-          },
-          (err) => {
-            console.log('isloggedIn error',err);
-          }
-        );
 
         window.addEventListener('scroll', function (e) {
             let distanceY = window.pageYOffset || document.documentElement.scrollTop,
@@ -179,6 +171,7 @@ class Header extends Component{
     render(){
         let dialog;
         let {cart} = this.props;
+        let { loggedIn } = this.props;
 
         if (this.state.visible) {
             const style = {
@@ -231,8 +224,24 @@ class Header extends Component{
                     <input className="search-input" placeholder="What are you looking for?" type="text" />
                 </div>
                 <div className="imenu-list menu-button" onClick={this.addStore}>Add your Store</div>
-                <div className="imenu-list" onClick={this.onClick}>Login</div>
-                <div className="imenu-list" onClick={this.Reg}>Register</div>
+              {
+                !_.isEmpty(loggedIn) &&
+                  loggedIn.status_code === 200 ?
+                  <div className="imenu-profile">
+                    <div className="myDropdown">
+                      <div className="imenu-list">{loggedIn.username}</div>
+                      <div className="dropdown-content">
+                        <ProfileSideBar/>
+                      </div>
+
+                    </div>
+                  </div>:
+                  <div className="imenu-profile">
+                    <div className="imenu-list" onClick={this.onClick}>Login</div>
+                    <div className="imenu-list" onClick={this.Reg}>Register</div>
+                  </div>
+              }
+
                 <div className="myDropdown">
                   <div className="imenu-list" style={{margin: 8}}>
                       <img src={require("../../img/infinia/cart1.png")}  width="30px"/>
@@ -273,7 +282,7 @@ class Header extends Component{
                                 </div>
                                 <div className="col-md-4">
                                     <span className="col-sm-10" style={{padding: 5, marginTop: 10}}>{item.net_price} {item.itemline.stocked_item.currency} </span>
-                                    <span className="col-sm-2 fa fa-trash-o" style={remove} onClick={()=>this.removeItem(item.itemline.stocked_item.id)}></span>
+                                    <span className="col-sm-2 fa fa-trash-o" style={remove} onClick={()=>this.removeItem(item.itemline.stocked_item.id)}/>
                                 </div>
                               </div>
                             )}
@@ -305,7 +314,7 @@ class Header extends Component{
 }
 
 Header.propTypes = {
-
+  loggedIn: React.PropTypes.object.isRequired
 };
 
 Header.contextTypes = {
@@ -319,9 +328,9 @@ Header.defaultProps = {
 function mapStateToProps(state) {
   return {
     cart: state.cart.cart,
-
+    loggedIn: state.auth.loggedIn,
   }
 }
 // const mapStateToProps = ({cart}) => ({cart});
 
-export default connect(mapStateToProps, { getCartItems, removeFromCart, setCartItem, userSignUp, isLoggedIn })(Header);
+export default connect(mapStateToProps, { getCartItems, removeFromCart, setCartItem, userSignUp })(Header);
