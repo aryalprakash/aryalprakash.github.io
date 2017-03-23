@@ -41,24 +41,6 @@ export function gotSubCategories(res) {
 }
 
 
-export function userSignUp(userData) {
-  console.log("user data",userData);
-  const postData = `username=${userData.username}&first_name=${userData.firstName}&last_name=${userData.lastName}&email=${userData.email}&password=${userData.password}`
-  return function (dispatch) {
-    return fetch(SIGN_UP_URL+'/complete/email/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      credentials: 'include',
-      body: postData
-    }).then(res =>{
-        console.log(res)
-    });
-  }
-
-}
-
 export function addRating(rating, ratingCategory) {
   return{type: "GET_RATING", data: rating}
 }
