@@ -15,6 +15,7 @@ import StorePromo from './components/store/StorePromo';
 import StoreReview from './components/store/StoreReview';
 import Items from './components/Items';
 import Checkout from './components/Checkout';
+import AddStorePage from './components/AddStorePage';
 import LoginPage from './components/SigninPage';
 import RegisterPage from './components/SignupPage';
 import Details from './components/productDetails';
@@ -93,6 +94,7 @@ class App extends Component {
         </Route>
         <Route path="/login" component={requireLogin(LoginPage)} />
         <Route path="/register" component={requireLogin(RegisterPage)} />
+        <Route path="/addStore" component={AddStorePage}/>
 
       </Router>
     )
