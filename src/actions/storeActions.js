@@ -29,7 +29,7 @@ export function getStoresList(category){
 
 export function getStoreDetails(id) {
   return function (dispatch) {
-    fetch(API_URL1+'/stores?id='+id,{method: 'get'}).then(response => response.json()).then(res=> {
+    fetch(API_URL1+'/stores?id='+id,{method: 'get', credentials: 'include',}).then(response => response.json()).then(res=> {
       console.log('from gcs server storeDetails:',res.results);
       dispatch(gotStoreDetails(res.results));
     })
