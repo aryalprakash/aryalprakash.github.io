@@ -14,7 +14,7 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-            registered: true,
+            registered: false,
             list: false,
             place: 'Dubai',
             class: '',
@@ -49,10 +49,10 @@ class Search extends Component {
                                   <div className="row">
                                   {stores.length>0?stores.map(store=>
                                       <div key={store.id} className="col-md-4 col-sm-6">
-                                          <Link to={this.state.registered ?
+                                          <Link to={store.registered ?
                                             { pathname: `/store/${store.display_name}`, query: { id: store.id } }
                                             :
-                                            { pathname: `/${store.display_name}/profile`, query: { id: store.id } }
+                                            { pathname: `/${store.display_name}/profile`, query: { storeId: store.id } }
 
                                             } >
                                               <div className="thumbnail">
