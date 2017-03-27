@@ -38,6 +38,7 @@ import { getAppCredentials, getCSRFToken, isLoggedIn } from './actions/authActio
 
 import setStatus from './utils/setPurchaseDetailsStatus';
 import requireAuth from './utils/requireAuth';
+import requireLogin from './utils/requireLogin';
 
 class App extends Component {
 
@@ -90,8 +91,8 @@ class App extends Component {
             <Route name="Setting" path="/user/:user/profile/setting" component={UserSetting}/>
           </Route>
         </Route>
-        <Route path="/login" component={requireAuth(LoginPage)} />
-        <Route path="/register" component={requireAuth(RegisterPage)} />
+        <Route path="/login" component={requireLogin(LoginPage)} />
+        <Route path="/register" component={requireLogin(RegisterPage)} />
 
       </Router>
     )
