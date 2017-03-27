@@ -5,9 +5,12 @@ import React, {Component} from 'react';
 import Dialog from 'rc-dialog';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import ProfileSideBar from './ProfileSideBar';
 import EditProfile from './EditProfile';
+import { getUserProfile } from '../../actions/userActions';
+import { unfollowStore } from '../../actions/authActions';
 
 const user ={
   marginTop: 5,
@@ -57,6 +60,10 @@ class UserProfile extends Component{
     this.onClose = this.onClose.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getUserProfile();
+  }
+
   onClick() {
     this.setState({
       visible: true,
@@ -95,8 +102,22 @@ class UserProfile extends Component{
     reader.readAsDataURL(file)
   }
 
+  unFollow(id) {
+    this.props.unfollowStore(id).then(
+      (success)=> {
+        console.log("successfully unfollowed");
+        this.props.getUserProfile();
+      },
+      (err)=> {
+        console.log("error during unfollowing");
+      }
+    );
+  }
+
   render(){
     let dialog;
+    let {userData} = this.props;
+    console.log("user profile data", userData);
 
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
@@ -116,7 +137,14 @@ class UserProfile extends Component{
           style={{ width: 500 }}
           title={<div style={{marginTop: 15, fontSize: 17}}> Edit Your Profile</div>}
         >
-          <EditProfile />
+          {
+            !_.isEmpty(userData) ?
+
+              <EditProfile userData={userData.user_data} />
+              :
+              <EditProfile />
+
+          }
 
         </Dialog>
       );
@@ -124,48 +152,63 @@ class UserProfile extends Component{
     return(
       <div className="main-content">
         <ProfileSideBar/>
-        <div className="card center-content">
-          <div className="col-md-10 profile">
-            <div className="col-md-2">
-              <div className="update-profile-pic" onClick={this.selectImage}>
-                <img className="camera-icon" src={require("../../../img/camera-icon.png")}/>
-                {$imagePreview}
-                <input type="file" accept="image/*" id="upload-img" style={{display: "none"}} onChange={(e)=>this.handleImageChange(e)}/>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <h2 style={{marginTop: 0}}>Bikash Shrestha</h2>
-              <h3 style={user}>(bikash-shrestha)</h3>
-              <p>shresthabikash637@gmail.com</p>
-            </div>
-            <div className="col-md-4 edit-profile">
-              <span className="fa fa-pencil" onClick={this.onClick}/>
-            </div>
-          </div>
-
-          <div className="col-md-12 following-store">
-            <h3>Following Stores</h3>
-            <div className="line" style={{marginBottom: 20}}></div>
-            {
-              userFollowing.map((store,index)=>
-                <div key={index} className="col-md-3">
-                  <Link to={{ pathname: '/store', query: { id: store.id } }}>
-                    <div className="thumbnail">
-                      <div className="ribbon"><span className="fa fa-remove tooltip-bottom"><span className="tooltip-text">Unfollow</span></span></div>
-                      <img src={require("../../../img/store.png")} alt="" />
-                      <div className="caption">
-                        <h4>{store.display_name}</h4>
-                        <p>Location: {store.country}, {store.state}</p>
-                        <p>Min-Order: {store.minimum_buy}{store.currency}</p>
-                      </div>
-                    </div>
-                  </Link>
+        {
+          !_.isEmpty(userData) ?
+            <div className="card center-content">
+              <div className="col-md-10 profile">
+                <div className="col-md-2">
+                  <div className="update-profile-pic" onClick={this.selectImage}>
+                    <img className="camera-icon" src={require("../../../img/camera-icon.png")}/>
+                    {$imagePreview}
+                    <input type="file" accept="image/*" id="upload-img" style={{display: "none"}} onChange={(e)=>this.handleImageChange(e)}/>
+                  </div>
                 </div>
-              )
-            }
-          </div>
+                <div className="col-md-6">
+                  <h2 style={{marginTop: 0}}>{userData.user_data.username}</h2>
+                  <h3 style={user}>({userData.user_data.username})</h3>
+                  <p>{userData.user_data.email}</p>
+                </div>
+                <div className="col-md-4 edit-profile">
+                  <span className="fa fa-pencil" onClick={this.onClick}/>
+                </div>
+              </div>
 
-        </div>
+              <div className="col-md-12 following-store">
+                <h3>Following Stores</h3>
+                <div className="line" style={{marginBottom: 20}}></div>
+                {
+                  userData.followed_stores.map((store,index)=>
+                    <div key={index} className="col-md-3">
+
+                        <div className="thumbnail">
+                          <div className="ribbon"><span className="fa fa-remove tooltip-bottom" onClick={() => this.unFollow(store.id)}><span className="tooltip-text">Unfollow</span></span></div>
+
+                          <Link to={store.registered ?
+                          { pathname: `/store/${store.display_name}`, query: { id: store.id } }
+                            :
+                          { pathname: `/${store.display_name}/profile`, query: { storeId: store.id } }
+
+                          } >
+                            <div>
+                              <img src={require("../../../img/store.png")} alt="" />
+                              <div className="caption">
+                                <h4>{store.display_name}</h4>
+                                <p>Location: {store.country}, {store.state}</p>
+                                <p>Min-Order: {store.minimum_buy}{store.currency}</p>
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )
+                }
+              </div>
+
+            </div>
+
+            :
+            <h2>There is no data to show</h2>
+        }
         {dialog}
 
       </div>
@@ -174,4 +217,10 @@ class UserProfile extends Component{
   }
 }
 
-export default UserProfile;
+function mapStateToProps(state) {
+  return{
+    userData: state.user.userData
+  }
+}
+
+export default connect(mapStateToProps, { getUserProfile, unfollowStore })(UserProfile);
