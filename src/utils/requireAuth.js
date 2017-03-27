@@ -16,9 +16,6 @@ export default function(ComposedComponent) {
           this.context.router.push('/login');
         }
 
-        if(nextProps.loggedIn.status_code === 200){
-          this.context.router.push('/');
-        }
       }
 
     }
