@@ -7,8 +7,10 @@ import {
   API_URL1,
   GET_APP_CREDENTIALS,
   SIGN_UP_URL,
+  UNREGISTERED_URL,
 } from '../constants/constants.js';
 import cookie from 'react-cookie';
+import { getStoreDetails }  from './storeActions';
 
 var credentials;
 let csrf;
@@ -135,5 +137,58 @@ export function logout() {
       credentials: 'include',
       body: data
     }).then(handleResponse);
+  }
+}
+
+export function followStore(id) {
+  const data = `csrfmiddlewaretoken=${csrf.csrf}`;
+
+  return dispatch => {
+    return fetch(UNREGISTERED_URL+'/follow/'+`${id}/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      credentials: 'include',
+      body: data
+    }).then(handleResponse).then(
+      (success) => {
+        console.log("response after following store",success);
+        if(success.status_code === 200) {
+          console.log("i am here at follow");
+          dispatch(getStoreDetails(id));
+        }
+      },
+      (err) => {
+        console.log("error while following");
+      }
+    );
+  }
+}
+
+export function unfollowStore(id) {
+  const data = `csrfmiddlewaretoken=${csrf.csrf}`;
+
+  return dispatch => {
+    return fetch(UNREGISTERED_URL+'/unfollow/'+`${id}/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      credentials: 'include',
+      body: data
+    }).then(handleResponse).then(
+      (success) => {
+        console.log("response after unfollowing store",success);
+        if(success.status_code === 200) {
+          console.log("i am here at unfollow");
+          dispatch(getStoreDetails(id));
+        }
+      },
+      (err) => {
+        console.log("error while unfollowing");
+      }
+
+    );
   }
 }
