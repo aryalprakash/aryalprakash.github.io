@@ -106,7 +106,7 @@ class StorePromo extends Component {
 
     return(
       <div>
-        <StoreNavBar active="storePromo"/>
+        <StoreNavBar active="storePromo" storeId={this.props.location.query.storeId} storeName={this.props.params.store}/>
         <div className="card center-content">
           <div className="row col-md-12">
             <h4>Store Promotions</h4>

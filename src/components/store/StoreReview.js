@@ -16,7 +16,7 @@ class StoreReview extends Component {
   render() {
     return(
       <div>
-        <StoreNavBar active="storeReview"/>
+        <StoreNavBar active="storeReview" storeId={this.props.location.query.storeId} storeName={this.props.params.store}/>
         <div className="col-md-10">
           <div className="row col-md-12" style={{paddingBottom: 20}}>
             <h4>Rate Your Shopping Experience</h4>

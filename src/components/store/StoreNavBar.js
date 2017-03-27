@@ -13,13 +13,13 @@ class StoreNavBar extends Component {
           <div className="collapse navbar-collapse" style={{paddingLeft: 0}}>
             <ul className="nav navbar-nav">
               <li className={this.props.active == "storeInfo"? "active": ""}>
-                <Link to="/:store/profile/">Store Info</Link>
+                <Link to={{ pathname: `/${this.props.storeName}/profile`, query: { storeId: this.props.storeId } }}>Store Info</Link>
               </li>
               <li className={this.props.active == "storePromo"? "active": ""}>
-                <Link to="/:store/profile/promo">Deals and Promo</Link>
+                <Link to={{ pathname: `/${this.props.storeName}/profile/promo`, query: { storeId: this.props.storeId } }}>Deals and Promo</Link>
               </li>
               <li className={this.props.active == "storeReview"? "active": ""}>
-                <Link to="/:store/profile/reviews">Rating and Reviews</Link>
+                <Link to={{ pathname: `/${this.props.storeName}/profile/reviews`, query: { storeId: this.props.storeId } }}>Rating and Reviews</Link>
               </li>
             </ul>
           </div>
