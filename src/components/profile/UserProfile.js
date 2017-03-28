@@ -134,7 +134,7 @@ class UserProfile extends Component{
           animation="zoom"
           maskAnimation="fade"
           onClose={this.onClose}
-          style={{ width: 500 }}
+          style={{ width: 600 }}
           title={<div style={{marginTop: 15, fontSize: 17}}> Edit Your Profile</div>}
         >
           {
@@ -142,7 +142,7 @@ class UserProfile extends Component{
 
               <EditProfile userData={userData.user_data} />
               :
-              <EditProfile />
+              <EditProfile userData={{}} />
 
           }
 

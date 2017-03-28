@@ -4,9 +4,12 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import ProfileSideBar from './ProfileSideBar';
 import EditProfile from './EditProfile';
+import { getUserProfile } from '../../actions/userActions';
+
 
 let styles= {
   tab:{
@@ -19,7 +22,16 @@ let styles= {
 };
 
 class UserSetting extends Component{
+
+  componentDidMount() {
+    this.props.getUserProfile();
+  }
+
   render(){
+
+    let {userData} = this.props;
+    console.log("in user setting", userData);
+
     return(
       <div className="main-content">
         <ProfileSideBar active="setting"/>
@@ -27,7 +39,14 @@ class UserSetting extends Component{
           <div className="col-md-7">
             <h4>Profile Setting</h4>
             <div className="line"></div>
-            <EditProfile/>
+            {
+              !_.isEmpty(userData) ?
+
+                <EditProfile userData={userData.user_data} />
+                :
+                <EditProfile userData={{}} />
+
+            }
           </div>
 
           <div className="col-md-7 update-password">
@@ -59,8 +78,8 @@ class UserSetting extends Component{
               </div>
 
               <div className="form-group">
-                <div className="col-md-4 col-md-offset-9">
-                  <button className="btn btn-sm btn-default"> Save Changes</button>
+                <div className="col-md-3 col-md-offset-9">
+                  <button className="btn btn-sm btn-default" style={{marginTop: 10, width: '100%'}}> Save Changes</button>
                 </div>
               </div>
             </form>
@@ -72,4 +91,10 @@ class UserSetting extends Component{
   }
 }
 
-export default UserSetting;
+function mapStateToProps(state) {
+  return{
+    userData: state.user.userData
+  }
+}
+
+export default connect(mapStateToProps, { getUserProfile })(UserSetting);
