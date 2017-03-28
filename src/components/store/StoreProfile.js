@@ -121,7 +121,7 @@ class StoreProfile extends Component {
               </div>
 
               :
-              <h2>Sorry there is something wrong</h2>
+              <h2 className="col-md-10">Sorry there is something wrong</h2>
           }
           <Deals/>
 
