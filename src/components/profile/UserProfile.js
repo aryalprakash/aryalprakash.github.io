@@ -123,8 +123,17 @@ class UserProfile extends Component{
     let $imagePreview = null;
     if (imagePreviewUrl) {
       $imagePreview = (<img className="img-thumbnail profile-pic" src={imagePreviewUrl} />);
-    } else {
-      $imagePreview = (<img className="img-thumbnail profile-pic" src={require("../../../img/profile-icon.png")}/>);
+    }
+    else {
+      $imagePreview = (
+        <img className="img-thumbnail profile-pic" src={
+          !_.isEmpty(userData) &&
+          (
+            !_.isEmpty(userData.user_data.image) ? userData.user_data.image :
+            require("../../../img/profile-icon.png")
+          )
+        }/>
+      );
     }
 
     if (this.state.visible || !this.state.destroyOnClose) {
