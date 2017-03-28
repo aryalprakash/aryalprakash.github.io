@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   userData: {},
+  feeds: {},
 };
 
 export default (state = initialState, action) => {
@@ -17,6 +18,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         userData: action.data
+      };
+
+    case "GET_FEEDS":
+      return {
+        ...state,
+        feeds: action.data
       };
 
     default:
