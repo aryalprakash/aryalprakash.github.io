@@ -99,7 +99,7 @@ class StoreProfile extends Component {
                           </button>
 
                       }
-                      <Link to={ {pathname: `/${storeDetails[0].display_name}`, query: { id: storeDetails[0].id }} }>
+                      <Link to={ {pathname: `/store/${storeDetails[0].display_name}`, query: { id: storeDetails[0].id }} }>
                         <button className="btn btn-sm btn-default" style={{marginRight: "10px"}}> Shop Now </button>
                       </Link>
                       {
