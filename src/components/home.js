@@ -44,12 +44,28 @@ let styles={
     }
 };
 
+const autoComplete = {
+  location: [
+    'Kathmandu, Nepal',
+    'Bhaktapur, Nepal',
+    'Lalitpur, Nepal',
+    'Sharjah, United Arab Emirates',
+    'Dubai, United Arab Emirates',
+    'M.A.D.Gallery Dubai, United Arab Emirates',
+    'Burj Khalifa , United Arab Emirates',
+    'Nikki Beach Dubai, United Arab Emirates',
+    'The Dubai Mall Fountains, United Arab Emirates',
+  ]
+};
+
 class Home extends Component {
     constructor(){
         super();
         this.state={
             list: false,
-            place: 'Dubai'
+            place: 'Dubai',
+            isFocus: false,
+            isAutoCompleteFocus: false
         }
     }
 
@@ -57,9 +73,30 @@ class Home extends Component {
         this.props.dispatch(getMainCategories())
     }
 
+    handleChange = (e) =>{
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    };
+
+    updatePlace(place) {
+      this.setState({place, isAutoCompleteFocus: false})
+    }
+
+    showSuggestions(choice) {
+      this.setState({isFocus: choice});
+    }
+
+    handleMouseEvent(choice) {
+      this.setState({isAutoCompleteFocus: choice})
+    }
+
     render() {
-        let {categories} = this.props
-        console.log('in home',categories);
+        let {categories} = this.props;
+        // console.log('in home',categories);
+
+        let show = this.state.isFocus || this.state.isAutoCompleteFocus ;
+        console.log("show is", show);
 
         return (
             <div>
@@ -76,7 +113,34 @@ class Home extends Component {
 
                                     <form action="" className="form-inline">
                                         <div className="form-group">
-                                            <input style={styles.input1} type="text" className="form-control" placeholder="Search location..."/>
+                                            <input style={styles.input1}
+                                                   type="text"
+                                                   name="place"
+                                                   className="form-control"
+                                                   value={this.state.place}
+                                                   onChange={this.handleChange}
+                                                   onFocus={() => this.showSuggestions(true)}
+                                                   onBlur={() => this.showSuggestions(false)}
+                                                   placeholder="Search location..."
+                                            />
+                                          {
+                                            show &&
+                                              <div className="auto-complete">
+                                                <ul className="list-group"
+                                                    onMouseOver={() => this.handleMouseEvent(true)}
+                                                    onMouseLeave={() => this.handleMouseEvent(false)}
+                                                >
+                                                  {
+                                                    autoComplete.location.map((place,index)=>
+                                                      <li key={index} className="list-group-item" onClick={() => this.updatePlace(place)}>
+                                                        {place}
+                                                      </li>
+                                                    )
+                                                  }
+                                                </ul>
+                                              </div>
+                                          }
+
                                         </div>
                                         <div className="form-group">
                                             <input style={styles.input} type="text" className="form-control" placeholder="Search by Store, Brand, Product, Category..."/>
