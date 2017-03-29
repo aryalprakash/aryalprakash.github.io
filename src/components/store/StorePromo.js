@@ -3,8 +3,10 @@
  */
 import React, { Component } from 'react';
 import Dialog from 'rc-dialog';
+import { connect } from 'react-redux';
 
 import StoreNavBar from './StoreNavBar';
+import { getStoreDetails } from '../../actions/storeActions';
 
 const style = {
   width: 600,
@@ -13,31 +15,31 @@ const style = {
 
 const data = [
   {
-    path: 'https://issuu.com/almaya/docs/merged_edcc962fa3786b/1',
+    flier: 'https://issuu.com/almaya/docs/merged_edcc962fa3786b/1',
     thumbnail: '../../img/offers/4.jpg'
   },
   {
-    path: 'http://static.fliphtml5.com/web/demo/hobbit/index.html',
+    flier: 'http://static.fliphtml5.com/web/demo/hobbit/index.html',
     thumbnail: '../../img/offers/2.jpg'
   },
   {
-    path: 'http://static.fliphtml5.com/web/demo/Mac/Mac.html#p=1',
+    flier: 'http://static.fliphtml5.com/web/demo/Mac/Mac.html#p=1',
     thumbnail: '../../img/offers/4.jpg'
   },
   {
-    path: 'http://static.fliphtml5.com/web/demo/VACHERON%20CONSTANTIN/VACHERON%20CONSTANTIN.html#p=1',
+    flier: 'http://static.fliphtml5.com/web/demo/VACHERON%20CONSTANTIN/VACHERON%20CONSTANTIN.html#p=1',
     thumbnail: '../../img/offers/2.jpg'
   },
   {
-    path: 'http://static.fliphtml5.com/web/demo/Estee%20Lauder/Estee%20Lauder.html#p=1',
+    flier: 'http://static.fliphtml5.com/web/demo/Estee%20Lauder/Estee%20Lauder.html#p=1',
     thumbnail: '../../img/offers/4.jpg'
   },
   {
-    path: 'http://static.fliphtml5.com/web/demo/DOLCE%20&%20GABBANA/DOLCE%20&%20GABBANA.html#p=1',
+    flier: 'http://static.fliphtml5.com/web/demo/DOLCE%20&%20GABBANA/DOLCE%20&%20GABBANA.html#p=1',
     thumbnail: '../../img/offers/2.jpg'
   },
   {
-    path: '../../img/RFQ.pdf',
+    flier: '../../img/RFQ.pdf',
     thumbnail: '../../img/offers/4.jpg'
   },
 
@@ -56,6 +58,7 @@ class StorePromo extends Component {
   }
 
   onClick(src) {
+    console.log("flier path", src);
     this.setState({
       visible: true,
       link: src
@@ -77,6 +80,10 @@ class StorePromo extends Component {
 
   render() {
     let dialog;
+    let {storeDetails} = this.props;
+    let offers;
+    {storeDetails.length == 0 ? this.props.getStoreDetails(this.props.location.query.storeId): offers = storeDetails[0].offers}
+    console.log('offers in storePromo page',offers);
 
     if (this.state.visible || !this.state.destroyOnClose) {
       dialog = (
@@ -88,17 +95,19 @@ class StorePromo extends Component {
           style={{ width: 840 }}
           title={<div style={{marginTop: 15, fontSize: 17}}> Store Promotions</div>}
         >
-          <iframe
-            frameBorder='0'
-            width='800'
-            height='600'
-            title='fresh'
-            src={this.state.link}
-            type='text/html'
-            allowFullScreen='true'
-            scrolling='no'
-            marginWidth='0'
-            marginHeight='0'/>
+            {/*<iframe*/}
+            {/*frameBorder='0'*/}
+            {/*width='800'*/}
+            {/*height='600'*/}
+            {/*title='fresh'*/}
+            {/*src={this.state.link}*/}
+            {/*type='text/html'*/}
+            {/*allowFullScreen='true'*/}
+            {/*scrolling='no'*/}
+            {/*marginWidth='0'*/}
+            {/*marginHeight='0'*/}
+            {/*sandbox="allow-scripts"/>*/}
+          <object width='800' height='auto' data={this.state.link}/>
 
         </Dialog>
       );
@@ -109,14 +118,24 @@ class StorePromo extends Component {
         <StoreNavBar active="storePromo" storeId={this.props.location.query.storeId} storeName={this.props.params.store}/>
         <div className="card center-content">
           <div className="row col-md-12">
-            <h4>Store Promotions</h4>
-            <div className="line" style={{marginBottom: 20}}></div>
+            <h4>Store Promotions/Offers</h4>
             {
-              data.map((item, index)=>
-                <div key={index} className="col-md-3" style={{cursor: 'pointer'}}>
-                  <div className="thumbnail" onClick={() => this.onClick(item.path)}>
-                    <img src={item.thumbnail}/>
+              offers.map((item,index) =>
+                <div key={index} className="col-md-12 offers-section">
+                  <h4 className="order-header">{(item.offer_name).toUpperCase()}</h4>
+                  <div className="line"></div>
+                  <div className="col-md-12 offers">
+                    {
+                      item.catalog.map((catalog, index)=>
+                        <div key={index} className="col-md-2" style={{cursor: 'pointer'}}>
+                          <div className="thumbnail" onClick={() => this.onClick(catalog.flier)}>
+                            <img src={catalog.thumbnail}/>
+                          </div>
+                        </div>
+                      )
+                    }
                   </div>
+
                 </div>
               )
             }
@@ -128,5 +147,9 @@ class StorePromo extends Component {
     )
   }
 }
-
-export default StorePromo;
+function mapStateToProps(state) {
+  return{
+    storeDetails: state.stores.storeDetails
+  }
+}
+export default connect(mapStateToProps, { getStoreDetails })(StorePromo);
