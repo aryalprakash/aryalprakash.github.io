@@ -22,6 +22,7 @@ const initialState = {
     current_store: [],
     cart: {},
     shippingAddress: [],
+    searchResult: {},
     rating: 0,
 };
 
@@ -44,6 +45,12 @@ export default (state = initialState, action) => {
             return{
             ...state,
             rating: action.data
+            };
+
+        case 'SEARCH_STORE':
+            return{
+              ...state,
+                searchResult: action.data
             };
         default:
             return state
