@@ -9,6 +9,7 @@ import {
     API_URL1,
     GET_MAIN_CATEGORIES,
     GET_SUB_CATEGORIES,
+    UNREGISTERED_URL,
     } from '../constants/constants.js'
 
 export function getMainCategories (){
@@ -43,4 +44,23 @@ export function gotSubCategories(res) {
 
 export function addRating(rating, ratingCategory) {
   return{type: "GET_RATING", data: rating}
+}
+
+export function searchStore(data) {
+    return function (dispatch) {
+        fetch(UNREGISTERED_URL+"/search_store/"+`?q=${data.place}&lat=${data.lat}&lon=${data.lng}`,{
+            method: 'get',
+            credentials: "include",
+        }).then(response => response.json()).then(res => {
+            console.log("store search results",res);
+            dispatch(gotStoreSearchResult(res));
+        })
+    }
+}
+
+function gotStoreSearchResult(res) {
+    return {
+        type: 'SEARCH_STORE',
+        data: res
+    }
 }
