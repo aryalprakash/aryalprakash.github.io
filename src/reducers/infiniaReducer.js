@@ -3,26 +3,13 @@ import thunk from 'redux-thunk'
 
 import {
     GET_MAIN_CATEGORIES,
-    GET_STORES_LIST,
     GET_SUB_CATEGORIES,
-    GET_PRODUCTS_LIST,
-    GET_PRODUCT_DETAILS,
-    GET_STORE_DETAILS,
-    GET_CART_ITEMS,
-    GET_APP_CREDENTIALS,
-    GET_SHIPPING_ADDRESS,
     GET_RATING,
     } from '../constants/constants.js';
 
 const initialState = {
     categories: [],
-    stores: [],
-    products: [],
-    productDetails: [],
-    current_store: [],
-    cart: {},
-    shippingAddress: [],
-    searchResult: {},
+    subcategories: [],
     rating: 0,
 };
 
@@ -47,11 +34,6 @@ export default (state = initialState, action) => {
             rating: action.data
             };
 
-        case 'SEARCH_STORE':
-            return{
-              ...state,
-                searchResult: action.data
-            };
         default:
             return state
     }
