@@ -6,10 +6,12 @@ import storeReducer from './storeReducer';
 import productReducer from './productReducer';
 import shippingReducer from './shippingReducer';
 import userReducer from './userReducer';
+import searchReducer from './searchReducer';
 
 export default combineReducers({
   auth: authReducer,
   InfiniaStores: infiniaStores,
+  search: searchReducer,
   user: userReducer,
   cart: cartReducer,
   stores: storeReducer,
