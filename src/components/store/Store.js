@@ -9,6 +9,7 @@ import Deals from '../Deals';
 import Gmap from '../maps';
 import SlidingTabPanel from '../SlidingTabPanel';
 import StorePromo from './StorePromo';
+import StoreAboutUs from './StoreAboutUs';
 
 import {getStoreDetails} from '../../actions/storeActions';
 
@@ -61,41 +62,20 @@ class Store extends Component {
 
                     <div className="sidebar-left">
 
-                        <div className="card profile">
-                            <div className="store-image">
-                                <img src="../../img/store.png" />
-                            </div>
-                            <div className="store-profile-name">{storeDetails[0].display_name}</div>
-                            <div className="store-profile-address">{storeDetails[0].street}, {storeDetails[0].state}</div>
-                        </div>
+                      <div className="card profile">
+                          <div className="store-image">
+                              <img src="../../img/store.png" />
+                          </div>
+                      </div>
+                      <StoreAboutUs storeDetails={storeDetails[0]}/>
 
-                        <div className="card">
-                            Delivery Time
-                            {/*<div className="line"></div>*/}
-                            <div className="store-profile-content">8:00 AM - 6:00 PM</div>
-                        </div>
-                        <div className="card">
-                            Delivery Areas
-                            {/*<div className="line"></div>*/}
-                            <div className="store-profile-content">Ratnapark, Chabahil, Bhaktapur, Lalitpur</div>
-                        </div>
-                        <div className="card">
-                            Minimum Order
-                            {/*<div className="line"></div>*/}
-                            <div className="store-profile-content">{storeDetails[0].minimum_buy} AED</div>
-                        </div>
-                        <div className="card">
-                            Rating
-                            {/*<div className="line"></div>*/}
-                            <div className="store-profile-content"><span className="fa fa-smile-o" /></div>
-                        </div>
-                        <div className="card">
-                            Location
-                            <div className="store-profile-content">
-                                <Gmap initialCenter={{ lng: storeDetails[0].longitude, lat: storeDetails[0].latitude }} placeProp={this.state.place}/>
+                      <div className="card">
+                          Location
+                          <div className="store-profile-content">
+                              <Gmap initialCenter={{ lng: storeDetails[0].longitude, lat: storeDetails[0].latitude }} placeProp={this.state.place}/>
 
-                            </div>
-                        </div>
+                          </div>
+                      </div>
 
                     </div>
 
