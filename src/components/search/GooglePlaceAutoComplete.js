@@ -17,7 +17,7 @@ class PlaceAutoComplete extends Component {
   };
 
   autoComplete = (e) => {
-    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('location_search'), {types:[ 'address']});
+    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('location_search'), {types:[ 'address'],componentRestrictions: {country: "AE"}});
 
     autocomplete.addListener('place_changed', e => {
       var place = autocomplete.getPlace();
