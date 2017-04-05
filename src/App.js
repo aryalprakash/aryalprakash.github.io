@@ -8,6 +8,10 @@ import Infinia4 from './components/testFolder/Infinia4';
 import Infinia5 from './components/testFolder/Infinia5';
 import Home from './components/home';
 import Search from './components/Search';
+import SearchPage from './components/search/SearchPage';
+import SearchResults from './components/search/SearchResults';
+import StoreSearchPage from './components/search/StoreSearchPage';
+import OfferSearchPage from './components/search/OfferSearchPage';
 import Store from './components/store/Store';
 import StoreProfile from './components/store/StoreProfile';
 import StoreInfo from './components/store/StoreInfo';
@@ -66,6 +70,11 @@ class App extends Component {
           </Route>
           <Route name="Items" path="/items" component={Items} />
           <Route name="Checkout" path="/checkout" component={Checkout} />
+          <Route name="Search" path="/search" component={SearchPage} >
+            <IndexRoute name="All" component={SearchResults}/>
+            <Route name="Store" path="/search/store" component={StoreSearchPage}/>
+            <Route name="Offer" path="/search/offer" component={OfferSearchPage}/>
+          </Route>
           <Route name="category" path="/search/:category" component={Search} />
           <Route name="Details" path="/details" component={Details} />
           <Route path="/redirect" component={RedirectPage}/>
