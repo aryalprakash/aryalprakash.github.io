@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Router, Route, Link, browserHistory } from 'react-router'
-import {getMainCategories} from '../actions/infiniaAction.js'
-import Deals from './homeDeals';
+import { Router, Route, Link, browserHistory } from 'react-router';
 
+import { getMainCategories } from '../actions/infiniaAction';
+import {  search, getSuggestions } from '../actions/searchActions';
+import Deals from './homeDeals';
+import PlaceAutoComplete from './search/GooglePlaceAutoComplete';
+import AutoCompleteSearch from './search/AutoCompleteSearch';
 
 
 let styles={
@@ -33,10 +36,10 @@ let styles={
     },
     input:{
         boxShadow:"1px 1px 0 rgba(0.4,0,0,0.3)",
-
         width: "400px",
     },
     input1:{
+        width: 200,
         boxShadow:"1px 1px 0 rgba(0.4,0,0,0.3)",
 
     },btn:{
@@ -44,59 +47,45 @@ let styles={
     }
 };
 
-const autoComplete = {
-  location: [
-    'Kathmandu, Nepal',
-    'Bhaktapur, Nepal',
-    'Lalitpur, Nepal',
-    'Sharjah, United Arab Emirates',
-    'Dubai, United Arab Emirates',
-    'M.A.D.Gallery Dubai, United Arab Emirates',
-    'Burj Khalifa , United Arab Emirates',
-    'Nikki Beach Dubai, United Arab Emirates',
-    'The Dubai Mall Fountains, United Arab Emirates',
-  ]
-};
-
 class Home extends Component {
     constructor(){
         super();
         this.state={
             list: false,
-            place: 'Dubai',
+            place: '',
+            lat:'',
+            lng:'',
             isFocus: false,
-            isAutoCompleteFocus: false
+            isAutoCompleteFocus: false,
+            searchInput: '',
         }
     }
 
     componentDidMount(){
-        this.props.dispatch(getMainCategories())
+        this.props.getMainCategories();
     }
 
-    handleChange = (e) =>{
+    updatePlace = (place) => {
+      console.log("from child", place);
       this.setState({
-        [e.target.name]: e.target.value
+        place: place.formatted_address,
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
       });
     };
 
-    updatePlace(place) {
-      this.setState({place, isAutoCompleteFocus: false})
-    }
+    updateSearchField = (value) => {
+      this.setState({searchInput: value})
+    };
 
-    showSuggestions(choice) {
-      this.setState({isFocus: choice});
-    }
-
-    handleMouseEvent(choice) {
-      this.setState({isAutoCompleteFocus: choice})
-    }
+    searchStore = (e) => {
+      e.preventDefault();
+      this.props.search(this.state);
+    };
 
     render() {
         let {categories} = this.props;
         // console.log('in home',categories);
-
-        let show = this.state.isFocus || this.state.isAutoCompleteFocus ;
-        console.log("show is", show);
 
         return (
             <div>
@@ -111,41 +100,11 @@ class Home extends Component {
                                 <div className="col-md-2"></div>
                                 <div className="col-md-8">
 
-                                    <form action="" className="form-inline">
-                                        <div className="form-group">
-                                            <input style={styles.input1}
-                                                   type="text"
-                                                   name="place"
-                                                   className="form-control"
-                                                   value={this.state.place}
-                                                   onChange={this.handleChange}
-                                                   onFocus={() => this.showSuggestions(true)}
-                                                   onBlur={() => this.showSuggestions(false)}
-                                                   placeholder="Search location..."
-                                            />
-                                          {
-                                            show &&
-                                              <div className="auto-complete">
-                                                <ul className="list-group"
-                                                    onMouseOver={() => this.handleMouseEvent(true)}
-                                                    onMouseLeave={() => this.handleMouseEvent(false)}
-                                                >
-                                                  {
-                                                    autoComplete.location.map((place,index)=>
-                                                      <li key={index} className="list-group-item" onClick={() => this.updatePlace(place)}>
-                                                        {place}
-                                                      </li>
-                                                    )
-                                                  }
-                                                </ul>
-                                              </div>
-                                          }
+                                    <form action="" className="form-inline" onSubmit={this.searchStore}>
+                                      <PlaceAutoComplete style={styles.input1} width={200} updatePlace={this.updatePlace}/>
+                                      <AutoCompleteSearch style={styles.input} getSuggestions={this.props.getSuggestions} updateSearchField={this.updateSearchField}/>
 
-                                        </div>
-                                        <div className="form-group">
-                                            <input style={styles.input} type="text" className="form-control" placeholder="Search by Store, Brand, Product, Category..."/>
-                                        </div>
-                                        <button type="submit" className="btn btn-danger" >Search</button>
+                                      <button type="submit" className="btn btn-danger">Search</button>
                                     </form>
 
                                 </div>
@@ -206,4 +165,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)( Home )
+export default connect(mapStateToProps, { getMainCategories, search, getSuggestions })( Home )
