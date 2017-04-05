@@ -10,6 +10,10 @@ a {
 a:hover {
     text-decoration: none;
 }
+
+button:focus {
+    outline: 0 !important;
+}
 @media (min-width: 1300px){
     .container{
         width: 1250px;
@@ -59,6 +63,39 @@ a:hover {
 .overlay{
     background: rgba(38, 57, 88, 0.5);
     height: 350px;
+}
+.auto-complete {
+    position: absolute;
+    color: #5e5e5e;
+    /*width: 400px;*/
+    height: auto;
+    max-height: 400px;
+    -webkit-box-shadow: 0 0 2px #aaa;
+    -moz-box-shadow: 0 0 2px #aaa;
+    box-shadow: 0 0 2px #aaa;
+    background: #fafafa;
+    border-radius: 3%;
+    z-index: 11111;
+}
+.auto-complete .list-group {
+    border: none;
+    margin-bottom: 0;
+}
+.auto-complete .list-group-item {
+    text-align: left;
+    padding: 5px 15px;
+    border: none;
+    height: 31px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.auto-complete .list-group-item:hover{
+    cursor: pointer;
+    background: #f2f2f2;
+}
+.auto-complete .list-group a:hover{
+    color: #323232;
 }
 .category-sec{
     color: #357ebd;
@@ -169,7 +206,7 @@ a:hover {
 }
 .store-sec .thumbnail img{
   width: 200px;
-  height: 180px;
+  height: auto;
   overflow: hidden;
 }
 .ribbon {
@@ -651,7 +688,7 @@ option{
     height: 300px;
 }
 .pac-container{
-    z-index: 1111111;
+    z-index: 111111;
 }
 
 .horizontal-navbar{
@@ -962,7 +999,7 @@ option{
 }
 .store-intro > .rating-sec {
     width: auto;
-    max-width: 220px;
+    max-width: 170px;
     padding: 2px;
     padding-left: 5px;
     background-color: #4cae4c;
@@ -994,6 +1031,23 @@ option{
 .store-map .GMap-canvas {
     height: 350px;
 }
+.offers-section {
+    padding: 15px 0;
+    -webkit-box-shadow: 0 0 2px #aaa;
+    -moz-box-shadow: 0 0 2px #aaa;
+    box-shadow: 0 0 2px #aaa;
+    margin-bottom: 15px;
+}
+.offers-section .line{
+    background: #f3f3f3;
+}
+.offers {
+    padding: 5px 0;
+}
+.align-right {
+    float: right;
+    margin-right: 5%;
+}
 /*End For Store Profile*/
 
 /*For mini breadcrum*/
@@ -1022,3 +1076,202 @@ option{
 }
 
 /*End For addStore Page*/
+
+/*For SearchPage*/
+.search-page {
+    width: 100%;
+    /*display: flex;*/
+    /*align-self: flex-start;*/
+    /*justify-content: center;*/
+    /*margin-left: -5px;*/
+}
+
+.search-page > .thumbnail > img {
+    height: 80px;
+}
+.offer-sec {
+    margin-top: 15px;
+}
+.offer-sec a{
+    text-decoration: none;
+    font-size: 85%;
+}
+.offer-sec .thumbnail{
+    padding: 7px;
+}
+
+.offer-sec .thumbnail img{
+    width: 100%;
+    max-width: 230px;
+    height: auto;
+    max-height: 180px;
+    object-fit: cover;
+
+    overflow: hidden;
+}
+.offer-sec .thumbnail p{
+    margin: 3px 0;
+    color: #737373;
+}
+.offer-sec .thumbnail .caption p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.offer-sec .thumbnail:hover{
+    -webkit-box-shadow: 0 0 10px #aaaaaa;
+    -moz-box-shadow: 0 0 10px #aaaaaa;
+    box-shadow: 0 0 10px #aaa;
+}
+
+.filter-content {
+    display: flex;
+    margin-top: 10px;
+}
+.filter-content span{
+    margin-left: 5px;
+    font-size: 0.8em;
+    width: 25%;
+}
+.filter-heading {
+    display: flex;
+}
+.filter-heading:hover {
+    cursor: pointer;
+}
+.filter-header {
+    width: 100%;
+}
+.filter-heading .fa{
+    margin-top: 3px;
+    width: 5%;
+}
+
+.checkbox label:after,
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.checkbox label,
+.radio label {
+    font-size: 0.8em;
+    padding-left: 0;
+}
+
+.checkbox .ftr,
+.radio .ftr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    /*border-radius: .25em;*/
+    /*margin-top: 3px;*/
+    width: 1.6em;
+    height: 1.6em;
+    float: left;
+    margin-right: 10px;
+}
+
+.radio .ftr {
+    border-radius: 50%;
+}
+
+.checkbox .ftr .ftr-icon,
+.radio .ftr .ftr-icon {
+    position: absolute;
+    font-size: 1em;
+    line-height: 0;
+    top: 50%;
+}
+.checkbox .ftr .ftr-icon{
+    left: 15%;
+}
+.radio .ftr .ftr-icon {
+    left: 20%;
+}
+
+.radio .ftr .ftr-icon {
+    margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .ftr > .ftr-icon,
+.radio label input[type="radio"] + .ftr > .ftr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .ftr > .ftr-icon,
+.radio label input[type="radio"]:checked + .ftr > .ftr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .ftr,
+.radio label input[type="radio"]:disabled + .ftr {
+    opacity: .5;
+}
+
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 90%;
+    height: 3px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #0074D9;
+    margin-top: -6px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #0074D9;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]:focus::-moz-range-track {
+    background: #ccc;
+}
+
+/*End For SearchPage*/
