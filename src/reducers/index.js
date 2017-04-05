@@ -7,6 +7,7 @@ import productReducer from './productReducer';
 import shippingReducer from './shippingReducer';
 import userReducer from './userReducer';
 import searchReducer from './searchReducer';
+import filterReducer from './filterReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -17,6 +18,6 @@ export default combineReducers({
   stores: storeReducer,
   products: productReducer,
   shippingAddress: shippingReducer,
-
+  filters: filterReducer,
 });
 
