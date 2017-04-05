@@ -1,6 +1,6 @@
 'use strict';
 import thunk from 'redux-thunk'
-import { dispatch } from 'redux'
+import { dispatch } from 'redux';
 //require('es6-promise').polyfill();
 //require('isomorphic-fetch');
 
@@ -11,6 +11,7 @@ import {
     GET_SUB_CATEGORIES,
     UNREGISTERED_URL,
     } from '../constants/constants.js'
+import _ from 'lodash';
 
 export function getMainCategories (){
     return function(dispatch){
@@ -46,21 +47,3 @@ export function addRating(rating, ratingCategory) {
   return{type: "GET_RATING", data: rating}
 }
 
-export function searchStore(data) {
-    return function (dispatch) {
-        fetch(UNREGISTERED_URL+"/search_store/"+`?q=${data.place}&lat=${data.lat}&lon=${data.lng}`,{
-            method: 'get',
-            credentials: "include",
-        }).then(response => response.json()).then(res => {
-            console.log("store search results",res);
-            dispatch(gotStoreSearchResult(res));
-        })
-    }
-}
-
-function gotStoreSearchResult(res) {
-    return {
-        type: 'SEARCH_STORE',
-        data: res
-    }
-}
