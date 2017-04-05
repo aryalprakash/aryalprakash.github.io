@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
 require("es6-promise").polyfill();
-import rootReducers from './reducers/index';
+import rootReducers from './reducers/rootReducer';
 import InfiniaStores from './reducers/infiniaReducer.js'
 import App from './App';
 
