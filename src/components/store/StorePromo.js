@@ -57,18 +57,20 @@ class StorePromo extends Component {
 
   }
 
-  onClick(src) {
+  onClick(src, type) {
     console.log("flier path", src);
     this.setState({
       visible: true,
-      link: src
+      link: 'http://192.168.10.7:8000'+src,
+      file_type: type
     });
   };
 
   onClose = () => {
     this.setState({
       visible: false,
-      link: ''
+      link: '',
+      file_type: '',
     });
   };
 
@@ -107,7 +109,18 @@ class StorePromo extends Component {
             {/*marginWidth='0'*/}
             {/*marginHeight='0'*/}
             {/*sandbox="allow-scripts"/>*/}
-          <object width='800' height='auto' data={this.state.link}/>
+          {
+            this.state.file_type === 'pdf' &&
+              <object width='800' height='600' data={this.state.link} type="application/pdf">
+                {/*Sorry your browser does not support the content*/}
+              </object>
+          }
+          {
+            this.state.file_type === 'image' &&
+             <img width='800' height='600' src={this.state.link}/>
+
+          }
+
 
         </Dialog>
       );
@@ -122,14 +135,16 @@ class StorePromo extends Component {
             {
               offers.map((item,index) =>
                 <div key={index} className="col-md-12 offers-section">
-                  <h4 className="order-header">{(item.offer_name).toUpperCase()}</h4>
+                  <h4 className="order-header">{(item.offer_name).toUpperCase()} <span className="align-right">Ends in: {item.end_date}</span></h4>
+
                   <div className="line"></div>
-                  <div className="col-md-12 offers">
+                  <div className="col-md-12 offer-sec offers">
                     {
                       item.catalog.map((catalog, index)=>
-                        <div key={index} className="col-md-2" style={{cursor: 'pointer'}}>
-                          <div className="thumbnail" onClick={() => this.onClick(catalog.flier)}>
-                            <img src={catalog.thumbnail}/>
+                        <div key={index} className="col-md-3 col-sm-6" style={{cursor: 'pointer'}}>
+                          <div className="thumbnail" onClick={() => this.onClick(catalog.flier, catalog.file_type)}>
+                            <img src={'http://192.168.10.7:8000'+catalog.thumbnail}/>
+
                           </div>
                         </div>
                       )
