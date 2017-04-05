@@ -3,7 +3,9 @@
  */
 
 const initialState = {
-  searchResult: {}
+  searchResult: {},
+  searchField: {},
+  suggestions: {},
 };
 
 export default (state = initialState, action) => {
@@ -14,6 +16,25 @@ export default (state = initialState, action) => {
         ...state,
         searchResult: action.data
       };
+
+    case 'SEARCH_OFFER':
+      return{
+        ...state,
+        searchOfferResult: action.data
+      };
+
+    case 'SAVE_SEARCH_FIELD':
+      return{
+        ...state,
+        searchField: action.data
+      };
+
+    case 'GET_SUGGESTIONS':
+      return{
+        ...state,
+        suggestions: action.data
+      };
+
     default:
       return state
   }
