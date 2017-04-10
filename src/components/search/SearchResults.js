@@ -55,13 +55,7 @@ class SearchResults extends Component {
     let {searchResult} = this.props;
     let {searchOfferResult} = this.props;
 
-    let newURL;
-    if(!this.state.lat || !this.state.lng) {
-      newURL = `?q=${this.state.searchInput}`;
-    }
-    else {
-      newURL = `?q=${this.state.searchInput}&lat=${this.state.lat}&lon=${this.state.lng}`;
-    }
+    let newURL = this.props.location.search;
 
     {
       ( _.isEmpty(searchResult) || _.isEmpty(searchOfferResult) ) && this.props.search(this.state);

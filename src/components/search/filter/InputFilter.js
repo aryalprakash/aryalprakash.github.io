@@ -9,10 +9,25 @@ class InputFilter extends Component {
     isShow: this.props.isShow
   };
 
+  componentDidMount() {
+    if(this.props.urlLocation.query.distance__lte){
+      this.setState({
+        sliderValue: this.props.urlLocation.query.distance__lte
+      });
+    }
+
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
+    if(this.props.urlLocation.query.distance__lte){
+      this.props.updatePage((this.props.urlLocation.search).replace(`&distance__lte=${this.state.sliderValue}`,`&distance__lte=${e.target.value}`));
+    }
+    else{
+      this.props.updatePage(this.props.urlLocation.search+`&distance__lte=${e.target.value}`);
+    }
   };
 
   handleDisplay = (e) => {
@@ -43,6 +58,7 @@ class InputFilter extends Component {
 
 InputFilter.propTypes = {
   header: React.PropTypes.string.isRequired,
+  urlLocation: React.PropTypes.object.isRequired,
 };
 
 InputFilter.defaultProps = {

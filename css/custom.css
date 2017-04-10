@@ -1125,9 +1125,15 @@ option{
     box-shadow: 0 0 10px #aaa;
 }
 
+.pagination li:hover{
+    cursor: pointer;
+}
+
 .filter-content {
     display: flex;
     margin-top: 10px;
+    max-height: 230px;
+    overflow-y: auto;
 }
 .filter-content span{
     margin-left: 5px;
@@ -1147,7 +1153,42 @@ option{
     margin-top: 3px;
     width: 5%;
 }
+.search-field .fa-search {
+    color: #aaa;
+    position: relative;
+    margin-top: 7px;
+    width: 0;
+    font-size: 0.9em;
+}
+.search-field {
+    display: flex;
+    /*margin-bottom: 20%;*/
+}
+.search-field input{
+    width: 100%;
+    padding: 5px;
+    padding-left: 18px;
+    border: none;
+    border-bottom: 0.15em solid #ddd;
+    font-size: 0.9em;
+}
 
+.search-field input:focus {
+    border-color: #44afe9;
+    outline: 0;
+}
+.checkbox .rtr {
+    margin-right: 5px;
+}
+.checkbox .rtr .fa-star {
+    margin-bottom: 3px;
+    font-size: 1.2em;
+}
+.checkbox .rtr .fa-star-o {
+    color: #ff9800;
+    margin-bottom: 3px;
+    font-size: 1.2em;
+}
 .checkbox label:after,
 .radio label:after {
     content: '';

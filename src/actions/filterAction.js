@@ -4,12 +4,12 @@
 import { dispatch } from 'redux';
 import {
     API_URL1,
+    UNREGISTERED_URL,
 } from '../constants/constants.js'
 
 export function getSearchFilters() {
     return function(dispatch){
-        fetch(API_URL1+"/category_2").then(response => response.json()).then(res => {
-            console.log(res.other);
+        fetch(API_URL1+"/filters/?keys=cat2").then(response => response.json()).then(res => {
             dispatch(gotSearchFilters(res));
         })
     }
