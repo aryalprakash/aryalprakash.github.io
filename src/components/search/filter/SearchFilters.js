@@ -14,6 +14,8 @@ const rating = [
   [1, 'one'],[2, 'two'],[3, 'three'],[4, 'four'],[5, 'five']
 ];
 
+const registration = [['True', 'Registered'], ['False', 'Unregistered']];
+
 class Filters extends Component {
 
   componentDidMount() {
@@ -42,6 +44,7 @@ class Filters extends Component {
             list={filters.cat2Choices}
             showSearchBar={true}
             isCategory={true}
+            queryField="categorysecond__category__in"
             updatePage={this.props.updatePage}
             urlLocation={this.props.urlLocation}
           />
@@ -50,6 +53,16 @@ class Filters extends Component {
           header="Rating"
           list={rating}
           isRating={true}
+          queryField="rating__in"
+          updatePage={this.props.updatePage}
+          urlLocation={this.props.urlLocation}
+        />
+        <CheckboxFilter
+          isShow='flex'
+          header="Store Registration"
+          list={registration}
+          isRegistration={true}
+          queryField="registered"
           updatePage={this.props.updatePage}
           urlLocation={this.props.urlLocation}
         />
