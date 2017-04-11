@@ -80,7 +80,7 @@ class AutoCompleteSearch extends Component {
       [e.target.name]: e.target.value
     });
     this.props.getSuggestions(e.target.value);
-
+    this.props.updateSearchField(e.target.value);
   };
 
   updateSearchField(value) {
