@@ -7,6 +7,8 @@ import Header from './Header';
 import Breadcrumb from './Breadcrumb';
 import MiniBreadcrumb from './MiniBreadcrumb';
 import Footer from './Footer';
+import ChatBox from './ChatBox';
+
 let style={
     header: {
         background: 'grey'
@@ -66,6 +68,7 @@ export default class Infinia extends Component{
             <div>
               {this.props.children}
             </div>
+            <ChatBox/>
             <Footer/>
         </div>
       );
