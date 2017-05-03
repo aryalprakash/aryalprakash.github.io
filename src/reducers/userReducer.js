@@ -9,6 +9,7 @@ import {
 const initialState = {
   userData: {},
   feeds: {},
+  history: {},
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +25,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         feeds: action.data
+      };
+
+    case "GET_CHAT_HISTORY":
+      return {
+        ...state,
+        history: action.data
       };
 
     default:
