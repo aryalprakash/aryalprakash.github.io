@@ -34,3 +34,19 @@ function gotFeeds(res) {
     data: res
   }
 }
+
+export function getChatHistory(id) {
+  return function (dispatch) {
+    fetch(API_URL1+"/chat/"+id+'/',{method: 'get', credentials: "include"}).then(response => response.json()).then(res => {
+      // console.log("chat messages",res);
+      dispatch(gotChatHistory(res));
+    })
+  }
+}
+
+function gotChatHistory(res) {
+  return{
+    type: "GET_CHAT_HISTORY",
+    data: res
+  }
+}
