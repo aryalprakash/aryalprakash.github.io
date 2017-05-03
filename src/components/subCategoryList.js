@@ -38,21 +38,22 @@ class SubCategoryList extends Component{
         return(
             <div className="row sub-category">
                 {this.props.storeID ? subcategories?subcategories.map(subcategory =>
-                    <div key={subcategory.cat_name} className=" col-md-6 sub-category-list">
+                    <div key={subcategory.id} className=" col-md-6 sub-category-list">
                         <div className="row">
                             <div className="thumbnail col-md-5">
                                 <img className="img-responsive" src={subcategory.image_url}/>
                             </div>
                             <div className="col-md-7">
-                                <h3>{subcategory.category}</h3>
+                                <h3>{subcategory.category_name}</h3>
                                 {
                                     Object.keys(JSON.parse(subcategory.products)).map(function(key,index){
-                                        return <p key={index}> {key}: {(JSON.parse(subcategory.products))[key].map((o, i) =><span key={i}>{o}, </span>)} </p>;
+                                        {/*return <p key={index}> {key}: {(JSON.parse(subcategory.products))[key].map((o, i) =><span key={i}>{o}, </span>)} </p>;*/}
+                                        return <span key={key}> {key} </span>;
                                         }
                                     )
                                 }
 
-                                <Link to={{ pathname: '/items', query: { catName: subcategory.cat_name, storeID: this.props.storeID } }}><button className="btn btn-sm btn-warning">View items, Enjoy Shopping</button></Link>
+                                <Link to={{ pathname: '/items', query: { catName: subcategory.id, storeID: this.props.storeID } }}><button className="btn btn-sm btn-warning">View items, Enjoy Shopping</button></Link>
 
                             </div>
                         </div>

@@ -8,6 +8,7 @@ import Filter from './Filter'
 import Deals from './Deals'
 import { sortBy, orderBy } from 'lodash';
 
+import { getMainCategories } from '../actions/infiniaAction';
 import {getStoresList, filterByLocation} from '../actions/storeActions';
 
 class Search extends Component {
@@ -24,7 +25,18 @@ class Search extends Component {
     }
 
     componentDidMount(){
-        this.props.dispatch(getStoresList(this.props.routeParams.category))
+      this.props.getMainCategories();
+
+      setTimeout(()=> {
+        if(this.props.categories){
+          let category = this.props.categories.filter((cat) => {
+            return cat.category_name == this.props.routeParams.category
+          });
+          this.props.getStoresList(category[0].slug);
+        }
+      },300);
+
+
     }
     selectLocation(){
         let val = document.getElementsByClassName('selectLocation');
@@ -62,7 +74,7 @@ class Search extends Component {
                                                       <h4>{store.display_name}</h4>
                                                       <p>Location: {store.country}, {store.state}</p>
                                                       <p>Min-Order: {store.minimum_buy}{store.currency}</p>
-                                                      <p>Category: {store.categorysecond.map((item)=>(<span key={item.id}>{item.category}, </span>))}</p>
+                                                      <p>Category: {store.categorysecond.map((item)=>(<span key={item.id}>{item.category_name}, </span>))}</p>
 
                                                   </div>
                                               </div>
@@ -85,10 +97,11 @@ class Search extends Component {
 
 function mapStateToProps(state) {
     return{
-        stores: state.stores.stores
+      categories: state.InfiniaStores.categories,
+      stores: state.stores.stores
     }
 
 }
 
 
-export default connect(mapStateToProps)( Search )
+export default connect(mapStateToProps, {getMainCategories, getStoresList})( Search )

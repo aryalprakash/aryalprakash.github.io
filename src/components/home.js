@@ -129,8 +129,8 @@ class Home extends Component {
                                         <div className="hovereffect">
                                             <img className="img-responsive" src={category.image}/>
                                             <div className="overlay">
-                                                <h2>{category.category}</h2>
-                                                <Link to={`search/${category.category}`} className="info">Shop now</Link>
+                                                <h2>{category.category_name}</h2>
+                                                <Link to={`search/${category.category_name}`} className="info">Shop now</Link>
                                             </div>
                                         </div>
                                     </div>

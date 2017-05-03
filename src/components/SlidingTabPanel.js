@@ -69,7 +69,7 @@ export  default class SlidingTabPanel extends TabPanel{
                     </TabList>
                     {this.props.catList.map((cat, index)=>
                         <TabPanel key={index}>
-                            <SubCategoryList cat={cat.category} storeID={this.props.storeID}/>
+                            <SubCategoryList cat={cat.id} storeID={this.props.storeID}/>
 
                         </TabPanel>
                     )}
