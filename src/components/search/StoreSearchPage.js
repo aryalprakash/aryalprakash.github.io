@@ -46,6 +46,35 @@ class StoreSearchPage extends Component {
     this.getNextPage(newURL);
   };
 
+  showFilter() {
+    let filter = document.getElementById('filterSection');
+    console.log("isShownFilter", this.state.isShownFilter);
+
+    if(filter.style.display === 'block') {
+      console.log("display none", filter);
+      filter.style.display = ''
+
+    }
+    else {
+      console.log("display block", filter);
+      filter.style.display = 'block'
+    }
+
+  }
+
+  showDeals() {
+    let deals = document.getElementById('dealSection');
+
+    if(deals.style.display === 'block') {
+      deals.style.display = ''
+    }
+    else {
+      deals.style.display = 'block'
+
+    }
+
+  }
+
   render() {
 
     let {searchResult} = this.props;
@@ -57,12 +86,18 @@ class StoreSearchPage extends Component {
 
     return(
       <div className="search-page" style={{display: 'flex'}}>
-
-        <div className="sidebar-left">
-          <SearchFilter updatePage={this.updatePage} urlLocation={this.props.location}/>
+        <div id="filterSection" className="filter-section">
+          <div className="sidebar-left">
+            <SearchFilter updatePage={this.updatePage} urlLocation={this.props.location}/>
+          </div>
         </div>
 
         <div className="card center-content">
+          <div className="card for-mobile-view">
+            <span className="fa fa-filter" onClick={()=> this.showFilter()}/>
+            <span className="fa fa-bolt" onClick={()=> this.showDeals()}/>
+          </div>
+          <div className="line"></div>
           {
             !_.isEmpty(searchResult) && !_.isEmpty(searchResult.results) ?
 
