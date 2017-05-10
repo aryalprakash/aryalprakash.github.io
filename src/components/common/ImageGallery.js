@@ -44,13 +44,13 @@ class ImageGallery extends Component {
     return(
       <div>
         <div className="store-media store-photo">
-          <div className="col col-md-2 col-sm-4 col-xs-12">
+          <div className="col col-md-2 col-sm-3 col-xs-4">
             <img className="img-thumbnail" onClick={() => {this.openModal(); this.currentSlide(1);}} src={require('../../../img/01.jpg')}/>
           </div>
-          <div className="col col-md-2 col-sm-4 col-xs-12">
+          <div className="col col-md-2 col-sm-3 col-xs-4">
             <img className="img-thumbnail" onClick={() => {this.openModal(); this.currentSlide(2);}} src={require('../../../img/02.jpg')}/>
           </div>
-          <div className="col col-md-2 col-sm-4 col-xs-12">
+          <div className="col col-md-2 col-sm-3 col-xs-4">
             <img className="img-thumbnail" onClick={() => {this.openModal(); this.currentSlide(3);}} src={require('../../../img/spinneys.jpg')}/>
           </div>
         </div>
