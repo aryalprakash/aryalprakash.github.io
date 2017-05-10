@@ -53,6 +53,19 @@ class StoreProfile extends Component {
 
   }
 
+  showDeals() {
+    let deals = document.getElementById('dealSection');
+
+    if(deals.style.display === 'block') {
+      deals.style.display = ''
+    }
+    else {
+      deals.style.display = 'block'
+
+    }
+
+  }
+
   render() {
 
     let {storeDetails} = this.props;
@@ -127,6 +140,9 @@ class StoreProfile extends Component {
           }
           <div id="dealSection" className="deals-section">
             <Deals />
+          </div>
+          <div className="deals-for-mobile-view">
+            <span className="fa fa-bolt" onClick={()=> this.showDeals()}/>
           </div>
 
         </div>
