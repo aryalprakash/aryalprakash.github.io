@@ -94,8 +94,8 @@ class StorePromo extends Component {
           animation="zoom"
           maskAnimation="fade"
           onClose={this.onClose}
-          style={{ width: 840 }}
-          title={<div style={{marginTop: 15, fontSize: 17}}> Store Promotions</div>}
+          style={{ width: '70%', marginLeft: 'auto', marginRight: 'auto' }}
+          title={<div style={{marginTop: 15}}> <h4>Store Promotions</h4></div>}
         >
             {/*<iframe*/}
             {/*frameBorder='0'*/}
@@ -111,13 +111,13 @@ class StorePromo extends Component {
             {/*sandbox="allow-scripts"/>*/}
           {
             this.state.file_type === 'pdf' &&
-              <object width='800' height='600' data={this.state.link} type="application/pdf">
+              <object width='100%' height='100%' data={this.state.link} type="application/pdf">
                 {/*Sorry your browser does not support the content*/}
               </object>
           }
           {
             this.state.file_type === 'image' &&
-             <img width='800' height='600' src={this.state.link}/>
+             <img width='100%' height='100%' src={this.state.link}/>
 
           }
 
@@ -134,14 +134,14 @@ class StorePromo extends Component {
             <h4>Store Promotions/Offers</h4>
             {
               offers.map((item,index) =>
-                <div key={index} className="col-md-12 offers-section">
+                <div key={index} className="col-md-12 col-sm-12 col-xs-12 offers-section">
                   <h4 className="order-header">{(item.offer_name).toUpperCase()} <span className="align-right">Ends in: {item.end_date}</span></h4>
 
                   <div className="line"></div>
-                  <div className="col-md-12 offer-sec offers">
+                  <div className="offer-sec offers">
                     {
                       item.catalog.map((catalog, index)=>
-                        <div key={index} className="col-md-3 col-sm-6" style={{cursor: 'pointer'}}>
+                        <div key={index} className="col-md-3 col-sm-6 col-xs-6" style={{cursor: 'pointer'}}>
                           <div className="thumbnail" onClick={() => this.onClick(catalog.flier, catalog.file_type)}>
                             <img src={'http://192.168.10.7:8000'+catalog.thumbnail}/>
 
