@@ -22,6 +22,10 @@ class Filters extends Component {
     this.props.getSearchFilters();
   }
 
+  closeModal = () => {
+    document.getElementById('filterSection').style.display = "";
+  };
+
   render() {
 
     let {filters} = this.props;
@@ -29,7 +33,9 @@ class Filters extends Component {
 
     return(
       <div>
-        <div className="card sidebar-title"><span className="fa fa-filter"/> Filter</div>
+        <div className="card sidebar-title"><span className="fa fa-filter"/> Filter
+          <span className="close modal-close" onClick={this.closeModal}> &times;</span>
+        </div>
 
         <Slider
           isShow='flex'
