@@ -40,11 +40,11 @@ class StoreReview extends Component {
             <div className="line"></div>
             <div className="review-list">
               <div className="row">
-                <div className="col-md-1">
-                  {/*<img className="profile-pic img-rounded" src="" />*/}
-                  <span className="reviewer">A</span>
+                <div className="col-md-2 col-sm-2 col-xs-12">
+                  <img className="reviewer img-rounded" src={require('../../../img/profile-icon.png')} />
+                  {/*<span className="reviewer">A</span>*/}
                 </div>
-                <div className="col-md-11">
+                <div className="col-md-10 col-sm-10 col-xs-12">
                   <div className="rating-sec">
                     <span className={this.state.rating>0.5?"fa fa-star":"fa fa-star-o"}/>
                     <span className={this.state.rating>1.5?"fa fa-star":"fa fa-star-o"}/>
