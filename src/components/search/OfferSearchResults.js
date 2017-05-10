@@ -16,7 +16,7 @@ class OfferSearchResults extends Component {
             {
               searchOfferResult.results.map(offer =>
                 offer.catalog.slice(0,1).map(catalog =>
-                  <div key={catalog.id} className="col-md-3 col-sm-6">
+                  <div key={catalog.id} className="col-md-3 col-sm-6 col-xs-6">
                     <Link to={{ pathname: `/${offer.store.display_name}/profile/promo`, query: { storeId: offer.store.id } }}>
                       <div className="thumbnail">
                         <img src={'http://192.168.10.7:8000'+catalog.thumbnail}/>
