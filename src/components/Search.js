@@ -74,9 +74,9 @@ class Search extends Component {
 
       }
 
-      this.setState(prevState => ({
-        isShownDeals: !prevState.isShownDeals
-      }));
+      // this.setState(prevState => ({
+      //   isShownDeals: !prevState.isShownDeals
+      // }));
 
     }
 
@@ -107,7 +107,7 @@ class Search extends Component {
                                 <div className="container store-sec">
                                   <div className="row">
                                   {stores.length>0?stores.map(store=>
-                                      <div key={store.id} className="col-md-4 col-sm-6">
+                                      <div key={store.id} className="col-md-4 col-sm-6 col-xs-6">
                                           <Link to={store.registered ?
                                             { pathname: `/store/${store.display_name}`, query: { id: store.id } }
                                             :
