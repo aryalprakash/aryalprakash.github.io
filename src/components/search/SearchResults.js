@@ -51,6 +51,19 @@ class SearchResults extends Component {
 
   };
 
+  showDeals() {
+    let deals = document.getElementById('dealSection');
+
+    if(deals.style.display === 'block') {
+      deals.style.display = ''
+    }
+    else {
+      deals.style.display = 'block'
+
+    }
+
+  }
+
   render() {
     let {searchResult} = this.props;
     let {searchOfferResult} = this.props;
@@ -64,6 +77,9 @@ class SearchResults extends Component {
     return(
 
           <div className="search-page center-content">
+            <div className="deals-for-mobile-view">
+              <span className="fa fa-bolt" onClick={()=> this.showDeals()}/>
+            </div>
 
             {/***Results showing stores only***/}
             {
