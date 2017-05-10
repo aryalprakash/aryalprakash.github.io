@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Filter from './Filter'
 import Deals from './Deals'
 import { sortBy, orderBy } from 'lodash';
-
+import ContentSearchBox from './common/ContentSearchBox';
 import { getMainCategories } from '../actions/infiniaAction';
 import {getStoresList, filterByLocation} from '../actions/storeActions';
 
@@ -91,12 +91,8 @@ class Search extends Component {
                         <div className="card center-content">
                             <div className="content-title">
                                 <h2><span className="fa fa-home"/> Stores</h2>
-                                <div className="search-box">
-                                  <input className="search-input" placeholder="Search by Name"/>
-                                  <div className="search-icon">
-                                    <img src="../../img/infinia/search.png" />
-                                  </div>
-                                </div>
+                                <ContentSearchBox/>
+
                                 <div className="for-mobile-view">
                                   <span className="fa fa-filter" onClick={()=> this.showFilter()}/>
                                   <span className="fa fa-bolt" onClick={()=> this.showDeals()}/>
@@ -107,7 +103,7 @@ class Search extends Component {
                                 <div className="container store-sec">
                                   <div className="row">
                                   {stores.length>0?stores.map(store=>
-                                      <div key={store.id} className="col-md-4 col-sm-6 col-xs-6">
+                                      <div key={store.id} className="col-md-4 col-sm-6">
                                           <Link to={store.registered ?
                                             { pathname: `/store/${store.display_name}`, query: { id: store.id } }
                                             :
