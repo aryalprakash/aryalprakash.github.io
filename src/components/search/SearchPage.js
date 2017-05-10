@@ -15,7 +15,9 @@ class SearchPage extends Component {
 
           {this.props.children}
 
-          <Deals />
+          <div id="dealSection" className="deals-section">
+            <Deals />
+          </div>
 
         </div>
 
