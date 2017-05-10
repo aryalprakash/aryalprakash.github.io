@@ -41,7 +41,7 @@ class Register extends Component{
         (res) => {
           console.log("success response",res);
           this.context.router.push('/login');
-          // location.reload();
+          location.reload();
         },
         (err) => {
           this.setState({isLoading: false});

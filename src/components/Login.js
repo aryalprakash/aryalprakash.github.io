@@ -24,7 +24,7 @@ class Login extends Component{
         (success) => {
           console.log('login success', success);
           this.context.router.push('/');
-          // location.reload();
+          location.reload();
         },
         (err) => {
           console.log('login error', err);
