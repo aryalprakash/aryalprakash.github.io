@@ -96,8 +96,8 @@ class StoreSearchPage extends Component {
           <div className="card for-mobile-view">
             <span className="fa fa-filter" onClick={()=> this.showFilter()}/>
             <span className="fa fa-bolt" onClick={()=> this.showDeals()}/>
+            <div className="line"></div>
           </div>
-          <div className="line"></div>
           {
             !_.isEmpty(searchResult) && !_.isEmpty(searchResult.results) ?
 
