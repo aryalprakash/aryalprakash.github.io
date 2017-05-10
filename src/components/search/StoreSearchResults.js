@@ -14,7 +14,7 @@ class StoreSearchResults extends Component {
         <div className="store-sec" style={{paddingTop: 10}}>
           <div className="row">
             {searchResult.results.slice(0, this.props.searchLimit).map(store=>
-              <div key={store.id} className="col-md-3 col-sm-6">
+              <div key={store.id} className="col-md-3 col-sm-4 col-xs-6">
                 <Link to={store.registered ?
                 { pathname: `/store/${store.display_name}`, query: { id: store.id } }
                   :
