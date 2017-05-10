@@ -66,12 +66,12 @@ class StoreProfile extends Component {
               <div className="card center-content">
                 <div className="store-profile">
                   <div className="cover-photo">
-                    <img src="../../img/spinneys.jpg"/>
+                    <img src={storeDetails[0].cover_image ? storeDetails[0].cover_image: '../../img/no-image.png'}/>
                     <div className="cover-overlay"></div>
                   </div>
                   <div className="store-logo">
 
-                    <img className="img-thumbnail" src="../../img/stores/spinneys.png"/>
+                    <img className="img-thumbnail" src={storeDetails[0].image}/>
 
                     <div className="store-intro">
                       <div className="name">{storeDetails[0].display_name}</div>
@@ -99,13 +99,15 @@ class StoreProfile extends Component {
                           </button>
 
                       }
-                      <Link to={ {pathname: `/store/${storeDetails[0].display_name}`, query: { id: storeDetails[0].id }} }>
-                        <button className="btn btn-sm btn-default" style={{marginRight: "10px"}}> Shop Now </button>
-                      </Link>
+
                       {
-                        storeDetails[0].registered === false &&
+                        storeDetails[0].registered === true ?
                           <Link to="/addStore">
                             <button className="btn btn-sm btn-default">Register Your Store</button>
+                          </Link>
+                        :
+                          <Link to={ {pathname: `/store/${storeDetails[0].display_name}`, query: { id: storeDetails[0].id }} }>
+                            <button className="btn btn-sm btn-default" style={{marginRight: "10px"}}> Shop Now </button>
                           </Link>
                       }
                     </div>
@@ -123,7 +125,9 @@ class StoreProfile extends Component {
               :
               <h2 className="col-md-10">Sorry there is something wrong</h2>
           }
-          <Deals/>
+          <div id="dealSection" className="deals-section">
+            <Deals />
+          </div>
 
         </div>
 

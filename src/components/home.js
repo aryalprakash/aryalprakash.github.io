@@ -36,7 +36,7 @@ let styles={
     },
     input:{
         boxShadow:"1px 1px 0 rgba(0.4,0,0,0.3)",
-        width: "400px",
+        width: 400,
     },
     input1:{
         width: 200,
@@ -93,22 +93,22 @@ class Home extends Component {
                     <div className="overlay">
 
                         <div  className="container">
-                            <h2 style={styles.h1}>Shop the best deals from Genuine & Branded Retail Stores</h2>
+                            <h2 className="tag-line">Shop the best deals from Genuine & Branded Retail Stores</h2>
                         </div>
                         <div className="container">
                             <div id="searchbar" className="row">
-                                <div className="col-md-2"></div>
-                                <div className="col-md-8">
+                                {/*<div className="col-md-2"></div>*/}
+                                <div className="col-md-12">
 
                                     <form action="" className="form-inline" onSubmit={this.searchStore}>
-                                      <PlaceAutoComplete style={styles.input1} width={200} updatePlace={this.updatePlace}/>
+                                      <PlaceAutoComplete style={styles.input1} updatePlace={this.updatePlace}/>
                                       <AutoCompleteSearch style={styles.input} getSuggestions={this.props.getSuggestions} updateSearchField={this.updateSearchField}/>
 
                                       <button type="submit" className="btn btn-danger">Search</button>
                                     </form>
 
                                 </div>
-                                <div className="col-md-2"></div>
+                                {/*<div className="col-md-2"></div>*/}
 
                             </div>
 
@@ -121,11 +121,11 @@ class Home extends Component {
                 <div className="category-sec">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-9">
-                                <h2> Select Shopping Category</h2><br/>
+                            <div className="col-md-9 col-sm-8 col-xs-12">
+                                <h2> Select Shopping Category</h2>
                                 <div className="row">
                                 {categories?categories.map(category=>
-                                    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={category.id}>
+                                    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={category.id} style={{marginTop: 5}}>
                                         <div className="hovereffect">
                                             <img className="img-responsive" src={category.image}/>
                                             <div className="overlay">
@@ -139,7 +139,7 @@ class Home extends Component {
 
                             </div>
 
-                            <div className="col-md-3">
+                            <div className="col-md-3 col-sm-4 col-xs-12">
                                 <Deals/>
                             </div>
 

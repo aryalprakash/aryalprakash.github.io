@@ -105,9 +105,8 @@ class AutoCompleteSearch extends Component {
     let show = this.state.isFocus || this.state.isAutoCompleteFocus ;
 
     return(
-      <div className="form-group">
+      <div className="form-group search-auto-complete">
         <input style={this.props.style}
-               width={this.props.width}
                type="text"
                id="main_search"
                className="form-control"

@@ -24,16 +24,16 @@ class StoreInfo extends Component {
           storeDetails.length>0 ?
             <div className="">
 
-              <div className="col-md-4">
+              <div className="col-md-12">
                 <h4>About Us</h4>
                 <div className="line"></div>
-                <StoreAboutUs storeDetails={storeDetails[0]}/>
+                <StoreAboutUs storeDetails={storeDetails[0]} isStoreAboutPage={true}/>
               </div>
 
-              <div className="store-map col-md-8">
+              <div className="store-map col-md-12">
                 <h4>Store Location</h4>
                 <div className="line"></div>
-                <Gmap initialCenter={{ lng: 85.3441565, lat: 27.6825445 }} placeProp="Nepal"/>
+                <Gmap initialCenter={{ lng: storeDetails[0].longitude, lat: storeDetails[0].latitude }} placeProp={storeDetails[0].area}/>
 
               </div>
             </div>

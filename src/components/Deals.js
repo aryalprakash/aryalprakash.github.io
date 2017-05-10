@@ -14,9 +14,15 @@ export default class Deals extends Component {
 
     }
 
+    closeModal = () => {
+      document.getElementById('dealSection').style.display = "";
+    };
+
     render() {
         return(<div className="sidebar-right">
-            <div className="card sidebar-title"><span className="fa fa-bolt"/> Infinia Deals</div>
+            <div className="card sidebar-title"><span className="fa fa-bolt"/> Infinia Deals
+                <span className="close modal-close" onClick={this.closeModal}> &times;</span>
+            </div>
             <div className="card deals">
                 <div className="deal">
                     <div className="deal-thumb">

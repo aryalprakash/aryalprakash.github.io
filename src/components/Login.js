@@ -24,7 +24,7 @@ class Login extends Component{
         (success) => {
           console.log('login success', success);
           this.context.router.push('/');
-          location.reload();
+          // location.reload();
         },
         (err) => {
           console.log('login error', err);
@@ -51,8 +51,8 @@ class Login extends Component{
                     <TextFieldGroup field="email" value={this.state.email} label="E-mail" type="email" onChange={this.handleChange}/>
 
                     <div className="form-group">
-                      <label className="col-md-3 col-sm-2 control-label">Password</label>
-                      <div className="col-md-9 col-sm-12">
+                      <label className="col-md-3 col-sm-3 control-label">Password</label>
+                      <div className="col-md-9 col-sm-9">
                         <input className="form-control" name="password" value={this.state.password} type="password" placeholder="Your Password" onChange={this.handleChange}/>
                       </div>
 

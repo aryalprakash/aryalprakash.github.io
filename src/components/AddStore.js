@@ -93,9 +93,9 @@ class AddStore extends Component {
 
             <div className="form-group">
 
-              <label className="col-md-3 control-label"> Attach License</label>
+              <label className="col-md-3 col-sm-3 control-label"> Attach License</label>
 
-              <div className="col-md-9">
+              <div className="col-md-9 col-sm-9">
                 <div className=" input-group upload">
                   <label className="btn btn-default" htmlFor="file" onChange={this.getFileName}>
                     <input type="file" id="file" />

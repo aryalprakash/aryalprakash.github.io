@@ -63,9 +63,11 @@ class Store extends Component {
                     <div className="sidebar-left">
 
                       <div className="card profile">
-                          <div className="store-image">
-                              <img src="../../img/store.png" />
-                          </div>
+                          <Link to={{ pathname: `/${storeDetails[0].display_name}/profile`, query: { storeId: storeDetails[0].id } }}>
+                            <div className="store-image">
+                                <img src={storeDetails[0].image} />
+                            </div>
+                          </Link>
                       </div>
                       <StoreAboutUs storeDetails={storeDetails[0]}/>
 
@@ -99,7 +101,7 @@ class Store extends Component {
                                         <Tab key={cat.id}>
                                             <div className="cat-icon ">
                                                 <img className="img-rounded" src={cat.image}/>
-                                                {cat.category}
+                                                {cat.category_name}
                                             </div>
                                         </Tab>
                                     )}
@@ -116,7 +118,9 @@ class Store extends Component {
                         <div className="search-box absolute-search"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
                     </div>
                 </div>
-                <Deals />
+                <div id="dealSection" className="deals-section">
+                    <Deals />
+                </div>
             </div>
 
                : <p>Sorry<br/>No data</p>

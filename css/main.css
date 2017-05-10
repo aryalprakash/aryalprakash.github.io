@@ -1,4 +1,5 @@
 @import url("custom.css");
+@import url("size.css");
 /*@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
     @import 'https://fonts.googleapis.com/css?family=Allura';
     @import 'https://fonts.googleapis.com/css?family=Cookie';
@@ -143,9 +144,7 @@ h2{
 
 .search-input{
     border: 1px solid whitesmoke;
-    height: 30px;
     border-radius: 2px;
-    width: 210px;
     padding: 2px;
     padding-left: 5px;
 }
@@ -192,8 +191,9 @@ h2{
     /*height: 150px;*/
     display: flex;
     align-items: center;
+    flex-flow: row wrap;
     width: 75%;
-    margin: 20px;
+    /*margin: 20px;*/
     justify-content: flex-end
 }
 
@@ -213,7 +213,7 @@ h2{
 }
 
 .ilogo img{
-    width: 80px;
+    width: 60px;
 }
 
 .iheader.smaller .ilogo img {
@@ -597,7 +597,23 @@ h2{
 
 .search-box{
     position: relative;
+    width: 100%;
+    margin-right: 10px;
 }
+.search-box .search-close {
+    display: none;
+}
+.search-box .search-icon {
+    color: rgb(175, 175, 175);
+    top: 7px;
+}
+.imenu .fa-search {
+    display: none;
+}
+.imenu form {
+    width: auto;
+}
+
 
 .center-content{
     padding-top:0 !important;
@@ -612,7 +628,7 @@ h2{
 .search-icon{
     position: absolute;
     right: 5px;
-    top: 6px;
+    top: 4px;
 }
 
 .search-icon img{
@@ -784,19 +800,22 @@ select {
 }
 
 .store-profile-name{
-    font-size: 23px;
+    font-size: 20px;
     margin-top: 10px;
     color: dodgerblue;
 }
 
 .store-profile-address{
-    color: #9E9E9E;
+    color: #8E8E8E;
     font-size: 14px;
 }
 
 .store-profile-content{
-    color: #9E9E9E;
+    font-size: 14px;
+    color: #8E8E8E;
     margin-top: 3px;
+    max-height: 160px;
+    overflow: auto;
 }
 
 .relative{
@@ -1200,15 +1219,16 @@ a.control_next {
 .login-container{
     align-items: center;
     display: flex;
-    width: 460px;
+    width: 95%;
+    background: white;
     margin: auto;
+    padding: 10px;
 }
 
 .login-form{
     width: 100%;
     /*box-shadow: 0 2px 8px rgba(0, 0, 0, .25);*/
     padding: 10px 10px;
-    background: white;
     border-radius: 2px;
 }
 
@@ -1252,7 +1272,6 @@ a.control_next {
 }
 
 .forget{
-    margin-top: 7px;
     float: right;
 }
 
@@ -1281,7 +1300,7 @@ a.control_next {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    height: 40px;
+    height: 35px;
     width: 100%;
     border-radius: 2px;
 }
@@ -1302,7 +1321,7 @@ a.control_next {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    height: 40px;
+    height: 35px;
     width: 45%;
     border-radius: 2px;
 }

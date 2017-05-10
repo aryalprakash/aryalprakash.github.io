@@ -21,11 +21,11 @@ export default class Deals extends Component {
         return (
             <div>
                 <div className="infiniadeals">
-                    <h2> <span className="fa fa-bolt"/> Infinia Deals</h2><br/>
+                    <h2> <span className="fa fa-bolt"/> Infinia Deals</h2>
                     <div>
                         <Slider {...settings}>
                             <a href="#">
-                                <div>
+                                <div style={{display: 'flex'}}>
                                     <img src='../../img/01.jpg' />
                                     <div className="deals-overlay">
                                         <h3>kids's zone</h3>
@@ -33,7 +33,7 @@ export default class Deals extends Component {
                                 </div>
                             </a>
                             <a href="#">
-                                <div>
+                                <div  style={{display: 'flex'}}>
                                     <img src='../../img/02.jpg' />
                                     <div className="deals-overlay">
                                         <h3>Supermarket</h3>

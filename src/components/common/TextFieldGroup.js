@@ -7,8 +7,8 @@ import isEmpty from 'lodash/isEmpty';
 const TextFieldGroup = ({ field, value, required, label, error, type, onChange }) => {
   return (
     <div className={!isEmpty(error) ? "form-group has-error": "form-group"}>
-      <label className="col-md-3 control-label">{label}</label>
-      <div className="col-md-9">
+      <label className="col-md-3 col-sm-3 control-label">{label}</label>
+      <div className="col-md-9 col-sm-9">
         <input
           onChange={onChange}
           value={value}

@@ -24,7 +24,7 @@ class ProfileSideBar extends Component{
 
   render(){
     return(
-      <div className="sidebar-left">
+      <div className="profile-sidebar">
         <div className="card sidebar-title">
           <Link to="/user/Bikash/profile"><span className="fa fa-user"/> My Account</Link>
         </div>

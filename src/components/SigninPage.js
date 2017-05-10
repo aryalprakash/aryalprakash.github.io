@@ -43,7 +43,7 @@ class SigninPage extends Component{
           </Link>
         </div>
         <div className="center" style={{background: "#f8f8f8"}}>
-          <div>
+          <div className="signin-page">
             <Login />
           </div>
         </div>

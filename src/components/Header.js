@@ -10,6 +10,7 @@ import Login from './Login.js'
 import AddStore from './AddStore';
 import ProfileSideBar from './profile/ProfileSideBar';
 import 'rc-dialog/assets/index.css';
+import SearchBox from './common/SearchBox';
 
 import { userSignUp } from '../actions/authActions';
 import { getCartItems, removeFromCart, setCartItem } from '../actions/cartActions';
@@ -53,7 +54,7 @@ class Header extends Component{
         this.state = {
             class: '',
             visible: false,
-            width: 500,
+            width: '60%',
             destroyOnClose: false,
             center: true,
             login: true,
@@ -188,7 +189,7 @@ class Header extends Component{
                     animation="zoom"
                     maskAnimation="fade"
                     onClose={this.onClose}
-                    style={style}
+
                 >
                 {
                   this.state.login &&
@@ -220,10 +221,12 @@ class Header extends Component{
             </div></Link>
             {location.pathname != "/register" &&
             <div className="imenu">
-                <div className="imenu-list search-box">
-                    <input className="search-input" placeholder="What are you looking for?" type="text" />
-                </div>
-                <div className="imenu-list menu-button" onClick={this.addStore}>Add your Store</div>
+              <SearchBox placeholder="Search store, product ..."/>
+                {/*<div className="imenu-list search-box">*/}
+                    {/*<input className="search-input" placeholder="What are you looking for?" type="text" />*/}
+                {/*</div>*/}
+                {/*<span className="fa fa-search imenu-list"/>*/}
+                <button className="imenu-list btn btn-sm btn-success" onClick={this.addStore}>Add your Store</button>
               {
                 !_.isEmpty(loggedIn) &&
                   loggedIn.status_code === 200 ?
@@ -243,12 +246,12 @@ class Header extends Component{
               }
 
                 <div className="myDropdown">
-                  <div className="imenu-list" style={{margin: 8}}>
-                      <img src={require("../../img/infinia/cart1.png")}  width="30px"/>
+                  <div className="imenu-list menu-cart" style={{margin: 8}}>
+                      <img src={require("../../img/infinia/cart1.png")}  width="22px"/>
                       {!_.isEmpty(cart) && !_.isEmpty(cart.cart_info) && cart.cart_info.length > 0 ? <span className="head-cart-count">{cart.cart_count}</span>:null}
                   </div>
 
-                  <div className="dropdown-content">
+                  <div className="dropdown-content cart-dropdown">
                     <p style={cartHeaderStyle}>Your Cart</p>
                     {!_.isEmpty(cart) && !_.isEmpty(cart.cart_info) &&
                       cart.cart_info.length > 0 ?

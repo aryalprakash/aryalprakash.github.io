@@ -41,6 +41,7 @@ class Register extends Component{
         (res) => {
           console.log("success response",res);
           this.context.router.push('/login');
+          // location.reload();
         },
         (err) => {
           this.setState({isLoading: false});
@@ -98,30 +99,28 @@ class Register extends Component{
                     {/*{errors.lastName && <span className="help-block">{errors.lastName}</span>}*/}
                   {/*</div>*/}
                   <div className={errors.email ? "form-group has-error": "form-group"}>
-                    <label className="col-md-3 control-label">Email</label>
-                    <div className="col-md-9">
+                    <label className="col-md-3 col-sm-3 control-label">Email</label>
+                    <div className="col-md-9 col-sm-9">
                       <input className="form-control" name="email" type="email" value={this.state.email} placeholder="Enter Email" onChange={this.handleChange}/>
                     </div>
                     {errors.email && <span className="help-block">{errors.email}</span>}
                   </div>
                   <div className={errors.password ? "form-group has-error": "form-group"}>
-                    <label className="col-md-3 control-label">Password</label>
-                    <div className="col-md-9">
+                    <label className="col-md-3 col-sm-3 control-label">Password</label>
+                    <div className="col-md-9 col-sm-9">
                       <input className="form-control" name="password" type="password" value={this.state.password} placeholder="Enter Password" onChange={this.handleChange}/>
                     </div>
                     {errors.password && <span className="help-block">{errors.password}</span>}
                   </div>
                   <div className={errors.confirmPassword ? "form-group has-error": "form-group"}>
-                    <label className="col-md-3 control-label">Confirm Password</label>
-                    <div className="col-md-9">
+                    <label className="col-md-3 col-sm-3 control-label">Confirm Password</label>
+                    <div className="col-md-9 col-sm-9">
                       <input className="form-control" name="confirmPassword" type="password" value={this.state.confirmPassword} placeholder="Renter Password" onChange={this.handleChange}/>
                     </div>
                     {errors.confirmPassword && <span className="help-block">{errors.confirmPassword}</span>}
                   </div>
                   <div className="form-group">
-                    <div className="col-md-12">
-                      <button disabled={this.state.isLoading} type="submit" className="submit-button">Sign Up</button>
-                    </div>
+                    <button disabled={this.state.isLoading} type="submit" className="submit-button">Sign Up</button>
                   </div>
 
                 </div>

@@ -34,7 +34,7 @@ class SocialLogin extends Component {
       <div className="social-login">
         <div className="social-label">or Sign Up using</div>
         <div className="social-options">
-          <div className="">
+          <div className="facebook-btn">
             <FacebookLogin
               appId="204262970008693"
               autoLoad={false}

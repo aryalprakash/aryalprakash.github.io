@@ -187,7 +187,7 @@ class UserProfile extends Component{
                 <div className="line" style={{marginBottom: 20}}></div>
                 {
                   userData.followed_stores.map((store,index)=>
-                    <div key={index} className="col-md-3">
+                    <div key={index} className="col-md-3 col-sm-6 col-xs-12">
 
                         <div className="thumbnail">
                           <div className="ribbon"><span className="fa fa-remove tooltip-bottom" onClick={() => this.unFollow(store.id)}><span className="tooltip-text">Unfollow</span></span></div>

@@ -29,9 +29,8 @@ class PlaceAutoComplete extends Component {
 
   render() {
     return(
-      <div className="form-group">
+      <div className="form-group place-auto-complete">
         <input style={this.props.style}
-               width={this.props.width}
                type="text"
                id="location_search"
                className="form-control"

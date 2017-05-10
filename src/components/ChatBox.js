@@ -90,12 +90,12 @@ class ChatBox extends Component {
     let box = document.getElementById('chatBox');
     if(this.state.open ){
       this.setState({open: false});
-      box.style.width= '11%';
+      box.style.width= '150px';
     }
     else{
       this.setState({open: true});
       this.props.loggedIn.status_code === 200 && this.initializeChat();
-      box.style.width= '20%';
+      box.style.width= '275px';
     }
   };
 

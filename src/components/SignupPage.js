@@ -45,7 +45,7 @@ class SignupPage extends Component{
           </Link>
         </div>
         <div className="center" style={{background: "#f8f8f8"}}>
-          <div>
+          <div className="signup-page">
             <Register userSignUp={this.props.userSignUp}/>
           </div>
         </div>

@@ -8,10 +8,10 @@ import {Link} from 'react-router';
 class StoreNavBar extends Component {
   render() {
     return(
-      <div className="store-info col-md-offset-3" style={{marginLeft: "19%"}}>
+      <div className="store-info">
         <div className="horizontal-navbar">
-          <div className="collapse navbar-collapse" style={{paddingLeft: 0}}>
-            <ul className="nav navbar-nav">
+          <div >
+            <ul className="nav nav-tabs">
               <li className={this.props.active == "storeInfo"? "active": ""}>
                 <Link to={{ pathname: `/${this.props.storeName}/profile`, query: { storeId: this.props.storeId } }}>Store Info</Link>
               </li>

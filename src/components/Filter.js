@@ -15,10 +15,14 @@ class Search extends Component {
             cat: 'passive-color'
         }
     }
+    closeModal = () => {
+     document.getElementById('filterSection').style.display = "";
+    };
 
     render() {
-    return(<div className="sidebar-left">
+    return(<div id='filterDropdown' className="sidebar-left">
         <div className="card sidebar-title"><span className="fa fa-filter"/> Filter
+          <span className="close modal-close" onClick={this.closeModal}> &times;</span>
         </div>
         <div className="card">Status
             <div className="boxes">

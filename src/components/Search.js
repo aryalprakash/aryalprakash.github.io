@@ -15,12 +15,14 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-            registered: false,
-            list: false,
-            place: 'Dubai',
-            class: '',
-            loc: 'active-color',
-            cat: 'passive-color',
+          registered: false,
+          list: false,
+          place: 'Dubai',
+          class: '',
+          loc: 'active-color',
+          cat: 'passive-color',
+          isShownDeals: false,
+
         }
     }
 
@@ -34,7 +36,7 @@ class Search extends Component {
           });
           this.props.getStoresList(category[0].slug);
         }
-      },300);
+      },400);
 
 
     }
@@ -44,16 +46,61 @@ class Search extends Component {
         this.props.dispatch(filterByLocation(val[0].value))
     }
 
+    showFilter() {
+      let filter = document.getElementById('filterSection');
+      console.log("isShownFilter", this.state.isShownFilter);
+
+      if(filter.style.display === 'block') {
+        console.log("display none", filter);
+        filter.style.display = ''
+
+      }
+      else {
+        console.log("display block", filter);
+        filter.style.display = 'block'
+      }
+
+
+
+    }
+    showDeals() {
+      let deals = document.getElementById('dealSection');
+
+      if(deals.style.display === 'block') {
+        deals.style.display = ''
+      }
+      else {
+        deals.style.display = 'block'
+
+      }
+
+      this.setState(prevState => ({
+        isShownDeals: !prevState.isShownDeals
+      }));
+
+    }
+
     render() {
         let {stores} = this.props;
         console.log('in store page',stores);
         return (<div className="mycontainer">
                     <div className="main-content">
-                        <Filter props={this.props} />
+                        <div id="filterSection" className="filter-section">
+                          <Filter props={this.props} />
+                        </div>
                         <div className="card center-content">
                             <div className="content-title">
                                 <h2><span className="fa fa-home"/> Stores</h2>
-                                <div className="search-box"><input className="search-input" placeholder="Search by Name"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
+                                <div className="search-box">
+                                  <input className="search-input" placeholder="Search by Name"/>
+                                  <div className="search-icon">
+                                    <img src="../../img/infinia/search.png" />
+                                  </div>
+                                </div>
+                                <div className="for-mobile-view">
+                                  <span className="fa fa-filter" onClick={()=> this.showFilter()}/>
+                                  <span className="fa fa-bolt" onClick={()=> this.showDeals()}/>
+                                </div>
                             </div>
 
                             <div className="all-stores">
@@ -69,7 +116,7 @@ class Search extends Component {
                                             } >
                                               <div className="thumbnail">
                                                   <div className="ribbon"><span className={store.status == "online"? "fa fa-circle opn": "fa fa-circle clo"}> </span></div>
-                                                  <img src="../../img/store.png" />
+                                                  <img src={store.image} />
                                                   <div className="caption">
                                                       <h4>{store.display_name}</h4>
                                                       <p>Location: {store.country}, {store.state}</p>
@@ -80,7 +127,7 @@ class Search extends Component {
                                               </div>
                                           </Link>
                                     </div>
-                                  ):<h2>Sorry!!! <br/>There is no Store to show.</h2>}
+                                  ):<h2 className="col-md-12">Sorry!!! <br/>There is no Store to show.</h2>}
 
                                   </div>
 
@@ -88,7 +135,9 @@ class Search extends Component {
 
                             </div>
                         </div>
+                      <div id="dealSection" className="deals-section">
                         <Deals />
+                      </div>
                     </div>
             </div>
           )
