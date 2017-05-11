@@ -4,6 +4,13 @@
 import React, {Component} from 'react';
 
 class Breadcrumb extends Component{
+
+  handleChange = (e) => {
+    console.log("value", e.target.value);
+    this.context.router.push(`/search/${e.target.value}`);
+
+  };
+
   render(){
     return(
       <div className="bread-crumb">
@@ -15,7 +22,7 @@ class Breadcrumb extends Component{
           </select>
         </div>
         <div className="select-cat">Category:
-          <select>
+          <select onChange={this.handleChange}>
             <option>Supermarket</option>
             <option>Fashion</option>
             <option>Electronics</option>
@@ -31,6 +38,11 @@ class Breadcrumb extends Component{
     );
   }
 }
+
+Breadcrumb.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
 
 function mapStateToProps(state) {
   return {
