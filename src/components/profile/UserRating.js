@@ -37,14 +37,14 @@ class UserRating extends Component{
           <ProfileSideBar active="rating"/>
           <div className="card center-content">
             <h3>Manage your Rating</h3>
-            <div className="col-md-11 item-purchased">
+            <div className="col-md-11 col-sm-12 item-purchased">
               <h4 className="order-header">Order ID: 13214141 </h4>
               <div className="line"></div>
               <div className="manage-rating">
 
                 {
                   userOrderData.map((item,index)=>
-                    <div key={index} className="col-md-12" style={styles.border}>
+                    <div key={index} className="col-md-12 col-sm-6" style={styles.border}>
                       <div className="col-md-2">
                         <img  src={require("../../../img/store.png")} alt="" />
                       </div>

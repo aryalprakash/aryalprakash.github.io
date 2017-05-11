@@ -29,6 +29,19 @@ class UserNotifications extends Component {
     this.props.getFeeds();
   }
 
+  showDeals() {
+    let deals = document.getElementById('dealSection');
+
+    if(deals.style.display === 'block') {
+      deals.style.display = ''
+    }
+    else {
+      deals.style.display = 'block'
+
+    }
+
+  }
+
   render() {
 
     let {feeds} = this.props;
@@ -37,6 +50,9 @@ class UserNotifications extends Component {
       <div className="main-content">
         <ProfileSideBar active="notification"/>
         <div className="card center-content">
+          <div className="deals-for-mobile-view">
+            <span className="fa fa-bolt" onClick={()=> this.showDeals()}/>
+          </div>
           <h4>Your Notifications</h4>
           <div className="line"></div>
           {
@@ -63,7 +79,9 @@ class UserNotifications extends Component {
           }
 
         </div>
-        <Deals />
+        <div id="dealSection" className="deals-section">
+          <Deals />
+        </div>
 
       </div>
     )

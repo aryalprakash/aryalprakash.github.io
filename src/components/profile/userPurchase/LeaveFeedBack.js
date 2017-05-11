@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 class LeaveFeedBack extends Component {
   render() {
     return(
-      <div className="col-md-10 leave-feedback">
+      <div className="col-md-10 col-sm-12 leave-feedback">
         <br/>
         <h4>Leave your Feedback</h4>
         <div className="form-group">

@@ -102,7 +102,7 @@ class PurchaseDetails extends React.Component {
             <div className="row">
               {
                 item.order.item.map((data,index) =>
-                <div key={index} className="col-md-6" style={{padding: 5}}>
+                <div key={index} className="col-md-6 col-sm-6" style={{padding: 5}}>
                   <div className="col-md-3" style={{paddingRight: 5}}>
                     <img className="img-thumbnail" src={require("../../../../img/sub-category/Chicken.jpg")} />
                   </div>
@@ -114,26 +114,26 @@ class PurchaseDetails extends React.Component {
                 </div>
                 )
               }
-              <div className="col-md-12">
+              <div className="col-md-12 col-sm-12 col-xs-12">
                 <div className="line"></div>
                 <h4 style={{marginBottom: 5}}><b>Subtotal:</b> {item.order.subTotal} {item.order.currency}</h4>
               </div>
 
-              <div className="col-md-12">
+              <div className="col-md-12 col-sm-12 col-xs-12">
                 <div className="line"></div>
 
                 <div className="row order-information" style={{display: this.state.display}}>
-                  <div className="col-md-4">
+                  <div className="col-md-4 col-sm-6">
                     <h4>Seller Information</h4>
                     <p>Name: Souq</p>
                     <p>Contact: </p>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 col-sm-6">
                     <h4>Delivery Information</h4>
                     <p>Shipping Method: InfiniaExpress</p>
                     <p>Delivery Charge: 5 AED</p>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 col-sm-6">
                     <h4>Payment Information</h4>
                     <p>Cash on delivery</p>
                     <p>Refund: </p>
@@ -150,7 +150,7 @@ class PurchaseDetails extends React.Component {
 
               {
                 this.props.status === "completed" ?
-                  <div className="col-md-12">
+                  <div className="col-md-12 col-sm-12 col-xs-12">
                     <div className="line"></div>
 
                     <div className="row">

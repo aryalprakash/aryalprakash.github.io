@@ -21,7 +21,7 @@ class ReturnItem extends Component {
 
   render() {
     return(
-      <div className="col-md-12">
+      <div className="col-md-12 col-sm-12">
         <br/>
         <div className="line"></div>
         <h4>Online Return</h4>

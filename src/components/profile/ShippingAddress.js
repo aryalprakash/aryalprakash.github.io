@@ -43,6 +43,7 @@ class ShippingAddress extends Component{
     this.state ={
       visible: false,
       destroyOnClose: false,
+      width: '70%'
 
     };
 
@@ -62,8 +63,18 @@ class ShippingAddress extends Component{
   }
 
   onClick() {
+    let width;
+
+    if(screen.width < 480){
+      width = '95%';
+    }
+    else {
+      width = '70%'
+    }
+
     this.setState({
       visible: true,
+      width: width,
     });
   }
 
@@ -103,7 +114,7 @@ class ShippingAddress extends Component{
           animation="zoom"
           maskAnimation="fade"
           onClose={this.onClose}
-          style={{ width: 840 }}
+          style={{ width: this.state.width }}
           title={<div style={{marginTop: 20, fontSize: 17}}> Add Shipping Address</div>}
         >
           <ShippingAddressForm addShippingAddress={this.props.addShippingAddress}/>

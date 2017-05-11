@@ -36,7 +36,7 @@ class PurchasedItems extends React.Component {
        <div className="row invoice-list">
          {
            userOrderData.map((item,index)=>
-             <div key={index} className="col-md-3">
+             <div key={index} className="col-md-3 col-sm-6 col-xs-12">
                <Link to={`/user/:user/profile/purchase/${this.state.path}/${item.tracking_number}`}>
                  <div className="thumbnail">
                    <img src={require("../../../../img/store.png")} alt="" />

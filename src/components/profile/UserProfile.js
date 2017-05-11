@@ -50,6 +50,7 @@ class UserProfile extends Component{
     super(props);
     this.state ={
       visible: false,
+      width: '60%',
       destroyOnClose: false,
       file: '',
       imagePreviewUrl: ''
@@ -65,8 +66,18 @@ class UserProfile extends Component{
   }
 
   onClick() {
+    let width;
+
+    if(screen.width < 480){
+      width = '90%';
+    }
+    else {
+      width = '60%'
+    }
+
     this.setState({
       visible: true,
+      width: width,
     });
   }
 
@@ -140,10 +151,11 @@ class UserProfile extends Component{
       dialog = (
         <Dialog
           visible={this.state.visible}
+          wrapClassName={'center'}
           animation="zoom"
           maskAnimation="fade"
           onClose={this.onClose}
-          style={{ width: 600 }}
+          style={{ width: this.state.width, marginLeft: 'auto', marginRight: 'auto' }}
           title={<div style={{marginTop: 15, fontSize: 17}}> Edit Your Profile</div>}
         >
           {
@@ -165,49 +177,45 @@ class UserProfile extends Component{
           !_.isEmpty(userData) ?
             <div className="card center-content">
               <div className="col-md-10 profile">
-                <div className="col-md-2">
+                <div className="col-md-2 col-sm-3 col-xs-12">
                   <div className="update-profile-pic" onClick={this.selectImage}>
                     <img className="camera-icon" src={require("../../../img/camera-icon.png")}/>
                     {$imagePreview}
                     <input type="file" accept="image/*" id="upload-img" style={{display: "none"}} onChange={(e)=>this.handleImageChange(e)}/>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 col-sm-7 col-xs-10">
                   <h2 style={{marginTop: 0}}>{userData.user_data.username}</h2>
                   <h3 style={user}>({userData.user_data.username})</h3>
                   <p>{userData.user_data.email}</p>
                 </div>
-                <div className="col-md-4 edit-profile">
+                <div className="col-md-4 col-sm-2 col-xs-2 edit-profile">
                   <span className="fa fa-pencil" onClick={this.onClick}/>
                 </div>
               </div>
 
-              <div className="col-md-12 following-store">
+              <div className="col-md-12 col-sm-12 col-xs-12 following-store">
                 <h3>Following Stores</h3>
                 <div className="line" style={{marginBottom: 20}}></div>
                 {
                   userData.followed_stores.map((store,index)=>
-                    <div key={index} className="col-md-3 col-sm-6 col-xs-12">
+                    <div key={index} className="col-md-3 col-sm-6">
+                      <Link to={store.registered ?
+                      { pathname: `/store/${store.display_name}`, query: { id: store.id } }
+                        :
+                      { pathname: `/${store.display_name}/profile`, query: { storeId: store.id } }
 
+                      } >
                         <div className="thumbnail">
                           <div className="ribbon"><span className="fa fa-remove tooltip-bottom" onClick={() => this.unFollow(store.id)}><span className="tooltip-text">Unfollow</span></span></div>
-
-                          <Link to={store.registered ?
-                          { pathname: `/store/${store.display_name}`, query: { id: store.id } }
-                            :
-                          { pathname: `/${store.display_name}/profile`, query: { storeId: store.id } }
-
-                          } >
-                            <div>
-                              <img src={require("../../../img/store.png")} alt="" />
-                              <div className="caption">
-                                <h4>{store.display_name}</h4>
-                                <p>Location: {store.country}, {store.state}</p>
-                                <p>Min-Order: {store.minimum_buy}{store.currency}</p>
-                              </div>
+                            <img src={require("../../../img/store.png")} alt="" />
+                            <div className="caption">
+                              <h4>{store.display_name}</h4>
+                              <p>Location: {store.country}, {store.state}</p>
+                              <p>Min-Order: {store.minimum_buy}{store.currency}</p>
                             </div>
-                          </Link>
                         </div>
+                      </Link>
                     </div>
                   )
                 }

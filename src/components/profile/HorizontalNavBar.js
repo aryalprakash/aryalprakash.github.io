@@ -6,7 +6,7 @@ class HorizontalNavBar extends React.Component {
 
   render() {
     return (
-      <div className="horizontal-navbar">
+      <div className="horizontal-navbar" style={{marginLeft: 0}}>
         <div className="navbar-collapse" style={{paddingLeft: 0}}>
           <ul className="nav nav-tabs">
             <li className={this.props.active == "completed"? "active": ""}>
