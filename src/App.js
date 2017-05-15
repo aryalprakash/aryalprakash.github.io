@@ -16,6 +16,7 @@ import Store from './components/store/Store';
 import StoreProfile from './components/store/StoreProfile';
 import StoreInfo from './components/store/StoreInfo';
 import StorePromo from './components/store/StorePromo';
+import StoreFans from './components/store/StoreFans';
 import StoreReview from './components/store/StoreReview';
 import StoreMedia from './components/store/StoreMedia';
 import Items from './components/Items';
@@ -67,6 +68,7 @@ class App extends Component {
           <Route name="store" path="/:store/profile" component={StoreProfile} >
             <IndexRoute name="StoreInfo" component={StoreInfo}/>
             <Route name="Promo" path="/:store/profile/promo" component={StorePromo}/>
+            <Route name="Fans" path="/:store/profile/fans" component={StoreFans}/>
             <Route name="Reviews" path="/:store/profile/reviews" component={StoreReview}/>
             <Route name="Medias" path="/:store/profile/medias" component={StoreMedia}/>
           </Route>
