@@ -11,9 +11,10 @@ const logoStyle = {
   height: 60
 };
 const div={
+  marginTop: 0,
   paddingTop: 10,
   paddingBottom: 10,
-  background: "#f8f8f8"
+  // background: "#f8f8f8"
 };
 const spanStyle1 = {
   color: 'blue',
@@ -33,7 +34,7 @@ class SigninPage extends Component{
   render(){
     document.title = "Infinia Store | Signin";
     return(
-      <div>
+      <div style={{background: "#f8f8f8"}}>
         <div className=" center" style={div}>
           <Link to="/" className="link">
             <div className="ilogo">
@@ -42,7 +43,7 @@ class SigninPage extends Component{
             </div>
           </Link>
         </div>
-        <div className="center" style={{background: "#f8f8f8"}}>
+        <div className="center" style={{marginTop: 10}}>
           <div className="signin-page">
             <Login />
           </div>
