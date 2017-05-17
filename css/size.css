@@ -4,6 +4,9 @@
 
 /* Extra Small devices (mobile, 480px and up) */
 @media screen and (min-width: 480px) {
+    .ilogo-text {
+        margin-bottom: 5px;
+    }
     .store-logo .store-intro {
         margin-left: 24%;
         margin-top: -125px;
@@ -26,11 +29,17 @@
     .signup-page, .signin-page, .add-store-page {
         width: 60%;
     }
+    .store-video {
+        height: 300px;
+    }
 }
 /* Small devices (tablets, 768px and up) */
 @media screen and (min-width: 768px)  {
     .search-bar {
         width: 50%;
+    }
+    .content-search-bar {
+        display: none;
     }
     .modal-close {
         display: none;
@@ -60,13 +69,21 @@
     .horizontal-navbar li{
         font-size: 13px !important;
     }
-
+    .store-video {
+        height: 350px;
+    }
 
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media screen and (min-width: 992px) {
-
+    .content-search-bar {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 5px;
+        right: 0;
+    }
     .store-logo .store-intro {
         margin-left: 20%;
         margin-top: -85px;
@@ -77,7 +94,7 @@
 
     }
     .store-side-info {
-        left: 46%;
+        left: 55%;
         margin-top: -45px;
     }
     .horizontal-navbar{
@@ -94,6 +111,9 @@
     }
     .signup-page, .signin-page, .add-store-page{
         width: 40%;
+    }
+    .store-video {
+        height: 400px;
     }
 
 }
@@ -112,7 +132,7 @@
 
     }
     .store-side-info {
-        left: 55%;
+        left: 60%;
         margin-top: -45px;
     }
     .horizontal-navbar{
@@ -131,6 +151,15 @@
 }
 
 @media screen and (max-width: 479px) {
+    h2 {
+        font-size: 24px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    h4 {
+        font-size: 15px;
+    }
     .fheader {
         height: 60px !important;
         padding: 0 6px !important;
@@ -162,7 +191,7 @@
         bottom: 0;
         margin-bottom: 10px !important;
         right: 8px;
-        z-index: 1;
+        /*z-index: 1;*/
     }
     .menu-cart img{
         width: 20px !important;
@@ -238,9 +267,7 @@
     .responsive-body .card {
         width: 100%;
     }
-    .main-content .profile-sidebar {
-        display: none;
-    }
+
     .cover-photo img{
         max-height: 200px;
     }
@@ -250,8 +277,13 @@
     .signup-page, .signin-page, .add-store-page {
         width: 80%;
     }
-
-
+    .order-header {
+        flex-flow: column;
+    }
+    .store-fans .fans img{
+        max-height: 60px;
+        min-height: 60px;
+    }
 
     
 }
@@ -290,8 +322,15 @@
     #searchbar {
         margin-top: 10px;
     }
+    .content-search-bar {
+        display: none;
+    }
     .imenu-profile .myDropdown .dropdown-content {
         z-index: 11111;
+    }
+    .imenu-list.username {
+        font-size: 0.9em !important;
+        width: 100% !important;
     }
     .place-auto-complete input{
         width: 100% !important;
@@ -299,12 +338,7 @@
     .search-auto-complete input {
         width: 100% !important;
     }
-    .sidebar-left {
-        /*left: 0;*/
-    }
-    .sidebar-right {
 
-    }
     .filter-section, .deals-section {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
@@ -330,11 +364,15 @@
     }
     .modal-close {
         font-size: 1.4em;
+        margin-top: -10px;
     }
 
     .store-sec {
         padding: 0 !important;
         margin: 10px 0 !important;
+    }
+    .main-content .profile-sidebar {
+        display: none;
     }
     .for-mobile-view {
         display: block;
@@ -348,6 +386,28 @@
         padding: 7px;
         margin-right: 5px;
         font-weight: bold;
+    }
+    .deals-for-mobile-view {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .deals-for-mobile-view span {
+        color: white;
+        background: #0074D9;
+        /*border: 1px solid #5e5e5e;*/
+        padding: 4px 10px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        z-index: 1;
+        transition: 0.2s ease-out;
+        -webkit-transition: 0.2s ease-out;
+        -moz-transition: 0.2s ease-out;
+    }
+
+    .deals-for-mobile-view span:hover{
+        padding: 4px 15px;
     }
 
     .bread-crumb, .mini-breadcrumb {
@@ -373,6 +433,9 @@
     }
     .horizontal-navbar li{
         font-size: 12px !important;
+    }
+    .stepper {
+        overflow: auto;
     }
 
 
@@ -407,5 +470,13 @@
         width: 110px;
         height: 120px;
     }
+    .imenu-list.username {
+        font-size: 1em;
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
 
 }

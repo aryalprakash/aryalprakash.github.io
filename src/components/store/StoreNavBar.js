@@ -18,6 +18,9 @@ class StoreNavBar extends Component {
               <li className={this.props.active == "storePromo"? "active": ""}>
                 <Link to={{ pathname: `/${this.props.storeName}/profile/promo`, query: { storeId: this.props.storeId } }}>Deals and Promo</Link>
               </li>
+              <li className={this.props.active == "storeFans"? "active": ""}>
+                <Link to={{ pathname: `/${this.props.storeName}/profile/fans`, query: { storeId: this.props.storeId } }}>Fans Zone</Link>
+              </li>
               <li className={this.props.active == "storeReview"? "active": ""}>
                 <Link to={{ pathname: `/${this.props.storeName}/profile/reviews`, query: { storeId: this.props.storeId } }}>Rating and Reviews</Link>
               </li>

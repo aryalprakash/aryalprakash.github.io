@@ -15,3 +15,6 @@ export const GET_APP_CREDENTIALS = 'GET_APP_CREDENTIALS';
 export const GET_SHIPPING_ADDRESS = 'GET_SHIPPING_ADDRESS';
 export const GET_RATING = 'GET_RATING';
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';
+
+export const defaultUserPreviewImage = require("../../img/no-image.png");
+export const defaultPreviewImage = require("../../img/no-image.png");

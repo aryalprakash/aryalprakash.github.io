@@ -7,9 +7,9 @@ class ContentSearchBox extends Component {
   render() {
     return(
       <div className="content-search-bar">
-        <input className="search-input" placeholder="Search by Name"/>
+        <input className="search-input absolute-search" placeholder="Search by Name"/>
         <div className="search-icon">
-          <span className="glyphicon glyphicon-search" style={{color: "#afafaf"}}/>
+          <span className="glyphicon glyphicon-search" style={{color: "#afafaf", top: -2}}/>
         </div>
       </div>
     )

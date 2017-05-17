@@ -53,14 +53,24 @@ class StorePromo extends Component {
       visible: false,
       destroyOnClose: false,
       link: '',
+      width: '70%',
     };
 
   }
 
   onClick(src, type) {
     console.log("flier path", src);
+    let width;
+    if(screen.width < 480){
+      width = '95%';
+    }
+    else {
+      width = '60%'
+    }
+
     this.setState({
       visible: true,
+      width: width,
       link: 'http://192.168.10.7:8000'+src,
       file_type: type
     });
@@ -94,7 +104,7 @@ class StorePromo extends Component {
           animation="zoom"
           maskAnimation="fade"
           onClose={this.onClose}
-          style={{ width: '70%', marginLeft: 'auto', marginRight: 'auto' }}
+          style={{ width: this.state.width, marginLeft: 'auto', marginRight: 'auto' }}
           title={<div style={{marginTop: 15}}> <h4>Store Promotions</h4></div>}
         >
             {/*<iframe*/}

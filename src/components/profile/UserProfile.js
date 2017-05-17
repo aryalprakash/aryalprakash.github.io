@@ -2,12 +2,14 @@
  * Created by bikash on 2/22/17.
  */
 import React, {Component} from 'react';
-import Dialog from 'rc-dialog';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
+import ProfileImageForm from '../../forms/ProfileImageForm'
+import ProfileForm from '../../forms/ProfileForm'
 import ProfileSideBar from './ProfileSideBar';
+import Modal from '../common/Modal';
 import EditProfile from './EditProfile';
 import { getUserProfile } from '../../actions/userActions';
 import { unfollowStore } from '../../actions/authActions';
@@ -48,70 +50,25 @@ const userFollowing = [
 class UserProfile extends Component{
   constructor(props){
     super(props);
-    this.state ={
-      visible: false,
-      width: '60%',
-      destroyOnClose: false,
-      file: '',
-      imagePreviewUrl: ''
-
+    this.state = {
+      showModal: false
     };
-
-    this.onClick = this.onClick.bind(this);
-    this.onClose = this.onClose.bind(this);
   }
 
   componentDidMount() {
     this.props.getUserProfile();
   }
 
-  onClick() {
-    let width;
+  // componentWillReceiveProps (nextProps) {
+  //   this.setState({
+  //     userData: nextProps.userData
+  //   })
+  // }
 
-    if(screen.width < 480){
-      width = '90%';
-    }
-    else {
-      width = '60%'
-    }
+  // selectImage = () => {
+  //   document.getElementById('upload-img').click();
+  // };
 
-    this.setState({
-      visible: true,
-      width: width,
-    });
-  }
-
-  onClose() {
-    this.setState({
-      visible: false,
-    });
-  }
-
-  onDestroyOnCloseChange(e) {
-    this.setState({
-      destroyOnClose: e.target.checked,
-    });
-  }
-
-  selectImage = () => {
-    document.getElementById('upload-img').click();
-  };
-
-  handleImageChange(e) {
-    e.preventDefault();
-
-    let reader = new FileReader();
-    let file = e.target.files[0];
-
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      });
-    }
-
-    reader.readAsDataURL(file)
-  }
 
   unFollow(id) {
     this.props.unfollowStore(id).then(
@@ -125,72 +82,41 @@ class UserProfile extends Component{
     );
   }
 
+  getUpdateForm = (user) => {
+    console.log('logging user data on update user photo: ', user);
+    return <ProfileImageForm
+      update={true}
+      user={user.user_data}
+    />
+  };
+
+  hideModal = () => {
+    this.setState({showModal: false})
+  };
+
   render(){
-    let dialog;
     let {userData} = this.props;
     console.log("user profile data", userData);
 
-    let {imagePreviewUrl} = this.state;
-    let $imagePreview = null;
-    if (imagePreviewUrl) {
-      $imagePreview = (<img className="img-thumbnail profile-pic" src={imagePreviewUrl} />);
-    }
-    else {
-      $imagePreview = (
-        <img className="img-thumbnail profile-pic" src={
-          !_.isEmpty(userData) &&
-          (
-            !_.isEmpty(userData.user_data.image) ? userData.user_data.image :
-            require("../../../img/profile-icon.png")
-          )
-        }/>
-      );
-    }
-
-    if (this.state.visible || !this.state.destroyOnClose) {
-      dialog = (
-        <Dialog
-          visible={this.state.visible}
-          wrapClassName={'center'}
-          animation="zoom"
-          maskAnimation="fade"
-          onClose={this.onClose}
-          style={{ width: this.state.width, marginLeft: 'auto', marginRight: 'auto' }}
-          title={<div style={{marginTop: 15, fontSize: 17}}> Edit Your Profile</div>}
-        >
-          {
-            !_.isEmpty(userData) ?
-
-              <EditProfile userData={userData.user_data} />
-              :
-              <EditProfile userData={{}} />
-
-          }
-
-        </Dialog>
-      );
-    }
     return(
       <div className="main-content">
         <ProfileSideBar/>
         {
-          !_.isEmpty(userData) ?
+          !isEmpty(userData) ?
             <div className="card center-content">
-              <div className="col-md-10 profile">
-                <div className="col-md-2 col-sm-3 col-xs-12">
-                  <div className="update-profile-pic" onClick={this.selectImage}>
-                    <img className="camera-icon" src={require("../../../img/camera-icon.png")}/>
-                    {$imagePreview}
-                    <input type="file" accept="image/*" id="upload-img" style={{display: "none"}} onChange={(e)=>this.handleImageChange(e)}/>
-                  </div>
+              <div className="col-md-12 profile">
+                <div className="col-md-4 col-sm-3 col-xs-12">
+                  {this.getUpdateForm(userData)}
                 </div>
                 <div className="col-md-6 col-sm-7 col-xs-10">
-                  <h2 style={{marginTop: 0}}>{userData.user_data.username}</h2>
+                  <h2 style={{marginTop: 0}}>{userData.user_data.first_name} {userData.user_data.last_name}</h2>
                   <h3 style={user}>({userData.user_data.username})</h3>
                   <p>{userData.user_data.email}</p>
                 </div>
-                <div className="col-md-4 col-sm-2 col-xs-2 edit-profile">
-                  <span className="fa fa-pencil" onClick={this.onClick}/>
+                <div className="col-md-2 col-sm-2 col-xs-2 edit-profile">
+                  <Modal title='Edit Your Profile' showModal={this.state.showModal}>
+                    <ProfileForm update={true} user={isEmpty(userData) ? {} : userData.user_data} closeModal={this.hideModal}/>
+                  </Modal>
                 </div>
               </div>
 
@@ -226,7 +152,6 @@ class UserProfile extends Component{
             :
             <h2>There is no data to show</h2>
         }
-        {dialog}
 
       </div>
 

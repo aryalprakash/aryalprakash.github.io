@@ -11,9 +11,10 @@ import {
 } from '../constants/constants.js';
 import cookie from 'react-cookie';
 import { getStoreDetails }  from './storeActions';
+import {handleResponse} from "./urls";
 
-var credentials;
-let csrf;
+export var credentials;
+export let csrf;
 
 export function getAppCredentials() {
   return function (dispatch) {
@@ -27,8 +28,9 @@ export function getAppCredentials() {
 
 export function getCSRFToken() {
   return function (dispatch) {
-    fetch(API_URL1+"/get_csrf", {method: 'get', credentials: "include"}).then(response => response.json()).then(res => {
+    return fetch(API_URL1+"/get_csrf", {method: 'get', credentials: "include"}).then(response => response.json()).then(res => {
       csrf = res;
+      return csrf
     })
   }
 }
@@ -38,16 +40,6 @@ export function gotAppCredentials(res) {
     data: res
   }
 
-}
-
-function handleResponse(response) {
-  if (response.ok) {
-    return response.json()
-  } else {
-    let error = new Error(response.statusText);
-    error.response = response;
-    throw error;
-  }
 }
 
 export function isLoggedIn() {

@@ -69,13 +69,13 @@ class EditProfile extends Component {
             type="text"
             onChange={this.handleChange}
           />
-          <TextFieldGroup
-            field="email"
-            value={this.state.email}
-            label="Email"
-            type="email"
-            onChange={this.handleChange}
-          />
+          {/*<TextFieldGroup*/}
+            {/*field="email"*/}
+            {/*value={this.state.email}*/}
+            {/*label="Email"*/}
+            {/*type="email"*/}
+            {/*onChange={this.handleChange}*/}
+          {/*/>*/}
           <TextFieldGroup
             field="phoneNo"
             value={this.state.phoneNo}

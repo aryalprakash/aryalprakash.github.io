@@ -61,7 +61,7 @@ export default class Infinia extends Component{
             {
               props.location.pathname !== "/" &&
                 <div>
-                    <Breadcrumb/>
+                    <Breadcrumb routes={props}/>
                     <MiniBreadcrumb routes={props}/>
                 </div>
             }

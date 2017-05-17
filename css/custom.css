@@ -34,6 +34,7 @@ button:focus {
     position: fixed;
     bottom: 0;
     right: 20px;
+    z-index: 11111;
 
 }
 .chat-header {
@@ -313,6 +314,12 @@ button:focus {
 .for-mobile-view {
     display: none;
 }
+.for-mobile-view .line {
+    margin-top: 10px;
+}
+.deals-for-mobile-view {
+    display: none;
+}
 .store-sec{
   margin-top: 10px;
 }
@@ -323,6 +330,12 @@ button:focus {
 }
 .store-sec .thumbnail{
     padding: 7px;
+}
+
+.thumbnail .caption h4{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .store-sec .thumbnail p{
     margin: 3px 0;
@@ -581,18 +594,19 @@ option{
     font-size: 1.5em;
 }
 .review-list{
-    margin: 20px 0;
+    margin: 15px 0;
 }
 .reviewer{
-    position: absolute;
-    text-align: center;
-    width: 45px;
-    height: 45px;
-    color: white;
-    font-size: 1.6em;
-    padding:5px;
-    background-color: rgb(224, 106, 110);
-    border-radius: 50%;
+    position: relative;
+    margin-bottom: 5px;
+    max-width: 4.2em;
+    max-height: 4.2em;
+    /*text-align: center;*/
+    /*color: white;*/
+    /*font-size: 1.6em;*/
+    /*padding: 10px 20px;*/
+    /*background-color: rgb(224, 106, 110);*/
+    /*border-radius: 50%;*/
 }
 .username{
     font-size: 0.8em;
@@ -707,6 +721,9 @@ option{
     min-width: 225px;
     margin-right: 5px;
 }
+.update-profile-pic {
+    margin-bottom: 10px;
+}
 .update-profile-pic:hover .camera-icon{
     display: flex;
 
@@ -755,7 +772,7 @@ option{
     display: none;
     font-size: 0.7em;
     width: 54px;
-    background-color: #444;
+    background-color: rgba(0,0,0, 0.7);
     color: #fff;
     text-align: center;
     border-radius: 6px;
@@ -775,8 +792,11 @@ option{
     text-decoration: none;
     font-size: 85%;
 }
-.following-store img {
-    width: 180px;
+.following-store .thumbnail img {
+    width: 170px;
+    height: auto;
+    max-height: 170px;
+    overflow: hidden;
 }
 .following-store .thumbnail p{
     margin: 3px 0;
@@ -847,6 +867,10 @@ option{
 .horizontal-navbar .nav a{
     color: #676464;
 }
+.horizontal-navbar .nav li a {
+    margin-right: 0;
+    padding: 8px 8px;
+}
 .horizontal-navbar .nav .active a{
     color: #222;
 }
@@ -883,9 +907,12 @@ option{
     margin-bottom: 0;
 }
 .order-header {
-  margin-left: 20px;
-  width: 100%;
-  margin-top: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    width: 100%;
+    margin-top: 0;
 }
 .invoice-list{
   margin-top: 15px;
@@ -919,6 +946,9 @@ option{
 .show-more span:hover{
     cursor: pointer;
     color: #2a6496;
+}
+.rate-purchase {
+    /*padding-left: 0;*/
 }
 .rate-purchase label{
     font-size: 0.9em;
@@ -975,6 +1005,14 @@ option{
 }
 .user-wishlist button {
     margin-top: 7px;
+}
+.wishlist-btn {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.user-wishlist .col-md-3 {
+    padding-left: 0;
 }
 
 /*End For user wishlist*/
@@ -1098,14 +1136,64 @@ option{
 /*For manage rating page*/
 
 .manage-rating img{
-    width: 120px;
+    width: 100px;
+    height: auto;
+    max-height: 110px;
 
 }
 .manage-rating .caption {
     margin-top: 10px;
 }
+.manage-rating .rate-purchase {
+    padding-left: 0;
+}
 
 /*End For manage rating page*/
+
+
+/*For store fans page*/
+
+.store-fans{
+    margin-top: 10px;
+}
+.store-fans .col-md-2 {
+    padding-left: 0;
+    padding-right: 8px;
+}
+.store-fans .fans{
+    width: 100%;
+    margin-top: 10px;
+    padding-bottom: 1px;
+    min-height: 20%;
+    -webkit-box-shadow: 0 0 3px #aaa;
+    -moz-box-shadow: 0 0 3px #aaa;
+    box-shadow: 0 0 3px #aaa;
+}
+.store-fans .fans img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 100px;
+    min-height: 100px;
+}
+.store-fans .fans p {
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*margin-bottom: 5px;*/
+}
+.fans .tooltip-text {
+    width: auto;
+    padding: 3px 5px;
+    top: 0;
+}
+
+/*End For store fan page*/
+
 
 /*For Store Profile*/
 .navbar-nav .active {
@@ -1138,7 +1226,7 @@ option{
     position: absolute;
     margin-left: 20px;
     margin-top: -120px;
-    z-index: 111;
+    z-index: 11;
     width: 100%;
     height: 100%;
     max-width: 170px;
@@ -1308,7 +1396,7 @@ option{
     margin: 3px 0;
     color: #737373;
 }
-.offer-sec .thumbnail .caption p{
+.offer-sec .thumbnail .caption p, .offer-sec .thumbnail .caption h4{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

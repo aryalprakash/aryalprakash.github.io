@@ -128,7 +128,7 @@ class ShippingAddressForm extends Component{
     this.props.addShippingAddress(this.state).then(
       (success) => {
         console.log('Added Successfully');
-        this.context.router.push('/user/:user/profile');
+        // this.context.router.push('/user/:user/profile');
       },
       (error) => {
         // alert('error');

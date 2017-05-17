@@ -40,6 +40,12 @@ const remove ={
   cursor: 'pointer',
 };
 
+// const username = {
+//   width: 100,
+//   whiteSpace: 'nowrap',
+//   overflow: 'hidden',
+//   textOverflow: 'ellipsis'
+// };
 
 const spanStyle1 = {
     color: 'blue',
@@ -71,26 +77,52 @@ class Header extends Component{
     }
 
     onClick(e) {
-        this.setState({
-          visible: true,
-          reg: false,
-          login: true,
-          addStore: false
-        });
+      let width;
+      if(screen.width < 480){
+        width = '90%';
+      }
+      else {
+        width = '60%'
+      }
+      console.log("screen width", screen.width);
+
+      this.setState({
+        visible: true,
+        width: width,
+        reg: false,
+        login: true,
+        addStore: false,
+      });
     }
 
     Reg(e){
-        this.setState({
-          visible: true,
-          reg: true,
-          login: false,
-          addStore: false
-        });
+      let width;
+      if(screen.width < 480){
+        width = '90%';
+      }
+      else {
+        width = '60%'
+      }
+      this.setState({
+        visible: true,
+        width: width,
+        reg: true,
+        login: false,
+        addStore: false
+      });
     }
 
     addStore(e){
+      let width;
+      if(screen.width < 480){
+        width = '90%';
+      }
+      else {
+        width = '60%'
+      }
       this.setState({
         visible: true,
+        width: width,
         reg: false,
         login: false,
         addStore: true
@@ -175,21 +207,15 @@ class Header extends Component{
         let { loggedIn } = this.props;
 
         if (this.state.visible) {
-            const style = {
-                width: this.state.width
-            };
-            let wrapClassName = '';
-            if (this.state.center) {
-                wrapClassName = 'center';
-            }
+
             dialog = (
                 <Dialog
                     visible={this.state.visible}
-                    wrapClassName={wrapClassName}
+                    wrapClassName='center'
                     animation="zoom"
                     maskAnimation="fade"
                     onClose={this.onClose}
-
+                    style={{width: this.state.width}}
                 >
                 {
                   this.state.login &&
@@ -232,7 +258,7 @@ class Header extends Component{
                   loggedIn.status_code === 200 ?
                   <div className="imenu-profile">
                     <div className="myDropdown">
-                      <div className="imenu-list">{loggedIn.username}</div>
+                      <div className="imenu-list username">{loggedIn.username}</div>
                       <div className="dropdown-content">
                         <ProfileSideBar/>
                       </div>

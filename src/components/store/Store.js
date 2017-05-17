@@ -10,6 +10,7 @@ import Gmap from '../maps';
 import SlidingTabPanel from '../SlidingTabPanel';
 import StorePromo from './StorePromo';
 import StoreAboutUs from './StoreAboutUs';
+import ContentSearchBox from '../common/ContentSearchBox';
 
 import {getStoreDetails} from '../../actions/storeActions';
 
@@ -48,6 +49,43 @@ class Store extends Component {
       console.log('Selected tab: ' + index + ', Last tab: ' + last);
     }
 
+  showFilter() {
+    let filter = document.getElementById('filterSection');
+    console.log("isShownFilter", this.state.isShownFilter);
+
+    if(filter.style.display === 'block') {
+      console.log("display none", filter);
+      filter.style.display = ''
+
+    }
+    else {
+      console.log("display block", filter);
+      filter.style.display = 'block'
+    }
+
+
+
+  }
+  showDeals() {
+    let deals = document.getElementById('dealSection');
+
+    if(deals.style.display === 'block') {
+      deals.style.display = ''
+    }
+    else {
+      deals.style.display = 'block'
+
+    }
+
+    // this.setState(prevState => ({
+    //   isShownDeals: !prevState.isShownDeals
+    // }));
+
+  }
+  closeModal = () => {
+    document.getElementById('filterSection').style.display = "";
+  };
+
     render() {
 
         const { search } = this.state;
@@ -60,29 +98,40 @@ class Store extends Component {
            {storeDetails.length>0 ?
             <div className="main-content">
 
-                    <div className="sidebar-left">
+              <div id="filterSection" className="filter-section">
+                  <div className="sidebar-left">
 
-                      <div className="card profile">
-                          <Link to={{ pathname: `/${storeDetails[0].display_name}/profile`, query: { storeId: storeDetails[0].id } }}>
-                            <div className="store-image">
-                                <img src={storeDetails[0].image} />
-                            </div>
-                          </Link>
-                      </div>
-                      <StoreAboutUs storeDetails={storeDetails[0]}/>
+                    <div className="card profile">
+                      <span className="close modal-close" onClick={this.closeModal}> &times;</span>
 
-                      <div className="card">
-                          Location
-                          <div className="store-profile-content">
-                              <Gmap initialCenter={{ lng: storeDetails[0].longitude, lat: storeDetails[0].latitude }} placeProp={this.state.place}/>
-
+                      <Link to={{ pathname: `/${storeDetails[0].display_name}/profile`, query: { storeId: storeDetails[0].id } }}>
+                          <div className="store-image">
+                              <img src={storeDetails[0].image} />
                           </div>
-                      </div>
+                        </Link>
 
                     </div>
+                    <StoreAboutUs storeDetails={storeDetails[0]}/>
+
+                    <div className="card">
+                        Location
+                        <div className="store-profile-content">
+                            <Gmap initialCenter={{ lng: storeDetails[0].longitude, lat: storeDetails[0].latitude }} placeProp={this.state.place}/>
+
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
 
 
                 <div className="card center-content">
+                  <div className="card for-mobile-view">
+                    <span className="fa fa-info" onClick={()=> this.showFilter()}/>
+                    <span className="fa fa-bolt" onClick={()=> this.showDeals()}/>
+                    <div className="line"></div>
+                  </div>
+
                     <div className="store-title relative">
                         <Tabs
                         onSelect={this.handleSelect}
@@ -92,6 +141,8 @@ class Store extends Component {
                             <TabList className="main-tab" style={styles.tab}>
                                 <Tab>Regular Offer</Tab>
                                 <Tab>{storeDetails[0].display_name} Deals</Tab>
+                              <ContentSearchBox />
+
                             </TabList>
                             {/*For regular offer*/}
                             <TabPanel>
@@ -115,7 +166,6 @@ class Store extends Component {
                               <StorePromo/>
                             </TabPanel>
                         </Tabs>
-                        <div className="search-box absolute-search"><input className="search-input" placeholder="Search Items"/><div className="search-icon"><img src="../../img/infinia/search.png" /></div></div>
                     </div>
                 </div>
                 <div id="dealSection" className="deals-section">

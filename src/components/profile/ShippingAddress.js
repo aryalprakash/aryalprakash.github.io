@@ -9,33 +9,33 @@ import ProfileSideBar from './ProfileSideBar';
 import ShippingAddressForm from './ShippingAddressForm';
 import { addShippingAddress, getShippingAddress, deleteShippingAddress } from '../../actions/shippingActions';
 
-const shippingAddress =[
-  {
-    name: "Bikash Shrestha",
-    country: "Nepal",
-    city: "Kathmandu",
-    type: "work",
-    area: "Sankhamul",
-    street: "Subekshya Marg",
-    buildingName: "Ravibhawan",
-    landmark: "Sankhamul Bridge",
-    floorNo: 3,
-    apartmentNo: 123
-  },
-  {
-    name: "Bikash Shrestha",
-    country: "Nepal",
-    city: "Kathmandu",
-    type: "villa",
-    area: "Sankhamul",
-    street: "Subekshya Marg",
-    buildingName: "Ravibhawan",
-    landmark: "Sankhamul Bridge",
-    floorNo: 3,
-    apartmentNo: 123
-  },
-
-];
+// const shippingAddress =[
+//   {
+//     name: "Bikash Shrestha",
+//     country: "Nepal",
+//     city: "Kathmandu",
+//     type: "work",
+//     area: "Sankhamul",
+//     street: "Subekshya Marg",
+//     buildingName: "Ravibhawan",
+//     landmark: "Sankhamul Bridge",
+//     floorNo: 3,
+//     apartmentNo: 123
+//   },
+//   {
+//     name: "Bikash Shrestha",
+//     country: "Nepal",
+//     city: "Kathmandu",
+//     type: "villa",
+//     area: "Sankhamul",
+//     street: "Subekshya Marg",
+//     buildingName: "Ravibhawan",
+//     landmark: "Sankhamul Bridge",
+//     floorNo: 3,
+//     apartmentNo: 123
+//   },
+//
+// ];
 
 class ShippingAddress extends Component{
   constructor(props){
@@ -57,7 +57,7 @@ class ShippingAddress extends Component{
         console.log("shipping addresses got successfully");
       },
       (err) => {
-        // alert('error');
+        // alert('error', err);
       }
     )
   }
@@ -73,8 +73,8 @@ class ShippingAddress extends Component{
     }
 
     this.setState({
-      visible: true,
       width: width,
+      visible: true,
     });
   }
 
@@ -97,15 +97,15 @@ class ShippingAddress extends Component{
         console.log('successfully deleted',success);
       },
       (err) => {
-        alert('error');
+        // alert('error');
       }
     )
   };
 
   render(){
     let dialog;
-    // let {shippingAddress} = this.props;
-    // console.log('shipping Addresses', shippingAddress);
+    let {shippingAddress} = this.props;
+    console.log('shipping Addresses', shippingAddress);
 
     if (this.state.visible || !this.state.destroyOnClose) {
       dialog = (
@@ -114,7 +114,7 @@ class ShippingAddress extends Component{
           animation="zoom"
           maskAnimation="fade"
           onClose={this.onClose}
-          style={{ width: this.state.width }}
+          style={{ width: this.state.width, marginLeft: 'auto', marginRight: 'auto' }}
           title={<div style={{marginTop: 20, fontSize: 17}}> Add Shipping Address</div>}
         >
           <ShippingAddressForm addShippingAddress={this.props.addShippingAddress}/>
@@ -127,7 +127,7 @@ class ShippingAddress extends Component{
             <ProfileSideBar active="shipping"/>
             <div className="card center-content">
               <div className="row">
-                { shippingAddress &&
+                { shippingAddress ?
                 shippingAddress.map((item, index)=>
                   <div key={index} className="col-md-5">
                     <div className="thumbnail shipping-address">
@@ -153,7 +153,10 @@ class ShippingAddress extends Component{
                       {item.room && <p>Room No: {item.room} </p>}
                     </div>
                   </div>
-                )
+                ):
+                  <div>
+                    <h4>There no Shipping Address. Please add your Shipping Address</h4>
+                  </div>
                 }
                 {shippingAddress && shippingAddress.length == 4 ?
                   <div className="col-md-10">
@@ -183,7 +186,7 @@ ShippingAddress.propTypes = {
 
 function mapStateToProps(state){
   return {
-    shippingAddress: state.shippingAddress
+    shippingAddress: state.shippingAddress.shippingAddress
   }
 }
 
