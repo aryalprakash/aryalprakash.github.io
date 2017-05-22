@@ -45,8 +45,8 @@ class SocialLogin extends Component {
               icon="fa-facebook"
             />
           </div>
-          <div className="google">
-            <span className="fa fa-google" style={logo}/> Google
+          <div className="google-btn">
+            <button className="btn google"><span className="fa fa-google" style={logo}/> Google</button>
           </div>
         </div>
       </div>

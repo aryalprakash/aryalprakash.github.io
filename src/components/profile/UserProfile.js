@@ -65,9 +65,7 @@ class UserProfile extends Component{
   //   })
   // }
 
-  // selectImage = () => {
-  //   document.getElementById('upload-img').click();
-  // };
+
 
 
   unFollow(id) {
@@ -105,16 +103,22 @@ class UserProfile extends Component{
           !isEmpty(userData) ?
             <div className="card center-content">
               <div className="col-md-12 profile">
-                <div className="col-md-4 col-sm-3 col-xs-12">
+                <div className="col-md-3 col-sm-3 col-xs-10" style={{marginTop: '-10px', paddingLeft: 0}}>
+                  {/*<div className="update-profile-pic" onClick={this.selectImage}>*/}
+                    {/*<img className="img-thumbnail profile-pic" src={userData.user_data.image} />*/}
+
+                    {/*<img className="camera-icon" src={require("../../../img/camera-icon.png")}/>*/}
+                  {/*</div>*/}
                   {this.getUpdateForm(userData)}
                 </div>
                 <div className="col-md-6 col-sm-7 col-xs-10">
                   <h2 style={{marginTop: 0}}>{userData.user_data.first_name} {userData.user_data.last_name}</h2>
                   <h3 style={user}>({userData.user_data.username})</h3>
-                  <p>{userData.user_data.email}</p>
+                  <p style={{marginBottom: 2}}>{userData.user_data.email}</p>
+                  <p>{userData.user_data.mobile_number}</p>
                 </div>
                 <div className="col-md-2 col-sm-2 col-xs-2 edit-profile">
-                  <Modal title='Edit Your Profile' showModal={this.state.showModal}>
+                  <Modal title='Edit Your Profile' actionClass="fa" actionIcon="pencil" showModal={this.state.showModal}>
                     <ProfileForm update={true} user={isEmpty(userData) ? {} : userData.user_data} closeModal={this.hideModal}/>
                   </Modal>
                 </div>
@@ -133,7 +137,6 @@ class UserProfile extends Component{
 
                       } >
                         <div className="thumbnail">
-                          <div className="ribbon"><span className="fa fa-remove tooltip-bottom" onClick={() => this.unFollow(store.id)}><span className="tooltip-text">Unfollow</span></span></div>
                             <img src={require("../../../img/store.png")} alt="" />
                             <div className="caption">
                               <h4>{store.display_name}</h4>
@@ -142,6 +145,8 @@ class UserProfile extends Component{
                             </div>
                         </div>
                       </Link>
+                      <div className="ribbon"><span className="fa fa-remove tooltip-bottom" onClick={() => this.unFollow(store.id)}><span className="tooltip-text">Unfollow</span></span></div>
+
                     </div>
                   )
                 }

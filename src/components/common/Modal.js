@@ -3,12 +3,12 @@ import Dialog from 'rc-dialog';
 
 class Modal extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       visible: this.props.showModal,
       width: '60%',
       destroyOnClose: false,
-    }
+    };
     this.onClick = this.onClick.bind(this);
     this.onClose = this.onClose.bind(this);
   }
@@ -22,11 +22,14 @@ class Modal extends React.Component {
   onClick() {
     let width;
 
-    if(screen.width < 480){
+    if(screen.width <= 480){
       width = '90%';
     }
+    else if(screen.width <= 768){
+      width = '70%'
+    }
     else {
-      width = '60%'
+      width = '50%'
     }
 
     this.setState({
@@ -48,8 +51,12 @@ class Modal extends React.Component {
   }
 
   render() {
-    return  <div>
-      <span className={`fa fa-${this.props.actionIcon}`} onClick={this.onClick}/> {this.props.actionName}
+    return  <div style={{display: 'flex'}}>
+      <span className={`${this.props.actionClass} fa-${this.props.actionIcon}`} onClick={this.onClick}> {this.props.actionName}</span>
+      {
+        this.props.showButton &&
+          <button className={`btn ${this.props.buttonClass}`} onClick={this.onClick}>{this.props.buttonName}</button>
+      }
       <Dialog
         visible={this.state.visible}
         wrapClassName={'center'}
@@ -67,14 +74,19 @@ class Modal extends React.Component {
 
 Modal.propTypes = {
   actionName: React.PropTypes.string,
+  actionClass: React.PropTypes.string,
   actionIcon: React.PropTypes.string,
-  title: React.PropTypes.string,
-  showModal: React.PropTypes.bool
+  buttonClass: React.PropTypes.string,
+  buttonName: React.PropTypes.string,
+  title: React.PropTypes.string.isRequired,
+  showModal: React.PropTypes.bool.isRequired,
 };
 
 Modal.defaultProps = {
   actionName: '',
-  actionIcon: 'pencil',
+  actionIcon: '',
+  buttonClass: 'btn-default',
+  buttonName: '',
   showModal: false
 };
 

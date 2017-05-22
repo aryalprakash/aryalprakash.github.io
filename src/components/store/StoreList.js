@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 
+import LoadingScreen from '../common/LoadingScreen';
 import { followStore, unfollowStore } from '../../actions/authActions';
 
 
@@ -98,7 +99,7 @@ class StoreList extends Component {
                 </div>
 
               </div>
-            ):<h2 className="col-md-12">Sorry!!! <br/>There is no Store to show.</h2>}
+            ):<LoadingScreen />}
 
           </div>
 

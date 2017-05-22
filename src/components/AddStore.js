@@ -57,8 +57,8 @@ class AddStore extends Component {
     return(
       <div className="login-container">
         <div className="login-form">
-          <div className="form-title">Add Your Store</div>
-          <div className="line"></div>
+          {/*<div className="form-title">Add Your Store</div>*/}
+          {/*<div className="line"></div>*/}
 
           <form className="form-horizontal" onSubmit={this.handleSubmit}>
 
@@ -105,7 +105,8 @@ class AddStore extends Component {
                 </div>
                 <div className="checkbox">
                   <label>
-                    <input type="checkbox" style={{marginTop: -3}} value=""/>
+                    <input type="checkbox" value=""/>
+                    <span className="ftr"><i className="ftr-icon fa fa-check"/></span>
                     I agree to the Terms and Conditions
                   </label>
                 </div>

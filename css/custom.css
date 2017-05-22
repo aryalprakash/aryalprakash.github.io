@@ -164,6 +164,10 @@ button:focus {
 .form-group{
     padding: 5px;
 }
+.form-group .btn-block {
+    /*margin-left: 15px;*/
+    /*width: 95%;*/
+}
 #searchbar{
     margin-top: 20px;
 }
@@ -321,7 +325,8 @@ button:focus {
     display: none;
 }
 .store-sec{
-  margin-top: 10px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .store-sec a{
@@ -330,6 +335,21 @@ button:focus {
 }
 .store-sec .thumbnail{
     padding: 7px;
+}
+.inner-thumbnail {
+    display: block;
+}
+.inner-thumbnail > img,
+.inner-thumbnail a > img {
+    display: block;
+    width: 100% \9;
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    /*min-height: 150px;*/
+    /*max-height: 150px;*/
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .thumbnail .caption h4{
@@ -359,9 +379,9 @@ button:focus {
     box-shadow: 0 0 10px #aaa;
 }
 .store-sec .thumbnail img{
-  width: 200px;
-  height: auto;
-    max-height: 200px;
+  /*width: 200px;*/
+  /*height: auto;*/
+    /*max-height: 200px;*/
   overflow: hidden;
 }
 .ribbon {
@@ -710,16 +730,66 @@ option{
     /*width: 45% !important;*/
     min-width: 200px;
 }
+.google-btn {
+    min-width: 200px;
+}
 
 /*Style For user Profile*/
 .profile{
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 15px;
 }
+
 .profile-sidebar {
     width: 20%;
     min-width: 225px;
     margin-right: 5px;
+}
+#myProgress {
+    position: absolute;
+    bottom: 22px;
+    margin-left: -8px;
+    width: 100%;
+    background-color: #ddd;
+}
+
+#myBar {
+    width: 1%;
+    height: 5px;
+    background-color: #4CAF50;
+}
+.load-bar {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    height: 5px;
+    background-color: #fdba2c;
+}
+.bar {
+    content: "";
+    display: inline;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    text-align: center;
+}
+.bar:nth-child(1) {
+    background-color: #4CAF50;
+    animation: loading 3s linear infinite;
+}
+.bar:nth-child(2) {
+    background-color: #3b78e7;
+    animation: loading 3s linear 1s infinite;
+}
+.bar:nth-child(3) {
+    background-color: #fdba2c;
+    animation: loading 3s linear 2s infinite;
+}
+@keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
 }
 .update-profile-pic {
     margin-bottom: 10px;
@@ -732,7 +802,10 @@ option{
     cursor: pointer;
 }
 .profile-pic {
-
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 25%;
+    max-height: 200px;
 }
 .update-profile-pic:hover .profile-pic{
     opacity: 0.4;
@@ -740,7 +813,7 @@ option{
 .update-profile-pic .camera-icon{
     display: none;
     position: absolute;
-    bottom: 0px;
+    bottom: 20px;
     height: 30px;
     width: auto;
     z-index: 111;
@@ -753,7 +826,8 @@ option{
 }
 .following-store .fa-remove {
     font-size: 15px;
-    color: #d7d7d7;
+    cursor: pointer;
+    color: #a7a7a7;
 }
 .following-store .fa-remove:hover {
     color: #c9302c;
@@ -1749,3 +1823,48 @@ img.hover-shadow {
 }
 
 /*End For Image Gallery*/
+
+/*For Loading Screen*/
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.loading-bar {
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    border-radius: 4px;
+    margin-right: 4px;
+    animation: loading 1s ease-in-out infinite;
+}
+.loading-bar:nth-child(1) {
+    background-color: #3498db;
+    animation-delay: 0s;
+}
+.loading-bar:nth-child(2) {
+    background-color: #c0392b;
+    animation-delay: 0.09s;
+}
+.loading-bar:nth-child(3) {
+    background-color: #f1c40f;
+    animation-delay: .18s;
+}
+.loading-bar:nth-child(4) {
+    background-color: #27ae60;
+    animation-delay: .27s;
+}
+
+@keyframes loading {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1, 2.2);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+/*End for Loading Screen*/

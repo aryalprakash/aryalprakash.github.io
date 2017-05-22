@@ -8,6 +8,7 @@ import shippingReducer from './shippingReducer';
 import userReducer from './userReducer';
 import searchReducer from './searchReducer';
 import filterReducer from './filterReducer';
+import flashMessagesReducer from './flashMessagesReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -19,5 +20,6 @@ export default combineReducers({
   products: productReducer,
   shippingAddress: shippingReducer,
   filters: filterReducer,
+  flashMessages: flashMessagesReducer,
 });
 

@@ -62,8 +62,7 @@ class Register extends Component{
       return(
         <div className="login-container">
           <div className="login-form">
-              <div className="form-title">Sign Up</div>
-              <div className="line"></div>
+
               <form className="form-horizontal" onSubmit={this.handleSubmit}>
                 <div className="form-elements">
                   {/*<div className={errors.username ? "form-group has-error": "form-group"}>*/}
@@ -138,7 +137,7 @@ class Register extends Component{
 }
 
 Register.propTypes = {
-  userSignUp: React.PropTypes.func.isRequired
+  userSignUp: React.PropTypes.func
 };
 
 Register.contextTypes = {

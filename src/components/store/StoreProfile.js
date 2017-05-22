@@ -22,7 +22,7 @@ class StoreProfile extends Component {
 
   followStore (id, isFollowed) {
 
-    if(isFollowed === undefined){
+    if(isFollowed === null){
       this.context.router.push('/login');
     }
     else {
@@ -102,7 +102,7 @@ class StoreProfile extends Component {
                     <div className="store-side-info">
 
                       {
-                        storeDetails[0].followed === false || storeDetails[0].followed === undefined ?
+                        storeDetails[0].followed === false || storeDetails[0].followed === null ?
                           <button className="btn btn-sm btn-default" style={{marginRight: "10px"}} onClick={() => this.followStore(storeDetails[0].id, storeDetails[0].followed)}>
                             <span className="fa fa-user-plus"/> Follow
                           </button>

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { logout } from '../../actions/authActions';
+import {addFlashMessage} from "../../actions/flashMessages";
 
 class ProfileSideBar extends Component{
 
@@ -15,6 +16,10 @@ class ProfileSideBar extends Component{
         console.log("successfully logged out");
         this.context.router.push('/');
         location.reload();
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Logged out successfully.'
+        });
       },
       (err)=>{
         console.log("error");
@@ -86,4 +91,4 @@ ProfileSideBar.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default connect(null, { logout })(ProfileSideBar);
+export default connect(null, { logout, addFlashMessage })(ProfileSideBar);

@@ -18,7 +18,6 @@ import {getCSRFToken} from "../../../actions/authActions";
 
 const styles = {
   form: {
-    padding: 15,
     backgroundColor: 'white'
   },
   formFields: {
@@ -43,13 +42,12 @@ class Form extends React.Component {
   componentWillMount() {
     this.props.getCSRFToken().then(
       (success) => {
-        console.log('Got CSRFToken from server: ', success)
         this.setState({CSRFToken: success.csrf})
       },
       (error) => {
         console.log('Error: ', error)
       }
-    )
+    );
 
     if (!isEmpty(this.props.filter)) {
       this.filterChoices();
@@ -216,7 +214,7 @@ class Form extends React.Component {
   };
 
   handleError = (error) => {
-    console.log('logging form error: ', error)
+    console.log('logging form error: ', error);
     if (error.response.status === 400) {
       error.response.json().then((error) => {
         this.setState({ errors: error, isLoading: false });
@@ -229,7 +227,7 @@ class Form extends React.Component {
   formData = () => {
     let formData = new FormData();
 
-    formData.append('csrfmiddlewaretoken', this.state.CSRFToken)
+    formData.append('csrfmiddlewaretoken', this.state.CSRFToken);
 
     this.state.fields.map((field, index) => {
       if (field.type==='image' || field.type==='file') {
@@ -256,8 +254,6 @@ class Form extends React.Component {
   logFormData = () => {
     const formData = this.formData();
     console.log("-----FORM DATA -----");
-
-    console.log('csrfmiddlewaretoken: ', this.state.CSRFToken)
 
     this.state.fields.map((field, index) => {
       if (field.type==='image' || field.type==='file') {
@@ -542,7 +538,7 @@ class Form extends React.Component {
       <form
         encType="multipart/form-data"
         onSubmit={this.onSubmit}
-        className={classnames('custom-form')}
+        className={classnames('form-horizontal custom-form')}
         style={styles.form}
       >
         {this.formFields()}

@@ -25,8 +25,8 @@ class StoreFans extends Component {
               followers.length > 0 ? followers.map((fan, index) =>
                 <div key={index} className="col-md-2 col-sm-3 col-xs-4">
                   <div className="fans tooltip-bottom">
-                    <img src={require('../../../img/profile-icon.png')}/>
-                    <p>{fan.firstName} {fan.lastName}</p>
+                    <img src={fan.image_url}/>
+                    <p>{fan.first_name} {fan.last_name}</p>
                     <span className="tooltip-text">{fan.username}</span>
                   </div>
                 </div>

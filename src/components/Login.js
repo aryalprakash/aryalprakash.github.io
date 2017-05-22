@@ -4,7 +4,9 @@ import  { Link, browserHistory } from 'react-router';
 
 import SocialLogin from './SocialLogin';
 import { loginWithEmail } from '../actions/authActions';
+import { addFlashMessage } from '../actions/flashMessages';
 import TextFieldGroup from './common/TextFieldGroup';
+import {isLoggedIn} from "../actions/authActions";
 
 class Login extends Component{
     constructor() {
@@ -24,7 +26,12 @@ class Login extends Component{
         (success) => {
           console.log('login success', success);
           this.context.router.push('/');
-          location.reload();
+          // location.reload();
+          this.props.isLoggedIn();
+          this.props.addFlashMessage({
+            type: 'success',
+            text: 'Logged in successfully.'
+          });
         },
         (err) => {
           console.log('login error', err);
@@ -42,8 +49,8 @@ class Login extends Component{
     render(){
         return(<div className="login-container">
             <div className="login-form">
-              <div className="form-title">Login</div>
-              <div className="line"></div>
+              {/*<div className="form-title">Login</div>*/}
+              {/*<div className="line"></div>*/}
 
               <form className="form-horizontal" onSubmit={this.handleSubmit}>
                   <div className="form-elements">
@@ -84,11 +91,11 @@ class Login extends Component{
 }
 
 Login.propTypes = {
-  loginWithEmail: React.PropTypes.func.isRequired
+  loginWithEmail: React.PropTypes.func
 };
 
 Login.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default connect(null, { loginWithEmail })(Login);
+export default connect(null, { loginWithEmail, addFlashMessage, isLoggedIn })(Login);

@@ -19,7 +19,7 @@ export function getStoresList(category){
     //     dispatch(gotStoresList(res.data));
     // })
     console.log(category);
-    fetch(API_URL1+'/stores?category__slug__iendswith='+category,{method: 'get'}).then(response => response.json()).then(res=> {
+    fetch(API_URL1+'/stores?category__slug__iendswith='+category,{method: 'get', credentials: 'include'}).then(response => response.json()).then(res=> {
       console.log('from gcs server',res.results);
       storeList = res.results;
       dispatch(gotStoresList(res.results));

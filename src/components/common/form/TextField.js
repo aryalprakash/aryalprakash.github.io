@@ -17,8 +17,8 @@ class TextField extends React.Component {
     const {field, type, value, label, id, required, error, labelClasses, fieldClasses, disabled}=this.props;
     return(
       <div className={classnames("form-group", { 'has-error': !isEmpty(error) })}>
-        <label className={classnames("control-label", {labelClasses})}>{label}{required ? '*' : ''}</label>
-        <div>
+        <label className={classnames("col-md-3 col-sm-3 control-label", {labelClasses})}>{label}{required ? '*' : ''}</label>
+        <div className="col-md-9 col-sm-9">
           <input
             onChange={this.handleInputChange}
             value={value}

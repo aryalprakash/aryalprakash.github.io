@@ -11,6 +11,7 @@ import AddStore from './AddStore';
 import ProfileSideBar from './profile/ProfileSideBar';
 import 'rc-dialog/assets/index.css';
 import SearchBox from './common/SearchBox';
+import Modal from './common/Modal';
 
 import { userSignUp } from '../actions/authActions';
 import { getCartItems, removeFromCart, setCartItem } from '../actions/cartActions';
@@ -59,94 +60,15 @@ class Header extends Component{
         super(props);
         this.state = {
             class: '',
-            visible: false,
-            width: '60%',
-            destroyOnClose: false,
-            center: true,
-            login: true,
-            reg: false,
-            addStore: false,
+            showModal: false,
             path: location.pathname,
         }
 
-        this.onClick = this.onClick.bind(this)
-        this.Reg = this.Reg.bind(this)
-        this.onClose = this.onClose.bind(this)
-        this.addStore = this.addStore.bind(this)
-
     }
 
-    onClick(e) {
-      let width;
-      if(screen.width < 480){
-        width = '90%';
-      }
-      else {
-        width = '60%'
-      }
-      console.log("screen width", screen.width);
-
-      this.setState({
-        visible: true,
-        width: width,
-        reg: false,
-        login: true,
-        addStore: false,
-      });
-    }
-
-    Reg(e){
-      let width;
-      if(screen.width < 480){
-        width = '90%';
-      }
-      else {
-        width = '60%'
-      }
-      this.setState({
-        visible: true,
-        width: width,
-        reg: true,
-        login: false,
-        addStore: false
-      });
-    }
-
-    addStore(e){
-      let width;
-      if(screen.width < 480){
-        width = '90%';
-      }
-      else {
-        width = '60%'
-      }
-      this.setState({
-        visible: true,
-        width: width,
-        reg: false,
-        login: false,
-        addStore: true
-      });
-    }
-
-    onClose(e) {
-        this.setState({
-            visible: false,
-            login: true
-        });
-    }
-
-    center(e) {
-        this.setState({
-            center: e.target.checked,
-        });
-    }
-
-    onDestroyOnCloseChange(e) {
-        this.setState({
-            destroyOnClose: e.target.checked,
-        });
-    }
+    hideModal = () => {
+      this.setState({showModal: false})
+    };
 
     handleChange = (e) =>{
       this.setState({[e.target.name]: e.target.value});
@@ -202,42 +124,9 @@ class Header extends Component{
 
 
     render(){
-        let dialog;
         let {cart} = this.props;
         let { loggedIn } = this.props;
 
-        if (this.state.visible) {
-
-            dialog = (
-                <Dialog
-                    visible={this.state.visible}
-                    wrapClassName='center'
-                    animation="zoom"
-                    maskAnimation="fade"
-                    onClose={this.onClose}
-                    style={{width: this.state.width}}
-                >
-                {
-                  this.state.login &&
-                  <div>
-                    <Login />
-                  </div>
-                }
-                {
-                  this.state.reg &&
-                  <div>
-                    <Register userSignUp={this.props.userSignUp}/>
-                  </div>
-                }
-                {
-                  this.state.addStore &&
-                    <div>
-                      <AddStore/>
-                    </div>
-                }
-                </Dialog>
-            );
-        }
         return(
 
           <div className={`fheader blue head-border `+this.state.class}>
@@ -252,7 +141,17 @@ class Header extends Component{
                     {/*<input className="search-input" placeholder="What are you looking for?" type="text" />*/}
                 {/*</div>*/}
                 {/*<span className="fa fa-search imenu-list"/>*/}
-                <button className="imenu-list btn btn-sm btn-success" onClick={this.addStore}>Add your Store</button>
+                {/*<button className="imenu-list btn btn-sm btn-success" onClick={this.addStore}>Add your Store</button>*/}
+                <Modal
+                  title='Add Your Store'
+                  showButton={true}
+                  buttonClass="imenu-list btn-sm btn-success"
+                  buttonName="Add your Store"
+                  showModal={this.state.showModal}
+                  closeModal={this.hideModal}
+                >
+                  <AddStore />
+                </Modal>
               {
                 !_.isEmpty(loggedIn) &&
                   loggedIn.status_code === 200 ?
@@ -266,8 +165,14 @@ class Header extends Component{
                     </div>
                   </div>:
                   <div className="imenu-profile">
-                    <div className="imenu-list" onClick={this.onClick}>Login</div>
-                    <div className="imenu-list" onClick={this.Reg}>Register</div>
+                    {/*<div className="imenu-list" onClick={this.onClick}>Login</div>*/}
+                    <Modal title="Sign In" actionClass="imenu-list" actionName="Login" showModal={this.state.showModal}>
+                      <Login/>
+                    </Modal>
+                    <Modal title="Sign Up" actionClass="imenu-list" actionName="Register" showModal={this.state.showModal}>
+                      <Register/>
+                    </Modal>
+                    {/*<div className="imenu-list" onClick={this.Reg}>Register</div>*/}
                   </div>
               }
 
@@ -334,7 +239,6 @@ class Header extends Component{
                   </div>
                 </div>
 
-            {dialog}
             </div>}
         </div>)
     }

@@ -8,6 +8,7 @@ import Breadcrumb from './Breadcrumb';
 import MiniBreadcrumb from './MiniBreadcrumb';
 import Footer from './Footer';
 import ChatBox from './ChatBox';
+import FlashMessagesList from './flash/flashMessagesList';
 
 let style={
     header: {
@@ -68,6 +69,7 @@ export default class Infinia extends Component{
             <div>
               {this.props.children}
             </div>
+            <FlashMessagesList />
             <ChatBox/>
             <Footer/>
         </div>
